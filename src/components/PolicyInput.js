@@ -75,19 +75,16 @@ class PolicyInput extends React.Component {
 
   }
   componentDidMount() {
-      console.log(this.props.values, "did mount")
       this.setState({code: this.props.values.code})
   }
   componentDidUpdate(prevProps) {
     if(this.state.code !== this.props.values.code) {
-        console.log(this.props.values.code);
         this.setState({code: this.props.values.code});
         this.handleCodeSelect(this.props.values.code);
 
     }
   }
   render() {
-      console.log(this.props.values, "policy input")
     return (
       <div>          
         <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} value={this.state.policyNames} values={this.props.values} /> 
