@@ -24,6 +24,7 @@ import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { savePends } from './utils/savingPends/savePends';
 import { buildPolicies } from '../../data/medPolicies';
 import { mergePolicyFromCodesArray, mergePolicyNameArrays } from './utils/setPolicy';
+import PolicyInput from '../PolicyInput';
 
 
 
@@ -115,14 +116,14 @@ class General extends React.Component {
   handlePendInput = (value) => {
     const newValues = this.state.values;
     newValues.pend = value;
-    this.setState({newValues,});
+    this.setState({values: newValues});
     if(value) {value.forEach(value => {savePends(value.value, this.state.values.lob)})}
   }
 
   handleInputs = (value) => {
     const newValues = this.state.values;
     newValues[value.name] = value.value;
-    this.setState({newValues,});
+    this.setState({values: newValues});
     switch(value.name) {
 
       case "pa-match": 
@@ -164,21 +165,14 @@ class General extends React.Component {
     const serviceType = firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
     this.handleInputs({name: "serviceType", value: serviceType});
   }
-  handleCodeSelect = (code) => {
-    this.handleInputs(code);
-    const codes = utils.formatCodes(code.value);
-    const policies = utils.setPolicyByCode(codes, this.state.values.lob);
-    if(policies) {
-      const policyNames = this.setPolicyNames(policies);
-      this.addPolicyNames(policyNames)
-    }
-  }
+
   setIndex(e, i) {
     this.setState({
       index: i
     })
   }
   render() {
+    console.log(this.state, "general");
     const { classes } = this.props;
     const claimTypeOptions = this.state.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
     const claimSystemOptions = this.state.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
@@ -200,7 +194,7 @@ class General extends React.Component {
         <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={this.handleInputs} values={this.state.values} />
         <TextInput id="age" placeholder="" label="Age" onBlur={this.handleInputs} values={this.state.values} /> 
         <TextInput id="dos" placeholder="" label="Date of service" onBlur={this.handleInputs} values={this.state.values} />              
-        <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={this.handleCodeSelect} values={this.state.values} />
+        <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={this.handleInputs} values={this.state.values} />
 
         <TextInput id="service" placeholder="" label="Service" onBlur={this.handleInputs} values={this.state.values} />
         <RadioInput id="serviceType" options={["drug", "procedure", "DME"]} label="Service Type" updateValue={this.handleInputs} values={this.state.values} />
@@ -213,8 +207,7 @@ class General extends React.Component {
         {this.state.values.pend && this.state.values.pend.some(pend => {return pend.value === "P5194"})
           ? <PricingInputs handleInputs={this.handleInputs} values={this.state.values} />
           : null}           
-        <ReactSelect id="policy" suggestions={policySuggestions(this.state.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} value={this.state.policyNames} values={this.state.values} /> 
-        
+        <PolicyInput handleInputs={this.handleInputs} values={this.state.values} />        
         <TextInput id="benefits" placeholder="" label="Benefits" onBlur={this.handleInputs} values={this.state.values} />               
         <TextInput id="diagnosis" placeholder="" label="Diagnosis" onBlur={this.handleInputs} values={this.state.values} />
         <TextInput id="provider" placeholder="" label="Provider" onBlur={this.handleInputs} values={this.state.values} />
