@@ -1,6 +1,5 @@
 import { vowels } from "./vowels";
 import { formatToName } from "./formatToName"; 
-import { capAcronyms } from "./capitalizeAcronyms";
 import { capWord } from './capitalizeWord';
 import { setPricingNote } from "./setPricingNote";
 

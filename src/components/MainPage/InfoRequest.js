@@ -11,15 +11,11 @@ import ReactSelect from '../ReactSelect';
 import ReactSelectSingle from '../ReactSelectSingle';
 import TextInput from '../TextInput';
 import RadioInput from '../RadioInput';
-import ReviewedInputs from '../ReviewedInputs';
-import Checkbox from '../Checkbox';
 import InfoRequestNotes from '../InfoRequestNotes/InfoRequestNotes';
 import * as utils from './utils';
 import { pends, fepPends } from '../../data/pends';
-import DeniedInputs from '../DeniedInputs';
 import { Divider } from '@material-ui/core';
-import CriteriaInputs from '../CriteriaInputs';
-import PricingInputs from '../PricingInputs';
+
 
 
 
@@ -123,7 +119,10 @@ class InfoRequest extends React.Component {
         break;
       case "serviceType":
         const drugReview = value.value === "drug" ? true : false;
-        this.setState({drugReview,})
+        this.setState({drugReview,});
+        break;
+      default:
+          break;
     }
   }
   handleStorage = (value) => {

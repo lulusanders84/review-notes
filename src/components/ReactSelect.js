@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { setPolicyName } from './MainPage/utils';
 import { Tooltip } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({

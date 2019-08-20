@@ -4,18 +4,18 @@
 // import pdfToText from '../data/pdfToText';
 // import policyDummy from '../data/policyDummy';
 
-import React, {useState} from 'react';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PoliciesIcon from '@material-ui/icons/LibraryBooks';
-import { Container, Typography, Grid, Button } from '@material-ui/core/';
+import { Container, Typography, Grid } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import Tabs from '../Tabs';
 import General from './General';
 import Misroute from './Misroute';
 import BackFromPeer from './BackFromPeer';
 import InfoRequest from './InfoRequest';
-import { medPolicies, sortedMedPolicies, addPolcyNameToMedPolicies } from '../../data/medPolicies';
+
 
 const styles = theme => ({
   '@global': {

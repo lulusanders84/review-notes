@@ -1,4 +1,3 @@
-import { capWord } from "./capitalizeWord";
 
 export const setRationale = (values, policyString, denialMessage) => {
   return values.reviewed === "yes"

@@ -6,20 +6,16 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { policySuggestions, suggestions } from '../AutoComplete/utils';
+import { suggestions } from '../AutoComplete/utils';
 import ReactSelect from '../ReactSelect';
 import ReactSelectSingle from '../ReactSelectSingle';
 import TextInput from '../TextInput';
 import RadioInput from '../RadioInput';
-import ReviewedInputs from '../ReviewedInputs';
-import Checkbox from '../Checkbox';
 import MisrouteNotes from '../MisrouteNotes/MisrouteNotes';
 import * as utils from './utils';
 import { pends, fepPends } from '../../data/pends';
-import DeniedInputs from '../DeniedInputs';
 import { Divider } from '@material-ui/core';
-import CriteriaInputs from '../CriteriaInputs';
-import PricingInputs from '../PricingInputs';
+
 
 
 
@@ -124,7 +120,10 @@ class Misroute extends React.Component {
         break;
       case "serviceType":
         const drugReview = value.value === "drug" ? true : false;
-        this.setState({drugReview,})
+        this.setState({drugReview,});
+        break;
+      default:
+        break;
     }
   }
   handleStorage = (value) => {

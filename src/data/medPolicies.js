@@ -1,4 +1,3 @@
-import deromanize from 'deromanize';
 
 export const medPolicies =
    [
@@ -2740,16 +2739,6 @@ export const medPolicies =
       }
    ]
 
-const indexOfDash = (policy) => {
-   return policy.indexOf("-")
-}
-const number = (policy) => {
-   console.log(policy, policy.slice(indexOfDash + 1))
-   return Number(policy.slice(indexOfDash(policy) + 1))
- }
-const numeral = (policy) => {
-   return deromanize(policy.slice(0, indexOfDash(policy)))
-}
 
 export const addPolcyNameToMedPolicies = () => {
    return medPolicies.map(policy => {

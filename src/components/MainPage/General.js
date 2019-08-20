@@ -22,8 +22,7 @@ import CriteriaInputs from '../CriteriaInputs';
 import PricingInputs from '../PricingInputs';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { savePends } from './utils/savingPends/savePends';
-import { buildPolicies } from '../../data/medPolicies';
-import { mergePolicyFromCodesArray, mergePolicyNameArrays } from './utils/setPolicy';
+import { mergePolicyNameArrays } from './utils/setPolicy';
 
 
 
@@ -152,7 +151,10 @@ class General extends React.Component {
         break;
       case "serviceType":
         const drugReview = value.value === "drug" ? true : false;
-        this.setState({drugReview,})
+        this.setState({drugReview,});
+        break;
+      default:
+        break;
     }
   }
   handleStorage = (value) => {

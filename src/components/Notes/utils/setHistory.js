@@ -1,6 +1,5 @@
-import { capWord } from "./capitalizeWord";
+
 import { formatToName } from "./formatToName";
-import { capAcronyms } from "./capitalizeAcronyms";
 
 export const setHistory = (values, type) => {
     const reviewed = values.reviewed;

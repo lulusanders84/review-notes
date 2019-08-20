@@ -6,12 +6,11 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { policySuggestions, suggestions } from '../AutoComplete/utils';
+import { suggestions } from '../AutoComplete/utils';
 import ReactSelect from '../ReactSelect';
 import ReactSelectSingle from '../ReactSelectSingle';
 import TextInput from '../TextInput';
 import RadioInput from '../RadioInput';
-import ReviewedInputs from '../ReviewedInputs';
 import Checkbox from '../Checkbox';
 import BackFromPeerNotes from '../BackFromPeerNotes/BackFromPeerNotes';
 import * as utils from './utils';
@@ -19,7 +18,6 @@ import { pends, fepPends } from '../../data/pends';
 import DeniedInputs from '../DeniedInputs';
 import { Divider } from '@material-ui/core';
 import CriteriaInputs from '../CriteriaInputs';
-import PricingInputs from '../PricingInputs';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { savePends } from './utils/savingPends/savePends';
 
@@ -128,6 +126,9 @@ class BackFromPeer extends React.Component {
       case "serviceType":
         const drugReview = value.value === "drug" ? true : false;
         this.setState({drugReview,})
+        break;
+      default:
+        break;
     }
   }
   handleStorage = (value) => {
