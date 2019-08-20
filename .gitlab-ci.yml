@@ -32,7 +32,6 @@ deploy:
 
   script:
     - pip install awscli
-    - npm run deploy-dev
 
   only:
     - develop
