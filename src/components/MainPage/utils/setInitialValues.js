@@ -39,7 +39,9 @@ export const initialValues = {
     employee: false,
     denialType: "entire claim",
     summary: "",
-    related: "N/A"
+    related: "N/A",
+    info: "",
+    sccf: ""
 }
 
 

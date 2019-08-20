@@ -85,11 +85,14 @@ class InfoRequest extends React.Component {
   getInfo = (policies) => {
     return policies.map(policy => {
       const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
-        console.log(bcbsmnPolicy)
         return bcbsmnPolicy["Policy #"] === policy["Policy #"];
       })
-      console.log(bcbsmnPolicy)
-      return bcbsmnPolicy.info;
+  
+      return bcbsmnPolicy 
+        ? bcbsmnPolicy.info 
+          ? bcbsmnPolicy.info 
+          : "" 
+        : "";
     }).join(" ");
     
   }

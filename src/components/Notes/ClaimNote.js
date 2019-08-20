@@ -50,6 +50,8 @@ export default function ClaimNote(props) {
       <Typography component="h3" variant="h6">Claim Note</Typography>
       <div contentEditable className={classes.notes}>
       REQ-{values.req}: {ocwaNote} {instructions} {modifier22} {remainder}
+      <br />{props.info}
+      <br />{props.claimNoteAddendum}
       </div>
     </CardContent>
     </Card>
