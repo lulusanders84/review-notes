@@ -1,0 +1,38 @@
+image: nikolaik/python-nodejs
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+
+  environment:
+    name: development
+
+  before_script:
+    - npm install
+
+  script:
+    - npm run build
+
+  only:
+    - develop
+
+  artifacts:
+    expire_in: 4 days
+    paths:
+      - build
+
+deploy:
+  stage: deploy
+
+  environment:
+    name: development
+
+  script:
+    - pip install awscli
+    - npm run deploy-dev
+
+  only:
+    - develop
