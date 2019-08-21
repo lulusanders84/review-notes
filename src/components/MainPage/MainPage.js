@@ -12,8 +12,8 @@ import BackFromPeer from './BackFromPeer';
 import InfoRequest from './InfoRequest';
 import * as utils from './utils';
 import { savePends } from './utils/savingPends/savePends';
-import { mergePolicyNameArrays } from './utils/setPolicy';
 import { pends, fepPends } from '../../data/pends';
+import { bcbsmnPolicies } from '../../data/bcbsmnPolicies';
 
 
 const styles = theme => ({
@@ -71,35 +71,6 @@ class MainPage extends React.Component {
       disableAllMet: false
     }
   }
-  onPolicyChange = (policy) => {
-    let policyNames;
-    let policies;
-    if(policy){
-      policies = utils.getPolicies(policy)
-      policyNames = this.setPolicyNames(policies);
-    } else {
-      policyNames = [];
-      policies = [];
-    }
-    this.handleInputs({name: "policy", value: policies})
-    this.setState({policyNames,})
-
-  }
-  setPolicyNames = (policies) => {
-    return policies.map(policy => {
-      const number = policy["Policy #"];
-      const name = policy["Full Policy"];
-      return policy.policyName 
-        ? policy.policyName 
-        : {value: number, label: number, name,}})
-  }
-  addPolicyNames = (policyNames) => {
-    const allPolicyNames = mergePolicyNameArrays(policyNames, this.state.policyNames);
-    const policies = utils.getPolicies(allPolicyNames);
-    this.handleInputs({name: "policy", value: policies})
-    this.setState({policyNames: allPolicyNames})
-
-  }
   handleReviewed = (event) => {
     const reviewed = event.target.value === "yes" ? true : false
     this.setState({reviewed,});
@@ -127,6 +98,23 @@ class MainPage extends React.Component {
     this.setState({values: newValues});
     if(value) {value.forEach(value => {savePends(value.value, this.state.values.lob)})}
   }
+  handleInfo = (policies) => {
+      const info = policies.length !== 0 ? this.getInfo(policies) : ""
+      this.handleInputs({name: "info", value: info});
+  }
+  getInfo = (policies) => {
+    return policies.map(policy => {
+      const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
+        return bcbsmnPolicy["Policy #"] === policy["Policy #"];
+      })
+  
+      return bcbsmnPolicy 
+        ? bcbsmnPolicy.info 
+          ? bcbsmnPolicy.info 
+          : "" 
+        : "";
+    }).join(" "); 
+  }
 
   handleInputs = (value) => {
     const newValues = this.state.values;
@@ -136,13 +124,13 @@ class MainPage extends React.Component {
       this.handleInputs, 
       this.handleServiceSelect, 
       this.handleStorage, 
+      this.handleInfo,
       value, 
       this.state.values);
     const changedValues = Object.keys(returnObj).map(key => {
-      return {name: key, value: returnObj[key]}
+      return {name: key, value: returnObj[key], mark: "handle"}
     });
     changedValues.forEach(value => {
-      console.log(value)
       this.handleInputs(value);
     })
   }
@@ -159,6 +147,7 @@ class MainPage extends React.Component {
   setIndex = (i) => {
     this.setState({value: i});
   }
+
   render() {
     const { classes } = this.props;
     const options = {};
@@ -177,7 +166,9 @@ class MainPage extends React.Component {
     const noteType = () => {
       switch(this.state.value) {
         case 1:
-          return <InfoRequest />;
+          return <InfoRequest 
+            {...reviewProps}
+          />;
         case 2:
           return <BackFromPeer 
             {...reviewProps}

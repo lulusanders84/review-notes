@@ -19,7 +19,7 @@ export const InfoRequestNotes = (props) => {
     <div>
       <InfoRequest values={props.values} info={info} /> 
       <ClaimNote values={props.values} claimNoteAddendum={faxAndDate()} info={`Info Requested: ${info}`} />
-      <LetterNote faxAndDate={faxAndDate()} />
+      <LetterNote faxAndDate={faxAndDate()} info={`Info Requested: ${info}`}/>
       <Routing values={props.values} /> 
     </div>  
   )  
