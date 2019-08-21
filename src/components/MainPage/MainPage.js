@@ -28,6 +28,8 @@ const styles = theme => ({
     }
   },
   paper: {
+    width: "460px",
+    margin: "0 auto",
     marginTop: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
@@ -101,6 +103,18 @@ class MainPage extends React.Component {
   handleReviewed = (event) => {
     const reviewed = event.target.value === "yes" ? true : false
     this.setState({reviewed,});
+    if(!reviewed) {
+      const affectedValues = [
+        {name: "pa-req", value: ""},
+        {name: "pa-dos", value: ""},
+        {name: "pa-diagnosis", value: ""},
+        {name: "pa-provider", value: ""},
+        {name: "pa-match", value: "no"},
+      ]
+      affectedValues.forEach(value => {
+        this.handleInputs(value);
+      })
+    }
   }
   handlePendInput = (value) => {
     const newValues = this.state.values;
@@ -119,13 +133,13 @@ class MainPage extends React.Component {
       this.handleStorage, 
       value, 
       this.state.values);
-    const {drugReview, disableAllMet} = returnObj;
-    if(drugReview !== undefined) {
-      this.setState({drugReview,})
-    }
-    if(disableAllMet) {
-      this.setState({disableAllMet,})
-    }
+    const changedValues = Object.keys(returnObj).map(key => {
+      return {name: key, value: returnObj[key]}
+    });
+    changedValues.forEach(value => {
+      console.log(value)
+      this.handleInputs(value);
+    })
   }
   handleStorage = (value) => {
     window.localStorage.setItem(value.name.trim(), value.value.trim())
@@ -146,24 +160,29 @@ class MainPage extends React.Component {
     options.claimTypeOptions = this.state.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
     options.claimSystemOptions = this.state.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
     options.pendOptions = this.state.values.lob === "FEP" ? [...fepPends, ...pends] : pends;
+    const reviewProps = {
+      values: this.state.values, 
+      reviewed: this.state.reviewed,
+      handleInputs: this.handleInputs, 
+      handlePendInput: this.handlePendInput,
+      handleReviewed: this.handleReviewed,
+      classes,
+      options,
+    }
     const noteType = () => {
       switch(this.state.value) {
         case 1:
           return <InfoRequest />;
         case 2:
-          return <BackFromPeer />;
+          return <BackFromPeer 
+            {...reviewProps}
+          />;
         case 3:
-          return <Misroute />;
+          return <Misroute 
+            {...reviewProps}/>;
         default:
           return <General 
-            values={this.state.values} 
-            handleInputs={this.handleInputs} 
-            handlePendInput={this.handlePendInput}
-            handleReviewed={this.handleReviewed}
-            drugReview={this.state.drugReview}
-            disableAllMet={this.state.disableAllMet}
-            classes={classes}
-            options={options}
+            {...reviewProps}
           />;
       } 
     }

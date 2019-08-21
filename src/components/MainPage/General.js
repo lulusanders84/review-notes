@@ -43,8 +43,8 @@ function General(props) {
 
       <TextInput id="service" placeholder="" label="Service" onBlur={props.handleInputs} values={props.values} />
       <RadioInput id="serviceType" options={["drug", "procedure", "DME"]} label="Service Type" updateValue={props.handleInputs} values={props.values} />
-      {props.drugReview ?
-        <RadioInput id="drugReview" options={["new", "renewal"]} label="Drug Review Type" updateValue={props.handleInputs} values={props.values} />
+      {props.values.drugReview ?
+        <RadioInput id="drugReviewType" options={["new", "renewal"]} label="Drug Review Type" updateValue={props.handleInputs} values={props.values} />
         : null } 
       {props.values.claimType === "local" && props.values.lob === "commercial" 
         ? <RadioInput id="paList" options={["no", "yes"]} label="On PA List?" updateValue={props.handleInputs} values={props.values} />
@@ -64,11 +64,11 @@ function General(props) {
         ? <DeniedInputs denialId="rationale" handleInputs={props.handleInputs} values={props.values} />
         : props.values.deter === "send to medical director"
           ? <CriteriaInputs handleInputs={props.handleInputs} values={props.values} /> 
-          : <Checkbox id="allMet" value={props.values.allMet} updateValue={props.handleInputs} label="All crtieria met" disabled={props.disableAllMet} />
+          : <Checkbox id="allMet" value={props.values.allMet} updateValue={props.handleInputs} label="All crtieria met" disabled={props.values.disableAllMet} />
       }
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
-      <Notes values={props.values} drugReview={props.drugReview}  />
+      <Notes values={props.values} drugReview={props.values.drugReview}  />
     </div>
     </div>
   );

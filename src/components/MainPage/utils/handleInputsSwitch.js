@@ -1,12 +1,18 @@
 export const handleInputsSwitch = (handler, serviceSelect, storage, value, values) => {
     let returnObj = {};
     switch(value.name) {
+        case "pa-deter":
+          if(values["pa-match"] === "yes") {
+            const newValue = value.value === "approved" ? "approve" : "deny";
+            handler({name: "deter", value: newValue});
+            returnObj.disableAllMet = true;
+          } 
+          break;           
         case "pa-match": 
           const newValue = values["pa-deter"] === "approved" ? "approve" : "deny";
           handler({name: "deter", value: newValue});
-          if(value.value === "yes") {
-            returnObj.disableAllMet = true;
-          }
+          const disableAllMet = value.value === "yes" ? true : false;
+          returnObj.disableAllMet = disableAllMet;
           break;
         case "deter":
           if(value.value !== "approve") {handler({name: "allMet", value: false})};
@@ -17,6 +23,9 @@ export const handleInputsSwitch = (handler, serviceSelect, storage, value, value
         case "name":
         case "lob":
           storage(value);
+          if(value.value === "FEP") {
+            returnObj.claimType = "local"
+          }
           break;
         case "pa-diagnosis":
             value.name = "diagnosis";
