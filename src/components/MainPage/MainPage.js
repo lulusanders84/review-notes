@@ -28,7 +28,7 @@ const styles = theme => ({
     }
   },
   paper: {
-    width: "460px",
+    maxWidth: "460px",
     margin: "0 auto",
     marginTop: theme.spacing(4),
     display: 'flex',
