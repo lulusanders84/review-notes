@@ -57,7 +57,6 @@ class PolicyInput extends React.Component {
     }
     this.props.handleInputs({name: "policy", value: policies})
     this.setState({policyNames,})
-
   }
   setPolicyNames = (policies) => {
     return policies.map(policy => {

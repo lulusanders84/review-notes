@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 export default function TextInput(props) {
   const handleChange = event => {
     event.persist();
-    const value = {name: props.id, value: event.target.value };
+    const value = {name: props.id, value: event.target.value, mark:"text" };
     props.onBlur(value);
   };
   return (

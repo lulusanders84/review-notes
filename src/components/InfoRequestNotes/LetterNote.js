@@ -30,8 +30,8 @@ export default function LetterNote(props) {
       <Typography component="h3" variant="h6">Note for Letter</Typography>
       <div contentEditable className={classes.notes}>
         REQ-{values.req}: Additional Info Requested
-        <br />Info Requested: {props.info}
-        {props.faxAndDate}
+        <br />{props.info}
+        <br />{props.faxAndDate}
       </div>
     </CardContent>
     </Card>

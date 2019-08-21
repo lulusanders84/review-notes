@@ -1,6 +1,9 @@
-export const handleInputsSwitch = (handler, serviceSelect, storage, value, values) => {
+export const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values) => {
     let returnObj = {};
     switch(value.name) {
+        case "policy":
+          info(value.value);
+          break;
         case "pa-deter":
           if(values["pa-match"] === "yes") {
             const newValue = value.value === "approved" ? "approve" : "deny";
