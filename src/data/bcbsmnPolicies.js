@@ -466,7 +466,7 @@ export const bcbsmnPolicies = [
     },
     {
       "Full Policy": "Infliximab",
-      "Policy #": "II-97           J1745",
+      "Policy #": "II-97",
       "info": "History and physical to include clinical indication for Infliximab (Remicade), treatments tried and results, body surface area affected (if applicable), dosage requested including the member's weight, screening results for latent TB and Hepatitis B, treatment plan, and procedure/operative report."
     },
     {

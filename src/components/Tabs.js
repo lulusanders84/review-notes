@@ -32,7 +32,7 @@ export default function (props) {
         scrollButtons="on"
       >
         {tabs.map((tab, index) => {
-            const disabled = tab === "Info Request" ? true : false;
+            const disabled = false;
            return <Tab label={tab} tabIndex={index} disabled={disabled} />
         })}
       </Tabs>

@@ -37,7 +37,7 @@ export default function InfoRequest(props) {
         <br />PA research: No PA found, no history of info requests in UM
         <br />Related UM requests: {values.related !== "N/A" ? values.related.split(",").map(related => {return `REQ-${related}`}).join(", ") : values.related}
         <br />Route: {values.claimType === "home" ? `B2 (SCCF: ${values.sccf})` : "Letter"}
-        <br />Info Requested: {values.info}
+        <br />Info Requested: {props.info}
       </div>
     </CardContent>
     </Card>

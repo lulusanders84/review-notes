@@ -21,6 +21,7 @@ export default function TextInput(props) {
         margin="dense"
         onChange={handleChange}
         value={props.values[props.id]}
+        InputLabelProps={{shrink: props.shrink}}
       />
     </Grid>
   );

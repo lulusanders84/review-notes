@@ -65,16 +65,10 @@ class InfoRequest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      policyNames: [],
       values: utils.initialValues,
       drugReview: true,
       disableAllMet: false
     }
-  }
-  onPolicyChange = (policy) => {
-    const policies = utils.getPolicies(policy);
-    const policyNames = utils.setPolicyName(policies);
-    this.setState({values: {...this.state.values, policy: policies}, policyNames: [...policyNames]});
   }
   handleReviewed = (event) => {
     const reviewed = event.target.value === "yes" ? true : false
@@ -85,7 +79,24 @@ class InfoRequest extends React.Component {
     newValues.pend = value;
     this.setState({newValues,});
   }
-
+  handleInfo = () => {
+    const info = this.getInfo(this.state.values.policy);
+    this.handleInputs({name: "info", value: info});
+  }
+  getInfo = (policies) => {
+    return policies.map(policy => {
+      const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
+        return bcbsmnPolicy["Policy #"] === policy["Policy #"];
+      })
+  
+      return bcbsmnPolicy 
+        ? bcbsmnPolicy.info 
+          ? bcbsmnPolicy.info 
+          : "" 
+        : "";
+    }).join(" ");
+    
+  }
   handleInputs = (value) => {
     const newValues = this.state.values;
     newValues[value.name] = value.value;
@@ -106,18 +117,6 @@ class InfoRequest extends React.Component {
     const parsed = parseInt(firstChar);
     const serviceType = firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
     this.handleInputs({name: "serviceType", value: serviceType});
-  }
-  handleCodeSelect = (code) => {
-    this.handleInputs(code);
-    const codes = utils.formatCodes(code.value);
-    const policy = utils.setPolicyByCode(codes, this.state.values.lob);
-    if(policy) {
-      const policies = policy.map(policy => { return {value: policy["Policy #"], label: policy["Policy #"]}})
-      const newPolicies = policies.filter(policy => {
-        return this.state.policyNames.indexOf(policy) === -1;
-      })
-      this.onPolicyChange(newPolicies);
-    }
   }
   setIndex(e, i) {
     this.setState({
@@ -147,9 +146,9 @@ class InfoRequest extends React.Component {
         <ReactSelect id="pend" suggestions={suggestions(pendOptions)} label="Suspension" updateValue={this.handlePendInput} values={this.state.values} value={this.state.values.pend} />             
         <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={this.handleInputs} values={this.state.values} />
         <TextInput id="dos" placeholder="" label="Date of service" onBlur={this.handleInputs} values={this.state.values} />              
-        <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={this.handleCodeSelect} values={this.state.values} />         
-        <ReactSelect id="policy" suggestions={policySuggestions(this.state.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} value={this.state.policyNames} values={this.state.values} /> 
-        <TextInput id="info" multiline={true} rows="5" label="Info to Request" values={this.state.values} onBlur={this.handleInputs} />
+        <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={this.handleInputs} values={this.state.values} />         
+        <PolicyInput handleInputs={this.handleInputs} values={this.state.values} />        
+        <TextInput id="info" multiline={true} rows="5" label="Info to Request" values={this.state.values} onBlur={this.handleInputs} shrink={true} />
         <TextInput id="related" placeholder="Separate multiple numbers with commas" label="Related REQ #s" onBlur={this.handleInputs} values={this.state.values} />
       <Divider variant="fullWidth" />
       <div className={classes.notes}>
