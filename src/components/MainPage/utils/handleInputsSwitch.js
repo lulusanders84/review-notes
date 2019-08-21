@@ -1,10 +1,11 @@
-export const handleInputsSwitch = (handler, serviceSelect, storage, setState, value, values) => {
+export const handleInputsSwitch = (handler, serviceSelect, storage, value, values) => {
+    let returnObj = {};
     switch(value.name) {
         case "pa-match": 
           const newValue = values["pa-deter"] === "approved" ? "approve" : "deny";
           handler({name: "deter", value: newValue});
           if(value.value === "yes") {
-            setState({disableAllMet: true})
+            returnObj.disableAllMet = true;
           }
           break;
         case "deter":
@@ -26,10 +27,10 @@ export const handleInputsSwitch = (handler, serviceSelect, storage, setState, va
           handler(value);
           break;
         case "serviceType":
-          const drugReview = value.value === "drug" ? true : false;
-          setState({drugReview,});
+          returnObj.drugReview = value.value === "drug" ? true : false;
           break;
         default:
           break;
       }
+    return returnObj;
 }
