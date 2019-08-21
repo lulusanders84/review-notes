@@ -6,15 +6,17 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { policySuggestions, suggestions } from '../AutoComplete/utils';
+import { suggestions } from '../AutoComplete/utils';
 import ReactSelect from '../Inputs/ReactSelect';
 import ReactSelectSingle from '../Inputs/ReactSelectSingle';
 import TextInput from '../Inputs/TextInput';
 import RadioInput from '../Inputs/RadioInput';
+import PolicyInput from '../Inputs/PolicyInput';
 import InfoRequestNotes from '../InfoRequestNotes/InfoRequestNotes';
 import * as utils from './utils';
 import { pends, fepPends } from '../../data/pends';
 import { Divider } from '@material-ui/core';
+import { bcbsmnPolicies } from '../../data/bcbsmnPolicies';
 
 
 
