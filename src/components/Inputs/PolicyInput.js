@@ -6,10 +6,10 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { policySuggestions } from './AutoComplete/utils';
+import { policySuggestions } from '../AutoComplete/utils';
 import ReactSelect from './ReactSelect';
-import * as utils from './MainPage/utils';
-import { mergePolicyNameArrays } from './MainPage/utils/setPolicy';
+import * as utils from '../MainPage/utils';
+import { mergePolicyNameArrays } from '../MainPage/utils/setPolicy';
 
 const styles = theme => ({
   paper: {

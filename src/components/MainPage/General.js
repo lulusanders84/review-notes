@@ -16,12 +16,13 @@ import Checkbox from '../Inputs/Checkbox';
 import DeniedInputs from '../Inputs/DeniedInputs';
 import CriteriaInputs from '../Inputs/CriteriaInputs';
 import PricingInputs from '../Inputs/PricingInputs';
+import PolicyInput from '../Inputs/PolicyInput';
 import Notes from '../Notes/Notes';
 import * as utils from './utils';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { savePends } from './utils/savingPends/savePends';
 import { mergePolicyNameArrays } from './utils/setPolicy';
-import { policySuggestions, suggestions } from '../AutoComplete/utils';
+import { suggestions } from '../AutoComplete/utils';
 import { pends, fepPends } from '../../data/pends';
 
 
