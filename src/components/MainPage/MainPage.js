@@ -111,9 +111,14 @@ class MainPage extends React.Component {
         {name: "pa-provider", value: ""},
         {name: "pa-match", value: "no"},
       ]
+      if(this.state.values.serviceType === "drug") {
+        affectedValues.push({name: "drugReview", value: true})
+      }
       affectedValues.forEach(value => {
         this.handleInputs(value);
       })
+    } else {
+      this.handleInputs({name: "drugReview", value: false})
     }
   }
   handlePendInput = (value) => {

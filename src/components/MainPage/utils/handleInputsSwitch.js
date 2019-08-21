@@ -36,7 +36,7 @@ export const handleInputsSwitch = (handler, serviceSelect, storage, value, value
           handler(value);
           break;
         case "serviceType":
-          returnObj.drugReview = value.value === "drug" ? true : false;
+          returnObj.drugReview = value.value === "drug" && values.reviewed === "no" ? true : false;
           break;
         default:
           break;
