@@ -4,10 +4,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
-import { getThemeProps } from '@material-ui/styles';
 
 export default function(props) {
-  const [value, setValue] = React.useState('female');
+  const [value] = React.useState('female');
 
   function handleChange(event) {
     props.updateValue({name: props.id, value: event.target.checked})

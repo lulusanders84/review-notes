@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -22,14 +22,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function RadioInput(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(props.values[props.id]);
-  
-  useEffect(() => {
-    setValue(props.values[props.id])
-  }, [props.values[props.id]]);
 
   function handleChange(event) {
-    setValue(event.target.value);
     if(props.id === "reviewed" || props.id === "pa-deter") {
       props.onChange(event);
     }
@@ -55,7 +49,7 @@ export default function RadioInput(props) {
             aria-label={props.label}
             name={props.label}
             className={classes.group}
-            value={value}
+            value={props.values[props.id]}
             onChange={handleChange}
           >
             {renderRadioOptions()}

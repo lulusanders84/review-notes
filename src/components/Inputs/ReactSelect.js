@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Select from 'react-select';
@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
-import createSelectValue from '../utils/createSelectValue';
+import { Tooltip } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,9 +18,10 @@ const useStyles = makeStyles(theme => ({
     minWidth: 290,
   },
   dense: {
-      marginTop: 14
+    marginTop: 14,
   },
   input: {
+    
     display: 'flex',
     padding: 0,
     height: 'auto',
@@ -63,6 +64,9 @@ const useStyles = makeStyles(theme => ({
   divider: {
     height: theme.spacing(2),
   },
+  tooltip: {
+    fontSize: "13px"
+  }
 }));
 
 function NoOptionsMessage(props) {
@@ -174,7 +178,6 @@ Option.propTypes = {
    */
   innerProps: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    key: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     onMouseMove: PropTypes.func.isRequired,
     onMouseOver: PropTypes.func.isRequired,
@@ -187,7 +190,7 @@ Option.propTypes = {
     PropTypes.oneOf([null]),
     PropTypes.func,
     PropTypes.shape({
-      current: PropTypes.any,
+      current: PropTypes.any.isRequired,
     }),
   ]),
   /**
@@ -221,49 +224,35 @@ Placeholder.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function SingleValue(props) {
-  return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-      {props.children}
-    </Typography>
-  );
-}
-
-SingleValue.propTypes = {
-  /**
-   * The children to be rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Props passed to the wrapping element for the group.
-   */
-  innerProps: PropTypes.any.isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
-
 function ValueContainer(props) {
-  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
-}
-
-ValueContainer.propTypes = {
-  /**
-   * The children to be rendered.
-   */
-  children: PropTypes.node,
-  selectProps: PropTypes.object.isRequired,
-};
+    return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
+  }
+  
+  ValueContainer.propTypes = {
+    /**
+     * The children to be rendered.
+     */
+    children: PropTypes.node,
+    selectProps: PropTypes.object.isRequired,
+  };
 
 function MultiValue(props) {
+  const classes = useStyles();
   return (
-    <Chip
-      tabIndex={-1}
-      label={props.children}
-      className={clsx(props.selectProps.classes.chip, {
-        [props.selectProps.classes.chipFocused]: props.isFocused,
-      })}
-      onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
-    />
+    <Tooltip
+      title={props.data.name}
+      classes={{tooltip: classes.tooltip}}
+    >
+      <Chip
+        tabIndex={-1}
+        label={props.children}
+        className={clsx(props.selectProps.classes.chip, {
+          [props.selectProps.classes.chipFocused]: props.isFocused,
+        })}
+        onDelete={props.removeProps.onClick}
+        deleteIcon={<CancelIcon {...props.removeProps} />}
+      />
+    </Tooltip>
   );
 }
 
@@ -301,24 +290,28 @@ Menu.propTypes = {
 const components = {
   Control,
   Menu,
+  MultiValue,
   NoOptionsMessage,
   Option,
   Placeholder,
-  SingleValue,
   ValueContainer,
 };
 
-export default function ReactSelectSingle(props) {
-  const setValue = () => {
-    return props.values[props.id] ? createSelectValue(props.values[props.id]) : null;
-  }
+export default function ReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
-  function handleChangeSingle(value) {
-    const selectValue = {name:[props.id], value: value.value}
-    props.updateValue(selectValue);
+  const [multi, setMulti] = React.useState(props.value);
+  useEffect(() => {
+    setMulti(props.value);
+  }, [props.value]);
+  function handleChangeMulti(value) {
+    props.updateValue(value)
+    setMulti(value);
+    
   }
-
+  // const handleOnBlur = event => {
+  //     props.onSelect(multi)
+  // }
   const selectStyles = {
     input: base => ({
       ...base,
@@ -328,27 +321,26 @@ export default function ReactSelectSingle(props) {
       },
     }),
   };
-
   return (
     <div className={classes.root}>
       <NoSsr>
         <Select
           classes={classes}
           styles={selectStyles}
-          inputId="react-select-single"
+          inputId="react-select-multiple"
           TextFieldProps={{
             label: props.label,
             InputLabelProps: {
-              htmlFor: 'react-select-single',
+              htmlFor: 'react-select-multiple',
               shrink: true,
             },
             margin: "dense"
           }}
-          placeholder="Select..."
           options={props.suggestions}
           components={components}
-          value={setValue()}
-          onChange={handleChangeSingle}
+          value={multi}
+          onChange={handleChangeMulti}
+          isMulti
         />
       </NoSsr>
     </div>

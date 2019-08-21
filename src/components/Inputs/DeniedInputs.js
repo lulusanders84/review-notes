@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import ReactSelectSingle from './ReactSelectSingle';
 import { makeStyles } from '@material-ui/core/styles';
-import { suggestions } from './AutoComplete/utils/';
-import { rejectCodes } from '../data/rejectCodes'
+import { suggestions } from '../AutoComplete/utils/';
+import { rejectCodes } from '../../data/rejectCodes'
 import RadioInput from './RadioInput';
 
 const useStyles = makeStyles(theme => ({

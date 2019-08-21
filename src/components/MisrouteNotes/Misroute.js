@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as utils from '../Notes/utils';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +24,6 @@ const useStyles = makeStyles(theme => ({
 export default function Misroute(props) {
   const {...values} = props.values;
   const classes = useStyles();
-  const policyString = values.policy.length > 0 ? values.policy.map(policy => {return policy["Policy #"]}).join(" / ") : "N/A";
   return (
     <Card>
     <CardContent>

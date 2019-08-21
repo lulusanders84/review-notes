@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import * as utils from './utils';
-import {queues} from '../../data/queues';
 
 const useStyles = makeStyles(theme => ({
   root: {
