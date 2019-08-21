@@ -4,5 +4,5 @@ export const setRationale = (values, policyString, denialMessage) => {
     ? values["pa-match"] === "yes"
       ? `Matches ${values["pa-deter"]} ${values["pa-type"]} for provider and diagnosis.`
       : ""
-    : values.deter === "deny" ? denialMessage : values.allMet ? `${policyString} criteria met.` : ""
+    : values.deter === "deny" ? denialMessage : values.allMet ? `${policyString} criteria met` : ""
 }

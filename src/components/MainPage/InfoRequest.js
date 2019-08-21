@@ -7,10 +7,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { policySuggestions, suggestions } from '../AutoComplete/utils';
-import ReactSelect from '../ReactSelect';
-import ReactSelectSingle from '../ReactSelectSingle';
-import TextInput from '../TextInput';
-import RadioInput from '../RadioInput';
+import ReactSelect from '../Inputs/ReactSelect';
+import ReactSelectSingle from '../Inputs/ReactSelectSingle';
+import TextInput from '../Inputs/TextInput';
+import RadioInput from '../Inputs/RadioInput';
 import InfoRequestNotes from '../InfoRequestNotes/InfoRequestNotes';
 import * as utils from './utils';
 import { pends, fepPends } from '../../data/pends';
@@ -90,40 +90,13 @@ class InfoRequest extends React.Component {
     const newValues = this.state.values;
     newValues[value.name] = value.value;
     this.setState({newValues,});
-    switch(value.name) {
-
-      case "pa-match": 
-        const newValue = this.state.values["pa-deter"] === "approved" ? "approve" : "deny";
-        this.handleInputs({name: "deter", value: newValue});
-        if(value.value === "yes") {
-          this.setState({disableAllMet: true})
-        }
-        break;
-      case "deter":
-        if(value.value !== "approve") {this.handleInputs({name: "allMet", value: false})};
-        break;
-      case "code":
-        this.handleServiceSelect(value);
-        break;
-      case "name":
-      case "lob":
-        this.handleStorage(value);
-        break;
-      case "pa-diagnosis":
-          value.name = "diagnosis";
-          this.handleInputs(value);
-          break;
-      case "pa-provider":
-        value.name = "provider";
-        this.handleInputs(value);
-        break;
-      case "serviceType":
-        const drugReview = value.value === "drug" ? true : false;
-        this.setState({drugReview,});
-        break;
-      default:
-          break;
-    }
+    utils.handleInputsSwitch(
+      this.handleInputs, 
+      this.handleServiceSelect, 
+      this.handleStorage, 
+      this.setState, 
+      value, 
+      this.state.values);
   }
   handleStorage = (value) => {
     window.localStorage.setItem(value.name.trim(), value.value.trim())
