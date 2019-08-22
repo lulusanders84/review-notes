@@ -23,7 +23,7 @@ export const initialValues = {
     policy: [],
     benefits: "General benefits verified",
     claimType: "local",
-    claimSystem: "OCWA",
+    claimSystem: "INSINQ",
     deter: "approve",
     "pa-type": "PA",
     "pa-req": "",
