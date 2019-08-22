@@ -43,7 +43,7 @@ export default function ClaimNote(props) {
       ? ` allow additional allowance, pay ${values.code} at 120% of allowed amount. Apply E20 SAC`
       : ` no additional allowance for 22 modifier, apply E19 SAC`
     : "";
-  const remainder = denialType === "entire claim" ? " ." : " and allow claim to continue processing.";
+  const remainder = denialType === "claim" ? " ." : " and allow claim to continue processing.";
   return (
     <Card>
     <CardContent>
