@@ -28,8 +28,10 @@ const fep = (codes) => {
       : policy["CPT"].split(",");
     const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
     codes.forEach(code => {
-      if(codesList.includes(code)) {
-        acc.push(policy)
+      if(code !== ""){
+        if(codesList.includes(code)) {
+          acc.push(policy)
+        }
       }
     })
     return acc;
