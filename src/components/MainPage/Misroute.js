@@ -33,7 +33,7 @@ function Misroute(props) {
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} values={props.values} />             
       <ReactSelect id="pend" suggestions={suggestions(options.pendOptions)} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />
-      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleCodeSelect} values={props.values} />         
+      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} values={props.values} />         
       <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" onBlur={props.handleInputs} values={props.values} />
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
