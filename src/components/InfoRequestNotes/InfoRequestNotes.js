@@ -10,7 +10,7 @@ export const InfoRequestNotes = (props) => {
   const faxAndDate =() => {
     return (
       <div>
-        Return Fax: (651) 662-1235
+        Return Fax: 651-662-1235
         <br />Return Due Date: {getTwoWeeksFromNow()}
       </div>
     )   
