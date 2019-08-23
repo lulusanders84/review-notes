@@ -14,7 +14,8 @@ import * as utils from './utils';
 import { savePends } from './utils/savingPends/savePends';
 import { pends, fepPends } from '../../data/pends';
 import { bcbsmnPolicies } from '../../data/bcbsmnPolicies';
-
+import { setPendOrder } from './utils/savingPends/setPendOrder';
+import { suggestions } from '../AutoComplete/utils';
 
 const styles = theme => ({
   '@global': {
@@ -147,19 +148,20 @@ class MainPage extends React.Component {
   setIndex = (i) => {
     this.setState({value: i});
   }
-
   render() {
     const { classes } = this.props;
     const options = {};
     options.claimTypeOptions = this.state.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
     options.claimSystemOptions = this.state.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
-    options.pendOptions = this.state.values.lob === "FEP" ? [...fepPends, ...pends] : pends;
+    const pendOptions = this.state.values.lob === "FEP" ? [...fepPends, ...pends] : pends;
+    const pendSuggestions = suggestions(setPendOrder(pendOptions, this.state.values.lob));
     const reviewProps = {
       values: this.state.values, 
       reviewed: this.state.reviewed,
       handleInputs: this.handleInputs, 
       handlePendInput: this.handlePendInput,
       handleReviewed: this.handleReviewed,
+      pendSuggestions,
       classes,
       options,
     }
