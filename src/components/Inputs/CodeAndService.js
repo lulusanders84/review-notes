@@ -39,18 +39,31 @@ export default function (props) {
   const classes = useStyles();
   const linkColor = linked ? "primary" : "disabled";
   const onCodeEntry = (value) => {
-      props.handleInputs(value);
-      const codes = formatCodes(value.value);
-      const service = codes.reduce((acc, code) => {
-        const service = getServiceFromPair(code)
-          if(service) {
-              acc.push(service);
-              setLinked(true);
-          } else setLinked(false);
-          return acc;
-      }, [])
 
-      props.handleInputs({name: "service", value: formatMultiServices(service)});
+    props.handleInputs(value);
+    const codes = formatCodes(value.value);
+    if(codes) {
+        const service = codes.reduce((acc, code) => {
+            const service = getServiceFromPair(code)
+            if(service) {
+                acc.push(service);
+                setLinked(true);
+            } else setLinked(false);
+            return acc;
+        }, [])
+        props.handleInputs({name: "service", value: formatMultiServices(service)});
+    } else setLinked(false);
+  }
+  const onLinkClick = () => {
+      const code = props.values.code;
+      const service = props.values.service;
+      if(!linked && code && code !== "") {
+          saveCodeServicePair([{code, service,}])
+          setLinked(true);
+      } else if(linked) {
+          saveCodeServicePair([{code, service: ""}])
+          setLinked(false);
+      }
   }
   return (
     <Grid container row className={classes.card}>
@@ -60,7 +73,7 @@ export default function (props) {
             edge="start" 
             disableRipple 
             style={{ backgroundColor: 'transparent' }} 
-            onClick={props.onLinkClick}
+            onClick={onLinkClick}
         >
             {linked 
                 ? <LinkIcon className={classes.linkIcon} />
