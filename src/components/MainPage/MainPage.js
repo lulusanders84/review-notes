@@ -69,7 +69,8 @@ class MainPage extends React.Component {
       policyNames: [],
       values: utils.initialValues,
       drugReview: true,
-      disableAllMet: false
+      disableAllMet: false,
+      linked: false
     }
   }
   handleReviewed = (event) => {
@@ -148,6 +149,9 @@ class MainPage extends React.Component {
   setIndex = (i) => {
     this.setState({value: i});
   }
+  handleLinkClick = () => {
+    this.setState({linked: !this.state.linked,})
+  }
   render() {
     const { classes } = this.props;
     const options = {};
@@ -161,6 +165,8 @@ class MainPage extends React.Component {
       handleInputs: this.handleInputs, 
       handlePendInput: this.handlePendInput,
       handleReviewed: this.handleReviewed,
+      onLinkClick: this.handleLinkClick,
+      linked: this.state.linked,
       pendSuggestions,
       classes,
       options,
