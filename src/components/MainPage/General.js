@@ -17,7 +17,6 @@ import CriteriaInputs from '../Inputs/CriteriaInputs';
 import PricingInputs from '../Inputs/PricingInputs';
 import PolicyInput from '../Inputs/PolicyInput';
 import Notes from '../Notes/Notes';
-import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { suggestions } from '../AutoComplete/utils';
 
 function General(props) {
@@ -33,7 +32,7 @@ function General(props) {
         ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} values={props.values} />             
         : null}                         
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} values={props.values} />             
-      <ReactSelect id="pend" suggestions={suggestions(setPendOrder(options.pendOptions, props.values.lob))} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
+      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
       <RadioInput id="reviewed" options={["no", "yes"]} label="Service previously reviewed" onChange={props.handleReviewed} updateValue={props.handleInputs} values={props.values} />  
       <ReviewedInputs reviewed={props.reviewed} handleInputs={props.handleInputs} rationaleValue={props.values.rationale} values={props.values} />
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />

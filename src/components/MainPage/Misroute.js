@@ -31,7 +31,7 @@ function Misroute(props) {
         ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} values={props.values} />             
         : null}                         
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} values={props.values} />             
-      <ReactSelect id="pend" suggestions={suggestions(options.pendOptions)} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
+      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />
       <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} values={props.values} />         
       <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" onBlur={props.handleInputs} values={props.values} />
