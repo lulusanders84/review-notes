@@ -22,6 +22,8 @@ export default function TextInput(props) {
         onChange={handleChange}
         value={props.values[props.id]}
         InputLabelProps={{shrink: props.shrink}}
+        disabled={props.disabled}
+        helperText={props.helperText}
       />
     </Grid>
   );

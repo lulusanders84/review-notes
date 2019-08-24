@@ -2,16 +2,20 @@ import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextInput from './TextInput';
 import LinkIcon from '@material-ui/icons/Link'
-import { Grid, IconButton } from '@material-ui/core';
+import { Grid, IconButton, Tooltip } from '@material-ui/core';
 import BrokenLinkIcon from '@material-ui/icons/LinkOff';
 import { formatCodes } from '../MainPage/utils';
 import {getServiceFromPair} from './utils/getCodeServicePair';
 import { saveCodeServicePair } from './utils/saveCodeServicePair';
 import { formatMultiServices } from './utils/formatMultiServices';
 
+const height = 60;
+const width = 440;
+const linkWidth = 60;
+const linkLineWidth = (100 - ((linkWidth / 2) / width * 100));
+const radius = "15px";
 const useStyles = makeStyles(() => ({
   card: {
-    
     width: "100%",
     flexDirection: "row",
     alignContent: "center",
@@ -19,27 +23,57 @@ const useStyles = makeStyles(() => ({
   },
   inputs: {flex: 1},
   link: {
-    width: "60px",
-    height: "60px",
-    marginLeft: "-60px",
+    width: linkWidth.toString() + "px",
+    height: linkWidth.toString() + "px",
+    paddingTop: 0,
     backgroundColor: "transparent",
     webkitTransform: "rotate(90deg)",
     mozTransform: "rotate(90deg)",
     oTransform: "rotate(90deg)",
     msTransform: "rotate(90deg)",
     transform: "rotate(90deg)",
+    position: "relative",
+    left: (linkWidth/4).toString() + "px"
   },
   linkIcon: {
       width: "auto",
       height: "30px"
+  },
+  linkLine: {
+    border: "2px solid",
+    width: linkLineWidth.toString() + "%",
+    height: height.toString() + "px",
+    position: "relative",
+    bottom: (height + height/2 + 5).toString() + "px",
+    zIndex: -20,
+  },
+  linkLineCover: {
+    backgroundColor: "white",
+    borderColor: "red",
+    borderTopRightRadius: radius,
+    borderBottomRightRadius: radius,
+    height: (height).toString() + "px",
+    position: "relative",
+    bottom: (height*2 + height/2 + 5).toString() + "px",
+    zIndex: -10,
+  },
+  container: {
+    height: "129.6px"
   }
 }));
 export default function (props) {
   const [linked, setLinked] = useState(false);
   const classes = useStyles();
   const linkColor = linked ? "primary" : "disabled";
+  const linkLineColor = linked ? "#2196F3" : "#757575"
+  const linkLineCoverWidth = linked ? (linkLineWidth - 1).toString() + "%" : linkLineWidth.toString() + "%";
+  const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
+  const helperText = linked ? "Unlink to edit service" : " "
+  const linkedChanged =(value) => {
+    setLinked(value);
+    props.handleServiceDisabled(value);
+  }
   const onCodeEntry = (value) => {
-
     props.handleInputs(value);
     const codes = formatCodes(value.value);
     if(codes) {
@@ -47,43 +81,57 @@ export default function (props) {
             const service = getServiceFromPair(code)
             if(service) {
                 acc.push(service);
-                setLinked(true);
-            } else setLinked(false);
+                linkedChanged(true);
+            } else linkedChanged(false);
             return acc;
         }, [])
         props.handleInputs({name: "service", value: formatMultiServices(service)});
     } else setLinked(false);
   }
   const onLinkClick = () => {
-      const code = props.values.code;
-      const service = props.values.service;
-      if(!linked && code && code !== "") {
-          saveCodeServicePair([{code, service,}])
-          setLinked(true);
-      } else if(linked) {
-          saveCodeServicePair([{code, service: ""}])
-          setLinked(false);
-      }
+    const code = props.values.code;
+    const service = props.values.service;
+    if(!linked && code && code !== "") {
+        saveCodeServicePair([{code, service,}])
+        linkedChanged(true)
+        
+    } else if(linked) {
+        saveCodeServicePair([{code, service: ""}])
+        linkedChanged(false);
+    }
   }
   return (
-    <Grid container row className={classes.card}>
-        <IconButton 
+    <div className={classes.container}>
+    <Grid container row className={classes.card}>       
+        <div className={classes.inputs}>
+          <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} values={props.values} />
+          <TextInput 
+            id="service" 
+            placeholder="" 
+            label="Service" 
+            onBlur={props.handleInputs} 
+            values={props.values} 
+            disabled={props.serviceDisabled} 
+            helperText={helperText} />            
+        </div>
+        <Tooltip title={tooltipTitle}>
+          <IconButton 
             classes={{root: classes.link}} 
             color={linkColor}
             edge="start" 
             disableRipple 
             style={{ backgroundColor: 'transparent' }} 
             onClick={onLinkClick}
-        >
-            {linked 
+          >
+              {linked 
                 ? <LinkIcon className={classes.linkIcon} />
                 : <BrokenLinkIcon className={classes.linkIcon} />
-            }          
-        </IconButton>        
-        <div className={classes.inputs}>
-            <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} values={props.values} />
-            <TextInput id="service" placeholder="" label="Service" onBlur={props.handleInputs} values={props.values} />            
-        </div>
+              }          
+          </IconButton> 
+        </Tooltip>
     </Grid>
+    <div className={classes.linkLine} style={{borderColor: linkLineColor}} />
+    <div className={classes.linkLineCover} style={{width: linkLineCoverWidth}} />
+    </div>
   )
 }
