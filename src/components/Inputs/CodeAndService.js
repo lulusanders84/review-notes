@@ -5,8 +5,8 @@ import LinkIcon from '@material-ui/icons/Link'
 import { Grid, IconButton, Tooltip } from '@material-ui/core';
 import BrokenLinkIcon from '@material-ui/icons/LinkOff';
 import { formatCodes } from '../MainPage/utils';
-import {getServiceFromPair} from './utils/getCodeServicePair';
-import { saveCodeServicePair } from './utils/saveCodeServicePair';
+import {getValueFromPair} from './utils/getValueFromPair';
+import { savePair } from './utils/savePair';
 import { formatMultiServices } from './utils/formatMultiServices';
 
 const height = 60;
@@ -68,7 +68,8 @@ export default function (props) {
   const linkLineColor = linked ? "#2196F3" : "#757575"
   const linkLineCoverWidth = linked ? (linkLineWidth - 1).toString() + "%" : linkLineWidth.toString() + "%";
   const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
-  const helperText = linked ? "Unlink to edit service" : " "
+  const helperText = linked ? "Unlink to edit service" : " ";
+  const linkDisabled = props.values.code === null || props.values.code === "" ? true : false;
   const linkedChanged =(value) => {
     setLinked(value);
     props.handleServiceDisabled(value);
@@ -78,7 +79,7 @@ export default function (props) {
     const codes = formatCodes(value.value);
     if(codes) {
         const service = codes.reduce((acc, code) => {
-            const service = getServiceFromPair(code)
+            const service = getValueFromPair("codeServicePairs", code);
             if(service) {
                 acc.push(service);
                 linkedChanged(true);
@@ -86,17 +87,20 @@ export default function (props) {
             return acc;
         }, [])
         props.handleInputs({name: "service", value: formatMultiServices(service)});
-    } else setLinked(false);
+    } else {
+      setLinked(false);
+      props.handleInputs({name: "service", value: ""})
+    }
   }
   const onLinkClick = () => {
     const code = props.values.code;
     const service = props.values.service;
     if(!linked && code && code !== "") {
-        saveCodeServicePair([{code, service,}])
+        savePair([{[code]:service}])
         linkedChanged(true)
         
     } else if(linked) {
-        saveCodeServicePair([{code, service: ""}])
+        savePair([{[code]: ""}])
         linkedChanged(false);
     }
   }
@@ -119,7 +123,7 @@ export default function (props) {
             classes={{root: classes.link}} 
             color={linkColor}
             edge="start" 
-            disableRipple 
+            disabled={linkDisabled}
             style={{ backgroundColor: 'transparent' }} 
             onClick={onLinkClick}
           >
