@@ -152,6 +152,10 @@ class MainPage extends React.Component {
   handleLinkClick = () => {
     this.setState({linked: !this.state.linked,})
   }
+  handleServiceDisabled = (disabled) => {
+    console.log("handle service disabled", disabled)
+    this.setState({serviceDisabled: disabled});
+  }
   render() {
     const { classes } = this.props;
     const options = {};
@@ -165,8 +169,10 @@ class MainPage extends React.Component {
       handleInputs: this.handleInputs, 
       handlePendInput: this.handlePendInput,
       handleReviewed: this.handleReviewed,
+      handleServiceDisabled: this.handleServiceDisabled,
       onLinkClick: this.handleLinkClick,
       linked: this.state.linked,
+      serviceDisabled: this.state.serviceDisabled,
       pendSuggestions,
       classes,
       options,

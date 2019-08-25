@@ -39,7 +39,7 @@ function General(props) {
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />
       <TextInput id="age" placeholder="" label="Age" onBlur={props.handleInputs} values={props.values} /> 
       <TextInput id="dos" placeholder="" label="Date of service" onBlur={props.handleInputs} values={props.values} />              
-      <CodeAndService handleInputs={props.handleInputs} values={props.values} linked={props.linked} onLinkClick={props.onLinkClick} />
+      <CodeAndService handleInputs={props.handleInputs} values={props.values} linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
       <RadioInput id="serviceType" options={["drug", "procedure", "DME"]} label="Service Type" updateValue={props.handleInputs} values={props.values} />
       {props.values.drugReview ?
         <RadioInput id="drugReviewType" options={["new", "renewal"]} label="Drug Review Type" updateValue={props.handleInputs} values={props.values} />
