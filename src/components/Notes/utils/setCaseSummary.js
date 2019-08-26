@@ -5,7 +5,7 @@ import { setPricingNote } from "./setPricingNote";
 import { saveFormatting } from "./saveFormatting";
 
 export const setCaseSummary = (values) => {
-    const { age, service, serviceType, dos, info } = values;
+    const { age, service, serviceType, dos } = values;
     const provider = formatToName(values.provider.toLowerCase());
     const diagnosis = values.diagnosis.toLowerCase();
     let serviceVerb;
@@ -36,7 +36,7 @@ export const setCaseSummary = (values) => {
     return (
         <span>
         {age}-year old member {serviceVerb} {service.toLowerCase()} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. 
-        <span dangerouslySetInnerHTML={{ __html: summary }} />{pricingSummary} {modifier22}
+        {summary}{pricingSummary} {modifier22}
         </span>
     )
 

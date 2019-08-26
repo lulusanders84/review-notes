@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
 }));
 export default function MedClaimReviewNote(props) {
   const {...values} = props.values;
-  console.log(values)
   const classes = useStyles();
   const policyString = values.policy.length > 0 ? values.policy.map(policy => {return policy["Policy #"]}).join(" / ") : "N/A";
   

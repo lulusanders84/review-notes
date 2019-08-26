@@ -1,11 +1,8 @@
 import React from 'react';
+import { saveFormatting } from '../Notes/utils/saveFormatting';
 
 export default function(props) {
-    let infoContent = props.values.info.split("\n\n");
-    infoContent = infoContent.map(content => {
-        return <span>{content}<br /><br /></span>
-    })
-    const info = `For ${props.values.dos}: ${infoContent}`
+    const infoContent = saveFormatting(props.values.info);
     return (
         <div>
             Info Requested: For {props.values.dos}: {infoContent}

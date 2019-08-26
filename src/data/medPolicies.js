@@ -3059,7 +3059,6 @@ export const addPolcyNameToMedPolicies = () => {
  export const mergeInfoToPolicies = () => {
    medPolicies.forEach(medPolicy => {
       const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
-         if (bcbsmnPolicy["Policy #"] === "II-16") {console.log(bcbsmnPolicy, medPolicy)};
          return bcbsmnPolicy["Policy #"] === medPolicy["Policy #"]
       })
 
@@ -3068,10 +3067,10 @@ export const addPolcyNameToMedPolicies = () => {
    return medPolicies;
  }
 
- export const savePoliciesToStorage = () => {
-    const storedPolicies = window.localStorage.getItem("bcbsmnPolicies");
-    if(!storedPolicies){
-       window.localStorage.setItem("bcbsmnPolicies", JSON.stringify(medPolicies));
+ export const savePoliciesToStorage = (storageLocation, policies) => {
+    const storedPolicies = window.localStorage.getItem(storageLocation);
+    if(!storedPolicies || storedPolicies === undefined){
+       window.localStorage.setItem(storageLocation, JSON.stringify(policies));
     }
  }
 

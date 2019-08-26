@@ -13,11 +13,11 @@ import InfoRequest from './InfoRequest';
 import * as utils from './utils';
 import { savePends } from './utils/savingPends/savePends';
 import { pends, fepPends } from '../../data/pends';
-import { bcbsmnPolicies } from '../../data/bcbsmnPolicies';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { suggestions } from '../AutoComplete/utils';
-import { mergeInfoToPolicies } from '../../data/medPolicies';
 import { savePoliciesToStorage } from '../../data/medPolicies';
+import { fepPolicies } from '../../data/fepPolicies';
+import { medPolicies } from '../../data/medPolicies';
 
 const styles = theme => ({
   '@global': {
@@ -107,21 +107,13 @@ class MainPage extends React.Component {
       this.handleInputs({name: "info", value: info});
   }
   getInfo = (policies) => {
-    const storedPolicies = JSON.parse(window.localStorage.getItem("bcbsmnPolicies"))
-    const medPolicies = storedPolicies ? storedPolicies : bcbsmnPolicies;
-    return policies.map(policy => {
-      const bcbsmnPolicy = medPolicies.find(bcbsmnPolicy => {
-        return bcbsmnPolicy["Policy #"] === policy["Policy #"];
-      })
-  
-      return bcbsmnPolicy 
-        ? bcbsmnPolicy.info 
-          ? bcbsmnPolicy.info 
-          : "" 
-        : "";
-    }).join("\n\n"); 
+    return policies.reduce((acc, policy) => {
+      if(policy.info !== "") {
+        acc.push(policy.info);
+      }
+      return acc;
+      },[]).join("\n\n"); 
   }
-
   handleInputs = (value) => {
     const newValues = this.state.values;
     newValues[value.name] = value.value;
@@ -160,8 +152,11 @@ class MainPage extends React.Component {
     console.log("handle service disabled", disabled)
     this.setState({serviceDisabled: disabled});
   }
+  componentDidMount() {
+    savePoliciesToStorage("bcbsmnPolicies", medPolicies);
+    savePoliciesToStorage("fepPolicies", fepPolicies);
+  }
   render() {
-    savePoliciesToStorage();
     const { classes } = this.props;
     const options = {};
     options.claimTypeOptions = this.state.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
