@@ -1,7 +1,8 @@
+import React from 'react';
 import { vowels } from "./vowels";
 import { formatToName } from "./formatToName"; 
-import { capWord } from './capitalizeWord';
 import { setPricingNote } from "./setPricingNote";
+import { saveFormatting } from "./saveFormatting";
 
 export const setCaseSummary = (values) => {
     const { age, service, serviceType, dos } = values;
@@ -31,7 +32,12 @@ export const setCaseSummary = (values) => {
     const checkServiceFirstChar = vowels.includes(service.charAt(0).toLowerCase());
     serviceVerb = serviceType === "DME" && checkServiceFirstChar ? serviceVerb + "n" : serviceVerb;
     const proTypeVerb = values.proType === "professional" ? "by" : "at";
-    return `${age}-year old member ${serviceVerb} ${service.toLowerCase()} for ${diagnosis} ${proVerb} ${proTypeVerb} ${provider} on ${dos}. ` 
-        + capWord(values.summary) + pricingSummary + modifier22
+    const summary = saveFormatting(values.summary);
+    return (
+        <span>
+        {age}-year old member {serviceVerb} {service.toLowerCase()} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. 
+        {summary}{pricingSummary} {modifier22}
+        </span>
+    )
 
 }

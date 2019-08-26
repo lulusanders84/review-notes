@@ -1,6 +1,6 @@
-import { fepPolicies } from '../../../data/fepPolicies';
+import { fepPolicies as fepPoliciesOnFile } from '../../../data/fepPolicies';
 import { bcbsmnCodes } from '../../../data/bcbsmnCodes';
-import { medPolicies } from "../../../data/medPolicies";
+import { medPolicies } from '../../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
   return codes 
@@ -18,7 +18,7 @@ const bcbsmn = (codes) => {
   return policies;
 }
 const fep = (codes) => {
-  const policies = fepPolicies;
+  const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
   return policies.reduce((acc, policy) => {
     const hcpcs = policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
       ? []
@@ -80,7 +80,9 @@ export const mergePolicyNameArrays = (newPolicyNames, policyNames) => {
   })
 }
 export const getPolicies = (policyNames) => {
-  const fullPolicies = [...medPolicies, ...fepPolicies]; 
+  const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
+  const bcbsmnPolicies = window.localStorage.getItem("bcbsmnPolicies") ? JSON.parse(window.localStorage.getItem("bcbsmnPolicies")) : medPolicies;
+  const fullPolicies = [...bcbsmnPolicies, ...fepPolicies]; 
   return policyNames.map(policyName => {
     return fullPolicies.find(policy => {
       return policy["Policy #"] === policyName.value;

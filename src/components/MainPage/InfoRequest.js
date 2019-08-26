@@ -12,11 +12,14 @@ import TextInput from '../Inputs/TextInput';
 import RadioInput from '../Inputs/RadioInput';
 import PolicyInput from '../Inputs/PolicyInput';
 import InfoRequestNotes from '../InfoRequestNotes/InfoRequestNotes';
-import { Divider } from '@material-ui/core';
-
+import { Divider, Button } from '@material-ui/core';
+import { saveInfoToPolicy } from '../Inputs/utils/savePair';
 
 function InfoRequest(props) {
   const { classes, options } = props;
+  const onSaveClick = (value) => {
+      saveInfoToPolicy(props.values)  
+  }
   return (
     <div>
       <TextInput id="name" placeholder="" label="Clinician:" onBlur={props.handleInputs} values={props.values} />
@@ -38,6 +41,7 @@ function InfoRequest(props) {
       <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} values={props.values} />         
       <PolicyInput handleInputs={props.handleInputs} values={props.values} />        
       <TextInput id="info" multiline={true} rows="5" label="Info to Request" values={props.values} onBlur={props.handleInputs} shrink={true} />
+      <Button onClick={onSaveClick}>Save Info to Policy</Button>
       <TextInput id="related" placeholder="Separate multiple numbers with commas" label="Related REQ #s" onBlur={props.handleInputs} values={props.values} />
     <Divider variant="fullWidth" />
     <div className={classes.notes}>

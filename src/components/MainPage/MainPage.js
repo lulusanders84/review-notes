@@ -13,9 +13,11 @@ import InfoRequest from './InfoRequest';
 import * as utils from './utils';
 import { savePends } from './utils/savingPends/savePends';
 import { pends, fepPends } from '../../data/pends';
-import { bcbsmnPolicies } from '../../data/bcbsmnPolicies';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { suggestions } from '../AutoComplete/utils';
+import { savePoliciesToStorage } from '../../data/medPolicies';
+import { fepPolicies } from '../../data/fepPolicies';
+import { medPolicies } from '../../data/medPolicies';
 
 const styles = theme => ({
   '@global': {
@@ -105,19 +107,13 @@ class MainPage extends React.Component {
       this.handleInputs({name: "info", value: info});
   }
   getInfo = (policies) => {
-    return policies.map(policy => {
-      const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
-        return bcbsmnPolicy["Policy #"] === policy["Policy #"];
-      })
-  
-      return bcbsmnPolicy 
-        ? bcbsmnPolicy.info 
-          ? bcbsmnPolicy.info 
-          : "" 
-        : "";
-    }).join(" "); 
+    return policies.reduce((acc, policy) => {
+      if(policy.info !== "") {
+        acc.push(policy.info);
+      }
+      return acc;
+      },[]).join("\n\n"); 
   }
-
   handleInputs = (value) => {
     const newValues = this.state.values;
     newValues[value.name] = value.value;
@@ -155,6 +151,10 @@ class MainPage extends React.Component {
   handleServiceDisabled = (disabled) => {
     console.log("handle service disabled", disabled)
     this.setState({serviceDisabled: disabled});
+  }
+  componentDidMount() {
+    savePoliciesToStorage("bcbsmnPolicies", medPolicies);
+    savePoliciesToStorage("fepPolicies", fepPolicies);
   }
   render() {
     const { classes } = this.props;
