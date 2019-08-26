@@ -96,11 +96,11 @@ export default function (props) {
     const code = props.values.code;
     const service = props.values.service;
     if(!linked && code && code !== "") {
-        savePair([{[code]:service}])
+        savePair("codeServicePairs", [{[code]:service}])
         linkedChanged(true)
         
     } else if(linked) {
-        savePair([{[code]: ""}])
+        savePair("codeServicePairs", [{[code]: ""}])
         linkedChanged(false);
     }
   }
