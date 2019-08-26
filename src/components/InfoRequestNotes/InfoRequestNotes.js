@@ -2,6 +2,7 @@ import React from 'react';
 import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import InfoRequest from './InfoRequest';
+import Info from './Info';
 import getTwoWeeksFromNow from '../../utils/getTwoWeeksFromNow';
 import LetterNote from './LetterNote';
 import setDenialMessage from '../Notes/utils/setDenialMessage';
@@ -20,12 +21,12 @@ export const InfoRequestNotes = (props) => {
   values.rationale = "Information Request";
   values.denialType = "entire claim";
   const denialMessage = setDenialMessage(values);
-  const info = `For ${props.values.dos}: ${props.values.info}`
+  const info = <Info info={props.values.info} values={values} />
   return (
     <div>
       <InfoRequest values={props.values} info={info} /> 
-      <ClaimNote values={values} claimNoteAddendum={faxAndDate()} info={`Info Requested: ${info}`} denialMessage={denialMessage} />
-      <LetterNote faxAndDate={faxAndDate()} info={`Info Requested: ${info}`} values={values} />
+      <ClaimNote values={values} claimNoteAddendum={faxAndDate()} info={info} denialMessage={denialMessage} />
+      <LetterNote faxAndDate={faxAndDate()} info={info} values={values} />
       <Routing values={props.values} /> 
     </div>  
   )  

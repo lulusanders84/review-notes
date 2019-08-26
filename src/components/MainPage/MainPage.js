@@ -16,6 +16,8 @@ import { pends, fepPends } from '../../data/pends';
 import { bcbsmnPolicies } from '../../data/bcbsmnPolicies';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
 import { suggestions } from '../AutoComplete/utils';
+import { mergeInfoToPolicies } from '../../data/medPolicies';
+import { savePoliciesToStorage } from '../../data/medPolicies';
 
 const styles = theme => ({
   '@global': {
@@ -105,8 +107,10 @@ class MainPage extends React.Component {
       this.handleInputs({name: "info", value: info});
   }
   getInfo = (policies) => {
+    const storedPolicies = JSON.parse(window.localStorage.getItem("bcbsmnPolicies"))
+    const medPolicies = storedPolicies ? storedPolicies : bcbsmnPolicies;
     return policies.map(policy => {
-      const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
+      const bcbsmnPolicy = medPolicies.find(bcbsmnPolicy => {
         return bcbsmnPolicy["Policy #"] === policy["Policy #"];
       })
   
@@ -115,7 +119,7 @@ class MainPage extends React.Component {
           ? bcbsmnPolicy.info 
           : "" 
         : "";
-    }).join(" "); 
+    }).join("\n\n"); 
   }
 
   handleInputs = (value) => {
@@ -157,6 +161,7 @@ class MainPage extends React.Component {
     this.setState({serviceDisabled: disabled});
   }
   render() {
+    savePoliciesToStorage();
     const { classes } = this.props;
     const options = {};
     options.claimTypeOptions = this.state.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];

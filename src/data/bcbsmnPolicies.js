@@ -167,7 +167,7 @@ export const bcbsmnPolicies = [
     {
       "Full Policy": "Botulinum Toxin",
       "Policy #": "II-16",
-      "info": "History and physical to include clinical indication for Botulinum toxin, functional impairment if applicable, previous treatment and results if applicable, treatment plan, procedure/operative report.                                                                                                                                                         **See Notes for information request regarding headache/migraines**                                                                                                         "
+      "info": "History and physical to include clinical indication for Botulinum toxin, functional impairment if applicable, previous treatment and results if applicable, treatment plan, procedure/operative report. For migraines: frequency of headaches, previous medications tried, assessment of medication overuse headaches"
     },
     {
       "Full Policy": "Air Ambulance",
