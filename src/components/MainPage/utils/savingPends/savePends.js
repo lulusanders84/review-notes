@@ -5,8 +5,14 @@ export const savePends = (pend, lob) => {
     const pendsOptions = lob === "FEP" ? [...fepPends, ...pends] : pends;
     const storedPends = JSON.parse(window.localStorage.getItem(pendsToGet));
     const pendsArray =  storedPends ? storedPends : createPendsArray(pendsOptions);
+    const oldPend = pendsArray.some(pendInArray => {
+        return pendInArray.name === pend.value;
+    })
+    if(!oldPend) {
+        pendsArray.push({name: pend.value, count: 0});
+    }
     pendsArray.forEach(pendObj => {
-        if(pendObj.name === pend) {
+        if(pendObj.name === pend.value) {
             pendObj.count += 1
         }
     })

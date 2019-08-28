@@ -24,6 +24,7 @@ export const initialValues = {
     benefits: "General benefits verified",
     claimType: "local",
     claimSystem: "INSINQ",
+    special: "N/A",
     deter: "approve",
     "pa-type": "PA",
     "pa-req": "",

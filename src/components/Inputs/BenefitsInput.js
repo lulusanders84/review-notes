@@ -21,40 +21,16 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
   },
   inputs: {flex: 1},
-  linkLine: {
-    border: "2px solid",
-    width: linkLineWidth.toString() + "%",
-    height: height.toString() + "px",
-    position: "relative",
-    bottom: (height + height/2 + 5).toString() + "px",
-    zIndex: -20,
-  },
-  linkLineCover: {
-    backgroundColor: "white",
-    borderColor: "red",
-    borderTopRightRadius: radius,
-    borderBottomRightRadius: radius,
-    height: (height).toString() + "px",
-    position: "relative",
-    bottom: (height*2 + height/2 + 5).toString() + "px",
-    zIndex: -10,
-  },
-  container: {
-    height: "129.6px"
-  }
 }));
 export default function (props) {
   const [linked, setLinked] = useState(false);
   const classes = useStyles();
   const linkColor = linked ? "primary" : "disabled";
-  const linkLineColor = linked ? "#2196F3" : "#757575"
-  const linkLineCoverWidth = linked ? (linkLineWidth - 1).toString() + "%" : linkLineWidth.toString() + "%";
   const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
   const helperText = linked ? "Unlink to edit service" : " ";
-  const linkDisabled = props.values.code === null || props.values.code === "" ? true : false;
+  const linkDisabled = props.values.service === null || props.values.service === "" ? true : false;
   const linkedChanged =(value) => {
     setLinked(value);
-    props.handleServiceDisabled(value);
   }
   const onCodeEntry = (value) => {
     props.handleInputs(value);
@@ -75,8 +51,8 @@ export default function (props) {
     }
   }
   const onLinkClick = () => {
-    const code = props.values.code;
     const service = props.values.service;
+    const benefits = props.values.benefits;
     if(!linked && code && code !== "") {
         savePair("codeServicePairs", [{[code]:service}])
         linkedChanged(true)
@@ -87,18 +63,10 @@ export default function (props) {
     }
   }
   return (
-    <div className={classes.container}>
+    <div>
     <Grid container row className={classes.card}>       
         <div className={classes.inputs}>
-          <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} values={props.values} />
-          <TextInput 
-            id="service" 
-            placeholder="" 
-            label="Service" 
-            onBlur={props.handleInputs} 
-            values={props.values} 
-            disabled={props.serviceDisabled} 
-            helperText={helperText} />            
+          <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />          
         </div>
         <LinkButton 
           tooltipTitle={tooltipTitle} 
@@ -108,8 +76,5 @@ export default function (props) {
           linked={linked} 
         />
     </Grid>
-    <div className={classes.linkLine} style={{borderColor: linkLineColor}} />
-    <div className={classes.linkLineCover} style={{width: linkLineCoverWidth}} />
-    </div>
   )
 }
