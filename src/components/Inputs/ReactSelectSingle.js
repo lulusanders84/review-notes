@@ -309,7 +309,6 @@ export default function IntegrationReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(null);
-  const [multi, setMulti] = React.useState(null);
   const [options, setOptions] = React.useState(props.suggestions)
   function handleChangeSingle(value) {
     if(value) {
@@ -321,15 +320,8 @@ export default function IntegrationReactSelect(props) {
     }
     const newValue = value ? value.value : null;
     props.updateValue({name: props.id, value: newValue})
-    setSingle(value);
-
-    
+    setSingle(value);   
   }
-
-  function handleChangeMulti(value) {
-    setMulti(value);
-  }
-
   function handleInputChange(value) {
     console.log(value)
   }
