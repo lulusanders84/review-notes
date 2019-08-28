@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import NoSsr from '@material-ui/core/NoSsr';
@@ -301,11 +301,22 @@ export default function ReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [multi, setMulti] = React.useState(props.value);
+  const [options, setOptions] = React.useState(props.suggestions)
   useEffect(() => {
     setMulti(props.value);
   }, [props.value]);
+  useEffect(() => {
+    setOptions(props.suggestions)
+  }, [props.suggestions]);
   function handleChangeMulti(value) {
     props.updateValue(value)
+    if(value) {
+      value.forEach(value => {
+        if(value.__isNew__) { 
+          setOptions([...options, value])
+        }
+      })
+    } 
     setMulti(value);
     
   }
@@ -324,7 +335,7 @@ export default function ReactSelect(props) {
   return (
     <div className={classes.root}>
       <NoSsr>
-        <Select
+        <CreatableSelect
           classes={classes}
           styles={selectStyles}
           inputId="react-select-multiple"
@@ -336,11 +347,12 @@ export default function ReactSelect(props) {
             },
             margin: "dense"
           }}
-          options={props.suggestions}
+          options={options}
           components={components}
           value={multi}
           onChange={handleChangeMulti}
           isMulti
+
         />
       </NoSsr>
     </div>

@@ -43,7 +43,7 @@ export default function MedClaimReviewNote(props) {
         <br />PA on file: {utils.setHistory(values, "PA")}
         <br />Claim history: {utils.setHistory(values, "related claim")}
         <br />Medical Policy/Criteria: {policyString}
-        <br />Benefits: {values.benefits}
+        <br />Benefits: {values.lob === "FEP" ? values.fepBenefits : values.benefits}
         <br />Case summary: {utils.setCaseSummary(values)} 
         <br />Extenuating Circumstances: NA
         <br />Criteria Met: {values.allMet ? `Applicable ${policyString} criteria met`: values.criteriaMet ? values.criteriaMet : "N/A"}

@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
+    "autosuggest-highlight": "^3.1.1",
     "deromanize": "^1.0.0",
     "downshift": "^3.2.10",
     "fs": "0.0.1-security",
@@ -12,6 +13,7 @@
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^2.1.266",
     "react": "^16.8.6",
+    "react-autosuggest": "^9.4.3",
     "react-dom": "^16.8.6",
     "react-pdf-js": "^5.1.0",
     "react-scripts": "3.0.1",
@@ -23,7 +25,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy-dev": "aws s3 cp ./build s3://${S3_BUCKET_NAME}/ --recursive"
-  }, 
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

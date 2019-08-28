@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import NoSsr from '@material-ui/core/NoSsr';
@@ -10,15 +10,10 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
-import createSelectValue from '../../utils/createSelectValue';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    minWidth: 290,
-  },
-  dense: {
-      marginTop: 14
   },
   input: {
     display: 'flex',
@@ -26,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     height: 'auto',
   },
   valueContainer: {
+    maxWidth: 460,
     display: 'flex',
     flexWrap: 'wrap',
     flex: 1,
@@ -187,9 +183,9 @@ Option.propTypes = {
     PropTypes.oneOf([null]),
     PropTypes.func,
     PropTypes.shape({
-      current: PropTypes.any,
+      current: PropTypes.any.isRequired,
     }),
-  ]),
+  ]).isRequired,
   /**
    * Whether the option is focused.
    */
@@ -301,6 +297,7 @@ Menu.propTypes = {
 const components = {
   Control,
   Menu,
+  MultiValue,
   NoOptionsMessage,
   Option,
   Placeholder,
@@ -308,15 +305,33 @@ const components = {
   ValueContainer,
 };
 
-export default function ReactSelectSingle(props) {
-  const setValue = () => {
-    return props.values[props.id] ? createSelectValue(props.values[props.id]) : null;
-  }
+export default function IntegrationReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const [single, setSingle] = React.useState(null);
+  const [multi, setMulti] = React.useState(null);
+  const [options, setOptions] = React.useState(props.suggestions)
   function handleChangeSingle(value) {
-    const selectValue = {name:[props.id], value: value.value}
-    props.updateValue(selectValue);
+    if(value) {
+      if(value.__isNew__) {
+        const newOptions = options ? [{value: value.value, label: value.label}, ...options] : [{value: value.value, label: value.label}];
+        setOptions(newOptions)
+        window.localStorage.setItem(props.id, JSON.stringify(newOptions));
+      }   
+    }
+    const newValue = value ? value.value : null;
+    props.updateValue({name: props.id, value: newValue})
+    setSingle(value);
+
+    
+  }
+
+  function handleChangeMulti(value) {
+    setMulti(value);
+  }
+
+  function handleInputChange(value) {
+    console.log(value)
   }
 
   const selectStyles = {
@@ -332,7 +347,8 @@ export default function ReactSelectSingle(props) {
   return (
     <div className={classes.root}>
       <NoSsr>
-        <Select
+        <CreatableSelect
+          isClearable
           classes={classes}
           styles={selectStyles}
           inputId="react-select-single"
@@ -342,14 +358,15 @@ export default function ReactSelectSingle(props) {
               htmlFor: 'react-select-single',
               shrink: true,
             },
-            margin: "dense"
           }}
-          placeholder="Select..."
-          options={props.suggestions}
+          placeholder={props.placeholder}
+          options={options}
           components={components}
-          value={setValue()}
+          value={single}
           onChange={handleChangeSingle}
+          onInputChange={handleInputChange}
         />
+        <div className={classes.divider} />
       </NoSsr>
     </div>
   );

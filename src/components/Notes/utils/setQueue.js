@@ -1,18 +1,18 @@
 import { queues} from '../../../data/queues';
 
 export const setQueue = (values) => {
-    const {claimType, claimSystem, special, lob } = values;
+    let {claimType, claimSystem, special, lob } = values;
     const system = claimSystem.toLowerCase() === "ocwa" ? "live" : "adjustment";
-    
+    special = special === "N/A" ? false : special;
     switch(lob) {
         case "commercial":
-            const lastKey = special && special !== "N/A" 
+            const lastKey = special
                 ? special === "employee"
                     ? claimType
                     : system
                 : null;
             return special 
-                ? special !== "foreign" 
+                ? special !== "foreign"  
                     ? queues[special][lastKey] 
                     : queues[special]
                 : queues[claimType];

@@ -19,6 +19,7 @@ import PolicyInput from '../Inputs/PolicyInput';
 import Notes from '../Notes/Notes';
 import { suggestions } from '../AutoComplete/utils';
 import CodeAndService from '../Inputs/CodeAndService';
+import SimpleSelect from '../Inputs/SimpleSelect';
 
 function General(props) {
   const { classes, options } = props;
@@ -30,7 +31,7 @@ function General(props) {
         ? <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" updateValue={props.handleInputs} values={props.values} />
         : null}
       { props.values.lob === "commercial"
-        ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} values={props.values} />             
+        ? <SimpleSelect id="special" options={["N/A", "employee", "foreign", "hormel", "host", ]} label="Specialty claim" updateValue={props.handleInputs} values={props.values} />             
         : null}                         
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} values={props.values} />             
       <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
@@ -50,8 +51,11 @@ function General(props) {
       {props.values.pend && props.values.pend.some(pend => {return pend.value === "P5194"})
         ? <PricingInputs handleInputs={props.handleInputs} values={props.values} />
         : null}           
-      <PolicyInput handleInputs={props.handleInputs} values={props.values} />        
-      <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />               
+      <PolicyInput handleInputs={props.handleInputs} values={props.values} />  
+      {props.values.lob === "FEP"
+        ? <ReactSelectSingle id="fepBenefits" placeholder="" label="Benefits" updateValue={props.handleInputs} values={props.values} suggestions={JSON.parse(window.localStorage.getItem("fepBenefits"))} />               
+        : <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />
+      }      
       <TextInput id="diagnosis" placeholder="" label="Diagnosis" onBlur={props.handleInputs} values={props.values} />
       <TextInput id="provider" placeholder="" label="Provider" onBlur={props.handleInputs} values={props.values} />
       <RadioInput id="proType" options={["professional", "facility"]} label="Provider Type" updateValue={props.handleInputs} values={props.values} />
