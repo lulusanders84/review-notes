@@ -48,7 +48,7 @@ export default function MedClaimReviewNote(props) {
         <br />Extenuating Circumstances: NA
         <br />Criteria Met: {values.allMet ? `Applicable ${policyString} criteria met`: values.criteriaMet ? values.criteriaMet : "N/A"}
         <br />Criteria Not Met: {values.criteriaNotMet ? values.criteriaNotMet: "N/A"}
-        <br />Determination: {utils.capWord(values.deter)}. {utils.setRationale(values, policyString, props.denialMessage)}
+        <br />Determination: {utils.capWord(values.deter)}{utils.setRationale(values, policyString, props.denialMessage)}
         {values.deter === "send to medical director" ?
           <MedDirectorNote values={props.values} selected={values.referReason} />
           : null}

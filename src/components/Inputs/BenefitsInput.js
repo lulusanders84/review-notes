@@ -26,14 +26,11 @@ export default function (props) {
   const [linked, setLinked] = useState(false);
   const classes = useStyles();
   const linkColor = linked ? "primary" : "disabled";
-  const linkLineColor = linked ? "#2196F3" : "#757575"
-  const linkLineCoverWidth = linked ? (linkLineWidth - 1).toString() + "%" : linkLineWidth.toString() + "%";
   const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
   const helperText = linked ? "Unlink to edit service" : " ";
-  const linkDisabled = props.values.code === null || props.values.code === "" ? true : false;
+  const linkDisabled = props.values.service === null || props.values.service === "" ? true : false;
   const linkedChanged =(value) => {
     setLinked(value);
-    props.handleServiceDisabled(value);
   }
   const onCodeEntry = (value) => {
     props.handleInputs(value);
@@ -69,7 +66,7 @@ export default function (props) {
     <div>
     <Grid container row className={classes.card}>       
         <div className={classes.inputs}>
-          <TextInput id="benefits" placeholder="" label="Benefits" onBlur={onCodeEntry} values={props.values} />          
+          <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />          
         </div>
         <LinkButton 
           tooltipTitle={tooltipTitle} 
