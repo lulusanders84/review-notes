@@ -14,7 +14,6 @@ import * as utils from './utils';
 import { savePends } from './utils/savingPends/savePends';
 import { pends, fepPends } from '../../data/pends';
 import { setPendOrder } from './utils/savingPends/setPendOrder';
-import { createPendsArray } from './utils/savingPends/createPendsArray';
 import { suggestions } from '../AutoComplete/utils';
 import { savePoliciesToStorage } from '../../data/medPolicies';
 import { fepPolicies } from '../../data/fepPolicies';

@@ -17,7 +17,6 @@ import CriteriaInputs from '../Inputs/CriteriaInputs';
 import PricingInputs from '../Inputs/PricingInputs';
 import PolicyInput from '../Inputs/PolicyInput';
 import Notes from '../Notes/Notes';
-import { suggestions } from '../AutoComplete/utils';
 import CodeAndService from '../Inputs/CodeAndService';
 import SimpleSelect from '../Inputs/SimpleSelect';
 
