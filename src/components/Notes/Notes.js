@@ -14,13 +14,15 @@ export const Notes = (props) => {
     <div>
       <MedClaimReviewNote values={props.values} drugReview={props.drugReview} denialMessage={denialMessage} />
       <ClaimNote values={props.values} denialMessage={denialMessage} />
-      <MedPolicy values={props.values} />      
-      {props.values.deter === "deny" 
+      {props.values.policy.length !== 0
+        ? <MedPolicy values={props.values} />   
+        : null }   
+      {props.values.rationale === "Not Medically Necessary" || props.values.rationale === "Experimental/Investigative" 
       ? <FaxTransmission values={props.values} />
       : null }
-      {props.values["pa-deter"] === "denied"
+      {props.values["pa-deter"] === "denied" && props.values["clinical-rationale"]
         ? <ClinicalRationale values={props.values} />
-        : null}
+        : null }
       <Routing values={props.values} />        
     </div>
     

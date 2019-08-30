@@ -1,12 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { referReasons } from '../../data/referReasons';
-
-const styles = {
-  list: {
-    listStyle: "none"
-  }
-}
+import styles from '../../styles/noteStyles';
 
 const MedDirectorNote = (props) => {
   const { classes } = props;

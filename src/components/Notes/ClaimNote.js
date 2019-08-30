@@ -4,26 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import * as utils from './utils';
 import {rejectCodes} from '../../data/rejectCodes';
 import { setPricingNote } from './utils/setPricingNote';
+import styles from '../../styles/noteStyles';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    height: 75,
-  },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  // },
-  dense: {
-    marginTop: 14,
-  },
-  menu: {
-    width: 200,
-  },
-  notes: {
-    padding: 0,
-  }
-}));
+const useStyles = makeStyles(theme => (styles));
+
 export default function ClaimNote(props) {
   const values = props.values;
   const classes = useStyles();
@@ -46,7 +30,7 @@ export default function ClaimNote(props) {
   const remainder = props.values.deter === "approve" ? " and allow claim to continue processing." : denialType === "claim" ? " ." : " and allow claim to continue processing.";
   return (
     <Card>
-    <CardContent>
+    <CardContent classes={{root: classes.root}}>
       <Typography component="h3" variant="h6">Claim Note</Typography>
       <div contentEditable className={classes.notes}>
       REQ-{values.req}: {ocwaNote} {instructions} {modifier22} {remainder}
