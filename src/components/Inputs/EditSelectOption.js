@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 export default function(props) {
   const classes = useStyles();
   const [saved, setSaved] = React.useState(false);
-  const [value, setValue] = React.useState(props.values[props.id])
+  const [value] = React.useState(props.values[props.id])
   const checkClass = saved ? classes.checkButton : null;
   const checkColor = saved ? "primary" : "default";
   console.log(props.options);

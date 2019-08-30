@@ -19,7 +19,6 @@ import PolicyInput from '../Inputs/PolicyInput';
 import Notes from '../Notes/Notes';
 import CodeAndService from '../Inputs/CodeAndService';
 import SimpleSelect from '../Inputs/SimpleSelect';
-import EditSelectOption from '../Inputs/EditSelectOption';
 
 function General(props) {
   const { classes, options } = props;
