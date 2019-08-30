@@ -10,9 +10,13 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
+import Button from '@material-ui/core/Button';
+import EditSelectOption from './EditSelectOption';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    display: "flex",
     flexGrow: 1,
   },
   input: {
@@ -309,7 +313,11 @@ export default function IntegrationReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(null);
-  const [options, setOptions] = React.useState(props.suggestions)
+  const [options, setOptions] = React.useState(props.suggestions);
+  const [edit, setEdit] = React.useState(false);
+  function handleEditClick() {
+    setEdit(true);
+  }
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
@@ -321,9 +329,6 @@ export default function IntegrationReactSelect(props) {
     const newValue = value ? value.value : null;
     props.updateValue({name: props.id, value: newValue})
     setSingle(value);   
-  }
-  function handleInputChange(value) {
-    console.log(value)
   }
 
   const selectStyles = {
@@ -337,29 +342,42 @@ export default function IntegrationReactSelect(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <NoSsr>
-        <CreatableSelect
-          isClearable
-          classes={classes}
-          styles={selectStyles}
-          inputId="react-select-single"
-          TextFieldProps={{
-            label: props.label,
-            InputLabelProps: {
-              htmlFor: 'react-select-single',
-              shrink: true,
-            },
-          }}
-          placeholder={props.placeholder}
-          options={options}
-          components={components}
-          value={single}
-          onChange={handleChangeSingle}
-          onInputChange={handleInputChange}
-        />
-        <div className={classes.divider} />
-      </NoSsr>
-    </div>
+    <Grid item xs={12}>
+      {edit 
+        ? <EditSelectOption 
+            id={props.id} 
+            values={props.values} 
+            label={props.label} 
+            setEdit={setEdit}
+            updateValue={props.updateValue}
+            options={options}
+            setNewValue={setSingle} />
+        : <Grid container justify="space-between" alignItems="flex-end"> 
+            <Grid item xs={10}>
+              <CreatableSelect
+                isClearable
+                classes={classes}
+                styles={selectStyles}
+                inputId="react-select-single"
+                TextFieldProps={{
+                  label: props.label,
+                  InputLabelProps: {
+                    htmlFor: 'react-select-single',
+                    shrink: true,
+                  },
+                }}
+                placeholder={props.placeholder}
+                options={options}
+                components={components}
+                value={single}
+                onChange={handleChangeSingle}
+              />
+            </Grid>
+            <Grid item>
+              <Button onClick={handleEditClick}>Edit</Button>
+            </Grid>
+          </Grid>
+      }     
+    </Grid>
   );
 }
