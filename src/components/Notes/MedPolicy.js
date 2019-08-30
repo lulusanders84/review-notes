@@ -1,30 +1,10 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import styles from '../../styles/noteStyles';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    height: 75,
-  },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  // },
-  dense: {
-    marginTop: 14,
-  },
-  menu: {
-    width: 200,
-  },
-  notes: {
-    padding: 0,
-  },
-  list: {
-    listStyle: "none",
-    padding: 0
-  }
-}));
+const useStyles = makeStyles(theme => (styles));
+
 export default function MedPolicy(props) {
   const values = props.values;
   const classes = useStyles();
@@ -39,7 +19,7 @@ export default function MedPolicy(props) {
   })
   return (
     <Card>
-    <CardContent>
+    <CardContent classes={{root: classes.root}}>
       <Typography component="h3" variant="h6">Medical Policy</Typography>
       <ul contentEditable className={classes.list}>
         {fullNames}
