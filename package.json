@@ -17,6 +17,7 @@
     "react-dom": "^16.8.6",
     "react-pdf-js": "^5.1.0",
     "react-scripts": "3.0.1",
+    "react-scroll-up-button": "^1.6.4",
     "react-select": "^3.0.4"
   },
   "scripts": {

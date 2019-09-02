@@ -10,6 +10,7 @@ import General from './General';
 import Misroute from './Misroute';
 import BackFromPeer from './BackFromPeer';
 import InfoRequest from './InfoRequest';
+import ScrollUpButton from 'react-scroll-up-button';
 import * as utils from './utils';
 import { savePends } from './utils/savingPends/savePends';
 import { pends, fepPends } from '../../data/pends';
@@ -199,6 +200,7 @@ class MainPage extends React.Component {
     return (
       <Container component="main" maxWidth="md">
         <CssBaseline />
+        <ScrollUpButton />        
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <PoliciesIcon />
