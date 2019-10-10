@@ -1,5 +1,4 @@
 export const formatMultiServices = (services) => {
-    console.log(services)
     switch (services.length) {
         case 0:
             return "";

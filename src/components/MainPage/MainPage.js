@@ -150,7 +150,6 @@ class MainPage extends React.Component {
     this.setState({linked: !this.state.linked,})
   }
   handleServiceDisabled = (disabled) => {
-    console.log("handle service disabled", disabled)
     this.setState({serviceDisabled: disabled});
   }
   componentDidMount() {

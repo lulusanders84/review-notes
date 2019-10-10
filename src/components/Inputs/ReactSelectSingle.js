@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import CreatableSelect from 'react-select/creatable';
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
-import CancelIcon from '@material-ui/icons/Cancel';
 import Button from '@material-ui/core/Button';
 import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
@@ -252,31 +249,6 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function MultiValue(props) {
-  return (
-    <Chip
-      tabIndex={-1}
-      label={props.children}
-      className={clsx(props.selectProps.classes.chip, {
-        [props.selectProps.classes.chipFocused]: props.isFocused,
-      })}
-      onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
-    />
-  );
-}
-
-MultiValue.propTypes = {
-  children: PropTypes.node,
-  isFocused: PropTypes.bool.isRequired,
-  removeProps: PropTypes.shape({
-    onClick: PropTypes.func.isRequired,
-    onMouseDown: PropTypes.func.isRequired,
-    onTouchEnd: PropTypes.func.isRequired,
-  }).isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
-
 function Menu(props) {
   return (
     <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
@@ -300,7 +272,6 @@ Menu.propTypes = {
 const components = {
   Control,
   Menu,
-  MultiValue,
   NoOptionsMessage,
   Option,
   Placeholder,

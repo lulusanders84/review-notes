@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 export default function (props) {
-  console.log(props);
   const classes = useStyles();
   return (
     <div className={classes.card}>

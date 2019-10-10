@@ -3,6 +3,7 @@ import { bcbsmnCodes } from '../../../data/bcbsmnCodes';
 import { medPolicies } from '../../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
+  console.log(codes, "set policy by code");
   const isJ3490 = codes.includes("J3490");
   return codes && !isJ3490
     ? lob === "FEP" 

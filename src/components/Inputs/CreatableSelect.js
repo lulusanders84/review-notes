@@ -69,16 +69,12 @@ const useStyles = makeStyles(theme => ({
   }));
 
 export default function(props) {
-  const handleChange = (newValue: any, actionMeta: any) => {
+  const handleChange = (newValue, actionMeta) => {
     console.group('Value Changed');
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
     console.groupEnd();
   };
-  const handleInputChange = (inputValue: any, actionMeta: any) => {
+  const handleInputChange = (inputValue, actionMeta) => {
     console.group('Input Changed');
-    console.log(inputValue);
-    console.log(`action: ${actionMeta.action}`);
     console.groupEnd();
   };
 const classes = useStyles();

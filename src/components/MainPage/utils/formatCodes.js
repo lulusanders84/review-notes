@@ -1,4 +1,6 @@
 export const formatCodes = (codesStr) => {
+    console.log(codesStr);
+    codesStr = !codesStr ? "" : codesStr; 
     codesStr = codesStr.toUpperCase().trim();
     const comma = codesStr.includes(",");
     const slash = codesStr.includes("/");
@@ -10,6 +12,6 @@ export const formatCodes = (codesStr) => {
             : codesStr.split(" ");
     return codes.map(code => { return code.toUpperCase().trim()})
     } else {
-        return null;
+        return [""];
     }
 }

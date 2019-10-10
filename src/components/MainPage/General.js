@@ -56,7 +56,7 @@ function General(props) {
         : <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />
       }      
       <TextInput id="diagnosis" placeholder="" label="Diagnosis" onBlur={props.handleInputs} values={props.values} />
-      <TextInput id="provider" placeholder="" label="Provider" onBlur={props.handleInputs} values={props.values} />
+      <ReactSelectSingle id="provider" placeholder="" label="Provider" updateValue={props.handleInputs} values={props.values} suggestions={JSON.parse(window.localStorage.getItem("provider"))} />             
       <RadioInput id="proType" options={["professional", "facility"]} label="Provider Type" updateValue={props.handleInputs} values={props.values} />
       <RadioInput id="proPar" options={["Par", "Non-Par"]} label="Par Status" updateValue={props.handleInputs} values={props.values} />
       <TextInput id="summary" multiline={true} rows="5" label="Additional Clinical information" values={props.values} onBlur={props.handleInputs} />

@@ -1,5 +1,4 @@
 export const setPolicyName = (policies, oldPolicies) => {
-  console.log(policies, oldPolicies)
   if(policies.length !==0) {
     const newPolicies = policies.map(policy => {
       const number = policy["Policy #"];

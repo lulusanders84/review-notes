@@ -19,7 +19,6 @@ export default function(props) {
   const [value] = React.useState(props.values[props.id])
   const checkClass = saved ? classes.checkButton : null;
   const checkColor = saved ? "primary" : "default";
-  console.log(props.options);
   const handleSave = () => {
     setSaved(true);
     props.setEdit(false);
