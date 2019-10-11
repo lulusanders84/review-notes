@@ -36,12 +36,17 @@ function BackFromPeer(props) {
         ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} values={props.values} />             
         : null}                         
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} values={props.values} />             
-      <ReactSelect id="pend" suggestions={suggestions(setPendOrder(options.pendOptions, props.values.lob))} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
+      <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />
+      {props.values.denialType !== "entire claim" && props.values.deter === "deny"
+        ?<TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} values={props.values} />
+        : null
+        }
       {props.values.deter === "approve"
-        ? <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />
+        ? <div>
+            <ReactSelect id="pend" suggestions={suggestions(setPendOrder(options.pendOptions, props.values.lob))} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
+          </div>
         : null
       }
-      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} values={props.values} />
 
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
