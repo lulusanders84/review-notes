@@ -238,6 +238,7 @@ function ValueContainer(props) {
 
 function MultiValue(props) {
   const classes = useStyles();
+  const label = <a href={props.data.href} target="blank">{props.children}</a>
   return (
     <Tooltip
       title={props.data.name}
@@ -245,7 +246,7 @@ function MultiValue(props) {
     >
       <Chip
         tabIndex={-1}
-        label={props.children}
+        label={label}
         className={clsx(props.selectProps.classes.chip, {
           [props.selectProps.classes.chipFocused]: props.isFocused,
         })}

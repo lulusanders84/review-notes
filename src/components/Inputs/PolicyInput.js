@@ -62,9 +62,10 @@ class PolicyInput extends React.Component {
     return policies.map(policy => {
       const number = policy["Policy #"];
       const name = policy["Full Policy"];
+      const href = policy["href"]
       return policy.policyName 
         ? policy.policyName 
-        : {value: number, label: number, name,}})
+        : {value: number, label: number, name, href,}})
   }
   addPolicyNames = (policyNames) => {
     const allPolicyNames = mergePolicyNameArrays(policyNames, this.state.policyNames);
