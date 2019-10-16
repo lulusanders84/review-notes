@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
+import { formatToName } from '../Notes/utils';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -291,7 +292,10 @@ export default function IntegrationReactSelect(props) {
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-        const newOptions = options ? [{value: value.value, label: value.label}, ...options] : [{value: value.value, label: value.label}];
+        console.log(value)
+        const formattedName = formatToName(value.value.toLowerCase());
+        console.log(formattedName)
+        const newOptions = options ? [{value: formattedName, label: formattedName}, ...options] : [{value: formattedName, label: formattedName}];
         setOptions(newOptions)
         window.localStorage.setItem(props.id, JSON.stringify(newOptions));
       }   
