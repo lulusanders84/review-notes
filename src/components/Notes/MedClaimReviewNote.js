@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => (styles));
 export default function MedClaimReviewNote(props) {
   const {...values} = props.values;
   const classes = useStyles();
-  const policyString = values.policy.length > 0 ? values.policy.map(policy => {return policy["Policy #"]}).join(" / ") : "N/A";
+  const policyString = utils.setPolicyString(values);
   
   return (
     <Card>
@@ -26,7 +26,7 @@ export default function MedClaimReviewNote(props) {
         <br />Suspension: {values.pend ? values.pend.map(pend => { return pend.value }).join(" / ") : values.pend}
         <br />PA on file: {utils.setHistory(values, "PA")}
         <br />Claim history: {utils.setHistory(values, "related claim")}
-        <br />Medical Policy/Criteria: {policyString}
+        <br />Medical Policy/Criteria: {utils.setPolicyString(values, "med policy")}
         <br />Benefits: {values.lob === "FEP" ? values.fepBenefits : values.benefits}
         <br />Case summary: {utils.setCaseSummary(values)} 
         <br />Extenuating Circumstances: NA

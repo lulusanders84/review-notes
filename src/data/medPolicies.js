@@ -4,6 +4,16 @@ import { bcbsmnPolicies } from './bcbsmnPolicies';
 export const medPolicies =
 [
    {
+      "Policy #":"InterQual",
+      "Full Policy":"",
+      "policyName":{
+         "value":"InterQual",
+         "label":"InterQual",
+         "name":"InterQual"
+      },
+      "info":""
+   },
+   {
       "Policy #":"II-02",
       "Full Policy":"Preimplantation Genetic Testing",
       "policyName":{

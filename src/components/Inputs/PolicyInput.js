@@ -10,6 +10,7 @@ import { policySuggestions } from '../AutoComplete/utils';
 import ReactSelect from './ReactSelect';
 import * as utils from '../MainPage/utils';
 import { mergePolicyNameArrays } from '../MainPage/utils/setPolicy';
+import InterQualInput from './InterQualInput';
 
 const styles = theme => ({
   paper: {
@@ -35,6 +36,7 @@ class PolicyInput extends React.Component {
     super(props);
     this.state = {
       policyNames: [],
+      interqual: false
     }
   }
   handleCodeSelect = (code) => {
@@ -55,6 +57,11 @@ class PolicyInput extends React.Component {
       policyNames = [];
       policies = [];
     }
+    policies.some(policy => {
+      return policy["Policy #"] === "InterQual";
+    })
+      ? this.setState({interqual: true})
+      : this.setState({interqual: false})
     this.props.handleInputs({name: "policy", value: policies})
     this.setState({policyNames,})
   }
@@ -87,7 +94,8 @@ class PolicyInput extends React.Component {
   render() {
     return (
       <div>          
-        <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} value={this.state.policyNames} values={this.props.values} /> 
+        <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} value={this.state.policyNames} values={this.props.values} />
+        <InterQualInput visible={this.state.interqual} values={this.props.values} handleInputs={this.props.handleInputs} />  
       </div>
     );
   }

@@ -5,3 +5,4 @@ export {setCaseSummary} from './setCaseSummary';
 export {setRationale} from './setRationale';
 export {setQueue} from './setQueue';
 export {formatValues} from './formatValues';
+export {setPolicyString} from './setPolicyString';
