@@ -42,7 +42,10 @@ export const initialValues = {
     summary: "",
     related: "N/A",
     info: "",
-    sccf: ""
+    sccf: "",
+    iqYear: "",
+    iqLoc: "",
+    iqSubset: ""
 }
 
 

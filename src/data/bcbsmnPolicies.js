@@ -1,4 +1,9 @@
 export const bcbsmnPolicies = [
+  {
+    "Full Policy": "InterQual",
+    "Policy #": "InterQual",
+    "info": ""
+  },
     {
       "Full Policy": "Preimplantation Genetic Testing",
       "Policy #": "II-02",
