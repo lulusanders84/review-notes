@@ -5,4 +5,6 @@ export {setCaseSummary} from './setCaseSummary';
 export {setRationale} from './setRationale';
 export {setQueue} from './setQueue';
 export {formatValues} from './formatValues';
+export {setDenialMessage} from './setDenialMessage';
 export {setPolicyString} from './setPolicyString';
+export {setPricingNote} from './setPricingNote'

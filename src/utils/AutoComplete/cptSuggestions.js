@@ -1,4 +1,4 @@
-import {fepPolicies} from "../../../data/fepPolicies.js";
+import {fepPolicies} from "../../data/fepPolicies.js";
 
 export function cptSuggestions(number) {
     if(number) {

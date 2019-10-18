@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as utils from './utils';
+import * as utils from '../../utils/Notes';
 import styles from '../../styles/noteStyles';
 
 const useStyles = makeStyles(theme => (styles));

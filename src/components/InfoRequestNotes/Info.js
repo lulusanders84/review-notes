@@ -1,5 +1,5 @@
 import React from 'react';
-import { saveFormatting } from '../Notes/utils/saveFormatting';
+import { saveFormatting } from '../../utils/Notes/saveFormatting';
 
 export default function(props) {
     const infoContent = saveFormatting(props.values.info);

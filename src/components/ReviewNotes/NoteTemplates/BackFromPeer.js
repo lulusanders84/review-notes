@@ -5,17 +5,17 @@
 // import policyDummy from '../data/policyDummy';
 
 import React from 'react';
-import { suggestions } from '../AutoComplete/utils';
-import ReactSelect from '../Inputs/ReactSelect';
-import ReactSelectSingle from '../Inputs/ReactSelectSingle';
-import TextInput from '../Inputs/TextInput';
-import RadioInput from '../Inputs/RadioInput';
-import Checkbox from '../Inputs/Checkbox';
-import BackFromPeerNotes from '../BackFromPeerNotes/BackFromPeerNotes';
-import DeniedInputs from '../Inputs/DeniedInputs';
+import { suggestions } from '../../../utils/AutoComplete';
+import ReactSelect from '../../Inputs/ReactSelect';
+import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
+import TextInput from '../../Inputs/TextInput';
+import RadioInput from '../../Inputs/RadioInput';
+import Checkbox from '../../Inputs/Checkbox';
+import BackFromPeerNotes from '../../BackFromPeerNotes/BackFromPeerNotes';
+import DeniedInputs from '../../Inputs/DeniedInputs';
 import { Divider } from '@material-ui/core';
-import CriteriaInputs from '../Inputs/CriteriaInputs';
-import { setPendOrder } from './utils/savingPends/setPendOrder';
+import CriteriaInputs from '../../Inputs/CriteriaInputs';
+import { setPendOrder } from '../../../utils/ReviewNotes/savingPends/setPendOrder';
 
 function BackFromPeer(props) {
   const { classes, options } = props;

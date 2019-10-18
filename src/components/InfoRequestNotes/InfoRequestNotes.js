@@ -3,16 +3,16 @@ import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import InfoRequest from './InfoRequest';
 import Info from './Info';
-import getTwoWeeksFromNow from '../../utils/getTwoWeeksFromNow';
+import * as utils from '../../utils/';
 import LetterNote from './LetterNote';
-import setDenialMessage from '../Notes/utils/setDenialMessage';
+import { setDenialMessage } from '../../utils/Notes/setDenialMessage';
 
 export const InfoRequestNotes = (props) => {
   const faxAndDate =() => {
     return (
       <div>
         Return Fax: 651-662-1235
-        <br />Return Due Date: {getTwoWeeksFromNow()}
+        <br />Return Due Date: {utils.getTwoWeeksFromNow()}
       </div>
     )   
   }

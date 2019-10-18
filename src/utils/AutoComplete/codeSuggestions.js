@@ -1,5 +1,5 @@
-import {fepPolicies} from "../../../data/fepPolicies.js";
-import createSelectValue from "../../../utils/createSelectValue.js";
+import {fepPolicies} from "../../data/fepPolicies.js";
+import * as utils from "../";
 
 export function codeSuggestions() {
     const codesArray = fepPolicies.reduce((acc, policy) => {
@@ -15,7 +15,7 @@ export function codeSuggestions() {
     const uniqueCodes = new Set(codesArray)
     let suggestions = [];
     uniqueCodes.forEach(code => {
-       suggestions.push(createSelectValue(code))
+       suggestions.push(utils.createSelectValue(code))
     });
     return suggestions;
 }

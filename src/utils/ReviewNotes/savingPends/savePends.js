@@ -1,5 +1,5 @@
 import { createPendsArray } from "./createPendsArray";
-import { pends, fepPends } from '../../../../data/pends';
+import { pends, fepPends } from '../../../data/pends';
 export const savePends = (pend, lob) => {
     const pendsToGet = lob === "FEP" ? "fepPends" : "pends";
     const pendsOptions = lob === "FEP" ? [...fepPends, ...pends] : pends;

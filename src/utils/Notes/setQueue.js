@@ -1,4 +1,4 @@
-import { queues} from '../../../data/queues';
+import { queues} from '../../data/queues';
 
 export const setQueue = (values) => {
     let {claimType, claimSystem, special, lob } = values;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactSelectSingle from './ReactSelectSingle';
 import { makeStyles } from '@material-ui/core/styles';
-import { suggestions } from '../AutoComplete/utils/';
+import { suggestions } from '../../utils/AutoComplete/';
 import { rejectCodes } from '../../data/rejectCodes'
 import RadioInput from './RadioInput';
 

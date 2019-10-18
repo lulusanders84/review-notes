@@ -6,10 +6,11 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { policySuggestions } from '../AutoComplete/utils';
+import { policySuggestions } from '../../utils/AutoComplete';
 import ReactSelect from './ReactSelect';
-import * as utils from '../MainPage/utils';
-import { mergePolicyNameArrays } from '../MainPage/utils/setPolicy';
+import * as utils from '../../utils';
+import * as reviewNotesUtils from '../../utils/ReviewNotes/';
+import { mergePolicyNameArrays } from '../../utils/ReviewNotes/setPolicy';
 import InterQualInput from './InterQualInput';
 
 const styles = theme => ({
@@ -41,7 +42,7 @@ class PolicyInput extends React.Component {
   }
   handleCodeSelect = (code) => {
     const codes = utils.formatCodes(code);
-    const policies = utils.setPolicyByCode(codes, this.props.values.lob);
+    const policies = reviewNotesUtils.setPolicyByCode(codes, this.props.values.lob);
     if(policies) {
       const policyNames = this.setPolicyNames(policies);
       this.addPolicyNames(policyNames)
@@ -51,7 +52,7 @@ class PolicyInput extends React.Component {
     let policyNames;
     let policies;
     if(policy){
-      policies = utils.getPolicies(policy)
+      policies = reviewNotesUtils.getPolicies(policy)
       policyNames = this.setPolicyNames(policies);
     } else {
       policyNames = [];
@@ -76,7 +77,7 @@ class PolicyInput extends React.Component {
   }
   addPolicyNames = (policyNames) => {
     const allPolicyNames = mergePolicyNameArrays(policyNames, this.state.policyNames);
-    const policies = utils.getPolicies(allPolicyNames);
+    const policies = reviewNotesUtils.getPolicies(allPolicyNames);
     this.props.handleInputs({name: "policy", value: policies})
     this.setState({policyNames: allPolicyNames})
 

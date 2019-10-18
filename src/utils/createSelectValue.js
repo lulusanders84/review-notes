@@ -1,5 +1,5 @@
-import { formatToName } from "../components/Notes/utils";
+import { formatToName } from "./Notes";
 
-export default function(value) {
+export function createSelectValue(value) {
     return {label: formatToName(value), value, };
 }

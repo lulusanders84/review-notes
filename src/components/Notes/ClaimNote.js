@@ -1,9 +1,8 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as utils from './utils';
+import * as utils from '../../utils/Notes';
 import {rejectCodes} from '../../data/rejectCodes';
-import { setPricingNote } from './utils/setPricingNote';
 import styles from '../../styles/noteStyles';
 
 const useStyles = makeStyles(theme => (styles));
@@ -15,7 +14,7 @@ export default function ClaimNote(props) {
   const codeType = `${utils.capWord(values.claimType)} ${values.proPar}`;
   const rejectCode = values.rationale ? rejectCodes[values.rationale][codeType]: "";
   const pend = values.pend ? values.pend.map(pend => {return pend.value.trim()}).join(" / ") : "[no pend entered]";
-  const pricing = setPricingNote(values, "claim note");
+  const pricing = utils.setPricingNote(values, "claim note");
   const ocwaNote = values.claimSystem === "OCWA" ? "Remove E1057/E1058 from claim.": "";
   const instructions = values.pend && values.pend.some(pend => {return pend.value === "R5027"})
     ? `Ignore ${pend},`

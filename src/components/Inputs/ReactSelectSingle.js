@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
-import { formatToName } from '../Notes/utils';
+import { formatToName } from '../../utils/Notes';
 
 const useStyles = makeStyles(theme => ({
   root: {

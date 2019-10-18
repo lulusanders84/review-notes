@@ -6,19 +6,19 @@
 
 import React from 'react';
 import { Divider } from '@material-ui/core';
-import ReactSelect from '../Inputs/ReactSelect';
-import ReactSelectSingle from '../Inputs/ReactSelectSingle';
-import TextInput from '../Inputs/TextInput';
-import RadioInput from '../Inputs/RadioInput';
-import ReviewedInputs from '../Inputs/ReviewedInputs';
-import Checkbox from '../Inputs/Checkbox';
-import DeniedInputs from '../Inputs/DeniedInputs';
-import CriteriaInputs from '../Inputs/CriteriaInputs';
-import PricingInputs from '../Inputs/PricingInputs';
-import PolicyInput from '../Inputs/PolicyInput';
-import Notes from '../Notes/Notes';
-import CodeAndService from '../Inputs/CodeAndService';
-import SimpleSelect from '../Inputs/SimpleSelect';
+import ReactSelect from '../../Inputs/ReactSelect';
+import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
+import TextInput from '../../Inputs/TextInput';
+import RadioInput from '../../Inputs/RadioInput';
+import ReviewedInputs from '../../Inputs/ReviewedInputs';
+import Checkbox from '../../Inputs/Checkbox';
+import DeniedInputs from '../../Inputs/DeniedInputs';
+import CriteriaInputs from '../../Inputs/CriteriaInputs';
+import PricingInputs from '../../Inputs/PricingInputs';
+import PolicyInput from '../../Inputs/PolicyInput';
+import GeneralNotes from '../../GeneralNotes/GeneralNotes';
+import CodeAndService from '../../Inputs/CodeAndService';
+import SimpleSelect from '../../Inputs/SimpleSelect';
 
 function General(props) {
   const { classes, options } = props;
@@ -69,7 +69,7 @@ function General(props) {
       }
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
-      <Notes values={props.values} drugReview={props.values.drugReview}  />
+      <GeneralNotes values={props.values} drugReview={props.values.drugReview}  />
     </div>
     </div>
   );

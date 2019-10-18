@@ -1,5 +1,5 @@
-import {fepPolicies} from "../../../data/fepPolicies";
-import { medPolicies } from "../../../data/medPolicies";
+import {fepPolicies} from "../../data/fepPolicies";
+import { medPolicies } from "../../data/medPolicies";
 
 export function policySuggestions(lob) {
     const policies = lob === "commercial" ? medPolicies : [...fepPolicies,...medPolicies];

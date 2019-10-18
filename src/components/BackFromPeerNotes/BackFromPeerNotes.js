@@ -2,7 +2,7 @@ import React from 'react';
 import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import { FaxTransmission } from '../Notes/FaxTransmission';
-import setDenialMessage from '../Notes/utils/setDenialMessage';
+import { setDenialMessage } from '../../utils/Notes/setDenialMessage';
 
 export const Notes = (props) => {
   const denialMessage = setDenialMessage(props.values);

@@ -1,6 +1,6 @@
-import { fepPolicies as fepPoliciesOnFile } from '../../../data/fepPolicies';
-import { bcbsmnCodes } from '../../../data/bcbsmnCodes';
-import { medPolicies } from '../../../data/medPolicies';
+import { fepPolicies as fepPoliciesOnFile } from '../../data/fepPolicies';
+import { bcbsmnCodes } from '../../data/bcbsmnCodes';
+import { medPolicies } from '../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
   console.log(codes, "set policy by code");

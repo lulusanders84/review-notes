@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextInput from './TextInput';
 import ReactSelectSingle from './ReactSelectSingle';
 import { referReasons } from '../../data/referReasons'; 
-import { suggestions } from '../AutoComplete/utils';
+import { suggestions } from '../../utils/AutoComplete';
 
 const useStyles = makeStyles(theme => ({
   card: {

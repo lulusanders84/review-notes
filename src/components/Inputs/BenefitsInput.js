@@ -3,10 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextInput from './TextInput';
 import LinkButton from './LinkButton';
 import { Grid } from '@material-ui/core';
-import { formatCodes } from '../MainPage/utils';
-import {getValueFromPair} from './utils/getValueFromPair';
-import { savePair } from './utils/savePair';
-import { formatMultiServices } from './utils/formatMultiServices';
+import * as utils from '../../utils/';
+import * as inputUtils from '../../utils/Inputs';
+
+const savePair = inputUtils.savePair;
+const formatMultiServices = inputUtils.formatMultiServices;
+const getValueFromPair = inputUtils.getValueFromPair;
 
 const height = 60;
 const width = 440;
@@ -34,7 +36,7 @@ export default function (props) {
   }
   const onCodeEntry = (value) => {
     props.handleInputs(value);
-    const codes = formatCodes(value.value);
+    const codes = utils.formatCodes(value.value);
     if(codes) {
         const service = codes.reduce((acc, code) => {
             const service = getValueFromPair("codeServicePairs", code);
@@ -63,7 +65,6 @@ export default function (props) {
     }
   }
   return (
-    <div>
     <Grid container row className={classes.card}>       
         <div className={classes.inputs}>
           <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />          

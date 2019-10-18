@@ -1,18 +1,16 @@
 import React from 'react';
-import MedClaimReviewNote from './MedClaimReviewNote';
-import ClaimNote from './ClaimNote';
-import Routing from './Routing';
-import MedPolicy from './MedPolicy';
-import { FaxTransmission } from './FaxTransmission';
-import { ClinicalRationale } from './ClinicalRationale';
-import setDenialMessage from './utils/setDenialMessage';
-import * as utils from './utils/index';
+import MedClaimReviewNote from '../Notes/MedClaimReviewNote';
+import ClaimNote from '../Notes/ClaimNote';
+import Routing from '../Notes/Routing';
+import MedPolicy from '../Notes/MedPolicy';
+import { FaxTransmission } from '../Notes/FaxTransmission';
+import { ClinicalRationale } from '../Notes/ClinicalRationale';
+import * as utils from '../../utils/Notes';
 
 
-export const Notes = (props) => {
+export const GeneralNotes = (props) => {
   const values = utils.formatValues(props.values);
-  console.log(values);
-  const denialMessage = setDenialMessage(values);
+  const denialMessage = utils.setDenialMessage(values);
   return (
     <div>
       <MedClaimReviewNote values={values} drugReview={props.drugReview} denialMessage={denialMessage} />
@@ -32,4 +30,4 @@ export const Notes = (props) => {
   )  
 }
 
-export default Notes;
+export default GeneralNotes;

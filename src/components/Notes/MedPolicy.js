@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../styles/noteStyles';
-import { setInterqual } from './utils/setPolicyString';
+import { setInterqual } from '../../utils/Notes/setPolicyString';
 
 const useStyles = makeStyles(theme => (styles));
 

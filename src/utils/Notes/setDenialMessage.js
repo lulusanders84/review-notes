@@ -1,6 +1,6 @@
-import { rejectCodes } from '../../../data/rejectCodes'
+import { rejectCodes } from '../../data/rejectCodes'
 
-export default function (values) {
+export function setDenialMessage(values) {
   const rationale = values.rationale === "Per PA Enforcement" 
     ? "per PA enforcement" 
     : values.rationale === "Information Request" 
