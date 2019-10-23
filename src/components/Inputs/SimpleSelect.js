@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleSelect(props) {
+function SimpleSelect(props) {
   const classes = useStyles();
   function handleChange(event) {
     props.updateValue({name: props.id, value: event.target.value})
@@ -51,3 +52,9 @@ export default function SimpleSelect(props) {
       </Grid>
   );
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(SimpleSelect)

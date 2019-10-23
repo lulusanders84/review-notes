@@ -3,7 +3,6 @@ import { bcbsmnCodes } from '../../data/bcbsmnCodes';
 import { medPolicies } from '../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
-  console.log(codes, "set policy by code");
   const isJ3490 = codes.includes("J3490");
   return codes && !isJ3490
     ? lob === "FEP" 
@@ -48,14 +47,14 @@ const fep = (codes) => {
 //         })
 //       })
 //     if(policies.length >= oldPolicies.length) {
-//       console.log("policies more than old policies")
+//       ("policies more than old policies")
 //       newPolicies = policies.reduce((acc, policy) => {
 //         if(!oldPolicies.some(oldPolicy => { return policy["Policy #"] === oldPolicy["Policy #"] })) {
 //           acc.push(policy)
 //         }
 //         return acc;
 //         }, [])
-//       console.log(newPolicies)
+//       (newPolicies)
 //       return [...newPolicies, ...oldPolicies]; 
 //     } else return newPolicies;
 //   } else return [];
@@ -86,9 +85,12 @@ export const getPolicies = (policyNames) => {
   const bcbsmnPolicies = window.localStorage.getItem("bcbsmnPolicies") ? JSON.parse(window.localStorage.getItem("bcbsmnPolicies")) : medPolicies;
   const fullPolicies = [...bcbsmnPolicies, ...fepPolicies]; 
   return policyNames.map(policyName => {
-    return fullPolicies.find(policy => {
+    const policy = fullPolicies.find(policy => {
       return policy["Policy #"] === policyName.value;
     })
+    policy.value = policyName.value;
+    policy.label = policyName.label;
+    return policy;
   })
 }
 

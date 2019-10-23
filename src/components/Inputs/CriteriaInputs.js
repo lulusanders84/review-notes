@@ -14,9 +14,9 @@ export default function (props) {
   const classes = useStyles();
   return (
     <div className={classes.card}>
-        <TextInput id="criteriaMet" multiline={true} rows="5" placeholder="" label="Criteria Met" onBlur={props.handleInputs} values={props.values} />
-        <TextInput id="criteriaNotMet" multiline={true} rows="5" placeholder="" label="Criteria Not Met" onBlur={props.handleInputs} values={props.values} />
-        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral" updateValue={props.handleInputs} values={props.values} /> 
+        <TextInput id="criteriaMet" multiline={true} rows="5" placeholder="" label="Criteria Met" onBlur={props.handleInputs}  />
+        <TextInput id="criteriaNotMet" multiline={true} rows="5" placeholder="" label="Criteria Not Met" onBlur={props.handleInputs}  />
+        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral" updateValue={props.handleInputs}  /> 
     </div>
   )
 }

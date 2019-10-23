@@ -28,19 +28,21 @@ const LinkButton = (props) => {
   const classes = useStyles();
   return (
     <Tooltip title={props.tooltipTitle}>
-      <IconButton 
+      <div>
+        <IconButton 
         classes={{root: classes.link}} 
         color={props.linkColor}
         edge="start" 
         disabled={props.linkDisabled}
         style={{ backgroundColor: 'transparent' }} 
         onClick={props.onLinkClick}
-      >
-        {props.linked 
-          ? <LinkIcon className={classes.linkIcon} />
-          : <BrokenLinkIcon className={classes.linkIcon} />
-        }          
-      </IconButton> 
+        >
+          {props.linked 
+            ? <LinkIcon className={classes.linkIcon} />
+            : <BrokenLinkIcon className={classes.linkIcon} />
+          }          
+        </IconButton> 
+      </div> 
     </Tooltip>
   )  
 }

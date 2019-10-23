@@ -9,7 +9,7 @@ export const scrapePolicies = async () => {
     getPage(url, pageNumber);
     pageNumber += 1;
   }
-  console.log(store);
+  (store);
 
 }
 const getPage = (url, pageNumber) => {

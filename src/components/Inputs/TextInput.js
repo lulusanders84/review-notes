@@ -1,8 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
 
-export default function TextInput(props) {
+function TextInput(props) {
   const handleChange = event => {
     event.persist();
     const value = {name: props.id, value: event.target.value};
@@ -28,3 +29,9 @@ export default function TextInput(props) {
     </Grid>
   );
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(TextInput)

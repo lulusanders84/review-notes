@@ -8,9 +8,10 @@ import General from './NoteTemplates/General';
 import Misroute from './NoteTemplates/Misroute';
 import BackFromPeer from './NoteTemplates/BackFromPeer';
 import InfoRequest from './NoteTemplates/InfoRequest';
+import AddClaimButton from '../ClaimCount/AddClaimButton';
 import ScrollUpButton from 'react-scroll-up-button';
-import Title from '../Title/Title';
-import * as utils from '../../utils/ReviewNotes';
+import { connect } from 'react-redux';
+import { handleInputs } from '../../actions';
 import { pends, fepPends } from '../../data/pends';
 import { suggestions } from '../../utils/AutoComplete';
 import { savePoliciesToStorage } from '../../data/medPolicies';
@@ -18,7 +19,6 @@ import { fepPolicies } from '../../data/fepPolicies';
 import { medPolicies } from '../../data/medPolicies';
 import * as savingPendsUtils from '../../utils/ReviewNotes/savingPends'
 
-const savePends = savingPendsUtils.savePends;
 const setPendOrder = savingPendsUtils.setPendOrder;
 
 const styles = theme => ({
@@ -32,13 +32,8 @@ const styles = theme => ({
       overflow: "auto" 
     }
   },
-  root: {
-    marginLeft: 10,
-    padding: 0
-  },
   paper: {
     width: "425px",
-    marginTop: theme.spacing(4),
     justifyContent: "flex-start",
     display: 'flex',
     flexDirection: 'column',
@@ -71,11 +66,14 @@ class ReviewNotes extends React.Component {
     this.state = {
       value: 0,
       policyNames: [],
-      values: utils.initialValues,
       drugReview: true,
       disableAllMet: false,
-      linked: false
+      linked: false,
+      typeValue: {name: "Injectable Drug", label: "Injectable Drug"}
     }
+  }
+  handleInputs = (value) => {
+    this.props.dispatch(handleInputs(value))
   }
   handleReviewed = (event) => {
     const reviewed = event.target.value === "yes" ? true : false
@@ -88,7 +86,7 @@ class ReviewNotes extends React.Component {
         {name: "pa-provider", value: ""},
         {name: "pa-match", value: "no"},
       ]
-      if(this.state.values.serviceType === "drug") {
+      if(this.props.values.serviceType === "drug") {
         affectedValues.push({name: "drugReview", value: true})
       }
       affectedValues.forEach(value => {
@@ -97,51 +95,6 @@ class ReviewNotes extends React.Component {
     } else {
       this.handleInputs({name: "drugReview", value: false})
     }
-  }
-  handlePendInput = (value) => {
-    const newValues = this.state.values;
-    newValues.pend = value;
-    this.setState({values: newValues});
-    if(value) {value.forEach(value => {savePends(value, this.state.values.lob)})}
-  }
-  handleInfo = (policies) => {
-      const info = policies.length !== 0 ? this.getInfo(policies) : ""
-      this.handleInputs({name: "info", value: info});
-  }
-  getInfo = (policies) => {
-    return policies.reduce((acc, policy) => {
-      if(policy.info !== "") {
-        acc.push(policy.info);
-      }
-      return acc;
-      },[]).join("\n\n"); 
-  }
-  handleInputs = (value) => {
-    const newValues = this.state.values;
-    newValues[value.name] = value.value;
-    this.setState({newValues,});
-    const returnObj = utils.handleInputsSwitch(
-      this.handleInputs, 
-      this.handleServiceSelect, 
-      this.handleStorage, 
-      this.handleInfo,
-      value, 
-      this.state.values);
-    const changedValues = Object.keys(returnObj).map(key => {
-      return {name: key, value: returnObj[key], mark: "handle"}
-    });
-    changedValues.forEach(value => {
-      this.handleInputs(value);
-    })
-  }
-  handleStorage = (value) => {
-    window.localStorage.setItem(value.name.trim(), value.value.trim())
-  }
-  handleServiceSelect = (value) => {
-    const firstChar = value.value.charAt(0).toUpperCase();
-    const parsed = parseInt(firstChar);
-    const serviceType = firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
-    this.handleInputs({name: "serviceType", value: serviceType});
   }
 
   setIndex = (i) => {
@@ -160,15 +113,14 @@ class ReviewNotes extends React.Component {
   render() {
     const { classes } = this.props;
     const options = {};
-    options.claimTypeOptions = this.state.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
-    options.claimSystemOptions = this.state.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
-    const pendOptions = this.state.values.lob === "FEP" ? [...fepPends, ...pends] : pends;
-    const pendSuggestions = suggestions(setPendOrder(pendOptions, this.state.values.lob));
+    options.claimTypeOptions = this.props.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
+    options.claimSystemOptions = this.props.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
+    const pendOptions = this.props.values.lob === "FEP" ? [...fepPends, ...pends] : pends;
+    const pendSuggestions = suggestions(setPendOrder(pendOptions, this.props.values.lob));
     const reviewProps = {
-      values: this.state.values, 
+      values: this.props.values,
       reviewed: this.state.reviewed,
       handleInputs: this.handleInputs, 
-      handlePendInput: this.handlePendInput,
       handleReviewed: this.handleReviewed,
       handleServiceDisabled: this.handleServiceDisabled,
       onLinkClick: this.handleLinkClick,
@@ -198,21 +150,25 @@ class ReviewNotes extends React.Component {
       } 
     }
     return (
-      <Container component="main" maxWidth="md" className={classes.root}>
+      <div>
         <CssBaseline />
         <ScrollUpButton />        
-        <div className={classes.paper}>
-          <Title />         
+        <div className={classes.paper}>       
           <Tabs value={this.state.value} setIndex={this.setIndex} />
           <form className={classes.form} noValidate>
-            <Grid container>
+            <Grid container alignContent="center" justify="center">
               {noteType()}
+              <AddClaimButton values={this.props.values} />
             </Grid>
+            
           </form>
         </div>
-      </Container>
+      </div>
     );
   }
 }
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
 
-export default withStyles(styles)(ReviewNotes)
+export default connect(mapStateToProps)(withStyles(styles)(ReviewNotes))

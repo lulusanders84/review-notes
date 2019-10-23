@@ -5,6 +5,7 @@ import LinkButton from './LinkButton';
 import { Grid } from '@material-ui/core';
 import * as utils from '../../utils/';
 import * as inputUtils from '../../utils/Inputs';
+import { connect } from 'react-redux';
 
 const savePair = inputUtils.savePair;
 const formatMultiServices = inputUtils.formatMultiServices;
@@ -45,10 +46,10 @@ const useStyles = makeStyles(() => ({
     height: "129.6px"
   }
 }));
-export default function (props) {
+function CodeAndService(props) {
   const [linked, setLinked] = useState(false);
   const classes = useStyles();
-  const linkColor = linked ? "primary" : "disabled";
+  const linkColor = linked ? "primary" : "default";
   const linkLineColor = linked ? "#2196F3" : "#757575"
   const linkLineCoverWidth = linked ? (linkLineWidth - 1).toString() + "%" : linkLineWidth.toString() + "%";
   const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
@@ -90,15 +91,14 @@ export default function (props) {
   }
   return (
     <div className={classes.container}>
-    <Grid container row className={classes.card}>       
+    <Grid container row="true" className={classes.card}>       
         <div className={classes.inputs}>
-          <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} values={props.values} />
+          <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} />
           <TextInput 
             id="service" 
             placeholder="" 
             label="Service" 
             onBlur={props.handleInputs} 
-            values={props.values} 
             disabled={props.serviceDisabled} 
             helperText={helperText} />            
         </div>
@@ -115,3 +115,9 @@ export default function (props) {
     </div>
   )
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(CodeAndService)

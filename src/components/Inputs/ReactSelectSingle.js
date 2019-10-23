@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
 import { formatToName } from '../../utils/Notes';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -234,7 +235,6 @@ SingleValue.propTypes = {
   /**
    * Props passed to the wrapping element for the group.
    */
-  innerProps: PropTypes.any.isRequired,
   selectProps: PropTypes.object.isRequired,
 };
 
@@ -280,21 +280,23 @@ const components = {
   ValueContainer,
 };
 
-export default function IntegrationReactSelect(props) {
+function IntegrationReactSelect(props) {
+  const name = props.values[props.id]
+  const initialValue = {value: name, label: name}
   const classes = useStyles();
   const theme = useTheme();
-  const [single, setSingle] = React.useState(null);
+  const [single, setSingle] = React.useState(initialValue);
   const [options, setOptions] = React.useState(props.suggestions);
   const [edit, setEdit] = React.useState(false);
+
+  
   function handleEditClick() {
     setEdit(true);
   }
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-        console.log(value)
         const formattedName = formatToName(value.value.toLowerCase());
-        console.log(formattedName)
         const newOptions = options ? [{value: formattedName, label: formattedName}, ...options] : [{value: formattedName, label: formattedName}];
         setOptions(newOptions)
         window.localStorage.setItem(props.id, JSON.stringify(newOptions));
@@ -355,3 +357,9 @@ export default function IntegrationReactSelect(props) {
     </Grid>
   );
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(IntegrationReactSelect)

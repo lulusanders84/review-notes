@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Grid } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,9 +21,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function RadioInput(props) {
+function RadioInput(props) {
   const classes = useStyles();
-
   function handleChange(event) {
     if(props.id === "reviewed" || props.id === "pa-deter") {
       props.onChange(event);
@@ -44,7 +44,7 @@ export default function RadioInput(props) {
         <FormControl component="fieldset" className={classes.formControl}>
           <FormLabel component="legend">{props.label}</FormLabel>
           <RadioGroup
-            fullWidth={true}
+            fullwidth="true"
             row
             aria-label={props.label}
             name={props.label}
@@ -59,3 +59,9 @@ export default function RadioInput(props) {
     </Grid>
   );
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(RadioInput)

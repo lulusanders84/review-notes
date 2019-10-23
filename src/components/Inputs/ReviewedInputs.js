@@ -23,20 +23,20 @@ export default function (props) {
   return props.reviewed 
     ? <Card className={classes.card} >
         <Typography component="h3" variant="h6">Prior review details</Typography>
-        <RadioInput id="pa-type" options={["PA", "related claim"]} label="Review type:" updateValue={props.handleInputs} values={props.values} />
-        <TextInput id="pa-req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} /> 
-        <TextInput id="pa-dos" placeholder="" label="Date of Service:" onBlur={props.handleInputs} values={props.values} />
-        <TextInput id="pa-diagnosis" placeholder="" label="Diagnosis:" onBlur={props.handleInputs} values={props.values} />
-        <TextInput id="pa-provider" placeholder="" label="Provider:"  onBlur={props.handleInputs} values={props.values}/>
-        <RadioInput id="pa-deter" options={["approved", "denied"]} label="Decision:" updateValue={props.handleInputs} onChange={handlePriorDecision} onBlur={props.handleInputs} values={props.values}/>
+        <RadioInput id="pa-type" options={["PA", "related claim"]} label="Review type:" updateValue={props.handleInputs} />
+        <TextInput id="pa-req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} /> 
+        <TextInput id="pa-dos" placeholder="" label="Date of Service:" onBlur={props.handleInputs} />
+        <TextInput id="pa-diagnosis" placeholder="" label="Diagnosis:" onBlur={props.handleInputs} />
+        <TextInput id="pa-provider" placeholder="" label="Provider:"  onBlur={props.handleInputs}/>
+        <RadioInput id="pa-deter" options={["approved", "denied"]} label="Decision:" updateValue={props.handleInputs} onChange={handlePriorDecision} onBlur={props.handleInputs}/>
         {rationale ? 
           <div>
-            <DeniedInputs handleInputs={props.handleInputs} denialId="pa-rationale" rationaleValue={props.rationaleValue} values={props.values} />
-            <TextInput id="clinical-rationale" multiline={true} rows="10" placeholder="" label="Clinical Rationale" onBlur={props.handleInputs} values={props.values} />
+            <DeniedInputs handleInputs={props.handleInputs} denialId="pa-rationale" rationaleValue={props.rationaleValue} />
+            <TextInput id="clinical-rationale" multiline={true} rows="10" placeholder="" label="Clinical Rationale" onBlur={props.handleInputs} />
 
           </div>
            : null}
-        <RadioInput id="pa-match" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:" updateValue={props.handleInputs} values={props.values} />
+        <RadioInput id="pa-match" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:" updateValue={props.handleInputs} />
       </Card>
     : null;
         

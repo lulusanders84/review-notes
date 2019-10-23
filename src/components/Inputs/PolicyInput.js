@@ -12,6 +12,7 @@ import * as utils from '../../utils';
 import * as reviewNotesUtils from '../../utils/ReviewNotes/';
 import { mergePolicyNameArrays } from '../../utils/ReviewNotes/setPolicy';
 import InterQualInput from './InterQualInput';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   paper: {
@@ -49,22 +50,19 @@ class PolicyInput extends React.Component {
     }
   }
   onPolicyChange = (policy) => {
-    let policyNames;
+    policy = policy.value;
     let policies;
     if(policy){
       policies = reviewNotesUtils.getPolicies(policy)
-      policyNames = this.setPolicyNames(policies);
     } else {
-      policyNames = [];
       policies = [];
-    }
+    } 
     policies.some(policy => {
       return policy["Policy #"] === "InterQual";
     })
       ? this.setState({interqual: true})
       : this.setState({interqual: false})
     this.props.handleInputs({name: "policy", value: policies})
-    this.setState({policyNames,})
   }
   setPolicyNames = (policies) => {
     return policies.map(policy => {
@@ -95,10 +93,15 @@ class PolicyInput extends React.Component {
   render() {
     return (
       <div>          
-        <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} value={this.state.policyNames} values={this.props.values} />
+        <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} />
         <InterQualInput visible={this.state.interqual} values={this.props.values} handleInputs={this.props.handleInputs} />  
       </div>
     );
   }
 }
-export default withStyles(styles)(PolicyInput)
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(PolicyInput))

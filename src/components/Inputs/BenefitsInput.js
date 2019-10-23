@@ -67,7 +67,7 @@ export default function (props) {
   return (
     <Grid container row className={classes.card}>       
         <div className={classes.inputs}>
-          <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} values={props.values} />          
+          <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs} />          
         </div>
         <LinkButton 
           tooltipTitle={tooltipTitle} 

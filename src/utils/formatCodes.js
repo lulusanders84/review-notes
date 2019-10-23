@@ -1,5 +1,4 @@
 export const formatCodes = (codesStr) => {
-    console.log(codesStr);
     codesStr = !codesStr ? "" : codesStr; 
     codesStr = codesStr.toUpperCase().trim();
     const comma = codesStr.includes(",");

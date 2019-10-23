@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CreatableSelect from 'react-select/creatable';
@@ -11,6 +11,7 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Tooltip } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -238,10 +239,10 @@ function ValueContainer(props) {
 
 function MultiValue(props) {
   const classes = useStyles();
-  const label = <a href={props.data.href} target="blank">{props.children}</a>
+  const label = <a href={props.data.href} target="blank">{props.data.value}</a>
   return (
     <Tooltip
-      title={props.data.name}
+      title={props.data['Full Policy']}
       classes={{tooltip: classes.tooltip}}
     >
       <Chip
@@ -298,32 +299,21 @@ const components = {
   ValueContainer,
 };
 
-export default function ReactSelect(props) {
+function ReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [multi, setMulti] = React.useState(props.value);
   const [options, setOptions] = React.useState(props.suggestions)
-  useEffect(() => {
-    setMulti(props.value);
-  }, [props.value]);
-  useEffect(() => {
-    setOptions(props.suggestions)
-  }, [props.suggestions]);
   function handleChangeMulti(value) {
-    props.updateValue(value)
+    const newValue = {name: props.id, value,}
+    props.updateValue(newValue)
     if(value) {
       value.forEach(value => {
         if(value.__isNew__) { 
           setOptions([...options, value])
         }
       })
-    } 
-    setMulti(value);
-    
+    }     
   }
-  // const handleOnBlur = event => {
-  //     props.onSelect(multi)
-  // }
   const selectStyles = {
     input: base => ({
       ...base,
@@ -350,7 +340,7 @@ export default function ReactSelect(props) {
           }}
           options={options}
           components={components}
-          value={multi}
+          value={props.values[props.id]}
           onChange={handleChangeMulti}
           isMulti
 
@@ -359,3 +349,9 @@ export default function ReactSelect(props) {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(ReactSelect)

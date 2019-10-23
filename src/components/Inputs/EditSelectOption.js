@@ -4,6 +4,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import { Grid, makeStyles } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   checkButton: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(2),
   }
 }))
-export default function(props) {
+function EditSelectOption(props) {
   const classes = useStyles();
   const [saved, setSaved] = React.useState(false);
   const [value] = React.useState(props.values[props.id])
@@ -65,3 +66,9 @@ export default function(props) {
       </Grid>
     )
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(EditSelectOption)
