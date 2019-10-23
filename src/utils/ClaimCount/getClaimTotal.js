@@ -1,4 +1,7 @@
+import { setStorage } from "../setStorage";
+
 export const getClaimTotal = (claimLog) => {
+  claimLog = setStorage(claimLog, []);
   const today = new Date();
   const day = today.getDate();
   const month = today.getMonth() + 1;

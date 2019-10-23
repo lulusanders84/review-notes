@@ -1,10 +1,11 @@
 import { addClaimToStorage, getClaimTotal, getDailyTarget } from "../utils/ClaimCount";
-import { saveToStorage } from "../utils";
+import { saveToStorage, setStorage } from "../utils";
 import { findWeekdays } from "../utils/ClaimSettings";
 
 export const updateClaimLog = (claim) => (dispatch) => {
   addClaimToStorage(claim);
-  const claimLog = JSON.parse(window.localStorage.getItem("claimLog"));
+  const claimLog = setStorage(JSON.parse(window.localStorage.getItem("claimLog")), []);
+  if(claim)
   dispatch(setClaimLog(claimLog))
   const claimTotal = getClaimTotal(claimLog);
   dispatch(setClaimTotal(claimTotal));
@@ -20,7 +21,7 @@ export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
 
 export const updateWorkdays = (month, day) => (dispatch, getState) => {
   day = new Date(day).toISOString();
-  let workdays = JSON.parse(window.localStorage.getItem("workdays"))
+  let workdays = setStorage(JSON.parse(window.localStorage.getItem("workdays")), {});
   const workdaysByMonth = workdays[month];
   if(workdaysByMonth === undefined) {
     workdays[month] = findWeekdays(month, 2019);

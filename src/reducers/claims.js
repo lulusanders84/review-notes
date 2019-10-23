@@ -1,8 +1,12 @@
 import { getClaimTotal, getDailyTarget } from '../utils/ClaimCount'
 import { getWorkdays } from '../utils/ClaimSettings';
+import { setStorage } from '../utils';
 
-const claimLog = JSON.parse(window.localStorage.getItem("claimLog"))
-const claimsGoal = parseInt(JSON.parse(window.localStorage.getItem("claimsGoal")));
+const claimLog = 
+  setStorage(JSON.parse(window.localStorage.getItem("claimLog")), []);
+
+const claimsGoal = 
+  setStorage(parseInt(JSON.parse(window.localStorage.getItem("claimsGoal"))), 0);
 const workdays = getWorkdays();
 
 const initialState = {
