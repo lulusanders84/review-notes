@@ -2,13 +2,16 @@ import { addClaimToStorage, getClaimTotal, getDailyTarget } from "../utils/Claim
 import { saveToStorage, setStorage } from "../utils";
 import { findWeekdays } from "../utils/ClaimSettings";
 
-export const updateClaimLog = (claim) => (dispatch) => {
+export const updateClaimLog = (claim) => (dispatch, getState) => {
   addClaimToStorage(claim);
   const claimLog = setStorage(JSON.parse(window.localStorage.getItem("claimLog")), []);
   if(claim)
   dispatch(setClaimLog(claimLog))
   const claimTotal = getClaimTotal(claimLog);
+  const { claimsGoal, workdays } = getState().claims;
+  const dailyTarget = getDailyTarget(claimLog, claimsGoal, workdays)
   dispatch(setClaimTotal(claimTotal));
+  dispatch(setDailyTarget(dailyTarget));
 }
 
 export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {

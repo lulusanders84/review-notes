@@ -1,20 +1,26 @@
 import { getClaimTotal, getDailyTarget } from '../utils/ClaimCount'
 import { getWorkdays } from '../utils/ClaimSettings';
-import { setStorage } from '../utils';
+import { setStorage, saveToStorage } from '../utils';
 
 const claimLog = 
   setStorage(JSON.parse(window.localStorage.getItem("claimLog")), []);
-
-const claimsGoal = 
-  setStorage(parseInt(JSON.parse(window.localStorage.getItem("claimsGoal"))), 0);
+saveToStorage("claimLog", claimLog);
+const claimsGoal = () => {
+  let claimsGoal = parseInt(JSON.parse(window.localStorage.getItem("claimsGoal")));
+  claimsGoal = isNaN(claimsGoal)
+    ? null
+    : claimsGoal;
+  saveToStorage("claimsGoal", claimsGoal);
+  return setStorage(claimsGoal, "16");
+}
+  
 const workdays = getWorkdays();
-
 const initialState = {
   claimLog,
   claimTotal: getClaimTotal(claimLog),
-  claimsGoal,
+  claimsGoal: claimsGoal(),
   workdays,
-  dailyTarget: getDailyTarget(claimLog, claimsGoal, workdays),
+  dailyTarget: getDailyTarget(claimLog, claimsGoal(), workdays),
   month: new Date().getMonth(),
   year: new Date().getFullYear()
 }

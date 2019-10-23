@@ -10,14 +10,13 @@ export const getDailyTarget = (claimLog, claimGoal, workdays) => {
     }
     return acc;
   }, []).length;
-  // const firstOfTheMonth = new Date(`${month + 1}/1/${date.getFullYear()}`).getTime();
-  const claimsSoFar = 238;
-  // claimLog.reduce((acc, claim) => {
-  //   if(claim.dateTime > firstOfTheMonth) {
-  //     acc.push(claim)
-  //   }
-  //   return acc;
-  // }, []).length;
+  const firstOfTheMonth = new Date(`${month + 1}/1/${date.getFullYear()}`).getTime();
+  const claimsSoFar = claimLog.reduce((acc, claim) => {
+    if(claim.dateTime > firstOfTheMonth) {
+      acc.push(claim)
+    }
+    return acc;
+  }, []).length;
   const totalClaims = claimGoal * days;
   const claimsRemaining = totalClaims - claimsSoFar;
   const claimsPerDay = Math.ceil(claimsRemaining / daysLeft);
