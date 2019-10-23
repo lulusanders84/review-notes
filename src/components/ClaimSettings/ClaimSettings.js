@@ -9,7 +9,6 @@ import InfiniteCalendar, {
   withMultipleDates,
 } from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css';
-import { getDailyTarget } from '../../utils/ClaimCount';
 
 const MultipleDatesCalendar = withMultipleDates(Calendar);
 

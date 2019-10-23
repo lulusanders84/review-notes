@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import PoliciesIcon from '@material-ui/icons/LibraryBooks';
 import Typography from '@material-ui/core/Typography';
 

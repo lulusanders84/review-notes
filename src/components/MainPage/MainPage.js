@@ -1,11 +1,10 @@
 
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Container, Card } from '@material-ui/core/';
+import { Container } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import Title from '../Title/Title';
 import ReviewNotes from '../ReviewNotes/ReviewNotes';
-import ClaimSettings from '../ClaimSettings/ClaimSettings';
 import ClaimLog from '../ClaimLog/ClaimLog';
 
 

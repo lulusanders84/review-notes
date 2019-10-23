@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card } from '@material-ui/core';
 import ReviewNotesTitle from './ReviewNotesTitle';
 import ClaimCount from '../ClaimCount/ClaimCount';
 import Tabs from '@material-ui/core/Tabs';

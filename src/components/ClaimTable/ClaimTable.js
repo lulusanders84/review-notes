@@ -1,5 +1,4 @@
 import React from 'react';
-import ClaimCountButton from '../ClaimCount/ClaimCountButton';
 import { Table, TableBody, TableCell, TableHead, TableRow, makeStyles} from '@material-ui/core';
 import { connect } from 'react-redux';
 import { formatDateTime, formatDate } from '../../utils';
