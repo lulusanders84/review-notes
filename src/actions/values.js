@@ -1,29 +1,32 @@
 import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
 
 const savePends = savingPendsUtils.savePends;
-
-export const handleInputs = (value) => (dispatch, getState) => {
+export const handleInputs = value => (dispatch, getState) => {
   dispatch(setValue(value));
+  const values = getState().values;
+  const newValues = handleInputsChange(value, values);
+  newValues.forEach(value => {
+    dispatch(setValue(value))
+  })
+}
+const handleInputsChange = (value, values) => {
   const returnObj = handleInputsSwitch(
-    handleInputs, 
+    handleInputsChange, 
     handleServiceSelect, 
     handleStorage, 
     handleInfo,
     value, 
-    getState().values);
-  const changedValues = Object.keys(returnObj).map(key => {
+    values);
+  return Object.keys(returnObj).map(key => {
     return {name: key, value: returnObj[key], mark: "handle"}
   });
-  changedValues.forEach(value => {
-    handleInputs(value);
-  })
 }
 
 const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values) => {
   let returnObj = {};
   switch(value.name) {
       case "policy":
-        info(value.value);
+        returnObj.info = info(value.value)
         break;
       case "pa-deter":
         if(values["pa-match"] === "yes") {
@@ -78,8 +81,7 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
 }
 
 const handleInfo = (policies) => {
-    const info = policies.length !== 0 ? getInfo(policies) : ""
-    handleInputs({name: "info", value: info});
+    return policies.length !== 0 ? getInfo(policies) : ""
 }
 const getInfo = (policies) => {
   return policies.reduce((acc, policy) => {
