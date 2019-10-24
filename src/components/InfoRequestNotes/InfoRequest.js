@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Info from './Info';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,7 +38,7 @@ export default function InfoRequest(props) {
         <br />PA research: No PA found, no history of info requests in UM
         <br />Related UM requests: {values.related !== "N/A" ? values.related.split(",").map(related => {return `REQ-${related}`}).join(", ") : values.related}
         <br />Route: {values.claimType === "home" ? `B2 (SCCF: ${values.sccf})` : "Letter"}
-        {values.info}
+        <Info values={values} />
       </div>
     </CardContent>
     </Card>

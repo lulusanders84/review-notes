@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
 function TextInput(props) {
-  if(props.id === "info") {console.log(props)}
   const handleChange = event => {
     event.persist();
     const value = {name: props.id, value: event.target.value};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CreatableSelect from 'react-select/creatable';
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
@@ -288,7 +288,10 @@ function IntegrationReactSelect(props) {
   const [single, setSingle] = React.useState(initialValue);
   const [options, setOptions] = React.useState(props.suggestions);
   const [edit, setEdit] = React.useState(false);
-
+  useEffect(() => {
+    const name = props.values[props.id];
+    setSingle({value: name, label: name})
+  }, [props.values])
   
   function handleEditClick() {
     setEdit(true);

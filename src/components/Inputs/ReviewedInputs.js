@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import DeniedInputs from './DeniedInputs';
+import ReactSelectSingle from './ReactSelectSingle';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -27,7 +28,7 @@ export default function (props) {
         <TextInput id="pa-req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} /> 
         <TextInput id="pa-dos" placeholder="" label="Date of Service:" onBlur={props.handleInputs} />
         <TextInput id="pa-diagnosis" placeholder="" label="Diagnosis:" onBlur={props.handleInputs} />
-        <TextInput id="pa-provider" placeholder="" label="Provider:"  onBlur={props.handleInputs}/>
+        <ReactSelectSingle id="pa-provider" placeholder="" label="Provider" updateValue={props.handleInputs}  suggestions={JSON.parse(window.localStorage.getItem("provider"))} />             
         <RadioInput id="pa-deter" options={["approved", "denied"]} label="Decision:" updateValue={props.handleInputs} onChange={handlePriorDecision} onBlur={props.handleInputs}/>
         {rationale ? 
           <div>

@@ -31,7 +31,7 @@ export default function LetterNote(props) {
       <div contentEditable className={classes.notes}>
         REQ-{values.req}: Additional Info Requested
         {props.info}
-        <br />{props.faxAndDate}
+        {props.faxAndDate}
       </div>
     </CardContent>
     </Card>

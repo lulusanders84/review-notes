@@ -34,7 +34,7 @@ export default function ClaimNote(props) {
       <div contentEditable className={classes.notes}>
       REQ-{values.req}: {ocwaNote} {instructions} {modifier22} {remainder}
       {props.info}
-      <br />{props.claimNoteAddendum}
+      {props.claimNoteAddendum}
       </div>
     </CardContent>
     </Card>
