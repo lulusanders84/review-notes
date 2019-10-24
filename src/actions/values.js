@@ -72,7 +72,7 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
         returnObj.type = type;
         break;
       case "pend":
-        if(value) {value.value.forEach(value => {savePends(value, values.lob)})}
+        if(value && value.value !== null) {value.value.forEach(value => {savePends(value, values.lob)})}
         break;
       default:
         break;

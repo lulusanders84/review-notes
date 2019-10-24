@@ -18,23 +18,23 @@ function Misroute(props) {
   const { classes, options } = props;
   return (
     <div>
-      <TextInput id="name" placeholder="" label="Clinician:" onBlur={props.handleInputs} values={props.values} />
-      <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" updateValue={props.handleInputs} values={props.values} />      
+      <TextInput id="name" placeholder="" label="Clinician:" onBlur={props.handleInputs} />
+      <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" updateValue={props.handleInputs}/>      
       { props.values.lob !== "FEP" 
         ? <div>
-              <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" updateValue={props.handleInputs} values={props.values} />
-              {props.values.claimType === "home" ? <TextInput id="sccf" placeholder="" label="SCCF:" onBlur={props.handleInputs} values={props.values} />
+              <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" updateValue={props.handleInputs} />
+              {props.values.claimType === "home" ? <TextInput id="sccf" placeholder="" label="SCCF:" onBlur={props.handleInputs} />
               : null}
         </div>
         : null}
       { props.values.lob === "commercial"
-        ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} values={props.values} />             
+        ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} />             
         : null}                         
-      <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} values={props.values} />             
-      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handlePendInput} values={props.values} value={props.values.pend} />             
-      <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} values={props.values} />
-      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} values={props.values} />         
-      <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" onBlur={props.handleInputs} values={props.values} />
+      <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
+      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handleInputs} />             
+      <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} />
+      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} />         
+      <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" onBlur={props.handleInputs} />
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
       <MisrouteNotes values={props.values}  />
