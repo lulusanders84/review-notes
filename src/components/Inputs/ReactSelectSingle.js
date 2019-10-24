@@ -291,7 +291,7 @@ function IntegrationReactSelect(props) {
   useEffect(() => {
     const name = props.values[props.id];
     setSingle({value: name, label: name})
-  }, [props.values])
+  }, [props.values, props.id])
   
   function handleEditClick() {
     setEdit(true);
