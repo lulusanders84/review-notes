@@ -7,6 +7,7 @@
 import React from 'react';
 import { Divider, Button } from '@material-ui/core';
 import ReactSelect from '../../Inputs/ReactSelect';
+import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
 import PolicyInput from '../../Inputs/PolicyInput';
@@ -14,13 +15,19 @@ import InfoRequestNotes from '../../InfoRequestNotes/InfoRequestNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import { saveInfoToPolicy } from '../../../utils/Inputs/savePair';
+import { handleInputs } from '../../../actions';
+import { connect } from 'react-redux';
 
 function InfoRequest(props) {
   const { classes, options } = props;
   const onSaveClick = (value) => {
-    console.log("running")
       saveInfoToPolicy(props.values)  
   }
+  const { dispatch } = props;
+  React.useEffect(() => {
+    dispatch(handleInputs({name: "type", value: "Info Request"}))
+  }, [dispatch])
+  
   return (
     <div>
       <TextInput id="name" placeholder="" label="Clinician:" onBlur={props.handleInputs} />
@@ -40,6 +47,7 @@ function InfoRequest(props) {
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs}  />
       <TextInput id="dos" placeholder="" label="Date of service" onBlur={props.handleInputs}  />              
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
+      <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />
       <PolicyInput handleInputs={props.handleInputs} /> 
       <TextInput id="related" label="Related UM REQs:" onBlur={props.handleInputs} />
       <TextInput id="info" multiline={true} rows="5" label="Info To Request:"  onBlur={props.handleInputs} />
@@ -54,4 +62,4 @@ function InfoRequest(props) {
   );
 }
 
-export default InfoRequest;
+export default connect()(InfoRequest);
