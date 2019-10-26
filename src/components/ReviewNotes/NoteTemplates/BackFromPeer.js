@@ -7,6 +7,7 @@
 import React from 'react';
 import { suggestions } from '../../../utils/AutoComplete';
 import ReactSelect from '../../Inputs/ReactSelect';
+import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
@@ -16,9 +17,15 @@ import DeniedInputs from '../../Inputs/DeniedInputs';
 import { Divider } from '@material-ui/core';
 import CriteriaInputs from '../../Inputs/CriteriaInputs';
 import { setPendOrder } from '../../../utils/ReviewNotes/savingPends/setPendOrder';
+import { handleInputs } from '../../../actions';
+import { connect } from 'react-redux';
 
 function BackFromPeer(props) {
   const { classes, options } = props;
+  const { dispatch } = props;
+  React.useEffect(() => {
+    dispatch(handleInputs({name: "type", value: "Review Decision"}))
+  }, [dispatch])
   return (
     <div>
     <RadioInput id="deter" options={["approve", "deny"]} label="Determination" updateValue={props.handleInputs}/>
@@ -41,6 +48,7 @@ function BackFromPeer(props) {
         ?<TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} />
         : null
         }
+        <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />
       {props.values.deter === "approve"
         ? <div>
             <ReactSelect id="pend" suggestions={suggestions(setPendOrder(options.pendOptions, props.values.lob))} label="Suspension" updateValue={props.handleInputs}  />             
@@ -56,4 +64,4 @@ function BackFromPeer(props) {
   );
 }
 
-export default BackFromPeer;
+export default connect()(BackFromPeer);

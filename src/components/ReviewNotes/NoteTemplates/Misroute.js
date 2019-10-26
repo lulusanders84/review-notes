@@ -12,9 +12,14 @@ import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
 import MisrouteNotes from '../../MisrouteNotes/MisrouteNotes';
 import { Divider } from '@material-ui/core';
-
+import { connect } from 'react-redux';
+import { handleInputs } from '../../../actions';
 
 function Misroute(props) {
+  const { dispatch } = props;
+  React.useEffect(() => {
+    dispatch(handleInputs({name: "type", value: "Misroute"}))
+  }, [dispatch])
   const { classes, options } = props;
   return (
     <div>
@@ -33,7 +38,8 @@ function Misroute(props) {
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
       <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handleInputs} />             
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} />
-      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} />         
+      <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} />
+      <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />         
       <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" onBlur={props.handleInputs} />
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
@@ -43,4 +49,4 @@ function Misroute(props) {
   );
 }
 
-export default Misroute;
+export default connect()(Misroute);
