@@ -21,7 +21,6 @@ import { connect } from 'react-redux';
 function InfoRequest(props) {
   const { classes, options } = props;
   const onSaveClick = (value) => {
-    console.log("running")
       saveInfoToPolicy(props.values)  
   }
   const { dispatch } = props;
