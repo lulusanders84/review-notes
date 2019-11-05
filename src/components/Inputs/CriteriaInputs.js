@@ -4,6 +4,7 @@ import TextInput from './TextInput';
 import ReactSelectSingle from './ReactSelectSingle';
 import { referReasons } from '../../data/referReasons'; 
 import { connect } from 'react-redux';
+import { suggestions } from '../../utils/AutoComplete';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -16,7 +17,7 @@ export function CriteriaInputs(props) {
     <div className={classes.card}>
         <TextInput id="criteriaMet" multiline={true} rows="5" placeholder="" label="Criteria Met" onBlur={props.handleInputs}  />
         <TextInput id="criteriaNotMet" multiline={true} rows="5" placeholder="" label="Criteria Not Met" onBlur={props.handleInputs}  />
-        <ReactSelectSingle id="referReason" suggestions={props.options(referReasons)} label="Reason for Referral" updateValue={props.handleInputs}  /> 
+        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral" updateValue={props.handleInputs}  /> 
     </div>
   )
 }
