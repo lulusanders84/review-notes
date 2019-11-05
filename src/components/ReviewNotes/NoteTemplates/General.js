@@ -19,6 +19,7 @@ import GeneralNotes from '../../GeneralNotes/GeneralNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import PendInput from '../../Inputs/PendInput';
+import ProviderType from '../../Inputs/ProviderType';
 
 function General(props) {
   const { classes, options } = props;
@@ -59,7 +60,7 @@ function General(props) {
       }      
       <TextInput id="diagnosis" placeholder="" label="Diagnosis" onBlur={props.handleInputs}  />
       <ReactSelectSingle id="provider" placeholder="" label="Provider" updateValue={props.handleInputs}  suggestions={JSON.parse(window.localStorage.getItem("provider"))} />             
-      <RadioInput id="proType" options={["professional", "facility"]} label="Provider Type" updateValue={props.handleInput} />
+      <ProviderType updateValue={props.handleInputs} />
       <RadioInput id="proPar" options={["Par", "Non-Par"]} label="Par Status" updateValue={props.handleInputs} />
       <TextInput id="summary" multiline={true} rows="5" label="Additional Clinical information"  onBlur={props.handleInputs} />
       <RadioInput id="deter" options={["approve", "deny", "send to medical director"]} label="Determination" updateValue={props.handleInputs} />
