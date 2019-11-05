@@ -11,7 +11,7 @@ const PendInput = (props) => {
   }, [dispatch, lob])
   
   return (
-    <ReactSelect id="pend" suggestions={props.options} label="Suspension" updateValue={props.handleInputs} />
+    <ReactSelect id="pend" suggestions={props.options} label="Suspension" updateValue={props.updateValue} />
   )
 }
 
