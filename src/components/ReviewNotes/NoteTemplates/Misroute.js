@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { suggestions } from '../../../utils/AutoComplete';
-import ReactSelect from '../../Inputs/ReactSelect';
 import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
@@ -14,6 +13,7 @@ import MisrouteNotes from '../../MisrouteNotes/MisrouteNotes';
 import { Divider } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../../actions';
+import PendInput from '../../Inputs/PendInput';
 
 function Misroute(props) {
   const { dispatch } = props;
@@ -36,7 +36,7 @@ function Misroute(props) {
         ? <ReactSelectSingle id="special" suggestions={suggestions(["N/A", "employee", "foreign", "hormel", "host", ])} label="Specialty claim" updateValue={props.handleInputs} />             
         : null}                         
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
-      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handleInputs} />             
+      <PendInput updateValue={props.handleInputs} />  
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs} />
       <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} />
       <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />         

@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { Divider, Button } from '@material-ui/core';
-import ReactSelect from '../../Inputs/ReactSelect';
 import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
@@ -17,6 +16,7 @@ import SimpleSelect from '../../Inputs/SimpleSelect';
 import { saveInfoToPolicy } from '../../../utils/Inputs/savePair';
 import { handleInputs } from '../../../actions';
 import { connect } from 'react-redux';
+import PendInput from '../../Inputs/PendInput';
 
 function InfoRequest(props) {
   const { classes, options } = props;
@@ -43,7 +43,7 @@ function InfoRequest(props) {
         : null
       }                      
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
-      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handleInputs} />             
+      <PendInput updateValue={props.handleInputs} />  
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs}  />
       <TextInput id="dos" placeholder="" label="Date of service" onBlur={props.handleInputs}  />              
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />

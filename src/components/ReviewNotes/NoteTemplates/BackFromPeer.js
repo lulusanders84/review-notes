@@ -5,8 +5,6 @@
 // import policyDummy from '../data/policyDummy';
 
 import React from 'react';
-import { suggestions } from '../../../utils/AutoComplete';
-import ReactSelect from '../../Inputs/ReactSelect';
 import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import TextInput from '../../Inputs/TextInput';
@@ -16,9 +14,9 @@ import BackFromPeerNotes from '../../BackFromPeerNotes/BackFromPeerNotes';
 import DeniedInputs from '../../Inputs/DeniedInputs';
 import { Divider } from '@material-ui/core';
 import CriteriaInputs from '../../Inputs/CriteriaInputs';
-import { setPendOrder } from '../../../utils/ReviewNotes/savingPends/setPendOrder';
 import { handleInputs } from '../../../actions';
 import { connect } from 'react-redux';
+import PendInput from '../../Inputs/PendInput';
 
 function BackFromPeer(props) {
   const { classes, options } = props;
@@ -51,7 +49,7 @@ function BackFromPeer(props) {
         <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />
       {props.values.deter === "approve"
         ? <div>
-            <ReactSelect id="pend" suggestions={suggestions(setPendOrder(options.pendOptions, props.values.lob))} label="Suspension" updateValue={props.handleInputs}  />             
+        <PendInput updateValue={props.handleInputs} />  
           </div>
         : null
       }
