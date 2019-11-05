@@ -23,7 +23,7 @@ function AddClaimButton(props) {
     props.dispatch(handleInputs({name: "req", value: ""}))
     setTimeout(function(){ setLabel("Add Claim to Log"); }, 2000)
   }
-  const disabled = props.values.req === "" ? true : false;
+  const disabled = values.req === "" ? true : false;
   return (
     <Button 
       className = {classes.button}
@@ -35,5 +35,7 @@ function AddClaimButton(props) {
   )
 }
 
-
-export default connect()(AddClaimButton)
+const mapStateToProps = (state) => ({
+  values: state.values
+});
+export default connect(mapStateToProps)(AddClaimButton)

@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { Divider } from '@material-ui/core';
-import ReactSelect from '../../Inputs/ReactSelect';
 import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
@@ -19,6 +18,7 @@ import PolicyInput from '../../Inputs/PolicyInput';
 import GeneralNotes from '../../GeneralNotes/GeneralNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
 import SimpleSelect from '../../Inputs/SimpleSelect';
+import PendInput from '../../Inputs/PendInput';
 
 function General(props) {
   const { classes, options } = props;
@@ -33,7 +33,8 @@ function General(props) {
         ? <SimpleSelect id="special" options={["N/A", "employee", "foreign", "hormel", "host", ]} label="Specialty claim" updateValue={props.handleInputs} />             
         : null}                         
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
-      <ReactSelect id="pend" suggestions={props.pendSuggestions} label="Suspension" updateValue={props.handleInputs} />             
+    
+      <PendInput updateValue={props.handleInputs} />             
       <RadioInput id="reviewed" options={["no", "yes"]} label="Service previously reviewed" onChange={props.handleReviewed} updateValue={props.handleInputs} />  
       <ReviewedInputs reviewed={props.reviewed} handleInputs={props.handleInputs} rationaleValue={props.values.rationale}  />
       <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs}  />
@@ -70,7 +71,7 @@ function General(props) {
       }
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
-      <GeneralNotes values={props.values} drugReview={props.values.drugReview}  />
+      <GeneralNotes drugReview={props.values.drugReview}  />
     </div>
     </div>
   );

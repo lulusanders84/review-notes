@@ -34,7 +34,7 @@ function ClaimLog(props) {
   return (
     <div className={classes.root}>
       <ClaimCountButton 
-      claimTotal={props.claimTotal} 
+      claimsTotal={props.claimsTotal} 
       monthTarget={props.claimsGoal}
       dayTarget={props.dailyTarget}/>
       <div className={classes.dateBar}>
@@ -66,7 +66,7 @@ function ClaimLog(props) {
 
 const mapStateToProps = (state) => ({
   claimLog: state.claims.claimLog,
-  claimTotal: state.claims.claimTotal,
+  claimsTotal: state.claims.claimsTotal,
   dailyTarget: state.claims.dailyTarget,
   claimsGoal: state.claims.claimsGoal
 });

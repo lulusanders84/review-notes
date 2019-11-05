@@ -5,6 +5,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { blue } from '@material-ui/core/colors';
 
+import { Provider } from 'react-redux';
+import store from '../src/store';
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: blue[500] }, // Purple and green play nicely together.
@@ -13,9 +16,12 @@ const theme = createMuiTheme({
 function App() {
   
   return (
-    <ThemeProvider theme={theme}>
-      <MainPage />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <MainPage />
+      </ThemeProvider>  
+    </Provider>
+
     
   );
 }

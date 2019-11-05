@@ -1,48 +1,38 @@
-import { addClaimToStorage, getClaimTotal, getDailyTarget } from "../utils/ClaimCount";
-import { saveToStorage, setStorage } from "../utils";
-import { findWeekdays } from "../utils/ClaimSettings";
+import Workdays from "../classes/Workdays";
+import DailyTarget from "../classes/DailyTarget";
+import ClaimLog from "../classes/ClaimLog";
+import ClaimsTotal from "../classes/ClaimsTotal";
+import ClaimsGoal from "../classes/ClaimsGoal";
 
 export const updateClaimLog = (claim) => (dispatch, getState) => {
-  addClaimToStorage(claim);
-  const claimLog = setStorage(JSON.parse(window.localStorage.getItem("claimLog")), []);
-  if(claim)
-  dispatch(setClaimLog(claimLog))
-  const claimTotal = getClaimTotal(claimLog);
+  const claimLog = new ClaimLog();
+  claimLog.addClaim(claim);
+  const log = claimLog.get();
+  dispatch(setClaimLog(log))
+  const claimsTotal = new ClaimsTotal(log).get();
   const { claimsGoal, workdays } = getState().claims;
-  const dailyTarget = getDailyTarget(claimLog, claimsGoal, workdays)
-  dispatch(setClaimTotal(claimTotal));
+  const dailyTarget = new DailyTarget(log, claimsGoal, workdays).get();
+  dispatch(setClaimsTotal(claimsTotal));
   dispatch(setDailyTarget(dailyTarget));
 }
 
 export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
   const { claimLog, workdays } = getState().claims;
-  const dailyTarget = getDailyTarget(claimLog, claimsGoal, workdays)
-  saveToStorage("claimsGoal", claimsGoal);
-  dispatch(setClaimsGoal(claimsGoal));
+  const dailyTarget = new DailyTarget(claimLog, claimsGoal, workdays).get();
+  const goal = new ClaimsGoal();
+  goal.setClaimsGoal(claimsGoal);
+  dispatch(setClaimsGoal(goal.get()));
   dispatch(setDailyTarget(dailyTarget));
 }
 
 export const updateWorkdays = (month, day) => (dispatch, getState) => {
   day = new Date(day).toISOString();
-  let workdays = setStorage(JSON.parse(window.localStorage.getItem("workdays")), {});
-  const workdaysByMonth = workdays[month];
-  if(workdaysByMonth === undefined) {
-    workdays[month] = findWeekdays(month, 2019);
-  }
-  const dayAlreadyInWorkdays = workdaysByMonth.includes(day);
-  if(dayAlreadyInWorkdays) {
-    const index = workdaysByMonth.indexOf(day)
-    workdaysByMonth.splice(index, 1);
-  } else {
-    workdaysByMonth.push(day)
-  }
-  workdays[month] = workdaysByMonth;
-  saveToStorage("workdays", workdays);
+  const workdays = new Workdays();
+  workdays.updateWorkDays(month, day);
   const { claimLog, claimsGoal } = getState().claims;
-  const dailyTarget = getDailyTarget(claimLog, claimsGoal, workdays);
-  dispatch(setWorkdays(workdays));
+  const dailyTarget = new DailyTarget(claimLog, claimsGoal, workdays).get();
+  dispatch(setWorkdays(workdays.get()));
   dispatch(setDailyTarget(dailyTarget));
-
 }
 
 const SET_CLAIMLOG = 'SET_CLAIMLOG';
@@ -51,10 +41,10 @@ export const setClaimLog = (claimLog) => ({
   claimLog,
 });
 
-const SET_CLAIMTOTAL = 'SET_CLAIMTOTAL';
-export const setClaimTotal = (claimTotal) => ({
-  type: SET_CLAIMTOTAL,
-  claimTotal,
+const SET_CLAIMSTOTAL = 'SET_CLAIMSTOTAL';
+export const setClaimsTotal = (claimsTotal) => ({
+  type: SET_CLAIMSTOTAL,
+  claimsTotal,
 });
 
 const SET_CLAIMSGOAL = 'SET_CLAIMSGOAL';

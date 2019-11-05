@@ -12,14 +12,9 @@ import AddClaimButton from '../ClaimCount/AddClaimButton';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../actions';
-import { pends, fepPends } from '../../data/pends';
-import { suggestions } from '../../utils/AutoComplete';
 import { savePoliciesToStorage } from '../../data/medPolicies';
 import { fepPolicies } from '../../data/fepPolicies';
 import { medPolicies } from '../../data/medPolicies';
-import * as savingPendsUtils from '../../utils/ReviewNotes/savingPends'
-
-const setPendOrder = savingPendsUtils.setPendOrder;
 
 const styles = theme => ({
   '@global': {
@@ -115,8 +110,6 @@ class ReviewNotes extends React.Component {
     const options = {};
     options.claimTypeOptions = this.props.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
     options.claimSystemOptions = this.props.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
-    const pendOptions = this.props.values.lob === "FEP" ? [...fepPends, ...pends] : pends;
-    const pendSuggestions = suggestions(setPendOrder(pendOptions, this.props.values.lob));
     const reviewProps = {
       values: this.props.values,
       reviewed: this.state.reviewed,
@@ -126,7 +119,6 @@ class ReviewNotes extends React.Component {
       onLinkClick: this.handleLinkClick,
       linked: this.state.linked,
       serviceDisabled: this.state.serviceDisabled,
-      pendSuggestions,
       classes,
       options,
     }
@@ -169,6 +161,7 @@ class ReviewNotes extends React.Component {
 }
 const mapStateToProps = (state) => ({
   values: state.values,
+  options: state.suggestions.options
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(ReviewNotes))

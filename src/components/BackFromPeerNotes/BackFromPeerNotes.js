@@ -3,6 +3,7 @@ import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import { FaxTransmission } from '../Notes/FaxTransmission';
 import { setDenialMessage } from '../../utils/Notes/setDenialMessage';
+import { connect } from 'react-redux';
 
 export const Notes = (props) => {
   const denialMessage = setDenialMessage(props.values);
@@ -18,4 +19,8 @@ export const Notes = (props) => {
   )  
 }
 
-export default Notes;
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(Notes)

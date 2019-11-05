@@ -58,7 +58,7 @@ function BackFromPeer(props) {
 
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
-      <BackFromPeerNotes values={props.values} />
+      <BackFromPeerNotes />
     </div>
     </div>
   );

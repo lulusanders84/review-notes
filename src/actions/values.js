@@ -2,14 +2,12 @@ import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
 
 const savePends = savingPendsUtils.savePends;
 export const handleInputs = value => (dispatch, getState) => {
-  console.log(value)
   dispatch(setValue(value));
   const values = getState().values;
   const newValues = handleInputsChange(value, values);
   newValues.forEach(value => {
     dispatch(setValue(value))
   })
-  console.log(getState().values)
 }
 const handleInputsChange = (value, values) => {
   const returnObj = handleInputsSwitch(

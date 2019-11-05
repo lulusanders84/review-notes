@@ -45,7 +45,7 @@ function ClaimTable(props) {
 
 const mapStateToProps = (state) => ({
   claimLog: state.claims.claimLog,
-  claimTotal: state.claims.claimTotal,
+  claimsTotal: state.claims.claimsTotal,
   dailyTarget: state.claims.dailyTarget,
   claimsGoal: state.claims.claimsGoal
 });

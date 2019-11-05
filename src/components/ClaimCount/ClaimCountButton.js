@@ -2,7 +2,7 @@ import React from 'react';
 import {Typography, Tooltip} from '@material-ui/core';
 import {makeStyles, createMuiTheme} from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-
+import { connect } from 'react-redux';
 
 const theme = createMuiTheme({
   typography: {
@@ -30,11 +30,11 @@ const useStyles = makeStyles({
 
   }
 })
-export default function ClaimCountButton(props) {
+export function ClaimCountButton(props) {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <Tooltip title={`per day target: ${props.monthTarget}`}>
+      <Tooltip title={`per day target: ${props.claimsGoal}`}>
         <div 
           className={classes.button}
         >
@@ -44,7 +44,7 @@ export default function ClaimCountButton(props) {
             variant="h2"
             color="inherit"
           >
-            {props.claimTotal}
+            {props.claimsTotal}
           </Typography>
           <Typography
             className={classes.goal}
@@ -52,12 +52,20 @@ export default function ClaimCountButton(props) {
             variant="h2"
             color="inherit"
           >
-            {props.dayTarget}
+            {props.dailyTarget}
           </Typography>
         </div>        
       </Tooltip>
 
-    </ThemeProvider>
-    
+    </ThemeProvider>    
   )
 }
+
+const mapStateToProps = (state) => ({
+  claimLog: state.claims.claimLog,
+  claimsTotal: state.claims.claimsTotal,
+  dailyTarget: state.claims.dailyTarget,
+  claimsGoal: state.claims.claimsGoal
+});
+
+export default connect(mapStateToProps)(ClaimCountButton)

@@ -6,7 +6,7 @@ import MedPolicy from '../Notes/MedPolicy';
 import { FaxTransmission } from '../Notes/FaxTransmission';
 import { ClinicalRationale } from '../Notes/ClinicalRationale';
 import * as utils from '../../utils/Notes';
-
+import { connect } from 'react-redux';
 
 export const GeneralNotes = (props) => {
   const values = utils.formatValues(props.values);
@@ -30,4 +30,8 @@ export const GeneralNotes = (props) => {
   )  
 }
 
-export default GeneralNotes;
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(GeneralNotes)

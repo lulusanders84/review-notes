@@ -303,6 +303,9 @@ function ReactSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [options, setOptions] = React.useState(props.suggestions)
+  React.useEffect(() => {
+    setOptions(props.suggestions)
+  }, [props.suggestions])
   function handleChangeMulti(value) {
     const newValue = {name: props.id, value,}
     props.updateValue(newValue)

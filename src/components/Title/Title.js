@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ReviewNotesTitle from './ReviewNotesTitle';
-import ClaimCount from '../ClaimCount/ClaimCount';
+import ClaimCountButton from '../ClaimCount/ClaimCountButton';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ClaimLogTitle from './ClaimLogTitle';
@@ -54,7 +54,7 @@ export default function Title(props) {
           tabIndex={1}
           label={props.tabValue === 1 
             ?<ClaimLogTitle />
-            :<ClaimCount />}
+            :<ClaimCountButton />}
         />
       </Tabs>
   )
