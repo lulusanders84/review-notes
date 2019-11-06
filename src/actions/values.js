@@ -1,7 +1,11 @@
 import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
+import { formatToSentence } from '../utils/Notes/formatToSentence';
 
 const savePends = savingPendsUtils.savePends;
 export const handleInputs = value => (dispatch, getState) => {
+  if(value.name === "benefits" || value.name === "fepBenefits") {
+    value = handleBenefits(value);
+  }
   dispatch(setValue(value));
   const values = getState().values;
   const newValues = handleInputsChange(value, values);
@@ -78,6 +82,10 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
   return returnObj;
 }
 
+const handleBenefits = (value) => {
+  const { name } = value;
+  return {name, value: formatToSentence(value.value)}
+}
 const handleInfo = (policies) => {
     return policies.length !== 0 ? getInfo(policies) : ""
 }
