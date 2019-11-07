@@ -45,8 +45,8 @@ class PolicyInput extends React.Component {
     const codes = utils.formatCodes(code);
     const policies = reviewNotesUtils.setPolicyByCode(codes, this.props.values.lob);
     if(policies) {
-      const policyNames = this.setPolicyNames(policies);
-      this.addPolicyNames(policyNames)
+      const policiesInValues = this.props.values.policy;
+      this.props.handleInputs({name: "policy", value:[...policiesInValues, ...policies]})
     }
   }
   onPolicyChange = (policy) => {
@@ -62,6 +62,7 @@ class PolicyInput extends React.Component {
     })
       ? this.setState({interqual: true})
       : this.setState({interqual: false})
+    console.log(policy, policies);
     this.props.handleInputs({name: "policy", value: policies})
   }
   setPolicyNames = (policies) => {
@@ -93,7 +94,7 @@ class PolicyInput extends React.Component {
   render() {
     return (
       <div>          
-        <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.onPolicyChange} />
+        <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.props.handleInputs} />
         <InterQualInput visible={this.state.interqual} values={this.props.values} handleInputs={this.props.handleInputs} />  
       </div>
     );

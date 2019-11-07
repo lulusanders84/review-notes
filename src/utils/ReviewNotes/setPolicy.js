@@ -4,11 +4,12 @@ import { medPolicies } from '../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
   const isJ3490 = codes.includes("J3490");
-  return codes && !isJ3490
+  const policies = codes && !isJ3490
     ? lob === "FEP" 
       ? fep(codes)
       : bcbsmn(codes)
     : null
+  return setValueAndLabel(policies);
 }
 
 const bcbsmn = (codes) => {
@@ -37,6 +38,14 @@ const fep = (codes) => {
     })
     return acc;
   }, []) 
+}
+
+const setValueAndLabel = (policies) => {
+  policies.forEach(policy => {
+    policy.value = policy["Policy #"];
+    policy.label = `${policy["Policy #"]}: ${policy["Full Policy"]}`
+  })
+  return policies;
 }
 // export const setPolicyByNumber = (policies, oldPolicies) => {
 //   if(policies.length !==0) {
@@ -72,7 +81,9 @@ export const mergePolicyFromCodesArray = (newPoliciesFromCodes, policies) => {
 }
 
 export const mergePolicyNameArrays = (newPolicyNames, policyNames) => {
+  
   const allPolicyNames = [...newPolicyNames, ...policyNames];
+  console.log(allPolicyNames);
   let policyNumbers = new Set(allPolicyNames.map(name => { return name.value}))
   return Array.from(policyNumbers).map(number => {
     return allPolicyNames.find(name => {
@@ -84,14 +95,18 @@ export const getPolicies = (policyNames) => {
   const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
   const bcbsmnPolicies = window.localStorage.getItem("bcbsmnPolicies") ? JSON.parse(window.localStorage.getItem("bcbsmnPolicies")) : medPolicies;
   const fullPolicies = [...bcbsmnPolicies, ...fepPolicies]; 
-  return policyNames.map(policyName => {
-    const policy = fullPolicies.find(policy => {
-      return policy["Policy #"] === policyName.value;
+  if(policyNames) {
+    return policyNames.map(policyName => {
+      if(!policyName["Policy #"]){
+        const policy = fullPolicies.find(policy => {
+          return policy["Policy #"] === policyName.value;
+        })
+        policy.value = policyName.value;
+        policy.label = policyName.label;
+        return policy;
+      } else return policyName;    
     })
-    policy.value = policyName.value;
-    policy.label = policyName.label;
-    return policy;
-  })
+  } else return policyNames;
 }
 
 

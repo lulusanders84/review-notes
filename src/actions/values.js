@@ -1,10 +1,15 @@
 import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
 import { formatToSentence } from '../utils/Notes/formatToSentence';
+import { getPolicies } from '../utils/ReviewNotes/setPolicy';
 
 const savePends = savingPendsUtils.savePends;
 export const handleInputs = value => (dispatch, getState) => {
   if(value.name === "benefits" || value.name === "fepBenefits") {
     value = handleBenefits(value);
+  }
+  if(value.name === "policy") {
+    const policiesSet = new Set(getPolicies(value.value));
+    value.value = Array.from(policiesSet)
   }
   dispatch(setValue(value));
   const values = getState().values;
