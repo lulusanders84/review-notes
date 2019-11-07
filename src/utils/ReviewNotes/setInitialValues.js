@@ -16,6 +16,7 @@ export const initialValues = {
     allowable: "$",
     serviceType: "procedure",
     drugReviewType: "new",
+    drugReview: false,
     diagnosis: "",
     provider: "",
     proType: "professional",

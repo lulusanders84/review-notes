@@ -21,7 +21,7 @@ export default function MedClaimReviewNote(props) {
         <br />Clinician name/Extension: {values.name}
         <br />LOB: {utils.capWord(values.lob)}
         <br />Service: {utils.formatToName(values.service.toLowerCase())}
-        <br />Drug Request: {props.values.drugReview ? utils.capWord(props.values.drugReviewType) : "N/A"}
+        <br />Drug Request: {props.values.serviceType === "drug" ? props.values.reviewed === "no" ? utils.capWord(props.values.drugReviewType): "N/A (following prior decision)" : "N/A"}
         <br />Suspended codes: {values.code.toUpperCase()}
         <br />Suspension: {values.pend ? values.pend.map(pend => { return pend.value }).join(" / ") : values.pend}
         <br />PA on file: {utils.setHistory(values, "PA")}
