@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => (styles));
 
 export const FaxTransmission = (props) => {
     const classes = useStyles();
-    console.log(props);
     return (
         <Card>
         <CardContent className={{root: classes.root}}>

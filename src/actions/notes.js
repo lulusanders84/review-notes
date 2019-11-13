@@ -2,6 +2,7 @@ import React from 'react';
 import { getClaimNoteData } from '../utils/ClaimNote/getClaimNoteData';
 import { referReasons } from '../data/referReasons';
 import { getFullnames, getQueue } from '../utils/Notes';
+import { setInterqual } from '../utils/Notes/setPolicyString';
 import { getInfoRequestData } from '../utils/InfoRequestNote/getInfoRequestData';
 import { getMedClaimReviewData } from '../utils/MedClaimReviewNote/getMedClaimReviewData';
 
@@ -29,7 +30,9 @@ export const setInfoRequestData = (values) => (dispatch) => {
 }
 export const setPolicyStringAction = (values) => (dispatch) => {
   const policyString = values.policy.length > 0 
-    ? values.policy.map(policy => {return policy["Policy #"]}).join(" / ") 
+    ? values.policy.some( policy => {return policy["Policy #"] === "InterQual"})
+      ? setInterqual(values, "med policy")
+      : values.policy.map(policy => {return policy["Policy #"]}).join(" / ") 
     : "N/A";
   dispatch(setPolicyString(policyString));
 
@@ -40,7 +43,6 @@ export const setQueueAction = (values) => (dispatch) => {
 }
 
 export const referReasonsAction = (values) => (dispatch) => {
-  console.log(values, "running refer reasons");
   const reasons = referReasons.map((option, index) => {
     const selected = values.referReason === option ? "X" : "";
     return <li key={index}> {selected} {option} </li>

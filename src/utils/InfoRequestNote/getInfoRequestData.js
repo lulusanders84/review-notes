@@ -1,6 +1,8 @@
+import { setPolicyString } from '../Notes/setPolicyString';
+
 export const getInfoRequestData = (values) => {
   const data = {
-    policyString: setPolicyString(values),
+    policyString: setPolicyString(values, "med policy"),
     code: setCode(values),
     pend: setPend(values),
     related: setRelated(values),
@@ -9,14 +11,6 @@ export const getInfoRequestData = (values) => {
   return data;
 }
 
-export const setPolicyString = (values) => {
-  if(Array.isArray(values.policy)) {
-   return values.policy.length > 0 
-    ? values.policy.map(policy => {return policy["Policy #"]}).join(" / ") 
-    : "N/A";  
-  } else return values.policy;
-  
-}
 export const setCode = (values) => {
   return values.code.toUpperCase();
 }

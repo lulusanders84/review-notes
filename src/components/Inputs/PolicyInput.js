@@ -10,7 +10,6 @@ import { policySuggestions } from '../../utils/AutoComplete';
 import ReactSelect from './ReactSelect';
 import * as utils from '../../utils';
 import * as reviewNotesUtils from '../../utils/ReviewNotes/';
-import { mergePolicyNameArrays } from '../../utils/ReviewNotes/setPolicy';
 import InterQualInput from './InterQualInput';
 import { connect } from 'react-redux';
 
@@ -49,41 +48,10 @@ class PolicyInput extends React.Component {
       this.props.handleInputs({name: "policy", value:[...policiesInValues, ...policies]})
     }
   }
-  onPolicyChange = (policy) => {
-    policy = policy.value;
-    let policies;
-    if(policy){
-      policies = reviewNotesUtils.getPolicies(policy)
-    } else {
-      policies = [];
-    } 
-    policies.some(policy => {
-      return policy["Policy #"] === "InterQual";
-    })
-      ? this.setState({interqual: true})
-      : this.setState({interqual: false})
-    this.props.handleInputs({name: "policy", value: policies})
-  }
-  setPolicyNames = (policies) => {
-    return policies.map(policy => {
-      const number = policy["Policy #"];
-      const name = policy["Full Policy"];
-      const href = policy["href"]
-      return policy.policyName 
-        ? policy.policyName 
-        : {value: number, label: number, name, href,}})
-  }
-  addPolicyNames = (policyNames) => {
-    const allPolicyNames = mergePolicyNameArrays(policyNames, this.state.policyNames);
-    const policies = reviewNotesUtils.getPolicies(allPolicyNames);
-    this.props.handleInputs({name: "policy", value: policies})
-    this.setState({policyNames: allPolicyNames})
-
-  }
   componentDidMount() {
       this.setState({code: this.props.values.code})
   }
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if(this.state.code !== this.props.values.code) {
         this.setState({code: this.props.values.code});
         this.handleCodeSelect(this.props.values.code);
@@ -94,7 +62,7 @@ class PolicyInput extends React.Component {
     return (
       <div>          
         <ReactSelect id="policy" suggestions={policySuggestions(this.props.values.lob)} label="Medical Policy" updateValue={this.props.handleInputs} />
-        <InterQualInput visible={this.state.interqual} values={this.props.values} handleInputs={this.props.handleInputs} />  
+        <InterQualInput visible={this.props.values.interqual} values={this.props.values} handleInputs={this.props.handleInputs} />  
       </div>
     );
   }

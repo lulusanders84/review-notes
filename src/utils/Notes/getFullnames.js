@@ -8,7 +8,7 @@ export const getFullnames = (values) => {
     const name = policy["Full Policy"];
     const isNotNumber = isNaN(number.charAt(0))
     const policyOrigin = isNotNumber ? "Blue Cross Blue Shield of Minnesota Medical Policy for" : "Federal Employee Program (FEP) Medical Policy for"
-    return number === "InterQual"
+    return values.interqual
       ? <li key={index}>{interqual}</li>
       : <li key={index}>{number} {policyOrigin} {name}</li>
   })

@@ -1,5 +1,5 @@
 import * as utils from '../../utils/Notes';
-import { setPolicyString, setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
+import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
 
 export const getMedClaimReviewData = (values) => {
   const data = {
@@ -8,7 +8,7 @@ export const getMedClaimReviewData = (values) => {
     drugRequest: setDrugRequest(values),
     code: setCode(values),
     pend: setPend(values),
-    policyString: setPolicyString(values),
+    policyString: utils.setPolicyString(values, "med policy"),
     pa: setPa(values),
     claimHistory: setClaimHistory(values),
     benefits: setBenefits(values),
