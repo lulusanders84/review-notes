@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 const useStyles = makeStyles(() => (styles));
 
 export const ClinicalRationale = (props) => {
+    console.log(props);
     const classes = useStyles();
     return (
         <Card>
@@ -22,6 +23,7 @@ export const ClinicalRationale = (props) => {
 
 const mapStateToProps = (state) => ({
     values: state.values,
+    notes: state.notes
   });
   
   export default connect(mapStateToProps)(ClinicalRationale)
