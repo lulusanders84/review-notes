@@ -40,6 +40,7 @@ export const setQueueAction = (values) => (dispatch) => {
 }
 
 export const referReasonsAction = (values) => (dispatch) => {
+  console.log(values, "running refer reasons");
   const reasons = referReasons.map((option, index) => {
     const selected = values.referReason === option ? "X" : "";
     return <li key={index}> {selected} {option} </li>
