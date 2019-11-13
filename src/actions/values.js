@@ -35,7 +35,8 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
   let returnObj = {};
   switch(value.name) {
       case "policy":
-        returnObj.info = info(value.value)
+        returnObj.info = info(value.value);
+        returnObj.interqual = handleInterqual(value);
         break;
       case "pa-deter":
         if(values["pa-match"] === "yes") {
@@ -86,7 +87,11 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
     }
   return returnObj;
 }
-
+const handleInterqual = (policy) => {
+  return policy.value.some(policy => {
+    return policy["Policy #"] === "InterQual";
+  })
+}
 const handleBenefits = (value) => {
   const { name } = value;
   return {name, value: formatToSentence(value.value)}
