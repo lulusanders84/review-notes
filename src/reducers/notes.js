@@ -21,7 +21,7 @@ const reducer = (state=initialState, action) => {
       return Object.assign({}, state, {
         fullnames,
       })  
-    case 'SET_REFERREASONS':
+    case 'SET_REFER_REASONS':
       const { reasons: referReasons } = action;
       return Object.assign({}, state, {
         referReasons,
