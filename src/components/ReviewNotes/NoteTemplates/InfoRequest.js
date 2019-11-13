@@ -56,7 +56,7 @@ function InfoRequest(props) {
       </Button>
       <Divider variant="fullWidth" />
       <div className={classes.notes}>
-        <InfoRequestNotes values={props.values} />
+        <InfoRequestNotes />
       </div>
       </div>
   );

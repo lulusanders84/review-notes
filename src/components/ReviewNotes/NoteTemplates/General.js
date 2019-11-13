@@ -72,7 +72,7 @@ function General(props) {
       }
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
-      <GeneralNotes drugReview={props.values.drugReview}  />
+      <GeneralNotes />
     </div>
     </div>
   );

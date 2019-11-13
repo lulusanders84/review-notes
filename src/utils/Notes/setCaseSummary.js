@@ -2,12 +2,11 @@ import React from 'react';
 import { vowels } from "./vowels";
 import { formatToName } from "./formatToName"; 
 import { setPricingNote } from "./setPricingNote";
-import { saveFormatting } from "./saveFormatting";
 
 export const setCaseSummary = (values) => {
     const { age, service, serviceType, dos } = values;
-    const provider = formatToName(values.provider.toLowerCase());
-    const diagnosis = values.diagnosis.toLowerCase();
+    const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
+    const diagnosis = values.diagnosis !== undefined ? values.diagnosis.toLowerCase() : "";
     let serviceVerb;
     let proVerb; 
     switch(serviceType) {
@@ -32,7 +31,7 @@ export const setCaseSummary = (values) => {
     const checkServiceFirstChar = vowels.includes(service.charAt(0).toLowerCase());
     serviceVerb = serviceType === "DME" && checkServiceFirstChar ? serviceVerb + "n" : serviceVerb;
     const proTypeVerb = values.proType === "professional" ? "by" : "at";
-    const summary = saveFormatting(values.summary);
+    const summary = values.summary;
     return (
         <span>
         {age}-year old member {serviceVerb} {service.toLowerCase()} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. 

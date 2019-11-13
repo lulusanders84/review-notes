@@ -43,7 +43,7 @@ function Misroute(props) {
       <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" onBlur={props.handleInputs} />
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
-      <MisrouteNotes values={props.values}  />
+      <MisrouteNotes />
     </div>
     </div>
   );

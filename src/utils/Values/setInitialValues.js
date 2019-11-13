@@ -46,7 +46,8 @@ export const initialValues = {
     sccf: "",
     iqYear: "",
     iqLoc: "",
-    iqSubset: ""
+    iqSubset: "",
+    noteType: 1
 }
 
 

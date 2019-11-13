@@ -1,15 +1,18 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as utils from '../../utils/Notes';
 import styles from '../../styles/noteStyles';
+import { setQueueAction } from '../../actions/notes';
+import { connect } from 'react-redux';
 
-const useStyles = makeStyles(theme => (styles));
+const useStyles = makeStyles(() => (styles));
 
-export default function ClaimNote(props) {
-  const values = props.values;
+export function Routing(props) {
+  const { values, queue, dispatch } = props;
   const classes = useStyles();
-  const queue = utils.setQueue(values);
+  React.useEffect(() => {
+    dispatch(setQueueAction(values));
+  }, [dispatch, values])
   return (
     <Card>
     <CardContent classes={{root: classes.root}}>
@@ -22,3 +25,9 @@ export default function ClaimNote(props) {
     </Card>
   )
 }
+const mapStateToProps = (state) => ({
+  values: state.values,
+  queue: state.notes.queue
+});
+
+export default connect(mapStateToProps)(Routing)

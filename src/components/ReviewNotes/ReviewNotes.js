@@ -146,7 +146,7 @@ class ReviewNotes extends React.Component {
         <CssBaseline />
         <ScrollUpButton />        
         <div className={classes.paper}>       
-          <Tabs value={this.state.value} setIndex={this.setIndex} />
+          <Tabs value={this.state.value} setIndex={this.setIndex} handleInputs={this.handleInputs} />
           <form className={classes.form} noValidate>
             <Grid container alignContent="center" justify="center">
               {noteType()}
