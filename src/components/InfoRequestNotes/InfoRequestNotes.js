@@ -2,34 +2,28 @@ import React from 'react';
 import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import InfoRequest from './InfoRequest';
-import Info from './Info';
-import * as utils from '../../utils/';
 import LetterNote from './LetterNote';
-import { setDenialMessage } from '../../utils/Notes/setDenialMessage';
+import { handleInputs } from '../../actions';
+import { connect } from 'react-redux';
 
 export const InfoRequestNotes = (props) => {
-  const faxAndDate =() => {
-    return (
-      <div>
-        Return Fax: 651-662-1235
-        <br />Return Due Date: {utils.getTwoWeeksFromNow()}
-      </div>
-    )   
-  }
-  let values = props.values;
-  values.deter = "deny";
-  values.rationale = "Information Request";
-  values.denialType = "entire claim";
-  const denialMessage = setDenialMessage(values);
-  const info = <Info info={props.values.info} values={values} />
+  const { dispatch } = props;
+  React.useEffect(() => {
+    dispatch(handleInputs({name: "deter", value: "deny"}))
+    dispatch(handleInputs({name: "rationale", value: "Information Request"}))
+    dispatch(handleInputs({name: "denialType", value: "entire claim"}))
+  }, [dispatch])
+  
   return (
     <div>
-      <InfoRequest values={props.values} info={info} /> 
-      <ClaimNote values={values} claimNoteAddendum={faxAndDate()} info={info} denialMessage={denialMessage} />
-      <LetterNote faxAndDate={faxAndDate()} info={info} values={values} />
-      <Routing values={props.values} /> 
+      <InfoRequest /> 
+      <ClaimNote info={true} />
+      <LetterNote />
+      <Routing /> 
     </div>  
   )  
 }
-
-export default InfoRequestNotes;
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+export default connect(mapStateToProps)(InfoRequestNotes)

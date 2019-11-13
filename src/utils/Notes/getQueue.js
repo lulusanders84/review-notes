@@ -1,6 +1,6 @@
 import { queues} from '../../data/queues';
 
-export const setQueue = (values) => {
+export const getQueue = (values) => {
     let {claimType, claimSystem, special, lob } = values;
     const system = claimSystem.toLowerCase() === "ocwa" ? "live" : "adjustment";
     special = special === "N/A" ? false : special;

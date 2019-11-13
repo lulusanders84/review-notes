@@ -1,5 +1,5 @@
 import React from 'react';
-import MedClaimReviewNote from '../Notes/MedClaimReviewNote';
+import MedClaimReviewNote from '../Notes/MedClaimReviewNote/MedClaimReviewNote';
 import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import MedPolicy from '../Notes/MedPolicy';
@@ -10,23 +10,21 @@ import { connect } from 'react-redux';
 
 export const GeneralNotes = (props) => {
   const values = utils.formatValues(props.values);
-  const denialMessage = utils.setDenialMessage(values);
   return (
     <div>
-      <MedClaimReviewNote values={values} drugReview={props.drugReview} denialMessage={denialMessage} />
-      <ClaimNote values={values} denialMessage={denialMessage} />
+      <MedClaimReviewNote />
+      <ClaimNote />
       {values.policy.length !== 0
-        ? <MedPolicy values={values} />   
+        ? <MedPolicy />   
         : null }   
       {values.rationale === "Not Medically Necessary" || values.rationale === "Experimental/Investigative" 
-      ? <FaxTransmission values={values} />
+      ? <FaxTransmission />
       : null }
       {values["pa-deter"] === "denied" && values["clinical-rationale"]
-        ? <ClinicalRationale values={values} />
+        ? <ClinicalRationale />
         : null }
-      <Routing values={values} />        
-    </div>
-    
+      <Routing />        
+    </div> 
   )  
 }
 

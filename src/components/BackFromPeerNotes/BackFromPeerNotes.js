@@ -1,21 +1,30 @@
 import React from 'react';
 import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
-import { FaxTransmission } from '../Notes/FaxTransmission';
-import { setDenialMessage } from '../../utils/Notes/setDenialMessage';
+import { Card, CardContent, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import styles from '../../styles/noteStyles';
 import { connect } from 'react-redux';
 
+const useStyles = makeStyles(() => (styles));
+
 export const Notes = (props) => {
-  const denialMessage = setDenialMessage(props.values);
+  const classes = useStyles();
   return (
     <div>
-      <ClaimNote values={props.values} denialMessage={denialMessage} />    
+      <ClaimNote />    
       {props.values.deter === "deny" 
-      ? <FaxTransmission values={props.values} />
+      ? <Card>
+          <CardContent className={{root: classes.root}}>
+            <Typography component="h3" variant="h6">Fax Transmission</Typography>
+            <div contentEditable className={classes.notes}>
+                REQ-{props.values.req}: Fax not required for claim denials. Letter generated.
+            </div> 
+          </CardContent>
+        </Card>
       : null }
-      <Routing values={props.values} />        
-    </div>
-    
+      <Routing />        
+    </div> 
   )  
 }
 

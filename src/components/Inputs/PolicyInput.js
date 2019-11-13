@@ -62,7 +62,6 @@ class PolicyInput extends React.Component {
     })
       ? this.setState({interqual: true})
       : this.setState({interqual: false})
-    console.log(policy, policies);
     this.props.handleInputs({name: "policy", value: policies})
   }
   setPolicyNames = (policies) => {

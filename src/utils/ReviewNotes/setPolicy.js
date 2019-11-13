@@ -83,7 +83,6 @@ export const mergePolicyFromCodesArray = (newPoliciesFromCodes, policies) => {
 export const mergePolicyNameArrays = (newPolicyNames, policyNames) => {
   
   const allPolicyNames = [...newPolicyNames, ...policyNames];
-  console.log(allPolicyNames);
   let policyNumbers = new Set(allPolicyNames.map(name => { return name.value}))
   return Array.from(policyNumbers).map(number => {
     return allPolicyNames.find(name => {
