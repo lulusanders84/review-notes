@@ -17,6 +17,7 @@ import PricingInputs from '../../Inputs/PricingInputs';
 import PolicyInput from '../../Inputs/PolicyInput';
 import GeneralNotes from '../../GeneralNotes/GeneralNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
+import DoseInput from '../../Inputs/DoseInput';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import PendInput from '../../Inputs/PendInput';
 import ProviderType from '../../Inputs/ProviderType';
@@ -45,8 +46,11 @@ function General(props) {
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
       <RadioInput id="serviceType" options={["drug", "procedure", "DME"]} label="Service Type" updateValue={props.handleInputs} />
       <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={sortSuggestionsAlphabetically(JSON.parse(window.localStorage.getItem("type")))} value={{value:props.values.type, label: props.values.type}} />
-      { props.values.drugReview ?
-        <RadioInput id="drugReviewType" options={["new", "renewal"]} label="Drug Review Type" updateValue={props.handleInputs}/>
+      {props.values.drugReview  && props.values.lob === "commercial"
+        ? <DoseInput handleInputs={props.handleInputs} />
+        : null }
+      {props.values.drugReview 
+        ? <RadioInput id="drugReviewType" options={["new", "renewal"]} label="Drug Review Type" updateValue={props.handleInputs}/>
         : null } 
       {props.values.claimType === "local" && props.values.lob === "commercial" 
         ? <RadioInput id="paList" options={["no", "yes"]} label="On PA List?" updateValue={props.handleInputs}/>

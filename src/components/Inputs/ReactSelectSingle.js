@@ -281,7 +281,7 @@ const components = {
 };
 
 function IntegrationReactSelect(props) {
-  const name = props.values[props.id]
+  const name = props.values[props.id];
   const initialValue = {value: name, label: name}
   const classes = useStyles();
   const theme = useTheme();

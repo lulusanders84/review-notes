@@ -47,7 +47,8 @@ export const initialValues = {
     sccf: "",
     iqYear: "",
     iqLoc: "",
-    iqSubset: ""
+    iqSubset: "",
+    doseUnit: "mg"
 }
 
 
