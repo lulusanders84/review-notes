@@ -13,7 +13,6 @@ export const GeneralNotes = (props) => {
   const values = utils.formatValues(props.values);
   return (
     <div>
-      
       <MedClaimReviewNote />
       {values.policy.length !== 0
         ? <MedPolicy />   
@@ -29,8 +28,7 @@ export const GeneralNotes = (props) => {
       : null }
       {values["pa-deter"] === "denied" && values["clinical-rationale"]
         ? <ClinicalRationale values={props.values} />
-        : null }
-             
+        : null }          
     </div> 
   )  
 }
