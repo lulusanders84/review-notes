@@ -1,5 +1,9 @@
 import { formatToName } from "./Notes";
 
-export function createSelectValue(value) {
-    return {label: formatToName(value), value, };
+export function createSelectValue(value, format) {
+    const label = format === "lower"
+        ? value
+        : formatToName(value);
+
+    return {label, value, };
 }

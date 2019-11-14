@@ -47,7 +47,8 @@ export const initialValues = {
     iqYear: "",
     iqLoc: "",
     iqSubset: "",
-    noteType: 1
+    noteType: 1,
+    doseUnit: "mg"
 }
 
 

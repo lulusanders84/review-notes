@@ -32,9 +32,12 @@ export const setCaseSummary = (values) => {
     serviceVerb = serviceType === "DME" && checkServiceFirstChar ? serviceVerb + "n" : serviceVerb;
     const proTypeVerb = values.proType === "professional" ? "by" : "at";
     const summary = values.summary;
+    const dose = values.drugReview && values.lob === "commercial"
+        ? `(${values.dose} ${values.doseUnit})`
+        : "";
     return (
         <span>
-        {age}-year old member {serviceVerb} {service.toLowerCase()} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. 
+        {age}-year old member {serviceVerb} {service.toLowerCase()} {dose} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. 
         {summary}{pricingSummary} {modifier22}
         </span>
     )

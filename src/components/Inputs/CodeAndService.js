@@ -91,28 +91,29 @@ function CodeAndService(props) {
   }
   return (
     <div className={classes.container}>
-    <Grid container row="true" className={classes.card}>       
-        <div className={classes.inputs}>
-          <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} />
-          <TextInput 
-            id="service" 
-            placeholder="" 
-            label="Service" 
-            onBlur={props.handleInputs} 
-            disabled={props.serviceDisabled} 
-            helperText={helperText} />            
-        </div>
-        <LinkButton 
-          tooltipTitle={tooltipTitle} 
-          linkColor={linkColor} 
-          linkDisabled={linkDisabled} 
-          onLinkClick={onLinkClick} 
-          linked={linked} 
-        />
-    </Grid>
-    <div className={classes.linkLine} style={{borderColor: linkLineColor}} />
-    <div className={classes.linkLineCover} style={{width: linkLineCoverWidth}} />
+      <Grid container row="true" className={classes.card}>       
+          <div className={classes.inputs}>
+            <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} />
+            <TextInput 
+              id="service" 
+              placeholder="" 
+              label="Service" 
+              onBlur={props.handleInputs} 
+              disabled={props.serviceDisabled} 
+              helperText={helperText} />            
+          </div>
+          <LinkButton 
+            tooltipTitle={tooltipTitle} 
+            linkColor={linkColor} 
+            linkDisabled={linkDisabled} 
+            onLinkClick={onLinkClick} 
+            linked={linked} 
+          />       
+      </Grid>
+      <div className={classes.linkLine} style={{borderColor: linkLineColor}} />
+      <div className={classes.linkLineCover} style={{width: linkLineCoverWidth}} />
     </div>
+    
   )
 }
 
