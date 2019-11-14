@@ -302,7 +302,10 @@ function IntegrationReactSelect(props) {
         const formattedName = formatToName(value.value.toLowerCase());
         const newOptions = options ? [{value: formattedName, label: formattedName}, ...options] : [{value: formattedName, label: formattedName}];
         setOptions(newOptions)
-        window.localStorage.setItem(props.id, JSON.stringify(newOptions));
+        const storage = props.id === "pa-provider"
+          ? "provider"
+          : props.id;
+        window.localStorage.setItem(storage, JSON.stringify(newOptions));
       }   
     }
     const newValue = value ? value.value : null;
