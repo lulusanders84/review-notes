@@ -13,18 +13,24 @@ export const GeneralNotes = (props) => {
   const values = utils.formatValues(props.values);
   return (
     <div>
+      
       <MedClaimReviewNote />
-      <ClaimNote />
       {values.policy.length !== 0
         ? <MedPolicy />   
-        : null }   
+        : null } 
+      {values.deter !== "send to medical director"
+        ? <div>
+            <ClaimNote />
+            <Routing /> 
+          </div> 
+        : null }
       {values.rationale === "Not Medically Necessary" || values.rationale === "Experimental/Investigative" 
       ? <FaxTransmission values={props.values} />
       : null }
       {values["pa-deter"] === "denied" && values["clinical-rationale"]
         ? <ClinicalRationale values={props.values} />
         : null }
-      <Routing />        
+             
     </div> 
   )  
 }
