@@ -1,19 +1,26 @@
 import ClaimsData from '../classes/ClaimsData';
 
 const data = new ClaimsData();
-const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal } = data;
+const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal, average } = data;
+
 const initialState = {
   claimLog,
   claimsTotal,
   claimsGoal,
   workdays,
   dailyTarget,
+  average,
   month: new Date().getMonth(),
   year: new Date().getFullYear()
 }
 
 const reducer = (state=initialState, action) => {
   switch(action.type) {
+    case "SET_CLAIMSPERDAYAVERAGE":
+      const { average } = action; 
+      return Object.assign({}, state, {
+        average,
+      });
     case "SET_CLAIMLOG":
       const { claimLog } = action; 
       return Object.assign({}, state, {

@@ -4,22 +4,14 @@ import { ThemeProvider } from '@material-ui/styles';
 import { connect } from 'react-redux';
 import { theme, useStyles } from '../../styles/claimLogStyles'
 
-export function ClaimCountButton(props) {
+export function DailyTarget(props) {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <Tooltip title={`per day target: ${props.claimsGoal}`}>
+      <Tooltip title={`Daily claim goal`}>
         <div 
           className={classes.button}
         >
-          <Typography
-            className={classes.count}
-            component="div"
-            variant="h2"
-            color="inherit"
-          >
-            {props.claimsTotal}
-          </Typography>
           <Typography
             className={classes.goal}
             component="div"
@@ -39,7 +31,7 @@ const mapStateToProps = (state) => ({
   claimLog: state.claims.claimLog,
   claimsTotal: state.claims.claimsTotal,
   dailyTarget: state.claims.dailyTarget,
-  claimsGoal: state.claims.claimsGoal
+  claimsGoal: state.claims.claimsGoal,
 });
 
-export default connect(mapStateToProps)(ClaimCountButton)
+export default connect(mapStateToProps)(DailyTarget)

@@ -3,6 +3,7 @@ import DailyTarget from "../classes/DailyTarget";
 import ClaimLog from "../classes/ClaimLog";
 import ClaimsTotal from "../classes/ClaimsTotal";
 import ClaimsGoal from "../classes/ClaimsGoal";
+import ClaimsPerDayAverage from "../classes/ClaimsPerDayAverage";
 
 export const updateClaimLog = (claim) => (dispatch, getState) => {
   const claimLog = new ClaimLog();
@@ -10,10 +11,12 @@ export const updateClaimLog = (claim) => (dispatch, getState) => {
   const log = claimLog.get();
   dispatch(setClaimLog(log))
   const claimsTotal = new ClaimsTotal(log).get();
+  const average = new ClaimsPerDayAverage(log).get();
   const { claimsGoal, workdays } = getState().claims;
   const dailyTarget = new DailyTarget(log, claimsGoal, workdays).get();
   dispatch(setClaimsTotal(claimsTotal));
   dispatch(setDailyTarget(dailyTarget));
+  dispatch(setClaimsPerDayAverage(average));
 }
 
 export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
@@ -34,6 +37,18 @@ export const updateWorkdays = (month, day) => (dispatch, getState) => {
   dispatch(setWorkdays(workdays.get()));
   dispatch(setDailyTarget(dailyTarget));
 }
+
+export const updateClaimsPerDayAverage = () => (dispatch, getState) => {
+  const { claimLog } = getState().claims;
+  const average = new ClaimsPerDayAverage(claimLog).get();
+  dispatch(setClaimsPerDayAverage(average))
+}
+
+const SET_CLAIMSPERDAYAVERAGE = 'SET_CLAIMSPERDAYAVERAGE';
+export const setClaimsPerDayAverage = (average) => ({
+  type: SET_CLAIMSPERDAYAVERAGE,
+  average,
+});
 
 const SET_CLAIMLOG = 'SET_CLAIMLOG';
 export const setClaimLog = (claimLog) => ({
