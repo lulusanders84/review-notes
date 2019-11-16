@@ -1,13 +1,15 @@
 import React from 'react';
-import ClaimCountButton from '../ClaimCount/ClaimCountButton';
 import { connect } from 'react-redux';
 import ClaimTable from '../ClaimTable/ClaimTable';
 import ClaimSettings from '../ClaimSettings/ClaimSettings';
 import { makeStyles } from '@material-ui/styles';
 import Back from '@material-ui/icons/KeyboardArrowLeft'
 import Forward from '@material-ui/icons/KeyboardArrowRight'
-import { IconButton, Typography, Button } from '@material-ui/core';
+import { IconButton, Typography, Button, Grid } from '@material-ui/core';
 import { formatDate } from '../../utils';
+import { DailyClaimAvg } from '../DailyClaimAvg/DailyClaimAvg';
+import { DailyClaimTotal } from '../DailyClaimTotal/DailyClaimTotal';
+import { DailyTarget } from '../DailyTarget/DailyTarget';
 
 const useStyles = makeStyles(theme =>({
   root: { 
@@ -33,10 +35,12 @@ function ClaimLog(props) {
   }
   return (
     <div className={classes.root}>
-      <ClaimCountButton 
-      claimsTotal={props.claimsTotal} 
-      monthTarget={props.claimsGoal}
-      dayTarget={props.dailyTarget}/>
+      <Grid container row alignContent="flex-end" alignItems="center" justify="space-evenly" style={{marginTop: "10px"}}>
+        <DailyClaimTotal claimsTotal={props.claimsTotal} />
+        <DailyTarget dailyTarget={props.dailyTarget} />
+        <DailyClaimAvg average={props.average} />
+      </Grid>
+      
       <div className={classes.dateBar}>
         <IconButton>
           <Back />
@@ -68,7 +72,8 @@ const mapStateToProps = (state) => ({
   claimLog: state.claims.claimLog,
   claimsTotal: state.claims.claimsTotal,
   dailyTarget: state.claims.dailyTarget,
-  claimsGoal: state.claims.claimsGoal
+  claimsGoal: state.claims.claimsGoal,
+  average: state.claims.average,
 });
 
 export default connect(mapStateToProps)(ClaimLog)
