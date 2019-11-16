@@ -5,6 +5,7 @@ import styles from '../../styles/noteStyles';
 import Info from './Info'
 import { setClaimNoteData } from '../../actions';
 import { connect } from 'react-redux';
+import FaxAndDate from './FaxAndDate';
 
 const useStyles = makeStyles(() => (styles));
 
@@ -22,8 +23,8 @@ export function ClaimNote(props) {
       <Typography component="h3" variant="h6">Claim Note</Typography>
       <div contentEditable className={classes.notes}>
       REQ-{values.req}: {ocwaNote} {instructions} {modifier22} {remainder}
-      {props.info ? <Info />: null}
-      {props.claimNoteAddendum}
+      {props.info ? <Info /> : null}
+      {props.faxAndDate ? <FaxAndDate /> : null}
       </div>
     </CardContent>
     </Card>

@@ -17,7 +17,7 @@ export const InfoRequestNotes = (props) => {
   return (
     <div>
       <InfoRequest /> 
-      <ClaimNote info={true} />
+      <ClaimNote info={true} faxAndDate={true} />
       <LetterNote />
       <Routing /> 
     </div>  
