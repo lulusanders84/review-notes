@@ -8,7 +8,7 @@ export const setPolicyByCode = (codes, lob) => {
     ? lob === "FEP" 
       ? fep(codes)
       : bcbsmn(codes)
-    : null
+    : [];
   return setValueAndLabel(policies);
 }
 
