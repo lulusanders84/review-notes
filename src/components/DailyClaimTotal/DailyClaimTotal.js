@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import { theme, useStyles } from '../../styles/claimLogStyles'
 
 export function DailyClaimTotal(props) {
+  console.log(props.dailyClaimsTotal)
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <Tooltip title={`Total claims today`}>
+      <Tooltip title={`Total claims`}>
         <div 
           className={classes.button}
         >
@@ -18,7 +19,7 @@ export function DailyClaimTotal(props) {
             variant="h2"
             color="inherit"
           >
-            {props.claimsTotal}
+            {props.dailyClaimsTotal}
           </Typography>
         </div>        
       </Tooltip>
@@ -28,10 +29,7 @@ export function DailyClaimTotal(props) {
 }
 
 const mapStateToProps = (state) => ({
-  claimLog: state.claims.claimLog,
-  claimsTotal: state.claims.claimsTotal,
-  dailyTarget: state.claims.dailyTarget,
-  claimsGoal: state.claims.claimsGoal,
+  dailyClaimsTotal: state.claims.dailyClaimsTotal
 });
 
 export default connect(mapStateToProps)(DailyClaimTotal)

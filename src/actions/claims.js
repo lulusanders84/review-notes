@@ -4,7 +4,24 @@ import ClaimLog from "../classes/ClaimLog";
 import ClaimsTotal from "../classes/ClaimsTotal";
 import ClaimsGoal from "../classes/ClaimsGoal";
 import ClaimsPerDayAverage from "../classes/ClaimsPerDayAverage";
+import DailyClaims from "../classes/DailyClaims";
 
+export const updateClaimLogDate = (increment) => (dispatch) => {
+  const changeToDate = increment > 0
+    ? 86400000
+    : -86400000;
+  dispatch(setClaimlogDate(changeToDate));
+  dispatch(updateDailyClaims());
+}
+export const updateDailyClaims = () => (dispatch, getState) => {
+  const { claimLog, claimlogDate } = getState().claims;
+  const claims = new DailyClaims(claimLog, claimlogDate);
+  const dailyClaims = claims.get();
+  const dailyClaimsTotal = claims.getTotal();
+  console.log(dailyClaims, dailyClaimsTotal);
+  dispatch(setDailyClaims(dailyClaims));
+  dispatch(setDailyClaimsTotal(dailyClaimsTotal))
+}
 export const updateClaimLog = (claim) => (dispatch, getState) => {
   const claimLog = new ClaimLog();
   claimLog.addClaim(claim);
@@ -14,9 +31,11 @@ export const updateClaimLog = (claim) => (dispatch, getState) => {
   const average = new ClaimsPerDayAverage(log).get();
   const { claimsGoal, workdays } = getState().claims;
   const dailyTarget = new DailyTarget(log, claimsGoal, workdays).get();
+  
   dispatch(setClaimsTotal(claimsTotal));
   dispatch(setDailyTarget(dailyTarget));
   dispatch(setClaimsPerDayAverage(average));
+  dispatch(updateDailyClaims());
 }
 
 export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
@@ -44,6 +63,23 @@ export const updateClaimsPerDayAverage = () => (dispatch, getState) => {
   dispatch(setClaimsPerDayAverage(average))
 }
 
+const SET_DAILYCLAIMS = 'SET_DAILYCLAIMS';
+export const setDailyClaims = (dailyClaims) => ({
+  type: SET_DAILYCLAIMS,
+  dailyClaims,
+});
+
+const SET_DAILYCLAIMSTOTAL = 'SET_DAILYCLAIMSTOTAL';
+export const setDailyClaimsTotal = (dailyClaimsTotal) => ({
+  type: SET_DAILYCLAIMSTOTAL,
+  dailyClaimsTotal,
+});
+
+const SET_CLAIMLOG_DATE = "SET_CLAIMLOG_DATE";
+export const setClaimlogDate = (increment) => ({
+  type: SET_CLAIMLOG_DATE,
+  increment
+})
 const SET_CLAIMSPERDAYAVERAGE = 'SET_CLAIMSPERDAYAVERAGE';
 export const setClaimsPerDayAverage = (average) => ({
   type: SET_CLAIMSPERDAYAVERAGE,
