@@ -1,7 +1,8 @@
-import ClaimsTotal from './ClaimsTotal';
-import Workdays from './Workdays';
+import { ClaimsTotal,
+Workdays
+} from './';
 
-export default class ClaimsPerDayAverage {
+export class ClaimsPerDayAverage {
   constructor(claimLog) {
     const claimsTotal = new ClaimsTotal(claimLog).get();
     const workdays = new Workdays().get();

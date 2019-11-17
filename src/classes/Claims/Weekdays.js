@@ -1,4 +1,4 @@
-export default class Weekdays {
+export class Weekdays {
   constructor(month, year) {
     Object.assign(this, {
       month,

@@ -1,4 +1,4 @@
-export default class ClaimsTotal {
+export class ClaimsTotal {
   constructor(claimLog) {
     this.total = this.setClaimsTotal(claimLog);
   }

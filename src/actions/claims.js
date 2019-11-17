@@ -1,10 +1,10 @@
-import Workdays from "../classes/Workdays";
-import DailyTarget from "../classes/DailyTarget";
-import ClaimLog from "../classes/ClaimLog";
-import ClaimsTotal from "../classes/ClaimsTotal";
-import ClaimsGoal from "../classes/ClaimsGoal";
-import ClaimsPerDayAverage from "../classes/ClaimsPerDayAverage";
-import DailyClaims from "../classes/DailyClaims";
+import {Workdays,
+DailyTarget,
+ClaimLog,
+ClaimsTotal,
+ClaimsGoal,
+ClaimsPerDayAverage,
+DailyClaims } from "../classes/Claims";
 
 export const updateClaimLogDate = (increment) => (dispatch) => {
   const changeToDate = increment > 0

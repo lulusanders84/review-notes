@@ -1,6 +1,6 @@
-import { formatDate } from "../utils";
+import { formatDate } from "../../utils";
 
-export default class DailyClaims {
+export class DailyClaims {
   constructor(claimLog, today) {
     this.claims = this.setDailyClaims(claimLog, today);
   }

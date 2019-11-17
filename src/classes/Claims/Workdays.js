@@ -1,7 +1,7 @@
-import { saveToStorage } from '../utils/saveToStorage';
-import Weekdays from './Weekdays';
+import { saveToStorage } from '../../utils/saveToStorage';
+import { Weekdays } from './';
 
-export default class Workdays {
+export class Workdays {
   constructor() {
     this.days = this.getWorkdaysFromStorage();
     this.saveWorkdaysToStorage();

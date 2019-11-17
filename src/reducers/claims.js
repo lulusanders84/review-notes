@@ -1,5 +1,5 @@
-import ClaimsData from '../classes/ClaimsData';
-import DailyClaims from '../classes/DailyClaims';
+import {ClaimsData,
+DailyClaims } from '../classes/Claims';
 
 const data = new ClaimsData();
 const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal, average } = data;

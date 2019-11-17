@@ -1,11 +1,12 @@
-import ClaimLog from "./ClaimLog";
-import Workdays from "./Workdays";
-import ClaimsGoal from "./ClaimsGoal";
-import DailyTarget from "./DailyTarget";
-import ClaimsTotal from "./ClaimsTotal";
-import ClaimsPerDayAverage from "./ClaimsPerDayAverage";
+import { ClaimLog, 
+  Workdays, 
+  ClaimsGoal, 
+  DailyTarget, 
+  ClaimsTotal, 
+  ClaimsPerDayAverage} from "./";
 
-export default class ClaimsData {
+
+export class ClaimsData {
   constructor() {
     Object.assign(this, {
       claimLog: new ClaimLog().get(),

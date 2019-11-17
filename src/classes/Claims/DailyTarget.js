@@ -1,4 +1,4 @@
-export default class DailyTarget {
+export class DailyTarget {
   constructor(claimLog, claimGoal, workdays) {
     this.target = this.getDailyTarget(claimLog, claimGoal, workdays)
   }
