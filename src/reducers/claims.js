@@ -1,8 +1,11 @@
 import ClaimsData from '../classes/ClaimsData';
+import DailyClaims from '../classes/DailyClaims';
 
 const data = new ClaimsData();
 const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal, average } = data;
-
+const claims = new DailyClaims(claimLog, Date.now());
+const dailyClaims = claims.get();
+const dailyClaimsTotal = claims.getTotal();
 const initialState = {
   claimLog,
   claimsTotal,
@@ -11,11 +14,29 @@ const initialState = {
   dailyTarget,
   average,
   month: new Date().getMonth(),
-  year: new Date().getFullYear()
-}
+  year: new Date().getFullYear(),
+  claimlogDate: Date.now(),
+  dailyClaimsTotal,
+  dailyClaims,
 
+}
 const reducer = (state=initialState, action) => {
   switch(action.type) {
+    case "SET_DAILYCLAIMS":
+      const { dailyClaims } = action; 
+      return Object.assign({}, state, {
+        dailyClaims,
+      }); 
+    case "SET_DAILYCLAIMSTOTAL":
+      const { dailyClaimsTotal } = action; 
+      return Object.assign({}, state, {
+        dailyClaimsTotal,
+      }); 
+    case "SET_CLAIMLOG_DATE":
+      const { increment } = action; 
+      return Object.assign({}, state, {
+        claimlogDate: state.claimlogDate + increment
+      });    
     case "SET_CLAIMSPERDAYAVERAGE":
       const { average } = action; 
       return Object.assign({}, state, {

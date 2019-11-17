@@ -9,7 +9,7 @@ import { IconButton, Typography, Button, Grid } from '@material-ui/core';
 import { formatDate } from '../../utils';
 import { DailyClaimAvg } from '../DailyClaimAvg/DailyClaimAvg';
 import { DailyClaimTotal } from '../DailyClaimTotal/DailyClaimTotal';
-import { DailyTarget } from '../DailyTarget/DailyTarget';
+import { updateClaimLogDate } from '../../actions/claims';
 
 const useStyles = makeStyles(theme =>({
   root: { 
@@ -33,24 +33,32 @@ function ClaimLog(props) {
   const handleSettings = () => {
     setSettings(!settings);
   }
+  const handleDateChange = (increment) => {
+    props.dispatch(updateClaimLogDate(increment))
+  }
+  const createTime = (time) => {
+    return new Date(formatDate(time)).getTime();
+  }
+  const disabled = createTime(props.claimlogDate) === createTime(Date.now())
+    ? true
+    : false;
   return (
     <div className={classes.root}>
       <Grid container row alignContent="flex-end" alignItems="center" justify="space-evenly" style={{marginTop: "10px"}}>
-        <DailyClaimTotal claimsTotal={props.claimsTotal} />
-        <DailyTarget dailyTarget={props.dailyTarget} />
+        <DailyClaimTotal dailyClaimsTotal={props.dailyClaimsTotal} />
         <DailyClaimAvg average={props.average} />
       </Grid>
       
       <div className={classes.dateBar}>
-        <IconButton>
+        <IconButton onClick={e => {handleDateChange(-1)}}>
           <Back />
         </IconButton>
         <Typography
           variant="body1"
         >
-          {formatDate(Date.now())}
+          {formatDate(props.claimlogDate)}
         </Typography>
-        <IconButton>
+        <IconButton onClick={e => {handleDateChange(1)}} disabled={disabled}>
           <Forward />
         </IconButton>
       </div>
@@ -74,6 +82,8 @@ const mapStateToProps = (state) => ({
   dailyTarget: state.claims.dailyTarget,
   claimsGoal: state.claims.claimsGoal,
   average: state.claims.average,
+  claimlogDate: state.claims.claimlogDate,
+  dailyClaimsTotal: state.claims.dailyClaimsTotal
 });
 
 export default connect(mapStateToProps)(ClaimLog)
