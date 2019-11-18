@@ -1,4 +1,4 @@
-import {Workdays,
+import { Workdays,
 DailyTarget,
 ClaimLog,
 ClaimsTotal,
