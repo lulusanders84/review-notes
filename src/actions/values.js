@@ -1,6 +1,7 @@
 import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
 import { formatToSentence } from '../utils/Notes/formatToSentence';
 import { getPolicies } from '../utils/ReviewNotes/setPolicy';
+import { Code } from '../classes/Values/Values'
 
 const savePends = savingPendsUtils.savePends;
 export const handleInputs = value => (dispatch, getState) => {
@@ -23,8 +24,7 @@ export const handleInputs = value => (dispatch, getState) => {
 }
 const handleInputsChange = (value, values) => {
   const returnObj = handleInputsSwitch(
-    handleInputsChange, 
-    handleServiceSelect, 
+    handleInputsChange,  
     handleStorage, 
     handleInfo,
     value, 
@@ -34,7 +34,7 @@ const handleInputsChange = (value, values) => {
   });
 }
 
-const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values) => {
+const handleInputsSwitch = (handler, storage, info, value, values) => {
   let returnObj = {};
   switch(value.name) {
       case "policy":
@@ -58,7 +58,11 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
         if(value.value !== "approve") {handler({name: "allMet", value: false})};
         break;
       case "code":
-        serviceSelect(value);
+        const code = new Code(value);
+        code.relationships.forEach(r => {
+          returnObj[r.key] = r.relationship(code, r.key);
+        })
+        // serviceSelect(value);
         break;
       case "name":
       case "lob":

@@ -55,7 +55,6 @@ class PolicyInput extends React.Component {
     if(this.state.code !== this.props.values.code) {
         this.setState({code: this.props.values.code});
         this.handleCodeSelect(this.props.values.code);
-
     }
   }
   render() {

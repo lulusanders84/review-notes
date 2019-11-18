@@ -2,6 +2,7 @@ import * as utils from '../../utils/Notes';
 import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
 
 export const getMedClaimReviewData = (values) => {
+  console.log(values);
   const data = {
     lob: setLob(values),
     service: setService(values),

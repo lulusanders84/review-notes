@@ -61,21 +61,21 @@ function CodeAndService(props) {
   }
   const onCodeEntry = (value) => {
     props.handleInputs(value);
-    const codes = utils.formatCodes(value.value);
-    if(codes) {
-        const service = codes.reduce((acc, code) => {
-            const service = getValueFromPair("codeServicePairs", code);
-            if(service) {
-                acc.push(service);
-                linkedChanged(true);
-            } else linkedChanged(false);
-            return acc;
-        }, [])
-        props.handleInputs({name: "service", value: formatMultiServices(service)});
-    } else {
-      setLinked(false);
-      props.handleInputs({name: "service", value: ""})
-    }
+    // const codes = utils.formatCodes(value.value);
+    // if(codes) {
+    //     const service = codes.reduce((acc, code) => {
+    //         const service = getValueFromPair("codeServicePairs", code);
+    //         if(service) {
+    //             acc.push(service);
+    //             linkedChanged(true);
+    //         } else linkedChanged(false);
+    //         return acc;
+    //     }, [])
+    //     props.handleInputs({name: "service", value: formatMultiServices(service)});
+    // } else {
+    //   setLinked(false);
+    //   props.handleInputs({name: "service", value: ""})
+    // }
   }
   const onLinkClick = () => {
     const code = props.values.code;
@@ -93,7 +93,7 @@ function CodeAndService(props) {
     <div className={classes.container}>
       <Grid container row="true" className={classes.card}>       
           <div className={classes.inputs}>
-            <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} />
+            <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={props.handleInputs} />
             <TextInput 
               id="service" 
               placeholder="" 
