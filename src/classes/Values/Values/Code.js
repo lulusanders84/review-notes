@@ -5,7 +5,7 @@ export class Code extends Value {
   constructor(value) {
     super(value);
     const relationships = [
-      new Pair("service")
+      new Pair("service"),
     ]
     super.setRelationships(relationships)
   }
