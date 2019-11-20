@@ -18,7 +18,6 @@ export const updateDailyClaims = () => (dispatch, getState) => {
   const claims = new DailyClaims(claimLog, claimlogDate);
   const dailyClaims = claims.get();
   const dailyClaimsTotal = claims.getTotal();
-  console.log(dailyClaims, dailyClaimsTotal);
   dispatch(setDailyClaims(dailyClaims));
   dispatch(setDailyClaimsTotal(dailyClaimsTotal))
 }
@@ -27,7 +26,7 @@ export const updateClaimLog = (claim) => (dispatch, getState) => {
   claimLog.addClaim(claim);
   const log = claimLog.get();
   dispatch(setClaimLog(log))
-  const claimsTotal = new ClaimsTotal(log).get();
+  const claimsTotal = new ClaimsTotal(log).getToday();
   const average = new ClaimsPerDayAverage(log).get();
   const { claimsGoal, workdays } = getState().claims;
   const dailyTarget = new DailyTarget(log, claimsGoal, workdays).get();
