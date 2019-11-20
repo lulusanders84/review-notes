@@ -12,7 +12,7 @@ export class Workdays {
     if(workdays === undefined || workdays === null) {
       workdays = {};
     }
-    if(workdays[month] === undefined || workdays[month] === undefined) {
+    if(workdays[month] === undefined || workdays[month] === null) {
       workdays[month] = new Weekdays(month, 2019).getWeekdays();
     }
     return workdays;

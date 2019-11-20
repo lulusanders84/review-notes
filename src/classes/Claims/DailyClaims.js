@@ -8,7 +8,6 @@ export class DailyClaims {
     today = formatDate(today);
     today = new Date(today).getTime();
     const nextDay = today + 86400000;
-    console.log(today, nextDay)
     const claims = claimLog.reduce((acc, claim) => {
       if(claim.dateTime > today && claim.dateTime < nextDay) {
         acc.push(claim)

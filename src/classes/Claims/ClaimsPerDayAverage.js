@@ -4,7 +4,7 @@ Workdays
 
 export class ClaimsPerDayAverage {
   constructor(claimLog) {
-    const claimsTotal = new ClaimsTotal(claimLog).get();
+    const claimsTotal = new ClaimsTotal(claimLog).getMonth();
     const workdays = new Workdays().get();
     this.average = this.setClaimsPerDayAverage(claimsTotal, workdays);
   }

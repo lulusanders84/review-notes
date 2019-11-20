@@ -14,7 +14,7 @@ export class ClaimsData {
       workdays: new Workdays().get(),
     })
     this.dailyTarget = new DailyTarget(this.claimLog, this.claimsGoal, this.workdays).get();
-    this.claimsTotal = new ClaimsTotal(this.claimLog).get();
+    this.claimsTotal = new ClaimsTotal(this.claimLog).getToday();
     this.average = new ClaimsPerDayAverage(this.claimLog).get();
     
   }
