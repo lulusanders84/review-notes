@@ -1,6 +1,6 @@
-import { formatDate } from "../utils";
+import { formatDate } from "../../utils";
 
-export default class DailyClaims {
+export class DailyClaims {
   constructor(claimLog, today) {
     this.claims = this.setDailyClaims(claimLog, today);
   }
@@ -8,7 +8,6 @@ export default class DailyClaims {
     today = formatDate(today);
     today = new Date(today).getTime();
     const nextDay = today + 86400000;
-    console.log(today, nextDay)
     const claims = claimLog.reduce((acc, claim) => {
       if(claim.dateTime > today && claim.dateTime < nextDay) {
         acc.push(claim)

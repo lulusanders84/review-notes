@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { theme, useStyles } from '../../styles/claimLogStyles'
 
 export function DailyClaimAvg(props) {
-  console.log(props);
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>

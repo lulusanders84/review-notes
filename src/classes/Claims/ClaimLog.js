@@ -1,6 +1,6 @@
-import { setStorage, saveToStorage } from '../utils';
+import { setStorage, saveToStorage } from '../../utils';
 
-export default class ClaimLog {
+export class ClaimLog {
   constructor() {
     this.log = this.getLogFromStorage();
     this.saveLogToStorage();

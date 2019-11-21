@@ -1,4 +1,4 @@
-export default class Weekdays {
+export class Weekdays {
   constructor(month, year) {
     Object.assign(this, {
       month,
@@ -7,9 +7,9 @@ export default class Weekdays {
         28: [1],
         30: [3, 5, 8, 10],
         31: [0, 2, 4, 6, 7, 9, 11],
-      },
-      daysInThisMonth: this.getDaysInThisMonth(month)
+      }
     });
+    this.daysInThisMonth = this.getDaysInThisMonth();
   }
   getDaysInThisMonth() {
     return parseInt(Object.keys(this.daysPerMonth).reduce((acc, key) => {
@@ -19,9 +19,7 @@ export default class Weekdays {
       }
       return acc;
     }, false)) 
-  }
-
-  ;
+  };
   getWeekdays() {
     let weekdays = [];
     for(let i=1; i< this.daysInThisMonth + 1; i++) {

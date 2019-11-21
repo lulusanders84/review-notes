@@ -1,7 +1,7 @@
-import { saveToStorage } from '../utils/saveToStorage';
-import Weekdays from './Weekdays';
+import { saveToStorage } from '../../utils/saveToStorage';
+import { Weekdays } from './';
 
-export default class Workdays {
+export class Workdays {
   constructor() {
     this.days = this.getWorkdaysFromStorage();
     this.saveWorkdaysToStorage();
@@ -12,7 +12,7 @@ export default class Workdays {
     if(workdays === undefined || workdays === null) {
       workdays = {};
     }
-    if(workdays[month] === undefined || workdays[month] === undefined) {
+    if(workdays[month] === undefined || workdays[month] === null) {
       workdays[month] = new Weekdays(month, 2019).getWeekdays();
     }
     return workdays;

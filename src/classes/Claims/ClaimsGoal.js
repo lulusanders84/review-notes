@@ -1,6 +1,6 @@
-import { setStorage, saveToStorage } from '../utils';
+import { setStorage, saveToStorage } from '../../utils';
 
-export default class ClaimsGoal {
+export class ClaimsGoal {
   constructor() {
     this.goal = this.getClaimsGoalFromStorage();
     this.saveClaimsGoalToStorage();
