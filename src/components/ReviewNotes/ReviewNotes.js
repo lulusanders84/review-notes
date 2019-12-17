@@ -150,7 +150,6 @@ class ReviewNotes extends React.Component {
           <form className={classes.form} noValidate>
             <Grid container alignContent="center" justify="center">
               {noteType()}
-              <AddClaimButton values={this.props.values} />
             </Grid>
             
           </form>

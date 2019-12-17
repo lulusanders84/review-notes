@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Title from '../Title/Title';
 import ReviewNotes from '../ReviewNotes/ReviewNotes';
 import ClaimLog from '../ClaimLog/ClaimLog';
+import ReviewNotesTitle from '../Title/ReviewNotesTitle';
 
 
 const styles = theme => ({
@@ -31,6 +32,7 @@ const styles = theme => ({
   },
   page: {
     width: "425px",
+    margin: 0,
   },
   title: {
     marginBottom: theme.spacing(3)
@@ -40,21 +42,12 @@ const styles = theme => ({
 
 function MainPage(props) {
   const { classes } = props;
-  const [tabValue, setTabValue] = React.useState(0);
     return (
-      <Container component="main">
+      <Container component="main" classes={{root: classes.page}}>
         <CssBaseline />     
         <div className={classes.leftFrame}>
-          <Title setTabValue={setTabValue} tabValue={tabValue} />
-          <div className={classes.paper && classes.page}>
-            {tabValue === 0
-            ? <ReviewNotes />
-            : tabValue === 1
-              ? <ClaimLog />
-              : null
-            }
-          </div>
-           
+          <ReviewNotesTitle />
+            <ReviewNotes />    
         </div>
       </Container>
     );
