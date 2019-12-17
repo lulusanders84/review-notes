@@ -1,35 +1,21 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as utils from './utils';
-import {queues} from '../../data/queues';
+import styles from '../../styles/noteStyles';
+import { setQueueAction } from '../../actions/notes';
+import { connect } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    height: 75,
-  },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  // },
-  dense: {
-    marginTop: 14,
-  },
-  menu: {
-    width: 200,
-  },
-  notes: {
-    padding: 0,
-  }
-}));
-export default function ClaimNote(props) {
-  const values = props.values;
+const useStyles = makeStyles(() => (styles));
+
+export function Routing(props) {
+  const { values, queue, dispatch } = props;
   const classes = useStyles();
-  const queue = utils.setQueue(values);
+  React.useEffect(() => {
+    dispatch(setQueueAction(values));
+  }, [dispatch, values])
   return (
     <Card>
-    <CardContent>
+    <CardContent classes={{root: classes.root}}>
       <Typography component="h3" variant="h6">Routing</Typography>
       <div contentEditable className={classes.notes}>
         Routing to queue {queue}
@@ -39,3 +25,9 @@ export default function ClaimNote(props) {
     </Card>
   )
 }
+const mapStateToProps = (state) => ({
+  values: state.values,
+  queue: state.notes.queue
+});
+
+export default connect(mapStateToProps)(Routing)

@@ -8,7 +8,7 @@ export const rejectCodes = {
       "Home Par": "E6175",
       "Home Non-Par": "E6175"
    },
-   "Investigative": {
+   "Experimental/Investigative": {
       "connector": "as",
       "Local Par": "E6138",
       "Local Non-Par": "E6137",

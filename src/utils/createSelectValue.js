@@ -1,5 +1,9 @@
-import { capWord, formatToName } from "../components/Notes/utils";
+import { formatToName } from "./Notes";
 
-export default function(value) {
-    return {label: formatToName(value), value, };
+export function createSelectValue(value, format) {
+    const label = format === "lower"
+        ? value
+        : formatToName(value);
+
+    return {label, value, };
 }

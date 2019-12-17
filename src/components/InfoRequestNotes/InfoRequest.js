@@ -1,17 +1,15 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as utils from '../Notes/utils';
+import Info from '../Notes/Info';
+import { setInfoRequestData } from '../../actions/notes';
+import { connect } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
     height: 75,
   },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  // },
   dense: {
     marginTop: 14,
   },
@@ -22,25 +20,34 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
   }
 }));
-export default function InfoRequest(props) {
-  const {...values} = props.values;
+export function InfoRequest(props) {
+  const {values,  dispatch, notes} = props;
+  const { policyString, code, pend, route, related, } = notes;
   const classes = useStyles();
-  const policyString = values.policy.length > 0 ? values.policy.map(policy => {return policy["Policy #"]}).join(" / ") : "N/A";
+  React.useEffect(() => {
+    dispatch(setInfoRequestData(values))
+  }, [dispatch, values])
   return (
     <Card>
     <CardContent>
       <Typography component="h3" variant="h6">Info Request Note</Typography>
       <div contentEditable className={classes.notes}>
         REQ-{values.req}: Additional Info Requested
-        <br />Suspended codes: {values.code.toUpperCase()}
-        <br />Suspension: {values.pend ? values.pend.map(pend => { return pend.value }).join(" / ") : values.pend}
+        <br />Suspended codes: {code}
+        <br />Suspension: {pend}
         <br />Medical Policy/Criteria: {policyString}
         <br />PA research: No PA found, no history of info requests in UM
-        <br />Related UM requests: {values.related !== "N/A" ? values.related.split(",").map(related => {return `REQ-${related}`}).join(", ") : values.related}
-        <br />Route: {values.claimType === "home" ? `B2 (SCCF: ${values.sccf})` : "Letter"}
-        <br />Info Requested: {values.info}
+        <br />Related UM requests: {related}
+        <br />Route: {route}
+        <Info tag="tag" />
       </div>
     </CardContent>
     </Card>
   )
 }
+const mapStateToProps = (state) => ({
+  values: state.values,
+  notes: state.notes
+});
+
+export default connect(mapStateToProps)(InfoRequest)
