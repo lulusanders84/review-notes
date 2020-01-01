@@ -120,9 +120,7 @@ const handleStorage = (value) => {
   window.localStorage.setItem(value.name.trim(), value.value.trim())
 }
 const handleServiceSelect = (value) => {
-  console.log(value)
   const firstChar = value.value.charAt(0).toUpperCase();
-  console.log(firstChar)
   const parsed = parseInt(firstChar);
   return firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
 }

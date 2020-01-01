@@ -16,13 +16,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 function EditSelectOption(props) {
-  console.log(props.labelFormat)
   const classes = useStyles();
   const [saved, setSaved] = React.useState(false);
   const [value] = React.useState(props.values[props.id])
   const checkClass = saved ? classes.checkButton : null;
   const checkColor = saved ? "primary" : "default";
-  console.log(value, props.values, props.id)
   const handleSave = () => {
     setSaved(true);
     props.setEdit(false);

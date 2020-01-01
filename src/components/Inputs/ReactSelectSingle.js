@@ -300,7 +300,6 @@ function IntegrationReactSelect(props) {
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-        console.log(props.labelFormat);
         const formattedName = formatToName(value.value.toLowerCase());
         const newOption = createSelectValue(formattedName, props.labelFormat)
         const newOptions = options ? [newOption, ...options] : [newOption];
