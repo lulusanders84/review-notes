@@ -49,7 +49,7 @@ function General(props) {
       {props.values.drugReview  && props.values.lob === "commercial"
         ? <DoseInput handleInputs={props.handleInputs} />
         : null }
-      {props.values.drugReview 
+      {props.values.drugReview && props.values.reviewed === "no"
         ? <RadioInput id="drugReviewType" options={["new", "renewal"]} label="Drug Review Type" updateValue={props.handleInputs}/>
         : null } 
       {props.values.claimType === "local" && props.values.lob === "commercial" 

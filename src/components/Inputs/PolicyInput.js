@@ -45,7 +45,14 @@ class PolicyInput extends React.Component {
     const policies = reviewNotesUtils.setPolicyByCode(codes, this.props.values.lob);
     if(policies) {
       const policiesInValues = this.props.values.policy;
-      this.props.handleInputs({name: "policy", value:[...policiesInValues, ...policies]})
+      const allPolicies = [...policiesInValues, ...policies];
+      const policyNumbers = Array.from(new Set(allPolicies.map(policy => { return policy["Policy #"]})))
+      const returnedPolicies = policyNumbers.map( number => {
+        return allPolicies.find(policy => {
+          return policy["Policy #"] === number
+        })
+      })
+      this.props.handleInputs({name: "policy", value: returnedPolicies})
     }
   }
   componentDidMount() {

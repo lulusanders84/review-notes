@@ -5,6 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import { Grid, makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { createSelectValue } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   checkButton: {
@@ -15,11 +16,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 function EditSelectOption(props) {
+  console.log(props.labelFormat)
   const classes = useStyles();
   const [saved, setSaved] = React.useState(false);
   const [value] = React.useState(props.values[props.id])
   const checkClass = saved ? classes.checkButton : null;
   const checkColor = saved ? "primary" : "default";
+  console.log(value, props.values, props.id)
   const handleSave = () => {
     setSaved(true);
     props.setEdit(false);
@@ -28,7 +31,7 @@ function EditSelectOption(props) {
       return option.value === value;
     })
     const newValue = props.values[props.id];
-    options[optionIndex] = {value: newValue, label: newValue};
+    options[optionIndex] = createSelectValue(newValue, props.labelFormat);
     window.localStorage.setItem(props.id, JSON.stringify(options));
     props.setNewValue(options[optionIndex])
   }

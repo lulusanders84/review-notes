@@ -1,27 +1,12 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import styles from '../../styles/noteStyles';
-import { connect } from 'react-redux';
+import NoteContainer from './NoteContainer';
 
-const useStyles = makeStyles(theme => (styles));
-
-export const FaxTransmission = (props) => {
-    const classes = useStyles();
+export const FaxTransmission = () => {
     return (
-        <Card>
-        <CardContent className={{root: classes.root}}>
-            <Typography component="h3" variant="h6">Fax Transmission</Typography>
-            <div contentEditable className={classes.notes}>
-                REQ-{props.values.req}: Fax not required for claim denials. Letter generated.
-            </div> 
-        </CardContent>
-        </Card>
+        <NoteContainer title="Fax Transmission Note">
+            N/A
+        </NoteContainer>
       )
 }
-
-const mapStateToProps = (state) => ({
-    values: state.values,
-  });
-  
-export default connect(mapStateToProps)(FaxTransmission)
+ 
+export default (FaxTransmission)

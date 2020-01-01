@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../styles/noteStyles';
 import { fullNamesAction } from '../../actions/notes';
 import { connect } from 'react-redux';
+import NoteContainer from './NoteContainer';
 
 const useStyles = makeStyles(() => (styles));
 
@@ -14,14 +14,11 @@ export function MedPolicy(props) {
     dispatch(fullNamesAction(values))
   }, [dispatch, values] )
   return (
-    <Card>
-    <CardContent classes={{root: classes.root}}>
-      <Typography component="h3" variant="h6">Medical Policy</Typography>
-      <ul contentEditable className={classes.list}>
+    <NoteContainer title="Medical Policy">
+      <ul className={classes.list}>
         {fullnames}
       </ul>
-    </CardContent>
-    </Card>
+    </NoteContainer>
   )
 }
 
