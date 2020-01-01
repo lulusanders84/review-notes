@@ -8,6 +8,7 @@ export class Workdays {
   }
   getWorkdaysFromStorage() {
     let workdays = JSON.parse(window.localStorage.getItem("workdays"));
+    console.log("workdays from storage", workdays);
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
     if(workdays === undefined || workdays === null) {
@@ -19,18 +20,20 @@ export class Workdays {
     if(workdays[year][month] === undefined || workdays[year][month] === null) {
       workdays[year][month] = new Weekdays(month, year).getWeekdays();
     }
-    return workdays[year];
+    return workdays;
   }
   saveWorkdaysToStorage() {
     saveToStorage("workdays", this.days)
   }
-  get() {
-    return this.days;
+  get(year) {
+    return this.days[year];
   }
-  updateWorkDays(month, day) {
-    const workdaysByMonth = this.days[month];
+  updateWorkDays(year, month, day) {
+    console.log(year)
+    const workdaysByMonth = this.days[year][month];
+    console.log(workdaysByMonth)
     if(workdaysByMonth === undefined) {
-      this.days[month] = new Weekdays(month, 2019).getWeekdays();
+      this.days[month] = new Weekdays(month, year).getWeekdays();
     }
     const dayAlreadyInWorkdays = workdaysByMonth.includes(day);
     if(dayAlreadyInWorkdays) {

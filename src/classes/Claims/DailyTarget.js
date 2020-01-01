@@ -14,6 +14,7 @@ export class DailyTarget {
     return claimsPerDay;
   }
   getDaysData = (workdays) => {
+    console.log(workdays);
     const date = new Date();
     const todayUnix = date.getTime();
     const month = date.getMonth();
