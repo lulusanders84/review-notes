@@ -24,6 +24,11 @@ const useStyles = makeStyles({
 
 const ClaimSettings = (props) => {
   const classes = useStyles();
+  const initialWorkdays = props.workdays[props.month];
+  const [workdays, setWorkdays] = React.useState(initialWorkdays)
+  React.useEffect(() => {
+    setWorkdays(initialWorkdays);
+  }, [initialWorkdays] )
   const handleGoalChange = (event) => {
     const claimsGoal = event.target.value;
     props.dispatch(updateClaimsGoal(claimsGoal))
@@ -57,7 +62,7 @@ const ClaimSettings = (props) => {
       <InfiniteCalendar
         Component={MultipleDatesCalendar}
         interpolateSelection={defaultMultipleDateInterpolation}
-        selected={props.workdays[props.month]}
+        selected={workdays}
         onSelect={handleCalendarSelect}
         min={new Date(props.year, props.month)}
         max={new Date(props.year, props.month)}

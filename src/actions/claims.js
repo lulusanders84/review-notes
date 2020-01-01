@@ -48,11 +48,12 @@ export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
 
 export const updateWorkdays = (month, day) => (dispatch, getState) => {
   day = new Date(day).toISOString();
+  const year = new Date(day).getFullYear();
   const workdays = new Workdays();
-  workdays.updateWorkDays(month, day);
+  workdays.updateWorkDays(year, month, day);
   const { claimLog, claimsGoal } = getState().claims;
-  const dailyTarget = new DailyTarget(claimLog, claimsGoal, workdays).get();
-  dispatch(setWorkdays(workdays.get()));
+  const dailyTarget = new DailyTarget(claimLog, claimsGoal, workdays.get(year)).get();
+  dispatch(setWorkdays(workdays.get(year)));
   dispatch(setDailyTarget(dailyTarget));
 }
 
