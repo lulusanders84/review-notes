@@ -79,7 +79,6 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
           returnObj.provider = value.value;
         break;
       case "serviceType":
-        console.log(value)
         returnObj.drugReview = value.value === "drug" ? true : false;
         const type = value.value === "drug"
           ? "Injectable Drug"
@@ -120,9 +119,7 @@ const handleStorage = (value) => {
   window.localStorage.setItem(value.name.trim(), value.value.trim())
 }
 const handleServiceSelect = (value) => {
-  console.log(value)
   const firstChar = value.value.charAt(0).toUpperCase();
-  console.log(firstChar)
   const parsed = parseInt(firstChar);
   return firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
 }

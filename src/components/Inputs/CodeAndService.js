@@ -60,7 +60,6 @@ function CodeAndService(props) {
     props.handleServiceDisabled(value);
   }
   const onCodeEntry = (value) => {
-    console.log(value);
     props.handleInputs(value);
     const codes = utils.formatCodes(value.value);
     if(codes) {
