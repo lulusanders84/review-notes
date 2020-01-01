@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     alignContent: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    margin: 15
   },
   avatar: {
     margin: theme.spacing(1),

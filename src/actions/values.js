@@ -16,10 +16,15 @@ export const handleInputs = value => (dispatch, getState) => {
   };
   dispatch(setValue(value));
   const values = getState().values;
-  const newValues = handleInputsChange(value, values);
+  let newValues = handleInputsChange(value, values);
+  newValues.forEach(value => {
+    newValues = [...newValues, ...handleInputsChange(value, values)]
+  })
   newValues.forEach(value => {
     dispatch(setValue(value))
+    
   })
+  
 }
 const handleInputsChange = (value, values) => {
   const returnObj = handleInputsSwitch(
@@ -58,7 +63,7 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
         if(value.value !== "approve") {handler({name: "allMet", value: false})};
         break;
       case "code":
-        serviceSelect(value);
+        returnObj.serviceType = serviceSelect(value);
         break;
       case "name":
       case "lob":
@@ -74,6 +79,7 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
           returnObj.provider = value.value;
         break;
       case "serviceType":
+
         returnObj.drugReview = value.value === "drug" ? true : false;
         const type = value.value === "drug"
           ? "Injectable Drug"
@@ -116,8 +122,7 @@ const handleStorage = (value) => {
 const handleServiceSelect = (value) => {
   const firstChar = value.value.charAt(0).toUpperCase();
   const parsed = parseInt(firstChar);
-  const serviceType = firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
-  handleInputs({name: "serviceType", value: serviceType});
+  return firstChar === "J" ? "drug" : !parsed ? "DME" : "procedure";
 }
 
 export const SET_VALUE = 'SET_VALUE';

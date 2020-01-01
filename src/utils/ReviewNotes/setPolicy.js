@@ -27,7 +27,7 @@ const fep = (codes) => {
       : policy["HCPCS"].split(",");
     const cpts = policy["CPT"] === "No CPT" || policy["CPT"] === ""
       ? []
-      : policy["CPT"].split(",");
+      : policy["CPT"].toString().split(",");
     const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
     codes.forEach(code => {
       if(code !== ""){
