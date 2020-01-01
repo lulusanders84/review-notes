@@ -9,13 +9,17 @@ export class Workdays {
   getWorkdaysFromStorage() {
     let workdays = JSON.parse(window.localStorage.getItem("workdays"));
     const month = new Date().getMonth();
+    const year = new Date().getFullYear();
     if(workdays === undefined || workdays === null) {
       workdays = {};
     }
-    if(workdays[month] === undefined || workdays[month] === null) {
-      workdays[month] = new Weekdays(month, 2019).getWeekdays();
+    if(workdays[year] === undefined || workdays[year] === null) {
+      workdays[year] = {};
     }
-    return workdays;
+    if(workdays[year][month] === undefined || workdays[year][month] === null) {
+      workdays[year][month] = new Weekdays(month, year).getWeekdays();
+    }
+    return workdays[year];
   }
   saveWorkdaysToStorage() {
     saveToStorage("workdays", this.days)
