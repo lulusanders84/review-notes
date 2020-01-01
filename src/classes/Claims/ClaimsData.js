@@ -11,7 +11,7 @@ export class ClaimsData {
     Object.assign(this, {
       claimLog: new ClaimLog().get(),
       claimsGoal: new ClaimsGoal().get(),
-      workdays: new Workdays().get(),
+      workdays: new Workdays().get(new Date().getFullYear()),
     })
     this.dailyTarget = new DailyTarget(this.claimLog, this.claimsGoal, this.workdays).get();
     this.claimsTotal = new ClaimsTotal(this.claimLog).getToday();
