@@ -8,7 +8,9 @@ const pricingClaimNote = (values) => {
     return values.pend && values.pend.some(pend => {return pend.value === "P5194"})
         ? values.pricing === "Not required"
             ? ""
-            : `, for ${values.code} allow ${values.allowable}, MSR ${values.msr.toLowerCase()},`
+            : values.pricing === "PPPWeb"
+                ? `, for ${values.code} (${values.service}) allow ${values.allowable}, MSR ${values.msr.toLowerCase()},`
+                : `, for ${values.code} (${values.service}) allow ${values.allowable} for all UOS,`  
         : "";
 }
 const pricingSummary = (values) => { 

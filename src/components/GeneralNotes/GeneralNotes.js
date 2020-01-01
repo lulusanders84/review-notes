@@ -1,5 +1,6 @@
 import React from 'react';
 import MedClaimReviewNote from '../Notes/MedClaimReviewNote/MedClaimReviewNote';
+import FollowDecisionNote from '../Notes/MedClaimReviewNote/FollowDecisionNote';
 import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import MedPolicy from '../Notes/MedPolicy';
@@ -13,14 +14,20 @@ export const GeneralNotes = (props) => {
   const values = utils.formatValues(props.values);
   return (
     <div>
-      <MedClaimReviewNote />
+      {values.reviewed === "no"
+        ? <MedClaimReviewNote />
+        : <FollowDecisionNote />
+      }
       {values.policy.length !== 0
         ? <MedPolicy />   
         : null } 
       {values.deter !== "send to medical director"
         ? <div>
             <ClaimNote />
-            <Routing /> 
+            {values.claimSystem === "INSINQ"
+              ? <Routing /> 
+              : null
+            }  
           </div> 
         : null }
       {values.rationale === "Not Medically Necessary" || values.rationale === "Experimental/Investigative" 

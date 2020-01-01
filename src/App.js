@@ -4,7 +4,7 @@ import MainPage from '../src/components/MainPage/MainPage'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { blue } from '@material-ui/core/colors';
-
+import { scrapePolicies } from '../src/data/scrapePolicies';
 import { Provider } from 'react-redux';
 import store from '../src/store';
 
@@ -14,7 +14,9 @@ const theme = createMuiTheme({
   },
 });
 function App() {
-  
+  React.useEffect(() => {
+    scrapePolicies();
+  }, []);
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>

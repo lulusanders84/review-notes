@@ -1,40 +1,18 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { setClaimNoteData } from '../../actions/notes'
+import NoteContainer from './NoteContainer';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-    height: 75,
-  },
-  dense: {
-    marginTop: 14,
-  },
-  menu: {
-    width: 200,
-  },
-  notes: {
-    padding: 0,
-  }
-}));
 export function MisrouteClaimNote(props) {
   const { dispatch, values } = props;
   React.useEffect(() => {
     dispatch(setClaimNoteData(values));
   }, [dispatch, values])
   const { req } = props.values;
-  const classes = useStyles();
   return (
-    <Card>
-    <CardContent>
-      <Typography component="h3" variant="h6">Claim Note</Typography>
-      <div contentEditable className={classes.notes}>
+    <NoteContainer title="Claim Note">
       REQ-{req}: {props.notes.ocwaNote} Claim referred in error, see DLP for claim resolution.
-      </div>
-    </CardContent>
-    </Card>
+    </NoteContainer>
   )
 }
 

@@ -332,7 +332,7 @@ function ReactSelect(props) {
         <CreatableSelect
           classes={classes}
           styles={selectStyles}
-          inputId="react-select-multiple"
+          inputId={`react-select-multiple-${props.id}`}
           TextFieldProps={{
             label: props.label,
             InputLabelProps: {

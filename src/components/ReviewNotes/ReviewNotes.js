@@ -8,7 +8,6 @@ import General from './NoteTemplates/General';
 import Misroute from './NoteTemplates/Misroute';
 import BackFromPeer from './NoteTemplates/BackFromPeer';
 import InfoRequest from './NoteTemplates/InfoRequest';
-import AddClaimButton from '../ClaimCount/AddClaimButton';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../actions';

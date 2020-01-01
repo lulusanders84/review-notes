@@ -11,6 +11,7 @@ import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
 import { formatToName } from '../../utils/Notes';
 import { connect } from 'react-redux';
+import { createSelectValue } from '../../utils';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -299,8 +300,10 @@ function IntegrationReactSelect(props) {
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
+        console.log(props.labelFormat);
         const formattedName = formatToName(value.value.toLowerCase());
-        const newOptions = options ? [{value: formattedName, label: formattedName}, ...options] : [{value: formattedName, label: formattedName}];
+        const newOption = createSelectValue(formattedName, props.labelFormat)
+        const newOptions = options ? [newOption, ...options] : [newOption];
         setOptions(newOptions)
         const storage = props.id === "pa-provider"
           ? "provider"
@@ -333,6 +336,7 @@ function IntegrationReactSelect(props) {
             setEdit={setEdit}
             updateValue={props.updateValue}
             options={options}
+            labelFormat={props.labelFormat}
             setNewValue={setSingle} />
         : <Grid container justify="space-between" alignItems="flex-end"> 
             <Grid item xs={10}>
@@ -340,7 +344,7 @@ function IntegrationReactSelect(props) {
                 isClearable
                 classes={classes}
                 styles={selectStyles}
-                inputId="react-select-single"
+                inputId={`react-select-single-${props.id}`}
                 TextFieldProps={{
                   label: props.label,
                   InputLabelProps: {

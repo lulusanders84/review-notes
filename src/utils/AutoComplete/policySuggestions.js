@@ -1,6 +1,6 @@
-import {fepPolicies} from "../../data/fepPolicies";
+// import {fepPolicies} from "../../data/fepPolicies";
 import { medPolicies } from "../../data/medPolicies";
-
+const fepPolicies = window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : [];
 export function policySuggestions(lob) {
     const policies = lob === "commercial" ? medPolicies : [...fepPolicies,...medPolicies];
     const suggestions = policies.map(policy => {
