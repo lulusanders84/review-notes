@@ -21,23 +21,26 @@ const bcbsmn = (codes) => {
 }
 const fep = (codes) => {
   const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
-  return policies.reduce((acc, policy) => {
-    const hcpcs = policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
-      ? []
-      : policy["HCPCS"].split(",");
-    const cpts = policy["CPT"] === "No CPT" || policy["CPT"] === ""
-      ? []
-      : policy["CPT"].toString().split(",");
-    const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
-    codes.forEach(code => {
-      if(code !== ""){
-        if(codesList.includes(code)) {
-          acc.push(policy)
+  if (policies) {
+    return policies.reduce((acc, policy) => {
+      const hcpcs = policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
+        ? []
+        : policy["HCPCS"].split(",");
+      const cpts = policy["CPT"] === "No CPT" || policy["CPT"] === ""
+        ? []
+        : policy["CPT"].toString().split(",");
+      const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
+      codes.forEach(code => {
+        if(code !== ""){
+          if(codesList.includes(code)) {
+            acc.push(policy)
+          }
         }
-      }
-    })
-    return acc;
-  }, []) 
+      })
+      return acc;
+    }, []) 
+  } else return [];
+  
 }
 
 const setValueAndLabel = (policies) => {

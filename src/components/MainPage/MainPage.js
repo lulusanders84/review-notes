@@ -1,8 +1,8 @@
-
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
+import Title from '../Title/Title';
 import ReviewNotes from '../ReviewNotes/ReviewNotes';
 import ReviewNotesTitle from '../Title/ReviewNotesTitle';
 import References from '../References/References';
@@ -31,7 +31,6 @@ const styles = theme => ({
   },
   page: {
     width: "425px",
-    margin: 0,
   },
   title: {
     marginBottom: theme.spacing(3)
@@ -41,8 +40,9 @@ const styles = theme => ({
 
 function MainPage(props) {
   const { classes } = props;
+  const [tabValue, setTabValue] = React.useState(0);
     return (
-      <Container component="main" classes={{root: classes.page}}>
+      <Container component="main">
         <CssBaseline />     
         <div className={classes.leftFrame}>
           <References />

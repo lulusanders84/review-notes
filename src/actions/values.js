@@ -79,7 +79,6 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
           returnObj.provider = value.value;
         break;
       case "serviceType":
-
         returnObj.drugReview = value.value === "drug" ? true : false;
         const type = value.value === "drug"
           ? "Injectable Drug"
