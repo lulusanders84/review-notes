@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
     padding: theme.spacing(2),
+    overflow: "visible"
   }
 }));
 export default function (props) {

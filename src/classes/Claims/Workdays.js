@@ -8,6 +8,7 @@ export class Workdays {
   }
   getWorkdaysFromStorage() {
     let workdays = JSON.parse(window.localStorage.getItem("workdays"));
+
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
     if(workdays === undefined || workdays === null) {
