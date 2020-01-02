@@ -2,7 +2,6 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
-import Title from '../Title/Title';
 import ReviewNotes from '../ReviewNotes/ReviewNotes';
 import ReviewNotesTitle from '../Title/ReviewNotesTitle';
 import References from '../References/References';
@@ -40,7 +39,6 @@ const styles = theme => ({
 
 function MainPage(props) {
   const { classes } = props;
-  const [tabValue, setTabValue] = React.useState(0);
     return (
       <Container component="main">
         <CssBaseline />     
