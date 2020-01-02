@@ -5,6 +5,7 @@ import { Container } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import ReviewNotes from '../ReviewNotes/ReviewNotes';
 import ReviewNotesTitle from '../Title/ReviewNotesTitle';
+import References from '../References/References';
 
 
 const styles = theme => ({
@@ -44,6 +45,7 @@ function MainPage(props) {
       <Container component="main" classes={{root: classes.page}}>
         <CssBaseline />     
         <div className={classes.leftFrame}>
+          <References />
           <ReviewNotesTitle />
             <ReviewNotes />    
         </div>
