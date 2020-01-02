@@ -8,6 +8,7 @@ import General from './NoteTemplates/General';
 import Misroute from './NoteTemplates/Misroute';
 import BackFromPeer from './NoteTemplates/BackFromPeer';
 import InfoRequest from './NoteTemplates/InfoRequest';
+import AddClaimButton from '../ClaimCount/AddClaimButton';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../actions';
@@ -149,6 +150,7 @@ class ReviewNotes extends React.Component {
           <form className={classes.form} noValidate>
             <Grid container alignContent="center" justify="center">
               {noteType()}
+              <AddClaimButton values={this.props.values} />
             </Grid>
             
           </form>
