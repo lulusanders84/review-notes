@@ -4,7 +4,8 @@ import { Container } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import Title from '../Title/Title';
 import ReviewNotes from '../ReviewNotes/ReviewNotes';
-import ClaimLog from '../ClaimLog/ClaimLog';
+import ReviewNotesTitle from '../Title/ReviewNotesTitle';
+import References from '../References/References';
 
 
 const styles = theme => ({
@@ -44,16 +45,9 @@ function MainPage(props) {
       <Container component="main">
         <CssBaseline />     
         <div className={classes.leftFrame}>
-          <Title setTabValue={setTabValue} tabValue={tabValue} />
-          <div className={classes.paper && classes.page}>
-            {tabValue === 0
-            ? <ReviewNotes />
-            : tabValue === 1
-              ? <ClaimLog />
-              : null
-            }
-          </div>
-           
+          <References />
+          <ReviewNotesTitle />
+            <ReviewNotes />    
         </div>
       </Container>
     );
