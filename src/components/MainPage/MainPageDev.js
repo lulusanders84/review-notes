@@ -38,7 +38,7 @@ const styles = theme => ({
 
 })
 
-function MainPage(props) {
+function MainPageDev(props) {
   const { classes } = props;
   const [tabValue, setTabValue] = React.useState(0);
     return (
@@ -61,4 +61,4 @@ function MainPage(props) {
     );
   }
 
-export default withStyles(styles)(MainPage)
+export default withStyles(styles)(MainPageDev)
