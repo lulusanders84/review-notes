@@ -8,7 +8,8 @@ import { blue } from '@material-ui/core/colors';
 import { scrapePolicies } from '../src/data/scrapePolicies';
 import { Provider } from 'react-redux';
 import store from '../src/store';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import MainPageContainer from './components/MainPage/MainPageContainer';
 
 const theme = createMuiTheme({
   palette: {
@@ -23,15 +24,15 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Router>
-          <Switch>
-            <Route path="/" component={<MainPage />} />
-            <Route path="/dev" component={<MainPageDev />} />
-          </Switch>
+          <Route path="/" exact={true}>
+            <MainPageContainer component={<MainPage />} />
+          </Route>
+          <Route path="/dev" exact={true}>
+            <MainPageContainer component={<MainPageDev />} />
+          </Route>
         </Router>
       </ThemeProvider>  
-    </Provider>
-
-    
+    </Provider> 
   );
 }
 
