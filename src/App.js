@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import MainPage from '../src/components/MainPage/MainPage'
+import MainPageDev from '../src/components/MainPage/MainPageDev'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { blue } from '@material-ui/core/colors';
-import { scrapePolicies } from '../src/data/scrapePolicies';
+import { handlePolicyScraping } from '../src/data/scrapePolicies';
 import { Provider } from 'react-redux';
 import store from '../src/store';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import MainPageContainer from './components/MainPage/MainPageContainer';
 
 const theme = createMuiTheme({
   palette: {
@@ -15,16 +18,21 @@ const theme = createMuiTheme({
 });
 function App() {
   React.useEffect(() => {
-    scrapePolicies();
+    handlePolicyScraping();
   }, []);
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <MainPage />
+        <Router>
+          <Route path="/" exact={true}>
+            <MainPageContainer component={<MainPage />} />
+          </Route>
+          <Route path="/dev" exact={true}>
+            <MainPageContainer component={<MainPageDev />} />
+          </Route>
+        </Router>
       </ThemeProvider>  
-    </Provider>
-
-    
+    </Provider> 
   );
 }
 
