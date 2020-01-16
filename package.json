@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
+    "@tinymce/tinymce-react": "^3.3.2",
     "@types/react-select": "^3.0.10",
     "autosuggest-highlight": "^3.1.1",
     "deromanize": "^1.0.0",

@@ -9,7 +9,6 @@ export function MedClaimReviewNote(props) {
   React.useEffect(() => {
     dispatch(setMedClaimReviewData(values))
   }, [dispatch, values])
-
   return (
     <NoteContainer title="Medical Claim Review Note">
       REQ-{values.req}: Clinical Note
@@ -25,7 +24,7 @@ export function MedClaimReviewNote(props) {
         <br />Benefits: {notes.benefits}
         <br />Case summary: {notes.summary} 
         <br />Extenuating Circumstances: NA
-        <br />Criteria Met: {notes.criteriaMet}
+        <br />Criteria Met: <span id="criteriaMet"></span>
         <br />Criteria Not Met: {notes.criteriaNotMet}
         <br />Determination: {notes.deter}
         {values.deter === "send to medical director" ?

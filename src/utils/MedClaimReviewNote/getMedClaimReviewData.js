@@ -1,5 +1,6 @@
 import * as utils from '../../utils/Notes';
 import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
+import $ from 'jquery';
 
 export const getMedClaimReviewData = (values) => {
   const data = {
@@ -53,7 +54,7 @@ const setCriteriaMet = (values, data) => {
   return values.allMet 
     ? `Applicable ${policyString} criteria met`
     : values.criteriaMet 
-      ? values.criteriaMet 
+      ? renderEditorInput(values.criteriaMet, "criteriaMet")
       : policyString === "N/A" 
         ? policyString 
         : "None";
@@ -70,4 +71,8 @@ const setDeter = (values, data) => {
   const { policyString } = data;
   const denialMessage = utils.setDenialMessage(values);
   return utils.capWord(values.deter) + utils.setRationale(values, policyString, denialMessage)
+}
+
+const renderEditorInput = (input, id) => {
+  $(`#${id}`).html(input);
 }
