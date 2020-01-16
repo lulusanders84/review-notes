@@ -25,12 +25,13 @@ const policyByCodes = (codes, codeObj) => {
 }
 const fep = (codes) => {
   const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
+  console.log(policies)
   if (policies) {
     return policies.reduce((acc, policy) => {
-      const hcpcs = policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
+      const hcpcs = !policy["HCPCS"] || policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
         ? []
         : policy["HCPCS"].split(",");
-      const cpts = policy["CPT"] === "No CPT" || policy["CPT"] === ""
+      const cpts = !policy["CPT"] || policy["CPT"] === "No CPT" || policy["CPT"] === ""
         ? []
         : policy["CPT"].toString().split(",");
       const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
