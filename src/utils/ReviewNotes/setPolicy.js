@@ -1,21 +1,25 @@
 import { fepPolicies as fepPoliciesOnFile } from '../../data/fepPolicies';
 import { bcbsmnCodes } from '../../data/bcbsmnCodes';
+import { formattedMedicareCodes } from '../../data/medicareCodes';
 import { medPolicies } from '../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
   const isJ3490 = codes.includes("J3490");
+  const codeObj = lob === "GP"
+    ? formattedMedicareCodes()
+    : bcbsmnCodes;
   const policies = codes && !isJ3490
     ? lob === "FEP" 
       ? fep(codes)
-      : bcbsmn(codes)
+      : policyByCodes(codes, codeObj)
     : [];
   return setValueAndLabel(policies);
 }
 
-const bcbsmn = (codes) => {
+const policyByCodes = (codes, codeObj) => {
   let policies = [];
   codes.forEach(code => {
-    policies = bcbsmnCodes[code] ? [...policies, ...bcbsmnCodes[code]] : policies;
+    policies = codeObj[code] ? [...policies, ...codeObj[code]] : policies;
   })
   return policies;
 }
@@ -40,7 +44,6 @@ const fep = (codes) => {
       return acc;
     }, []) 
   } else return [];
-  
 }
 
 const setValueAndLabel = (policies) => {
