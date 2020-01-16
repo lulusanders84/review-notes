@@ -1,4 +1,5 @@
 import { fepPolicies as fepPoliciesOnFile } from '../../data/fepPolicies';
+import { formatPolicy } from '../../data/scrapePolicies';
 import { bcbsmnCodes } from '../../data/bcbsmnCodes';
 import { formattedMedicareCodes } from '../../data/medicareCodes';
 import { medPolicies } from '../../data/medPolicies';
@@ -24,8 +25,10 @@ const policyByCodes = (codes, codeObj) => {
   return policies;
 }
 const fep = (codes) => {
-  const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
-  console.log(policies)
+  const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile.map(policy => {
+    return formatPolicy(policy)
+  });
+  
   if (policies) {
     return policies.reduce((acc, policy) => {
       const hcpcs = !policy["HCPCS"] || policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
@@ -98,7 +101,9 @@ export const mergePolicyNameArrays = (newPolicyNames, policyNames) => {
   })
 }
 export const getPolicies = (policyNames) => {
-  const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
+  const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile.map(policy => {
+    return formatPolicy(policy)
+  });;
   const bcbsmnPolicies = window.localStorage.getItem("bcbsmnPolicies") ? JSON.parse(window.localStorage.getItem("bcbsmnPolicies")) : medPolicies;
   const fullPolicies = [...bcbsmnPolicies, ...fepPolicies]; 
   if(policyNames) {

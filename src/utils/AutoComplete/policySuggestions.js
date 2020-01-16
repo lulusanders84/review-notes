@@ -7,12 +7,13 @@ const fepPolicies = window.localStorage.getItem("fepPolicies") ? JSON.parse(wind
 export function policySuggestions(lob) {
     const policies = lob === "commercial" 
         ? medPolicies 
-        : lob === "fep" 
+        : lob === "FEP" 
             ? [...fepPolicies,...medPolicies]
             : medicarePolicies;
     const suggestions = policies.map(policy => {
         return buildPolicy(policy)
     });
+
     return suggestions;
 }
 

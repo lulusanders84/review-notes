@@ -14,6 +14,7 @@ import { handleInputs } from '../../actions';
 import { savePoliciesToStorage } from '../../data/medPolicies';
 import { fepPolicies } from '../../data/fepPolicies';
 import { medPolicies } from '../../data/medPolicies';
+import { formatPolicy, scrapePolicies } from '../../data/scrapePolicies';
 
 const styles = theme => ({
   '@global': {
@@ -102,7 +103,8 @@ class ReviewNotes extends React.Component {
   }
   componentDidMount() {
     savePoliciesToStorage("bcbsmnPolicies", medPolicies);
-    savePoliciesToStorage("fepPolicies", fepPolicies);
+    savePoliciesToStorage("fepPolicies", fepPolicies.map(policy => { return formatPolicy(policy)}));
+    scrapePolicies()
   }
   render() {
     const { classes } = this.props;
