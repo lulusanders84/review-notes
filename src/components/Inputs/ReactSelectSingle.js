@@ -284,12 +284,14 @@ const components = {
 
 function IntegrationReactSelect(props) {
   const formatSuggestions = (options, sentence) => {
-    return options.map(option => {
+    if(options) {
+   return options.map(option => {
       option.label = sentence 
         ? formatToSentence(option.label)
         : formatToName(option.label);
       return option;
-    })
+    })      
+    } else return []
   }
   const name = props.values[props.id];
   const initialValue = {value: name, label: name}
