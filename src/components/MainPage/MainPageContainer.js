@@ -2,7 +2,6 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
-import { reducePolicies } from '../../data/medicareCodes';
 
 const styles = theme => ({
   '@global': {
@@ -38,7 +37,6 @@ const styles = theme => ({
 
 function MainPageContainer(props) {
   const { classes } = props;
-  console.log(reducePolicies());
     return (
       <Container id="main container" component="main" classes={{root: classes.page}}>
         <CssBaseline />     

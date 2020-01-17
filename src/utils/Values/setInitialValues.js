@@ -1,6 +1,6 @@
 const setLob = window.localStorage.getItem("lob") ? window.localStorage.getItem("lob") : "commercial";
 export const initialValues = {
-    name: window.localStorage.getItem("name"),
+    name: window.localStorage.getItem("name") || "",
     req: "",
     reviewed: "no",
     pend: [],
