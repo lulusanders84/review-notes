@@ -1,10 +1,12 @@
 import {fepPolicies} from "../data/fepPolicies.js";
 import { medPolicies } from "../data/medPolicies";
 import * as utils from "../utils";
+import { setNetworkSuggestions } from "../utils/AutoComplete/setNetworkSuggestions.js";
 
 const initialState = {
   policy: policySuggestions(),
-  options: []
+  options: [],
+  networkSuggestions: setNetworkSuggestions()
 }
 const reducer = (state=initialState, action) => {
   switch(action.type) { 
