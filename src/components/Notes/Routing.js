@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { setQueueAction } from '../../actions/notes';
 import { connect } from 'react-redux';
 import NoteContainer from './NoteContainer';
 
 export function Routing(props) {
   const { values, queue, dispatch } = props;
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(setQueueAction(values));
   }, [dispatch, values])
   return (

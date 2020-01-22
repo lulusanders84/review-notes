@@ -109,7 +109,8 @@ class ReviewNotes extends React.Component {
   render() {
     const { classes } = this.props;
     const options = {};
-    options.claimTypeOptions = this.props.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
+    options.claimTypeOptions = ["local", "home"];
+    options.planOptions = ["platinum blue", "med supp", "MAPD"];
     options.claimSystemOptions = this.props.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
     const reviewProps = {
       values: this.props.values,

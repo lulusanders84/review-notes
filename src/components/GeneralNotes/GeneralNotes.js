@@ -24,7 +24,7 @@ export const GeneralNotes = (props) => {
       {values.deter !== "send to medical director"
         ? <div>
             <ClaimNote />
-            {values.claimSystem === "INSINQ"
+            {values.claimSystem !== "OCWA"
               ? <Routing /> 
               : null
             }  

@@ -42,6 +42,11 @@ const handleInputsChange = (value, values) => {
 const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values) => {
   let returnObj = {};
   switch(value.name) {
+      case "special":
+        if(value.value === "host") {
+          returnObj.claimSystem = "INSINQ";
+        }
+       break; 
       case "policy":
         returnObj.info = info(value.value);
         returnObj.interqual = handleInterqual(value);

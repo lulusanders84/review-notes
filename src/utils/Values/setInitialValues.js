@@ -23,6 +23,7 @@ export const initialValues = {
     policy: [],
     benefits: "General benefits verified",
     fepBenefits: "General benefits verified",
+    plan: "MAPD",
     claimType: "local",
     claimSystem: "INSINQ",
     special: "N/A",
