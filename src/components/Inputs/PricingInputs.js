@@ -11,7 +11,6 @@ const useStyles = makeStyles(theme => ({
 }));
 function PricingInput(props) {
   const classes = useStyles();
-  console.log(props.values.lob)
   return (
     <div  className={classes.card}>
       <RadioInput id="pricing" options={["Not required", "PPPWeb", "DPW"]} label="Pricing" updateValue={props.handleInputs} />

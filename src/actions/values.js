@@ -42,10 +42,15 @@ const handleInputsChange = (value, values) => {
 const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values) => {
   let returnObj = {};
   switch(value.name) {
+      case "claimType": 
+        if(value.value === "home") {
+          returnObj.noPricingRationale = "Home claim"
+        };
+        break;
       case "special":
         if(value.value === "host") {
           returnObj.claimSystem = "INSINQ";
-        }
+        };
        break; 
       case "policy":
         returnObj.info = info(value.value);
