@@ -12,6 +12,7 @@ import { Grid } from '@material-ui/core';
 import { formatToName } from '../../utils/Notes';
 import { connect } from 'react-redux';
 import { createSelectValue } from '../../utils';
+import { formatToSentence } from '../../utils/Notes/formatToSentence';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -282,12 +283,22 @@ const components = {
 };
 
 function IntegrationReactSelect(props) {
+  const formatSuggestions = (options, sentence) => {
+    if(options) {
+   return options.map(option => {
+      option.label = sentence 
+        ? formatToSentence(option.label)
+        : formatToName(option.label);
+      return option;
+    })      
+    } else return []
+  }
   const name = props.values[props.id];
   const initialValue = {value: name, label: name}
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(initialValue);
-  const [options, setOptions] = React.useState(props.suggestions);
+  const [options, setOptions] = React.useState(formatSuggestions(props.suggestions, props.sentence));
   const [edit, setEdit] = React.useState(false);
   useEffect(() => {
     const name = props.values[props.id];
@@ -300,7 +311,10 @@ function IntegrationReactSelect(props) {
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-        const formattedName = formatToName(value.value.toLowerCase());
+
+        const formattedName = props.sentence 
+          ? formatToSentence(value.value.toLowerCase())
+          : formatToName(value.value.toLowerCase());
         const newOption = createSelectValue(formattedName, props.labelFormat)
         const newOptions = options ? [newOption, ...options] : [newOption];
         setOptions(newOptions)

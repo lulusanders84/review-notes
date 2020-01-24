@@ -1,6 +1,6 @@
 const setLob = window.localStorage.getItem("lob") ? window.localStorage.getItem("lob") : "commercial";
 export const initialValues = {
-    name: window.localStorage.getItem("name"),
+    name: window.localStorage.getItem("name") || "",
     req: "",
     reviewed: "no",
     pend: [],
@@ -23,6 +23,7 @@ export const initialValues = {
     policy: [],
     benefits: "General benefits verified",
     fepBenefits: "General benefits verified",
+    plan: "MAPD",
     claimType: "local",
     claimSystem: "INSINQ",
     special: "N/A",

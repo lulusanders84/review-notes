@@ -9,11 +9,9 @@ import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
-import Checkbox from '../../Inputs/Checkbox';
 import BackFromPeerNotes from '../../BackFromPeerNotes/BackFromPeerNotes';
 import DeniedInputs from '../../Inputs/DeniedInputs';
 import { Divider } from '@material-ui/core';
-import CriteriaInputs from '../../Inputs/CriteriaInputs';
 import { handleInputs } from '../../../actions';
 import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
@@ -25,13 +23,11 @@ function BackFromPeer(props) {
     dispatch(handleInputs({name: "type", value: "Review Decision"}))
   }, [dispatch])
   return (
-    <div>
+    <div style={{width: "100%"}}>
     <RadioInput id="deter" options={["approve", "deny"]} label="Determination" updateValue={props.handleInputs}/>
       {props.values.deter === "deny" 
         ? <DeniedInputs denialId="rationale" handleInputs={props.handleInputs} />
-        : props.values.deter === "send to medical director"
-          ? <CriteriaInputs handleInputs={props.handleInputs} /> 
-          : <Checkbox id="allMet" value={props.values.allMet} updateValue={props.handleInputs} label="All crtieria met" disabled={props.disableAllMet} />
+        : null
       }
       <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" updateValue={props.handleInputs}/>      
       { props.values.lob !== "FEP" 

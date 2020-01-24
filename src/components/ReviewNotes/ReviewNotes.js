@@ -8,13 +8,13 @@ import General from './NoteTemplates/General';
 import Misroute from './NoteTemplates/Misroute';
 import BackFromPeer from './NoteTemplates/BackFromPeer';
 import InfoRequest from './NoteTemplates/InfoRequest';
-import AddClaimButton from '../ClaimCount/AddClaimButton';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../actions';
 import { savePoliciesToStorage } from '../../data/medPolicies';
 import { fepPolicies } from '../../data/fepPolicies';
 import { medPolicies } from '../../data/medPolicies';
+import { formatPolicy, scrapePolicies } from '../../data/scrapePolicies';
 
 const styles = theme => ({
   '@global': {
@@ -103,12 +103,14 @@ class ReviewNotes extends React.Component {
   }
   componentDidMount() {
     savePoliciesToStorage("bcbsmnPolicies", medPolicies);
-    savePoliciesToStorage("fepPolicies", fepPolicies);
+    savePoliciesToStorage("fepPolicies", fepPolicies.map(policy => { return formatPolicy(policy)}));
+    scrapePolicies()
   }
   render() {
     const { classes } = this.props;
     const options = {};
-    options.claimTypeOptions = this.props.values.lob === "GP" ? ["platinum blue", "med supp", "MAPD"] : ["local", "home"];
+    options.claimTypeOptions = ["local", "home"];
+    options.planOptions = ["platinum blue", "med supp", "MAPD"];
     options.claimSystemOptions = this.props.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
     const reviewProps = {
       values: this.props.values,
@@ -150,7 +152,6 @@ class ReviewNotes extends React.Component {
           <form className={classes.form} noValidate>
             <Grid container alignContent="center" justify="center">
               {noteType()}
-              <AddClaimButton values={this.props.values} />
             </Grid>
             
           </form>

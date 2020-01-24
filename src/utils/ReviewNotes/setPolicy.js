@@ -1,32 +1,40 @@
 import { fepPolicies as fepPoliciesOnFile } from '../../data/fepPolicies';
+import { formatPolicy } from '../../data/scrapePolicies';
 import { bcbsmnCodes } from '../../data/bcbsmnCodes';
+import { formattedMedicareCodes } from '../../data/medicareCodes';
 import { medPolicies } from '../../data/medPolicies';
 
 export const setPolicyByCode = (codes, lob) => {
   const isJ3490 = codes.includes("J3490");
+  const codeObj = lob === "GP"
+    ? formattedMedicareCodes()
+    : bcbsmnCodes;
   const policies = codes && !isJ3490
     ? lob === "FEP" 
       ? fep(codes)
-      : bcbsmn(codes)
+      : policyByCodes(codes, codeObj)
     : [];
   return setValueAndLabel(policies);
 }
 
-const bcbsmn = (codes) => {
+const policyByCodes = (codes, codeObj) => {
   let policies = [];
   codes.forEach(code => {
-    policies = bcbsmnCodes[code] ? [...policies, ...bcbsmnCodes[code]] : policies;
+    policies = codeObj[code] ? [...policies, ...codeObj[code]] : policies;
   })
   return policies;
 }
 const fep = (codes) => {
-  const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
+  const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile.map(policy => {
+    return formatPolicy(policy)
+  });
+  
   if (policies) {
     return policies.reduce((acc, policy) => {
-      const hcpcs = policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
+      const hcpcs = !policy["HCPCS"] || policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
         ? []
         : policy["HCPCS"].split(",");
-      const cpts = policy["CPT"] === "No CPT" || policy["CPT"] === ""
+      const cpts = !policy["CPT"] || policy["CPT"] === "No CPT" || policy["CPT"] === ""
         ? []
         : policy["CPT"].toString().split(",");
       const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
@@ -40,7 +48,6 @@ const fep = (codes) => {
       return acc;
     }, []) 
   } else return [];
-  
 }
 
 const setValueAndLabel = (policies) => {
@@ -94,7 +101,9 @@ export const mergePolicyNameArrays = (newPolicyNames, policyNames) => {
   })
 }
 export const getPolicies = (policyNames) => {
-  const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile;
+  const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile.map(policy => {
+    return formatPolicy(policy)
+  });;
   const bcbsmnPolicies = window.localStorage.getItem("bcbsmnPolicies") ? JSON.parse(window.localStorage.getItem("bcbsmnPolicies")) : medPolicies;
   const fullPolicies = [...bcbsmnPolicies, ...fepPolicies]; 
   if(policyNames) {
