@@ -19,7 +19,7 @@ export const scrapePolicies = async () => {
   let workingStore = store;
   let pageNumber = 1;
   const url = "https://www.fepblue.org/benefit-plans/medical-policies-and-utilization-management-guidelines/medical-policies?page=";
-  for(let i = pageNumber; i < 16; i++) {
+  for(let i = pageNumber; i < 17; i++) {
     workingStore = await getPage(url, pageNumber, workingStore);
     pageNumber += 1;
   }
