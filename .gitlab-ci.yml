@@ -8,7 +8,7 @@ build:
   stage: build
 
   environment:
-    name: production
+    name: development
 
   before_script:
     - npm install
@@ -17,7 +17,7 @@ build:
     - npm run build
 
   only:
-    - master
+    - develop
 
   artifacts:
     expire_in: 4 days
@@ -28,11 +28,11 @@ deploy:
   stage: deploy
 
   environment:
-    name: production
+    name: development
 
   script:
     - pip install awscli
     - npm run postdeploy
 
   only:
-    - master
+    - develop
