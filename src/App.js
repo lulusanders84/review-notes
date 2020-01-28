@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from '../src/store';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import MainPageContainer from './components/MainPage/MainPageContainer';
+import { getBcbsPolicyLinks } from './utils/Policies/getBcbsPolicyLinks';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,6 +18,7 @@ const theme = createMuiTheme({
   },
 });
 function App() {
+  getBcbsPolicyLinks();
   React.useEffect(() => {
     handlePolicyScraping();
   }, []);
