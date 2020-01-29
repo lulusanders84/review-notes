@@ -11,7 +11,7 @@ function MainPageDev(props) {
       <Title setTabValue={setTabValue} tabValue={tabValue} />
       <div >
         {tabValue === 0
-        ? <ReviewNotes />
+        ? <ReviewNotes showType={true} />
         : tabValue === 1
           ? <ClaimLog />
           : null
