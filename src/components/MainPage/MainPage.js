@@ -7,7 +7,7 @@ function MainPage(props) {
   return (     
     <div className={props.paper}> 
       <ReviewNotesTitle />
-        <ReviewNotes />    
+        <ReviewNotes showType={false} />    
     </div>
   )
 }
