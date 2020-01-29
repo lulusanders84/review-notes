@@ -113,6 +113,7 @@ class ReviewNotes extends React.Component {
     options.planOptions = ["platinum blue", "med supp", "MAPD"];
     options.claimSystemOptions = this.props.values.special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
     const reviewProps = {
+      showType: this.props.showType,
       values: this.props.values,
       reviewed: this.state.reviewed,
       handleInputs: this.handleInputs, 
