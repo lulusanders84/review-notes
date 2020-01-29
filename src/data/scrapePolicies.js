@@ -33,6 +33,8 @@ const getPage = async (url, pageNumber, workingStore) => {
     const store = workingStore;
     await $.getJSON('https://api.allorigins.win/get?url=' + encodeURIComponent(url + pageNumber), function (data) {
       const htmlObj = document.createElement("div");
+      data.contents = data.contents.substring(data.contents.search("media-listing"));
+      data.contents = '<ul class="' + data.contents.substring(0, data.contents.search("</ul>") + 5);
       htmlObj.innerHTML = data.contents;
       const html = $(htmlObj).find("ul.media-listing li");
       const array = Object.keys(html).map(key => {
