@@ -1,1 +1,2 @@
-export const allCapWords = ["FEP", "PET", "PET/CT", "CT", "CT", "SBP", "CPAP", "PT", "OT", "MRI", "ENT", "CVS"]
+export const allCapWords = ["CPAP", "CT", "CVS", "ENT", "FEP", "MD", "MRI", "NMES", "OT", "PET", "PET/CT", "PT", "SBP",  
+  "TENS", "THA", "TKA", ]
