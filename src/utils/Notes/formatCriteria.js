@@ -2,15 +2,20 @@ export const formatCriteria = (input) => {
   if(input) {
     const inputArr = input.split("</p>");
     input = inputArr.map((input, index) => {
-      input = input.split("<p>").join("");    
+      const reg = new RegExp(input);
+      if(reg.test("<p>")) {
+        input = input.split("<p>")
+        input[0] = "<br>";
+        input = input.join("");   
+      }
       input = index === 0
         ? input.replace("<p>", "")
         : input.replace("<p>", "<br>");
-      if(index > inputArr.length - 4) {
-        input = input.replace("<br>", "")
-      }
       return input;
     }).join("");
+    if(input !== "N/A") {
+      input = "<br>" + input;
+    }
     return input;
   } else return "";
   
