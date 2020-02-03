@@ -3,13 +3,14 @@ import MedDirectorNote from './MedDirectorNote';
 import { connect } from 'react-redux';
 import { setMedClaimReviewData } from '../../../actions/notes';
 import NoteContainer from '../NoteContainer';
+import { formatCriteria } from '../../../utils/Notes/formatCriteria';
+import 'react-quill/dist/quill.snow.css';
 
 export function MedClaimReviewNote(props) {
   const { dispatch, values, notes } = props;
   React.useEffect(() => {
     dispatch(setMedClaimReviewData(values))
   }, [dispatch, values])
-
   return (
     <NoteContainer title="Medical Claim Review Note">
       REQ-{values.req}: Clinical Note
@@ -25,8 +26,8 @@ export function MedClaimReviewNote(props) {
         <br />Benefits: {notes.benefits}
         <br />Case summary: {notes.summary} 
         <br />Extenuating Circumstances: NA
-        <br />Criteria Met: {notes.criteriaMet}
-        <br />Criteria Not Met: {notes.criteriaNotMet}
+        <br />Criteria Met: <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria(notes.criteriaMet)}} />
+        <br />Criteria Not Met: <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria(notes.criteriaNotMet)}} />
         <br />Determination: {notes.deter}
         {values.deter === "send to medical director" ?
           <MedDirectorNote />
