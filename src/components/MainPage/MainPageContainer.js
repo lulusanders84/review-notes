@@ -1,7 +1,8 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Container } from '@material-ui/core/';
+import { Container, Typography } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
+import { version } from '../../version';
 
 const styles = theme => ({
   '@global': {
@@ -40,7 +41,10 @@ function MainPageContainer(props) {
     return (
       <Container id="main container" component="main" classes={{root: classes.page}}>
         <CssBaseline />     
-        {React.cloneElement(props.component, classes)}           
+        {React.cloneElement(props.component, classes)}
+        <Typography component="i" variant="overline" style={{paddingBottom: "15px"}}>
+          version: {version}
+        </Typography>           
       </Container>
     );
   }

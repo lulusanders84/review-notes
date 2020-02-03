@@ -1,6 +1,6 @@
 {
-  "name": "policy-pull",
-  "version": "0.1.0",
+  "name": "review-notes",
+  "version": "2.0.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.2.1",
@@ -18,6 +18,7 @@
     "react-dom": "^16.8.6",
     "react-infinite-calendar": "^2.3.1",
     "react-pdf-js": "^5.1.0",
+    "react-quill": "^1.3.3",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
@@ -33,8 +34,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy-dev": "aws s3 cp ./build s3://${S3_BUCKET_NAME}/ --recursive",
-    "postdeploy": "aws cloudfront create-invalidation --distribution-id ELP80NUAGMRO --paths '/*'"    
-
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id ELP80NUAGMRO --paths '/*'"
   },
   "eslintConfig": {
     "extends": "react-app"
