@@ -5,6 +5,7 @@ import { initialValues } from "../utils/Values";
 
 const savePends = savingPendsUtils.savePends;
 export const handleInputs = value => (dispatch, getState) => {
+  
   if(value.name === "benefits" || value.name === "fepBenefits") {
     value = handleBenefits(value);
   };
@@ -18,6 +19,7 @@ export const handleInputs = value => (dispatch, getState) => {
   dispatch(setValue(value));
   const values = getState().values;
   let newValues = handleInputsChange(value, values);
+  
   newValues.forEach(value => {
     newValues = [...newValues, ...handleInputsChange(value, values)]
   })
@@ -35,7 +37,7 @@ const handleInputsChange = (value, values) => {
     value, 
     values);
   return Object.keys(returnObj).map(key => {
-    return {name: key, value: returnObj[key], mark: "handle"}
+    return {name: key, value: returnObj[key], mark: "handle", originalName: value.name}
   });
 }
 
@@ -102,7 +104,9 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
         returnObj.rationale = values.rationale;
         break; 
       case "rationale":
-        returnObj.exCircum = value.value === "Not a Covered Benefit" ? value.value : "N/A";
+        if(values.deter === "deny") {
+          returnObj.exCircum = value.value === "Not a Covered Benefit" ? value.value : "N/A";          
+        }
         break; 
       case "serviceType":
         returnObj.drugReview = value.value === "drug" ? true : false;
