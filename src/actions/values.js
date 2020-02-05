@@ -1,6 +1,7 @@
 import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
 import { formatToSentence } from '../utils/Notes/formatToSentence';
 import { getPolicies } from '../utils/ReviewNotes/setPolicy';
+import { initialValues } from "../utils/Values";
 
 const savePends = savingPendsUtils.savePends;
 export const handleInputs = value => (dispatch, getState) => {
@@ -27,8 +28,7 @@ export const handleInputs = value => (dispatch, getState) => {
   
 }
 const handleInputsChange = (value, values) => {
-  const returnObj = handleInputsSwitch(
-    handleInputsChange, 
+  const returnObj = handleInputsSwitch( 
     handleServiceSelect, 
     handleStorage, 
     handleInfo,
@@ -39,43 +39,36 @@ const handleInputsChange = (value, values) => {
   });
 }
 
-const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values) => {
+const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
   let returnObj = {};
   switch(value.name) {
+      case "allMet":
+        returnObj.exCircum = values.deter === "approve" && !value.value
+          ? initialValues.exCircum
+          : "N/A";
+        break;
       case "claimType": 
         if(value.value === "home") {
           returnObj.noPricingRationale = "Home claim"
         };
         break;
-      case "special":
-        if(value.value === "host") {
-          returnObj.claimSystem = "INSINQ";
-        };
-       break; 
-      case "policy":
-        returnObj.info = info(value.value);
-        returnObj.interqual = handleInterqual(value);
-        break;
-      case "pa-deter":
-        if(values["pa-match"] === "yes") {
-          const newValue = value.value === "approved" ? "approve" : "deny";
-          handler({name: "deter", value: newValue});
-          returnObj.disableAllMet = true;
-        } 
-        break;           
-      case "pa-match": 
-        const newValue = values["pa-deter"] === "approved" ? "approve" : "deny";
-        handler({name: "deter", value: newValue});
-        const disableAllMet = value.value === "yes" ? true : false;
-        returnObj.disableAllMet = disableAllMet;
-        break;
-      case "deter":
-        if(value.value !== "approve") {handler({name: "allMet", value: false})};
-        break;
       case "code":
         returnObj.serviceType = serviceSelect(value);
-        break;
-      case "name":
+        break; 
+      case "deter":
+        switch (value.value) {
+          case "approve":
+            returnObj.exCircum = values.policy.length === 0
+            ? initialValues.exCircum
+            : "N/A";
+            returnObj.allMet = values.policy.length !== 0 ? true : false
+            break;
+          case "deny":
+            returnObj.rationale = values.rationale;
+            break;
+          default: break;
+        }
+        break; 
       case "lob":
         storage(value);
         if(value.value === "FEP") {
@@ -85,23 +78,46 @@ const handleInputsSwitch = (handler, serviceSelect, storage, info, value, values
       case "pa-diagnosis":
           returnObj.diagnosis = value.value;
           break;
+      case "pa-deter":
+        if(values["pa-match"] === "yes") {
+          const newValue = value.value === "approved" ? "approve" : "deny";
+          returnObj.deter = newValue;
+          returnObj.disableAllMet = true;
+        } 
+        break;           
+      case "pa-match": 
+        returnObj.deter = values["pa-deter"] === "approved" ? "approve" : "deny";
+        returnObj.disableAllMet = value.value === "yes" ? true : false;
+        break;        
       case "pa-provider":
           returnObj.provider = value.value;
-        break;
-      case "serviceType":
-        returnObj.drugReview = value.value === "drug" ? true : false;
-        const type = value.value === "drug"
-          ? "Injectable Drug"
-          : value.value === "DME"
-            ? "DME"
-            : null;
-        returnObj.type = type;
-        break;
+        break; 
       case "pend":
         if(value && value.value !== null) {value.value.forEach(value => {savePends(value, values.lob)})}
         break;
-      default:
+      case "policy":
+        returnObj.info = info(value.value);
+        returnObj.interqual = handleInterqual(value);
+        returnObj.deter = values.deter;
+        returnObj.rationale = values.rationale;
+        break; 
+      case "rationale":
+        returnObj.exCircum = value.value === "Not a Covered Benefit" ? value.value : "N/A";
+        break; 
+      case "serviceType":
+        returnObj.drugReview = value.value === "drug" ? true : false;
+        returnObj.type= value.value === "drug"
+          ? "Injectable Drug"
+          : value.value === "DME"
+            ? "DME"
+            : values.type;
+        break;        
+      case "special":
+        if(value.value === "host") {
+          returnObj.claimSystem = "INSINQ";
+        };
         break;
+      default: break;
     }
   return returnObj;
 }

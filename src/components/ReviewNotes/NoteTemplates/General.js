@@ -82,6 +82,10 @@ function General(props) {
           ? <CriteriaInputs handleInputs={props.handleInputs}  /> 
           : <Checkbox id="allMet" value={props.values.allMet} updateValue={props.handleInputs} label="All crtieria met" disabled={props.values.disableAllMet} />
       }
+      {props.values.deter === "approve" && props.values.allMet === false
+        ? <TextInput id="exCircum" placeholder="" label="Extenuating Circumstances" onBlur={props.handleInputs} />
+        : null
+      }
     <Divider variant="fullWidth" />
     <div className={classes.notes}>
       <GeneralNotes />

@@ -50,20 +50,19 @@ const setSummary = (values) => {
 }
 const setCriteriaMet = (values, data) => {
   const { policyString } = data;
-  return values.allMet 
+  return values.deter === "approve" && policyString !== "N/A" 
     ? `Applicable ${policyString} criteria met`
-    : values.criteriaMet 
-      ? values.criteriaMet 
-      : policyString === "N/A" 
-        ? policyString 
-        : "None";
+    : values.deter === "send to medical director"
+          ? values.criteriaMet 
+          : "N/A";
+            
 }
 const setCriteriaNotMet = (values, data) => {
   const { policyString } = data;
   return values.criteriaNotMet 
     ? values.criteriaNotMet
     : policyString === "N/A" 
-      ? policyString 
+      ? 'N/A'
       : "None";
 }
 const setDeter = (values, data) => {
