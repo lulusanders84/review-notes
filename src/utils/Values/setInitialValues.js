@@ -49,7 +49,8 @@ export const initialValues = {
     iqLoc: "",
     iqSubset: "",
     noteType: 1,
-    doseUnit: "mg"
+    doseUnit: "mg",
+    exCircum: "No specific medical policy applies, service appears medically necessary."
 }
 
 

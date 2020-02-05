@@ -24,7 +24,7 @@ const pricingSummary = (values) => {
         ? values.deter !== "send to medical director"
             ? values.pricing === "Not required"
                 ? `${pricingRationale}, pricing not required.`
-                : `Per ${values.pricing}${medicareNetwork}, for ${values.code} allow ${values.allowable} based on comparable code ${values.compCode} and .`
+                : `Per ${values.pricing}${medicareNetwork}, for ${values.code} allow ${values.allowable} based on comparable code ${values.compCode}.`
             : ""
         : "";
 }

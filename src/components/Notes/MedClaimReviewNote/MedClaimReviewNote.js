@@ -25,7 +25,7 @@ export function MedClaimReviewNote(props) {
         <br />Medical Policy/Criteria: {notes.policyString}
         <br />Benefits: {notes.benefits}
         <br />Case summary: {notes.summary} 
-        <br />Extenuating Circumstances: NA
+        <br />Extenuating Circumstances: {values.exCircum}
         <br />Criteria Met: <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria(notes.criteriaMet)}} />
         <br />Criteria Not Met: <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria(notes.criteriaNotMet)}} />
         <br />Determination: {notes.deter}
