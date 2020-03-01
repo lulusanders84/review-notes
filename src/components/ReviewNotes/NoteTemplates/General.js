@@ -53,7 +53,7 @@ function General(props) {
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
       <RadioInput id="serviceType" options={["drug", "procedure", "DME"]} label="Service Type" updateValue={props.handleInputs} />
       {props.showType
-        ? <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={sortSuggestionsAlphabetically(JSON.parse(window.localStorage.getItem("type")))} value={{value:props.values.type, label: props.values.type}} />
+        ? <ReactSelectSingle id="specificType" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={sortSuggestionsAlphabetically(JSON.parse(window.localStorage.getItem("type")))} value={{value:props.values.type, label: props.values.type}} />
         : null
       }
       {props.values.drugReview  && props.values.lob === "commercial"
