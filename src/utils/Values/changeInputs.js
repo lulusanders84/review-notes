@@ -2,7 +2,6 @@ import * as savingPendsUtils from '../ReviewNotes/savingPends'
 import { formatToSentence } from '../Notes/formatToSentence';
 import { initialValues } from "../Values";
 import { serviceTypes } from '../../data/serviceTypes';
-import { types } from 'util';
 
 const savePends = savingPendsUtils.savePends;
 
