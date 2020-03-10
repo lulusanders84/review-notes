@@ -130,7 +130,7 @@ const handleStorage = (value) => {
   window.localStorage.setItem(value.name.trim(), value.value.trim())
 }
 const handleServiceSelect = (value) => {
-  const codeValue = value.value.toUpperCase();
+  const codeValue = value.value.toUpperCase().split(",")[0];
   const type = checkRules(codeValue);
   return checkCodes(codeValue, type);
 }
