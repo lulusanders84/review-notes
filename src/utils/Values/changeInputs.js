@@ -2,7 +2,6 @@ import * as savingPendsUtils from '../ReviewNotes/savingPends'
 import { formatToSentence } from '../Notes/formatToSentence';
 import { initialValues } from "../Values";
 import { serviceTypes } from '../../data/serviceTypes';
-import { types } from 'util';
 
 const savePends = savingPendsUtils.savePends;
 
@@ -130,7 +129,7 @@ const handleStorage = (value) => {
   window.localStorage.setItem(value.name.trim(), value.value.trim())
 }
 const handleServiceSelect = (value) => {
-  const codeValue = value.value.toUpperCase();
+  const codeValue = value.value.toUpperCase().split(",")[0];
   const type = checkRules(codeValue);
   return checkCodes(codeValue, type);
 }
