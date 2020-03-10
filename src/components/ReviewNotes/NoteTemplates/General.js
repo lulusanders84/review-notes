@@ -21,8 +21,8 @@ import DoseInput from '../../Inputs/DoseInput';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import PendInput from '../../Inputs/PendInput';
 import ProviderType from '../../Inputs/ProviderType';
-import { sortSuggestionsAlphabetically } from '../../../utils/AutoComplete/sortSuggestionsAlphabetically';
 import BenefitsInput from '../../Inputs/BenefitsInput';
+import ServiceTypeInput from '../../Inputs/ServiceTypeInput';
 
 function General(props) {
   const { classes, options } = props;
@@ -51,11 +51,7 @@ function General(props) {
       <TextInput id="age" placeholder="" label="Age" onBlur={props.handleInputs}  /> 
       <TextInput id="dos" placeholder="" label="Date of service" onBlur={props.handleInputs}  />              
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
-      <RadioInput id="serviceType" options={["drug", "procedure", "DME"]} label="Service Type" updateValue={props.handleInputs} />
-      {props.showType
-        ? <ReactSelectSingle id="specificType" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={sortSuggestionsAlphabetically(JSON.parse(window.localStorage.getItem("type")))} value={{value:props.values.type, label: props.values.type}} />
-        : null
-      }
+      <ServiceTypeInput handleInputs={props.handleInputs} />
       {props.values.drugReview  && props.values.lob === "commercial"
         ? <DoseInput handleInputs={props.handleInputs} />
         : null }
