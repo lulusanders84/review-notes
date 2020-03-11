@@ -130,8 +130,9 @@ const handleStorage = (value) => {
 }
 const handleServiceSelect = (value) => {
   const codeValue = value.value.toUpperCase().split(",")[0];
-  const type = checkRules(codeValue);
-  return checkCodes(codeValue, type);
+  let type = checkRules(codeValue);
+  type = checkCodes(codeValue, type);
+  return type ? type : "Medical";
 }
 
 const checkCodes = (codeValue, initialType) => {

@@ -11,7 +11,6 @@ export const setCaseSummary = (values) => {
     const diagnosis = values.diagnosis !== undefined ? values.diagnosis.toLowerCase() : "";
     let proVerb; 
     const type = serviceTypes.find(type => type["Service Type"] === serviceType);
-    console.log(serviceType, type);
     let serviceVerb = type["Verb"] ? type["Verb"] : "underwent";
     const pricingSummary = setPricingNote(values, "summary");
     const modifier22 = values.pend && values.pend.some(pend => {return pend.value === "R5027"})
