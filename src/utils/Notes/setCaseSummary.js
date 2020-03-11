@@ -3,26 +3,16 @@ import { vowels } from "./vowels";
 import { formatToName } from "./formatToName"; 
 import { setPricingNote } from "./setPricingNote";
 import { formatToSentence } from './formatToSentence';
+import { serviceTypes } from '../../data/serviceTypes';
 
 export const setCaseSummary = (values) => {
     const { age, service, serviceType, dos } = values;
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
     const diagnosis = values.diagnosis !== undefined ? values.diagnosis.toLowerCase() : "";
-    let serviceVerb;
     let proVerb; 
-    switch(serviceType) {
-        case 'drug':
-            serviceVerb = "received";
-            proVerb = "provided";
-            break;
-        case 'DME':
-            serviceVerb = 'received a';
-            proVerb = "provided";
-            break;
-        default:
-            serviceVerb = "underwent";
-            proVerb = "performed";
-    }
+    const type = serviceTypes.find(type => type["Service Type"] === serviceType);
+    console.log(serviceType, type);
+    let serviceVerb = type["Verb"] ? type["Verb"] : "underwent";
     const pricingSummary = setPricingNote(values, "summary");
     const modifier22 = values.pend && values.pend.some(pend => {return pend.value === "R5027"})
         ? values.deter === "approve" 

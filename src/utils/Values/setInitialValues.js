@@ -14,7 +14,7 @@ export const initialValues = {
     noPricingRationale: "POC provider",
     msr: "Eligible",
     allowable: "$",
-    serviceType: "procedure",
+    serviceType: "Medical",
     drugReviewType: "new",
     diagnosis: "",
     provider: "",
