@@ -136,17 +136,19 @@ const handleServiceSelect = (value) => {
 
 const checkCodes = (codeValue, initialType) => {
   return serviceTypes.reduce((acc, type) => {
-    let codes = type["Codes"].split(",");
-    codes.forEach(code => {
-      if(codeValue === code.trim()) {
-          acc = type["Service Type"]; 
-      } else if(code.includes("-")) {
-        const range = code.split("-").map(str => { return str.trim()});
-        if(codeValue >= range[0] && codeValue <= range[1]) {
-          acc = type["Service Type"];
+    if(type["Codes"]) {
+      let codes = type["Codes"].split(",");
+      codes.forEach(code => {
+        if(codeValue === code.trim()) {
+            acc = type["Service Type"]; 
+        } else if(code.includes("-")) {
+          const range = code.split("-").map(str => { return str.trim()});
+          if(codeValue >= range[0] && codeValue <= range[1]) {
+            acc = type["Service Type"];
+          }
         }
-      }
-    })
+      })      
+    }
     return acc;
   }, initialType);
 }
@@ -154,9 +156,12 @@ const checkCodes = (codeValue, initialType) => {
 const checkRules = (codeValue) => {
   const firstChar = codeValue.charAt(0);
   return serviceTypes.reduce((acc, type) => {
-    if(type["Rule"].includes(firstChar)) {
-      acc = type["Service Type"]
+    if(type["Rule"]) {
+      if(type["Rule"].includes(firstChar)) {
+        acc = type["Service Type"]
+      }  
     }
+    
     return acc;
   }, false)
 }

@@ -29,7 +29,7 @@ function ClaimTable(props) {
                   REQ-{claim.req}
                 </TableCell>
                 <TableCell align="right">{formatDateTime(claim.dateTime)}</TableCell>
-                <TableCell align="right">{claim.type}</TableCell>
+                <TableCell align="right">{claim.serviceType}</TableCell>
                 <TableCell align="right">{claim.lob}</TableCell>
               </TableRow>
             ))}

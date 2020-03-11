@@ -300,11 +300,19 @@ function IntegrationReactSelect(props) {
   const [single, setSingle] = React.useState(initialValue);
   const [options, setOptions] = React.useState(formatSuggestions(props.suggestions, props.sentence));
   const [edit, setEdit] = React.useState(false);
+  const [isClearable, setIsClearable] = React.useState(true);
+  
   useEffect(() => {
     const name = props.values[props.id];
     setSingle({value: name, label: name})
   }, [props.values, props.id])
   
+  useEffect(() => {
+    const value = props.notClearable 
+      ? false
+      : true;
+      setIsClearable(value);
+  }, [props.notClearable])
   function handleEditClick() {
     setEdit(true);
   }
@@ -352,9 +360,9 @@ function IntegrationReactSelect(props) {
             labelFormat={props.labelFormat}
             setNewValue={setSingle} />
         : <Grid container justify="space-between" alignItems="flex-end"> 
-            <Grid item xs={10}>
+            <Grid item xs={props.notClearable ? 12 : 10}>
               <CreatableSelect
-                isClearable
+                isClearable={isClearable}
                 classes={classes}
                 styles={selectStyles}
                 inputId={`react-select-single-${props.id}`}
@@ -372,9 +380,11 @@ function IntegrationReactSelect(props) {
                 onChange={handleChangeSingle}
               />
             </Grid>
-            <Grid item>
+            {props.notClearable
+            ? null
+            : <Grid item>
               <Button onClick={handleEditClick}>Edit</Button>
-            </Grid>
+            </Grid>}
           </Grid>
       }     
     </Grid>
