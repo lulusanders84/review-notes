@@ -1,5 +1,11 @@
 export const serviceTypes = [
   {
+    "Service": "Surgical - Other ",
+    "Codes": "10021-69990",
+    "Rule": "(Excluding Spinal Fusion and Bariatric)",
+    "Service Type": "Surgical"
+  },
+  {
     "Service": "Acupuncture",
     "Codes": "97810, 97811, 97813, 97814",
     "Rule": null,
@@ -74,12 +80,6 @@ export const serviceTypes = [
     "Codes": "20936, 20937, 20938, 22533, 22534, 22558, 22585, 22612, 22614, 22630, 22632, 22633, 22634, 22800, 22802, 22804, 22808, 22810, 22812, 22842, 22843, 22844, 22845, 22846, 22847, 22853, 22854, 22859",
     "Rule": null,
     "Service Type": "Spinal Fusion"
-  },
-  {
-    "Service": "Surgical - Other ",
-    "Codes": "10021-69990",
-    "Rule": "(Excluding Spinal Fusion and Bariatric)",
-    "Service Type": "Surgical"
   },
   {
     "Service": "Other ",
