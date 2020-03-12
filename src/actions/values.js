@@ -1,9 +1,12 @@
 import { getPolicies } from '../utils/ReviewNotes/setPolicy';
 import { handleChangeInputs, handleBenefits } from '../utils/Values';
+import { setStorage, saveToStorage, getStorage } from '../utils';
 
 
 export const handleInputs = value => (dispatch, getState) => {
-  
+  if(value.name === "name") {
+    saveToStorage("name", value.value);
+  }
   if(value.name === "benefits" || value.name === "fepBenefits") {
     value = handleBenefits(value);
   };
