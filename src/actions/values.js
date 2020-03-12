@@ -1,6 +1,6 @@
 import { getPolicies } from '../utils/ReviewNotes/setPolicy';
 import { handleChangeInputs, handleBenefits } from '../utils/Values';
-import { setStorage, saveToStorage, getStorage } from '../utils';
+import { saveToStorage } from '../utils';
 
 
 export const handleInputs = value => (dispatch, getState) => {
