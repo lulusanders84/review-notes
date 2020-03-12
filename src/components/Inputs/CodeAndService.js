@@ -93,12 +93,12 @@ function CodeAndService(props) {
     <div className={classes.container}>
       <Grid container row="true" className={classes.card}>       
           <div className={classes.inputs}>
-            <TextInput id="code" placeholder="" label="Suspended Codes" onBlur={onCodeEntry} />
+            <TextInput id="code" placeholder="" label="Suspended Codes" updateValue={onCodeEntry} />
             <TextInput 
               id="service" 
               placeholder="" 
               label="Service" 
-              onBlur={props.handleInputs} 
+              updateValue={props.handleInputs} 
               disabled={props.serviceDisabled} 
               helperText={helperText} />            
           </div>

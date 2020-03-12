@@ -1,6 +1,9 @@
 const setLob = window.localStorage.getItem("lob") ? window.localStorage.getItem("lob") : "commercial";
+const setName = typeof window.localStorage.getItem("name") === "string" 
+    ? JSON.parse(window.localStorage.getItem("name"))
+    : window.localStorage.getItem("name")
 export const initialValues = {
-    name: JSON.parse(window.localStorage.getItem("name")) || "",
+    name: setName || "",
     req: "",
     reviewed: "no",
     pend: [],

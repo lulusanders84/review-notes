@@ -30,7 +30,7 @@ function InfoRequest(props) {
   
   return (
     <div>
-      <TextInput id="name" placeholder="" label="Clinician:" onBlur={props.handleInputs} />
+      <TextInput id="name" placeholder="" label="Clinician:" updateValue={props.handleInputs} />
       <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" updateValue={props.handleInputs} />      
       { props.values.lob !== "FEP" 
         ? <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" updateValue={props.handleInputs} />
@@ -39,18 +39,18 @@ function InfoRequest(props) {
         ? <SimpleSelect id="special" options={["N/A", "employee", "foreign", "hormel", "host", ]} label="Specialty claim" updateValue={props.handleInputs} />             
         : null} 
       {props.values.claimType === "home"
-        ?<TextInput id="sccf" placeholder="" label="SCCF:" onBlur={props.handleInputs} />
+        ?<TextInput id="sccf" placeholder="" label="SCCF:" updateValue={props.handleInputs} />
         : null
       }                      
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
       <PendInput updateValue={props.handleInputs} />  
-      <TextInput id="req" placeholder="Enter number" label="REQ-" onBlur={props.handleInputs}  />
-      <TextInput id="dos" placeholder="" label="Date of service" onBlur={props.handleInputs}  />              
+      <TextInput id="req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs}  />
+      <TextInput id="dos" placeholder="" label="Date of service" updateValue={props.handleInputs}  />              
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
       <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />
       <PolicyInput handleInputs={props.handleInputs} /> 
-      <TextInput id="related" label="Related UM REQs:" onBlur={props.handleInputs} />
-      <TextInput id="info" multiline={true} rows="5" label="Info To Request:"  onBlur={props.handleInputs} />
+      <TextInput id="related" label="Related UM REQs:" updateValue={props.handleInputs} />
+      <TextInput id="info" multiline={true} rows="5" label="Info To Request:"  updateValue={props.handleInputs} />
       <Button onClick={onSaveClick}>
         Save Info to Policy
       </Button>

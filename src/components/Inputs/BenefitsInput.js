@@ -7,7 +7,7 @@ const BenefitsInput = (props) => {
     <div style={{width: "100%"}}>
     {props.values.lob === "FEP"
       ? <ReactSelectSingle id="fepBenefits" placeholder="" label="Benefits" labelFormat="lower" updateValue={props.handleInputs}  suggestions={JSON.parse(window.localStorage.getItem("fepBenefits"))} sentence={true} />               
-      : <TextInput id="benefits" placeholder="" label="Benefits" onBlur={props.handleInputs}  />
+      : <TextInput id="benefits" placeholder="" label="Benefits" updateValue={props.handleInputs}  />
     }   
     </div>  
   )

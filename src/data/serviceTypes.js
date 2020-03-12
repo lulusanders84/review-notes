@@ -158,7 +158,7 @@ export const serviceTypes = [
     "Service": "Inpatient",
     "Codes": "0110-0119, 0120-0129, 0200-0209, 0220-0229",
     "Rule": null,
-    "Verb": "was admitted as an ",
+    "Verb": "was admitted as an",
     "Service Type": "Inpatient"
   },
   {
