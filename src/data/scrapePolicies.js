@@ -49,9 +49,10 @@ const getPage = async (url, pageNumber, workingStore) => {
           ? $(li).find('span').html()
           : null;
         policy.href = li
-          ? $(li).find('a').attr("href")
+          ? "https://www.fepblue.org/benefit-plans/medical-policies-and-utilization-management-guidelines/" + $(li).find('a').attr("href")
           : null;
         if(policy.number) {
+            policy.number = policy.number.split("\n").join("").trim();     
             acc.push(policy)
         }
         return acc;
@@ -67,6 +68,7 @@ const getPage = async (url, pageNumber, workingStore) => {
 export const updateFepPolicies = (store, policies) => {
   return policies.map(policy => {
     const number = policy["Policy #"];
+    console.log(store, policy, number)
     policy.href = store[number] ? store[number].href : null;
     return policy;
   })  
