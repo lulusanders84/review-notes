@@ -20,12 +20,12 @@ function PricingInput(props) {
               ? <ReactSelectSingle id="network" placeholder="" label="Network" updateValue={props.handleInputs} suggestions={props.suggestions.networkSuggestions}  />
               : null
             }
-           <TextInput id="compCode" placeholder="" label="Comparable code" onBlur={props.handleInputs} /> 
-            <TextInput id="allowable" placeholder="" label="Allowable amount" onBlur={props.handleInputs} /> 
+           <TextInput id="compCode" placeholder="" label="Comparable code" updateValue={props.handleInputs} /> 
+            <TextInput id="allowable" placeholder="" label="Allowable amount" updateValue={props.handleInputs} /> 
             <RadioInput id="msr" options={["Eligible", "Ineligible"]} label="MSR" updateValue={props.handleInputs} />          
           </div>
         : props.values.pricing === "DPW"
-          ? <TextInput id="allowable" placeholder="" label="Allowable amount" onBlur={props.handleInputs} /> 
+          ? <TextInput id="allowable" placeholder="" label="Allowable amount" updateValue={props.handleInputs} /> 
           : <RadioInput id="noPricingRationale" options={["Home claim", "POC provider", "Facility claim"]} label="Reason pricing is not required" updateValue={props.handleInputs} />
       }
     </div>

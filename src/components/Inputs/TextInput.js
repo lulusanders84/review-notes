@@ -7,7 +7,7 @@ function TextInput(props) {
   const handleChange = event => {
     event.persist();
     const value = {name: props.id, value: event.target.value};
-    props.onBlur(value);
+    props.updateValue(value);
   };
   return (
     <Grid item xs={12}>

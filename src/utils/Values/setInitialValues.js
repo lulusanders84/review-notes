@@ -1,6 +1,9 @@
 const setLob = window.localStorage.getItem("lob") ? window.localStorage.getItem("lob") : "commercial";
+const setName = typeof window.localStorage.getItem("name") === "string" 
+    ? JSON.parse(window.localStorage.getItem("name"))
+    : window.localStorage.getItem("name")
 export const initialValues = {
-    name: window.localStorage.getItem("name") || "",
+    name: setName || "",
     req: "",
     reviewed: "no",
     pend: [],
@@ -14,7 +17,7 @@ export const initialValues = {
     noPricingRationale: "POC provider",
     msr: "Eligible",
     allowable: "$",
-    serviceType: "procedure",
+    serviceType: "Medical",
     drugReviewType: "new",
     diagnosis: "",
     provider: "",
@@ -49,7 +52,8 @@ export const initialValues = {
     iqLoc: "",
     iqSubset: "",
     noteType: 1,
-    doseUnit: "mg"
+    doseUnit: "mg",
+    exCircum: "No specific medical policy applies, service appears medically necessary."
 }
 
 

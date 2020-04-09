@@ -3,7 +3,7 @@ import TextInput from './TextInput';
 
 function ClinicianInfo() {
   return (
-    <TextInput id="name" placeholder="" label="Clinician:" onBlur={props.handleInputs} />
+    <TextInput id="name" placeholder="" label="Clinician:" updateValue={props.handleInputs} />
 
   )
 }
