@@ -21,7 +21,7 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
   let returnObj = {};
   switch(value.name) {
       case "allMet":
-        returnObj.exCircum = values.deter === "approve" && !value.value
+        returnObj.exCircum = values.deter === "approve" && !value.value && values.policy.length === 0
           ? initialValues.exCircum
           : "N/A";
         break;
@@ -46,6 +46,7 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
             returnObj.rationale = values.rationale;
             break;
           case "send to medical director": 
+            returnObj.allMet = false;
             returnObj.specificType = "Sent to Medical Director";
             break;
           default: break;
@@ -82,6 +83,9 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
         returnObj.interqual = handleInterqual(value);
         returnObj.deter = values.deter;
         returnObj.rationale = values.rationale;
+        if(value.value.length > 0){
+          returnObj.exCircum = "N/A";
+        }
         break; 
       case "rationale":
         if(values.deter === "deny") {
