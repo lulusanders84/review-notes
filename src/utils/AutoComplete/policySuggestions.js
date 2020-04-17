@@ -1,14 +1,16 @@
 // import {fepPolicies} from "../../data/fepPolicies";
 import { medPolicies } from "../../data/medPolicies";
 import medicarePolicies from "../../data/medicarePolicies";
+import { getStorage } from "../getStorage";
+import { getAllPolicies } from "../ReviewNotes/setPolicy";
 
-const fepPolicies = window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : [];
+const fepPolicies = getStorage("fepPolicies", null) ? JSON.parse(window.localStorage.getItem("fepPolicies")) : [];
 
 export function policySuggestions(lob) {
     const policies = lob === "commercial" 
         ? medPolicies 
         : lob === "FEP" 
-            ? [...fepPolicies,...medPolicies]
+            ? getAllPolicies()
             : medicarePolicies;
     const suggestions = policies.map(policy => {
         return buildPolicy(policy)

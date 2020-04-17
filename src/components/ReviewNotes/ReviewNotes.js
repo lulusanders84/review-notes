@@ -103,7 +103,7 @@ class ReviewNotes extends React.Component {
   }
   componentDidMount() {
     savePoliciesToStorage("bcbsmnPolicies", medPolicies);
-    savePoliciesToStorage("fepPolicies", fepPolicies.map(policy => { return formatPolicy(policy)}));
+    // savePoliciesToStorage("fepPolicies", fepPolicies.map(policy => { return formatPolicy(policy)}));
   }
   render() {
     const { classes } = this.props;
