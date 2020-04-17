@@ -12,9 +12,8 @@ import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../actions';
 import { savePoliciesToStorage } from '../../data/medPolicies';
-import { fepPolicies } from '../../data/fepPolicies';
 import { medPolicies } from '../../data/medPolicies';
-import { formatPolicy } from '../../data/scrapePolicies';
+
 
 const styles = theme => ({
   '@global': {

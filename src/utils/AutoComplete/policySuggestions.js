@@ -1,10 +1,7 @@
 // import {fepPolicies} from "../../data/fepPolicies";
 import { medPolicies } from "../../data/medPolicies";
 import medicarePolicies from "../../data/medicarePolicies";
-import { getStorage } from "../getStorage";
 import { getAllPolicies } from "../ReviewNotes/setPolicy";
-
-const fepPolicies = getStorage("fepPolicies", null) ? JSON.parse(window.localStorage.getItem("fepPolicies")) : [];
 
 export function policySuggestions(lob) {
     const policies = lob === "commercial" 
