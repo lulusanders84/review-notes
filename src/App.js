@@ -17,8 +17,9 @@ const theme = createMuiTheme({
   },
 });
 function App() {
+  const [updating, setUpdating] = React.useState(false);
   React.useEffect(() => {
-    handlePolicyScraping();
+    handlePolicyScraping(setUpdating);
   }, []);
   return (
     <Provider store={store}>
@@ -28,7 +29,7 @@ function App() {
             <MainPageContainer component={<MainPage />} />
           </Route>
           <Route path="/dev" exact={true}>
-            <MainPageContainer component={<MainPageDev />} />
+            <MainPageContainer component={<MainPageDev updating={updating} />} />
           </Route>
         </Router>
       </ThemeProvider>  

@@ -3,7 +3,7 @@ import { saveToStorage, getStorage } from '../utils';
 import { fepPolicies } from './fepPolicies';
 import { fepGrid } from './fepgrid';
 
-export const refreshFepPolicies = () => {
+export const refreshFepPolicies = (setUpdating) => {
     const storedPolicies = getStorage("fepPolicies", null);
     const infoSource = storedPolicies === null ? fepGrid : storedPolicies;
     const policies = new Policies(fepPolicies);      
@@ -12,7 +12,7 @@ export const refreshFepPolicies = () => {
     console.log(fepPolicies, policies.policyArr)
     saveToStorage("fepPolicies", policies.policyArr);  
     saveToStorage("storedPoliciesLastUpdated", Date.now())
-    scrapePolicies();
+    scrapePolicies(setUpdating);
 }
 
 class Policies {

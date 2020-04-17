@@ -6,14 +6,15 @@ import { refreshFepPolicies } from './refreshFepPolicies';
 
 const store = {};
 
-export const handlePolicyScraping = () => {
+export const handlePolicyScraping = (setUpdating) => {
   const nextScrape = getStorage("nextScrape", NaN);
   const fepPolicies = getStorage("fepPolicies");
   if(isNaN(nextScrape) || nextScrape < Date.now() || fepPolicies === undefined) {
-    refreshFepPolicies();
+    setUpdating(true);
+    refreshFepPolicies(setUpdating);
   }
 }
-export const scrapePolicies = async () => {
+export const scrapePolicies = async (setUpdating) => {
   const now = Date.now();
   saveToStorage("lastScrape", now);
   saveToStorage("nextScrape", now + 86400000);
@@ -28,6 +29,7 @@ export const scrapePolicies = async () => {
   const storedPolicies = setStorage(JSON.parse(window.localStorage.getItem("fepPolicies")), []);
   const updatedPolicies = updateFepPolicies(workingStore, storedPolicies);
   saveToStorage("fepPolicies", updatedPolicies);
+  setUpdating(false);
   console.log("scraped")
 }
 
