@@ -6,13 +6,16 @@ import NoteContainer from '../NoteContainer';
 import { formatCriteria } from '../../../utils/Notes/formatCriteria';
 import 'react-quill/dist/quill.snow.css';
 
+
+
 export function MedClaimReviewNote(props) {
   const { dispatch, values, notes } = props;
+
   React.useEffect(() => {
     dispatch(setMedClaimReviewData(values))
   }, [dispatch, values])
   return (
-    <NoteContainer title="Medical Claim Review Note">
+    <NoteContainer title="Medical Claim Review Note" capWordButtons>
       REQ-{values.req}: Clinical Note
         <br />Clinician name/Extension: {values.name}
         <br />LOB: {notes.lob}

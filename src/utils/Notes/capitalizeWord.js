@@ -1,3 +1,5 @@
 export const capWord = (word) => {
-    return word.toLowerCase() !== "pa" ? word.charAt(0).toUpperCase() + word.substring(1) : word.toUpperCase()
+    const length = word.length;
+    return length > 3 
+        ? word.charAt(0).toUpperCase() + word.substring(1) : word.toUpperCase()
 }

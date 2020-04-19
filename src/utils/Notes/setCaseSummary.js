@@ -4,11 +4,13 @@ import { formatToName } from "./formatToName";
 import { setPricingNote } from "./setPricingNote";
 import { formatToSentence } from './formatToSentence';
 import { serviceTypes } from '../../data/serviceTypes';
+import { CapWords } from '../../classes/CapWords'
 
 export const setCaseSummary = (values) => {
-    const { age, service, serviceType, dos } = values;
+    const { age, serviceType, dos } = values;
+    const service = formatValue(values.service);
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
-    const diagnosis = values.diagnosis !== undefined ? values.diagnosis.toLowerCase() : "";
+    const diagnosis = formatValue(values.diagnosis);
     let proVerb; 
     const type = serviceTypes.find(type => type["Service Type"] === serviceType);
     let serviceVerb = type["Verb"] ? type["Verb"] : "underwent";
@@ -27,8 +29,18 @@ export const setCaseSummary = (values) => {
         : "";
     return (
         <span>
-        {age}-year old member {serviceVerb} {service.toLowerCase()} {dose} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. {summary}{pricingSummary} {modifier22}
+        {age}-year old member {serviceVerb} {service} {dose} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. {summary}{pricingSummary} {modifier22}
         </span>
     )
-
 }
+   
+ const formatValue = (value) => {
+        const valueArr = value.split(" ");
+        const capWordsList = new CapWords().getAll();
+        return valueArr.map(word => {
+            word = word.toUpperCase()
+            return capWordsList.includes(word)
+                ? word
+                : word.toLowerCase();
+        }).join(" ");
+    }

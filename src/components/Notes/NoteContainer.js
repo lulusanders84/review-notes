@@ -1,22 +1,26 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Card, CardContent, CardHeader } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../styles/noteStyles';
-
+import { CapWordButtons } from '../CapWordButtons/CapWordButtons';
 
 const useStyles = makeStyles(() => (styles));
 
-export function NoteContainer(props) {
+export default function NoteContainer(props) {
   const classes = useStyles();
+  const capWordButtons = props.capWordButtons ? <CapWordButtons /> : null;
   return (
     <Card>
-    <CardContent classes={{root: classes.root}}>
-      <Typography component="h3" variant="h6">{props.title}</Typography>
-      <div ref={function(e){if(e != null) e.contentEditable=true;}} className={classes.notes}>
-        {props.children}
-      </div>
-    </CardContent>
+      <CardHeader 
+        action={capWordButtons}
+        title={props.title} 
+        titleTypographyProps={{component: "h3", variant: "h6"}}
+        />
+      <CardContent classes={{root: classes.root}}>
+          <div ref={function(e){if(e != null) e.contentEditable=true;}} className={classes.notes}>
+          {props.children}
+          </div>
+      </CardContent>
     </Card>
-  )
+  );
 }
-export default NoteContainer;

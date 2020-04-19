@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from '../src/store';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import MainPageContainer from './components/MainPage/MainPageContainer';
+import { handleCapWords } from './utils/Notes/handleCapWords';
 
 const theme = createMuiTheme({
   palette: {
@@ -20,6 +21,7 @@ function App() {
   const [updating, setUpdating] = React.useState(false);
   React.useEffect(() => {
     handlePolicyScraping(setUpdating);
+    handleCapWords();
   }, []);
   return (
     <Provider store={store}>
