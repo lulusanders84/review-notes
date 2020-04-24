@@ -1,5 +1,5 @@
 import React from 'react';
-import ClaimNote from '../Notes/ClaimNote';
+import {ClaimNote} from '../Notes';
 import Routing from '../Notes/Routing';
 import InfoRequest from './InfoRequest';
 import LetterNote from './LetterNote';

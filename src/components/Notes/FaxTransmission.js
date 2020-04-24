@@ -1,12 +1,21 @@
 import React from 'react';
 import NoteContainer from './NoteContainer';
+import { connect } from 'react-redux';
 
-export const FaxTransmission = () => {
+const FaxTransmission = (props) => {
+    if(props.values.deter === "deny") {
     return (
         <NoteContainer title="Fax Transmission Note">
             N/A
         </NoteContainer>
       )
+    }
+    else return null;
 }
- 
-export default (FaxTransmission)
+
+const mapStateToProps = (state) => ({
+    values: state.values,
+  });
+  
+export default connect(mapStateToProps)(FaxTransmission)
+

@@ -1,23 +1,16 @@
 import React from 'react';
-import ClaimNote from '../Notes/ClaimNote';
+import { ClaimNote } from '../Notes';
 import Routing from '../Notes/Routing';
-import { connect } from 'react-redux';
-import { FaxTransmission } from '../Notes/FaxTransmission';
+import FaxTransmission from '../Notes/FaxTransmission';
 
-export const Notes = (props) => {
+export const Notes = () => {
   return (
     <div>
       <ClaimNote />    
-      {props.values.deter === "deny" 
-      ? <FaxTransmission values={props.values} />
-      : null }
+      <FaxTransmission />
       <Routing />        
     </div> 
   )  
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
-
-export default connect(mapStateToProps)(Notes)
+export default Notes;

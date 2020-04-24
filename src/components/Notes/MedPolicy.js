@@ -13,13 +13,15 @@ export function MedPolicy(props) {
   React.useEffect(() => {
     dispatch(fullNamesAction(values))
   }, [dispatch, values] )
-  return (
-    <NoteContainer title="Medical Policy">
-      <ul className={classes.list}>
-        {fullnames}
-      </ul>
-    </NoteContainer>
-  )
+  if(values.policy.length !== 0) {
+    return (
+      <NoteContainer title="Medical Policy">
+        <ul className={classes.list}>
+          {fullnames}
+        </ul>
+      </NoteContainer>
+    )    
+  } else return null;
 }
 
 const mapStateToProps = (state) => ({
