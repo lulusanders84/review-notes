@@ -10,7 +10,7 @@ import BackFromPeer from './NoteTemplates/BackFromPeer';
 import InfoRequest from './NoteTemplates/InfoRequest';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
-import { handleInputs } from '../../actions';
+import { handleInputs } from '../../redux/actions';
 import { savePoliciesToStorage } from '../../data/medPolicies';
 import { medPolicies } from '../../data/medPolicies';
 

@@ -1,6 +1,7 @@
-import { getPolicies } from '../utils/ReviewNotes/setPolicy';
-import { handleChangeInputs, handleBenefits } from '../utils/Values';
-import { saveToStorage } from '../utils';
+import { getPolicies } from '../../utils/ReviewNotes/setPolicy';
+import { handleChangeInputs, handleBenefits } from '../../utils/Values';
+import { saveToStorage } from '../../utils';
+import { formatToSentence } from '../../utils/Notes/formatToSentence';
 
 
 export const handleInputs = value => (dispatch, getState) => {
@@ -10,6 +11,9 @@ export const handleInputs = value => (dispatch, getState) => {
   if(value.name === "benefits" || value.name === "fepBenefits") {
     value = handleBenefits(value);
   };
+  if(value.name === "misrouteRationale") {
+    value.value = formatToSentence(value.value);
+  }
   if(value.name === "policy") {
     const policiesSet = new Set(getPolicies(value.value));
     value.value = Array.from(policiesSet)

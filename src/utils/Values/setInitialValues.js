@@ -37,7 +37,7 @@ export const initialValues = {
     "pa-diagnosis": "",
     "pa-provider": "",
     "pa-deter": "approved",
-    "pa-match": "no",
+    "pa-match": "yes",
     "pa-rationale": "",
     rationale: "",
     lob: setLob,
@@ -53,7 +53,8 @@ export const initialValues = {
     iqSubset: "",
     noteType: 1,
     doseUnit: "mg",
-    exCircum: "No specific medical policy applies, service appears medically necessary."
+    exCircum: "No specific medical policy applies, service appears medically necessary.",
+    "clinical-rationale": ""
 }
 
 

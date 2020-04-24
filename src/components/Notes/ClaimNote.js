@@ -1,30 +1,39 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import Info from './Info'
-import { setClaimNoteData } from '../../actions';
-import { connect } from 'react-redux';
+import { setClaimNoteData } from '../../redux/actions';
+import { 
+  withVisibility, 
+  setComposed 
+} from '../../HOCs';
 import FaxAndDate from './FaxAndDate';
 import NoteContainer from './NoteContainer';
-
+import Note from './Note';
 
 export function ClaimNote(props) {
   const values = props.values;
-  const { dispatch } = props;
-  const { ocwaNote, instructions, modifier22, remainder } = props.notes;
-  React.useEffect(() => {
+  const { dispatch, visible, notes } = props;
+  const { ocwaNote, instructions, modifier22, remainder } = notes;
+  useEffect(() => {
     dispatch(setClaimNoteData(values));
-  }, [dispatch, values])
+  }, [dispatch, values]);
+
   return (
-    <NoteContainer title="Claim Note">
-      REQ-{values.req}: {ocwaNote} {instructions} {modifier22} {remainder}
-      {props.info ? <Info /> : null}
-      {props.faxAndDate ? <FaxAndDate /> : null}
+    <NoteContainer visible={visible}>
+      <Note title="Claim Note">
+        REQ-{values.req}: {ocwaNote} {instructions} {modifier22} {remainder}
+        <Info visible={props.info} />
+        <FaxAndDate visible={props.faxAndDate} />
+      </Note>        
     </NoteContainer>
   )
 }
 
 const mapStateToProps = (state) => ({
   values: state.values,
-  notes: state.notes
+  notes: state.notes,
+  id: "claimNote"
 });
 
-export default connect(mapStateToProps)(ClaimNote)
+const composed = setComposed(mapStateToProps, withVisibility, ClaimNote);
+export default composed;
+

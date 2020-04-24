@@ -12,7 +12,7 @@ import RadioInput from '../../Inputs/RadioInput';
 import MisrouteNotes from '../../MisrouteNotes/MisrouteNotes';
 import { Divider } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { handleInputs } from '../../../actions';
+import { handleInputs } from '../../../redux/actions';
 import PendInput from '../../Inputs/PendInput';
 
 function Misroute(props) {

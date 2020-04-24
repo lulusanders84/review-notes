@@ -9,7 +9,7 @@ import { IconButton, Typography, Button, Grid } from '@material-ui/core';
 import { formatDate } from '../../utils';
 import { DailyClaimAvg } from '../DailyClaimAvg/DailyClaimAvg';
 import { DailyClaimTotal } from '../DailyClaimTotal/DailyClaimTotal';
-import { updateClaimLogDate } from '../../actions/claims';
+import { updateClaimLogDate } from '../../redux/actions/claims';
 
 const useStyles = makeStyles(theme =>({
   root: { 

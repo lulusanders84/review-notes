@@ -2,9 +2,9 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import * as claimCountutils from '../../utils/ClaimCount';
-import { updateClaimLog } from '../../actions';
+import { updateClaimLog } from '../../redux/actions';
 import { connect } from 'react-redux';
-import { handleInputs } from '../../actions';
+import { handleInputs } from '../../redux/actions';
 
 const { formatClaim } = claimCountutils;
 const useStyles = makeStyles({

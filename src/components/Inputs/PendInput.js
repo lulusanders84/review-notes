@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactSelect from './ReactSelect';
 import { connect } from 'react-redux';
-import { setNewOptions } from '../../actions';
+import { setNewOptions } from '../../redux/actions';
 
 const PendInput = (props) => {
   const { lob } = props.values;

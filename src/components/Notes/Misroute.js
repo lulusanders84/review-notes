@@ -1,18 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NoteContainer from './NoteContainer';
+import Note from './Note';
 
 export function Misroute(props) {
-  const { values } = props;
-  const { code, pend } = props.notes;
-  return (
-    <NoteContainer title="Misroute Note">
+  const { values, notes } = props;
+  const { code, misrouteRationale } = values;
+    return (
+    <Note title="Misroute Note">
       REQ-{values.req}: Misroute
       <br />Suspended codes: {code}
-      <br />Suspension: {pend}
-      <br />Rationale: {values.misrouteRationale}
+      <br />Suspension: {notes.pend}
+      <br />Rationale: {misrouteRationale}
       <br />Determination: Claim referred in error
-    </NoteContainer>
+    </Note>
   )
 }
 const mapStateToProps = (state) => ({

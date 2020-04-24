@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../../styles/noteStyles';
-import { connect } from 'react-redux';
-import { referReasonsAction } from '../../../actions/notes';
+import NoteContainer from '../NoteContainer';
+import { referReasonsAction } from '../../../redux/actions/notes';
+import { withVisibility, setComposed } from '../../../HOCs';
 
 const useStyles = makeStyles(() => (styles));
 
@@ -14,20 +15,23 @@ const MedDirectorNote = (props) => {
   }, [dispatch, values]);
   const { referReasons } = props.notes;
    return (
-    <div>
-        <br />Primary Reason for Referral: (place X before the appropriate reason)
-        <ul className={classes.list}>
-          {referReasons}
-        </ul>       
-        From date: {values.dos} To date: {values.dos}
-        <br />NOTE: Medical Director Only: Please refer to the following section of plan document: What Is Not Covered or General Exclusions. 
-    </div>
+    <NoteContainer visible={props.visible}>
+      <br />
+      <br />Primary Reason for Referral: (place X before the appropriate reason)
+      <ul className={classes.list}>
+        {referReasons}
+      </ul>       
+      From date: {values.dos} To date: {values.dos}
+      <br />NOTE: Medical Director Only: Please refer to the following section of plan document: What Is Not Covered or General Exclusions. 
+    </NoteContainer>
    )
 }
 
 const mapStateToProps = (state) => ({
   values: state.values,
   notes: state.notes,
+  id: "medDir"
 });
 
-export default connect(mapStateToProps)(MedDirectorNote)
+const composed = setComposed(mapStateToProps, withVisibility, MedDirectorNote);
+export default composed;
