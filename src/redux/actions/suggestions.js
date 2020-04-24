@@ -1,6 +1,6 @@
-import { suggestions } from '../utils/AutoComplete/';
-import { pends, fepPends } from '../data/pends';
-import * as savingPendsUtils from '../utils/ReviewNotes/savingPends'
+import { suggestions } from '../../utils/AutoComplete/';
+import { pends, fepPends } from '../../data/pends';
+import * as savingPendsUtils from '../../utils/ReviewNotes/savingPends'
 
 const setPendOrder = savingPendsUtils.setPendOrder;
 

@@ -14,7 +14,7 @@ import InfoRequestNotes from '../../InfoRequestNotes/InfoRequestNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
 import SimpleSelect from '../../Inputs/SimpleSelect';
 import { saveInfoToPolicy } from '../../../utils/Inputs/savePair';
-import { handleInputs } from '../../../actions';
+import { handleInputs } from '../../../redux/actions';
 import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
 

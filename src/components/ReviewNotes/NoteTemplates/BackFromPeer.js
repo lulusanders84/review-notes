@@ -12,7 +12,7 @@ import RadioInput from '../../Inputs/RadioInput';
 import BackFromPeerNotes from '../../BackFromPeerNotes/BackFromPeerNotes';
 import DeniedInputs from '../../Inputs/DeniedInputs';
 import { Divider } from '@material-ui/core';
-import { handleInputs } from '../../../actions';
+import { handleInputs } from '../../../redux/actions';
 import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
 

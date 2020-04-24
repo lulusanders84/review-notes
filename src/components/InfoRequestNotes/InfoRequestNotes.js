@@ -3,7 +3,7 @@ import {ClaimNote} from '../Notes';
 import Routing from '../Notes/Routing';
 import InfoRequest from './InfoRequest';
 import LetterNote from './LetterNote';
-import { handleInputs } from '../../actions';
+import { handleInputs } from '../../redux/actions';
 import { connect } from 'react-redux';
 
 export const InfoRequestNotes = (props) => {

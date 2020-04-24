@@ -15,7 +15,7 @@ export default function (props) {
   const classes = useStyles();
   return (
     <div className={classes.card}>
-        <ReactSelectSingle id={props.denialId} suggestions={suggestions(rejectCodes)} label="Denial Rationale:" updateValue={props.handleInputs} /> 
+        <ReactSelectSingle id="rationale" suggestions={suggestions(rejectCodes)} label="Denial Rationale:" updateValue={props.handleInputs} /> 
         <RadioInput id="denialType" options={["entire claim", "code only"]} label="Deny" updateValue={props.handleInputs} />
     </div>
   )
