@@ -4,8 +4,8 @@ import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import { Grid, makeStyles } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { createSelectValue } from '../../utils';
+import { withHandleChange, setComposed } from '../../../HOCs';
+import { createSelectValue } from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   checkButton: {
@@ -34,9 +34,7 @@ function EditSelectOption(props) {
     props.setNewValue(options[optionIndex])
   }
   const handleChange = (event) => {
-    event.persist();
-    const value = {name: props.id, value: event.target.value};
-    props.updateValue(value);
+    props.handleChange(event);
     setSaved(false);
   }
     return (
@@ -72,4 +70,5 @@ const mapStateToProps = (state) => ({
   values: state.values,
 });
 
-export default connect(mapStateToProps)(EditSelectOption)
+const composed = setComposed(mapStateToProps, [withHandleChange], EditSelectOption);
+export default composed;

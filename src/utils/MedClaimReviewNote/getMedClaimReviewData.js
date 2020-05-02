@@ -1,5 +1,7 @@
+import React from 'react';
 import * as utils from '../../utils/Notes';
 import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
+import { formatCriteria } from '../Notes/formatCriteria';
 
 export const getMedClaimReviewData = (values) => {
   const data = {
@@ -17,6 +19,7 @@ export const getMedClaimReviewData = (values) => {
   data.criteriaMet = setCriteriaMet(values, data);
   data.criteriaNotMet = setCriteriaNotMet(values, data);
   data.deter = setDeter(values, data);
+  data.decisionReq = setDecisionReq(data);
   
   return data;
 }
@@ -50,23 +53,39 @@ const setSummary = (values) => {
 }
 const setCriteriaMet = (values, data) => {
   const { policyString } = data;
-  return values.deter === "approve" && policyString !== "N/A" 
+  const criteria = values.deter === "approve" && policyString !== "N/A" 
     ? `Applicable ${policyString} criteria met`
     : values.deter === "send to medical director"
           ? values.criteriaMet 
           : "N/A";
-            
+  return (
+    <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria (criteria)}} />
+  )          
 }
 const setCriteriaNotMet = (values, data) => {
   const { policyString } = data;
-  return values.criteriaNotMet 
+  const criteria = values.criteriaNotMet 
     ? values.criteriaNotMet
     : policyString === "N/A" 
       ? 'N/A'
       : "None";
+  return setCriteriaSpan(criteria);
 }
 const setDeter = (values, data) => {
   const { policyString } = data;
   const denialMessage = utils.setDenialMessage(values);
   return utils.capWord(values.deter) + utils.setRationale(values, policyString, denialMessage)
+}
+
+const setDecisionReq = ( data) => {
+  const pa = data.pa === "PA not found" || data.pa === "PA not found. Service not held to PA enforcement (FEP claim)." 
+    ? "N" 
+    : "Y";
+  return pa === "Y" ? data.pa : data.claimHistory;
+}
+
+const setCriteriaSpan = (criteria) => {
+  return (
+    <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria (criteria)}} />
+  )
 }

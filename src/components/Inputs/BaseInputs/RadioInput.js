@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Grid } from '@material-ui/core';
-import { connect } from 'react-redux';
+import { withHandleChange, setComposed } from '../../../HOCs';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,10 +25,9 @@ function RadioInput(props) {
   const classes = useStyles();
   function handleChange(event) {
     if(props.id === "reviewed" || props.id === "pa-deter") {
-      props.onChange(event);
+      props.handleReviewed(event);
     }
-    const selectValue = {name: props.id, value: event.target.value}
-    props.updateValue(selectValue);
+    props.handleChange(event);
   }
 
   const renderRadioOptions = () => {
@@ -64,4 +63,5 @@ const mapStateToProps = (state) => ({
   values: state.values,
 });
 
-export default connect(mapStateToProps)(RadioInput)
+const composed = setComposed(mapStateToProps, [withHandleChange], RadioInput);
+export default composed;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactSelect from './ReactSelect';
+import ReactSelect from './BaseInputs/ReactSelect';
 import { connect } from 'react-redux';
 import { setNewOptions } from '../../redux/actions';
 

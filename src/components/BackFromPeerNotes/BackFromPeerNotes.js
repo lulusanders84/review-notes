@@ -1,12 +1,14 @@
 import React from 'react';
 import { ClaimNote } from '../Notes';
 import Routing from '../Notes/Routing';
+import { setClaimNoteData } from '../../redux/actions';
+import { setQueueAction } from '../../redux/actions/notes';
 
 export const Notes = () => {
   return (
     <div>
-      <ClaimNote />    
-      <Routing />        
+      <ClaimNote dataRequests={[setClaimNoteData]} />    
+      <Routing dataRequests={[setQueueAction]} />        
     </div> 
   )  
 }

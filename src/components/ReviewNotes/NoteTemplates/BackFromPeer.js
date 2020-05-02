@@ -5,10 +5,10 @@
 // import policyDummy from '../data/policyDummy';
 
 import React from 'react';
-import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
-import SimpleSelect from '../../Inputs/SimpleSelect';
-import TextInput from '../../Inputs/TextInput';
-import RadioInput from '../../Inputs/RadioInput';
+import ReactSelectSingle from '../../Inputs/BaseInputs/ReactSelectSingle';
+import SimpleSelect from '../../Inputs/BaseInputs/SimpleSelect';
+import TextInput from '../../Inputs/BaseInputs/TextInput';
+import RadioInput from '../../Inputs/BaseInputs/RadioInput';
 import BackFromPeerNotes from '../../BackFromPeerNotes/BackFromPeerNotes';
 import DeniedInputs from '../../Inputs/DeniedInputs';
 import { Divider } from '@material-ui/core';
@@ -24,28 +24,28 @@ function BackFromPeer(props) {
   }, [dispatch])
   return (
     <div style={{width: "100%"}}>
-    <RadioInput id="deter" options={["approve", "deny"]} label="Determination" updateValue={props.handleInputs}/>
+    <RadioInput id="deter" options={["approve", "deny"]} label="Determination" />
       {props.values.deter === "deny" 
         ? <DeniedInputs denialId="rationale" handleInputs={props.handleInputs} />
         : null
       }
-      <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" updateValue={props.handleInputs}/>      
+      <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" />      
       { props.values.lob !== "FEP" 
-        ? <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" updateValue={props.handleInputs}/>
+        ? <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" />
         : null}
       { props.values.lob === "commercial"
-        ? <SimpleSelect id="special" options={["N/A", "employee", "foreign", "hormel", "host", ]} label="Specialty claim" updateValue={props.handleInputs} />             
+        ? <SimpleSelect id="special" options={["N/A", "employee", "foreign", "hormel", "host", ]} label="Specialty claim"  />             
         : null}                          
-      <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
-      <TextInput id="req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs} />
+      <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System"  />             
+      <TextInput id="req" placeholder="Enter number" label="REQ-"  />
       {props.values.denialType !== "entire claim" && props.values.deter === "deny"
-        ?<TextInput id="code" placeholder="" label="Suspended Codes" updateValue={props.handleInputs} />
+        ?<TextInput id="code" placeholder="" label="Suspended Codes"  />
         : null
         }
-        <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />
+        <ReactSelectSingle id="type" placeholder="" label="Specific Type"  suggestions={JSON.parse(window.localStorage.getItem("type"))} />
       {props.values.deter === "approve"
         ? <div>
-        <PendInput updateValue={props.handleInputs} />  
+        <PendInput  />  
           </div>
         : null
       }

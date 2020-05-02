@@ -1,7 +1,7 @@
 import React from 'react';
-import TextInput from './TextInput';
+import TextInput from './BaseInputs/TextInput';
 import { Grid } from '@material-ui/core';
-import ReactSelectSingle from './ReactSelectSingle';
+import ReactSelectSingle from './BaseInputs/ReactSelectSingle';
 import { connect } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
 
@@ -13,7 +13,7 @@ export const DoseInput = (props) => {
   return (
     <Grid container row style={{marginTop: "10px"}}>
       <Grid item xs={6}>
-        <TextInput id="dose" placeholder="" label="Dose:" updateValue={props.handleInputs} />
+        <TextInput id="dose" placeholder="" label="Dose:"  />
       </Grid>
       <Grid item xs={6} style={{paddingLeft: "5px"}}>
         <ReactSelectSingle 
@@ -21,7 +21,7 @@ export const DoseInput = (props) => {
           placeholder="" 
           label="Unit:" 
           labelFormat="lower"
-          updateValue={props.handleInputs}
+          
           suggestions={JSON.parse(window.localStorage.getItem("doseUnit"))} />
       </Grid>
     </Grid>  

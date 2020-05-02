@@ -7,7 +7,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { policySuggestions } from '../../utils/AutoComplete';
-import ReactSelect from './ReactSelect';
+import ReactSelect from './BaseInputs/ReactSelect';
 import * as utils from '../../utils';
 import * as reviewNotesUtils from '../../utils/ReviewNotes/';
 import InterQualInput from './InterQualInput';
@@ -62,7 +62,7 @@ const PolicyInput = (props) => {
 
   return (
     <div>          
-      <ReactSelect id="policy" suggestions={suggestions} label="Medical Policy" updateValue={props.handleInputs} />
+      <ReactSelect id="policy" suggestions={suggestions} label="Medical Policy"  />
       <InterQualInput visible={props.values.interqual} values={props.values} handleInputs={props.handleInputs} />  
     </div>
   );

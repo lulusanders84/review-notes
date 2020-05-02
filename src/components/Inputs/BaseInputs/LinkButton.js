@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import LinkIcon from '@material-ui/icons/Link'
 import { IconButton, Tooltip } from '@material-ui/core';
 import BrokenLinkIcon from '@material-ui/icons/LinkOff';
+import { withHandleChange, setComposed } from '../../../HOCs';
 
 const linkWidth = 60;
 const useStyles = makeStyles(() => ({
@@ -35,9 +36,9 @@ const LinkButton = (props) => {
         edge="start" 
         disabled={props.linkDisabled}
         style={{ backgroundColor: 'transparent' }} 
-        onClick={props.onLinkClick}
+        onClick={props.handleChange}
         >
-          {props.linked 
+          {props.values.linked 
             ? <LinkIcon className={classes.linkIcon} />
             : <BrokenLinkIcon className={classes.linkIcon} />
           }          
@@ -46,5 +47,9 @@ const LinkButton = (props) => {
     </Tooltip>
   )  
 }
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
 
-export default LinkButton;
+const composed = setComposed(mapStateToProps, [withHandleChange], LinkButton);
+export default composed;

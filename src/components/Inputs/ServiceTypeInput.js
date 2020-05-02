@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactSelectSingle from './ReactSelectSingle';
+import ReactSelectSingle from './BaseInputs/ReactSelectSingle';
 import { serviceTypes } from '../../data/serviceTypes';
 import { connect } from 'react-redux';
 import { createSelectValue } from '../../utils';
@@ -18,7 +18,7 @@ const ServiceTypeInput = (props) => {
     return 0;
   })
   return (
-    <ReactSelectSingle notClearable id="serviceType" placeholder="" label="Service Type" updateValue={props.handleInputs} suggestions={suggestions} value={{value:props.values.type, label: props.values.type}} />
+    <ReactSelectSingle notClearable id="serviceType" placeholder="" label="Service Type"  suggestions={suggestions} value={{value:props.values.type, label: props.values.type}} />
   )
 }
 

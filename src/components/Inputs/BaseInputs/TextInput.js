@@ -1,14 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
+import { withHandleChange, setComposed } from '../../../HOCs';
 
 function TextInput(props) {
-  const handleChange = event => {
-    event.persist();
-    const value = {name: props.id, value: event.target.value};
-    props.updateValue(value);
-  };
   return (
     <Grid item xs={12}>
       <TextField
@@ -20,7 +15,7 @@ function TextInput(props) {
         placeholder={props.placeholder}
         fullWidth={true}
         margin="dense"
-        onChange={handleChange}
+        onChange={props.handleChange}
         value={props.values[props.id]}
         InputLabelProps={{shrink: props.shrink}}
         disabled={props.disabled}
@@ -34,4 +29,5 @@ const mapStateToProps = (state) => ({
   values: state.values,
 });
 
-export default connect(mapStateToProps)(TextInput)
+const composed = setComposed(mapStateToProps, [withHandleChange], TextInput);
+export default composed;

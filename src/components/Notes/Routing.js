@@ -1,15 +1,10 @@
-import React, {useEffect} from 'react';
-import { setQueueAction } from '../../redux/actions/notes';
-import { withVisibility, setComposed } from '../../HOCs';
+import React from 'react';
+import { withVisibility, withNoteDataDispatch, setComposed } from '../../HOCs';
 import NoteContainer from './NoteContainer';
 import Note from './Note'
 
 export function Routing(props) {
-  const { values, queue, dispatch, visible } = props;
-  useEffect(() => {
-    dispatch(setQueueAction(values));
-  }, [dispatch, values]);
-
+  const { values, queue, visible } = props;
   return (
     <NoteContainer visible={visible}>
       <Note title="Routing">
@@ -25,4 +20,4 @@ const mapStateToProps = (state) => ({
   id: "routing"
 });
 
-export default setComposed(mapStateToProps, withVisibility, Routing)
+export default setComposed(mapStateToProps, [withVisibility, withNoteDataDispatch], Routing)

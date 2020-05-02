@@ -4,14 +4,15 @@ import ClaimNote from '../Notes/ClaimNote';
 import Routing from '../Notes/Routing';
 import MedPolicy from '../Notes/MedPolicy';
 import ClinicalRationale from '../Notes/ClinicalRationale';
+import { fullNamesAction, setQueueAction, setClaimNoteData } from '../../redux/actions';
 
 export const GeneralNotes = () => {
   return (
     <div>
       <MedClaimReviewNote />
-      <MedPolicy />   
-      <ClaimNote />
-      <Routing /> 
+      <MedPolicy dataRequests={[fullNamesAction]}/>   
+      <ClaimNote dataRequests={[setClaimNoteData]}/>
+      <Routing dataRequests={[setQueueAction]}/> 
       <ClinicalRationale />     
     </div> 
   )  

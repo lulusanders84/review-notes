@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
+import { withHandleChange, setComposed } from '../../../HOCs';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,9 +24,6 @@ const useStyles = makeStyles(theme => ({
 
 function SimpleSelect(props) {
   const classes = useStyles();
-  function handleChange(event) {
-    props.updateValue({name: props.id, value: event.target.value})
-  }
   const menuItems = props.options.map((option, index) => {
     return <MenuItem key={index} value={option}>{option}</MenuItem>
   })
@@ -38,7 +35,7 @@ function SimpleSelect(props) {
         </InputLabel>
         <Select
           value={props.values[props.id]}
-          onChange={handleChange}
+          onChange={props.handleChange}
           input={<Input name="age" id="age-label-placeholder" />}
           displayEmpty
           name={props.id}
@@ -57,4 +54,5 @@ const mapStateToProps = (state) => ({
   values: state.values,
 });
 
-export default connect(mapStateToProps)(SimpleSelect)
+const composed = setComposed(mapStateToProps, [withHandleChange], SimpleSelect);
+export default composed;

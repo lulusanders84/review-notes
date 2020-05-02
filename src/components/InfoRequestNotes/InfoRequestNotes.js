@@ -5,6 +5,7 @@ import InfoRequest from './InfoRequest';
 import LetterNote from './LetterNote';
 import { handleInputs } from '../../redux/actions';
 import { connect } from 'react-redux';
+import { setInfoRequestData, setClaimNoteData, setQueueAction } from '../../redux/actions/notes';
 
 export const InfoRequestNotes = (props) => {
   const { dispatch } = props;
@@ -16,10 +17,10 @@ export const InfoRequestNotes = (props) => {
   
   return (
     <div>
-      <InfoRequest /> 
-      <ClaimNote info={true} faxAndDate={true} />
+      <InfoRequest dataRequests={[setInfoRequestData]} /> 
+      <ClaimNote info={true} faxAndDate={true} dataRequests={[setClaimNoteData]} />
       <LetterNote />
-      <Routing /> 
+      <Routing dataRequests={[setQueueAction]}/> 
     </div>  
   )  
 }

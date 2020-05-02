@@ -1,23 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Note from './Note';
+import NoteLines from './NoteLines';
+import { setComposed } from '../../HOCs';
+import withNoteDataDispatch from '../../HOCs/withNoteDataDispatch/withNoteDataDispatch';
 
 export function Misroute(props) {
-  const { values, notes } = props;
-  const { code, misrouteRationale } = values;
     return (
     <Note title="Misroute Note">
-      REQ-{values.req}: Misroute
-      <br />Suspended codes: {code}
-      <br />Suspension: {notes.pend}
-      <br />Rationale: {misrouteRationale}
-      <br />Determination: Claim referred in error
+      <NoteLines noteType="Misroute" />
     </Note>
   )
 }
+
 const mapStateToProps = (state) => ({
   values: state.values,
-  notes: state.notes
 });
 
-export default connect(mapStateToProps)(Misroute)
+const composed = setComposed(mapStateToProps, [withNoteDataDispatch], Misroute);
+export default composed;

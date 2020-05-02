@@ -1,15 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextInput from './TextInput';
-import LinkButton from './LinkButton';
+import TextInput from './BaseInputs/TextInput';
+import LinkButton from './BaseInputs/LinkButton';
 import { Grid } from '@material-ui/core';
-import * as utils from '../../utils/';
-import * as inputUtils from '../../utils/Inputs';
 import { connect } from 'react-redux';
-
-const savePair = inputUtils.savePair;
-const formatMultiServices = inputUtils.formatMultiServices;
-const getValueFromPair = inputUtils.getValueFromPair;
 
 const height = 60;
 const width = 440;
@@ -47,7 +41,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 function CodeAndService(props) {
-  const [linked, setLinked] = useState(false);
+  const { linked, serviceDisabled } = props.values;
   const classes = useStyles();
   const linkColor = linked ? "primary" : "default";
   const linkLineColor = linked ? "#2196F3" : "#757575"
@@ -55,59 +49,24 @@ function CodeAndService(props) {
   const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
   const helperText = linked ? "Unlink to edit service" : " ";
   const linkDisabled = props.values.code === null || props.values.code === "" ? true : false;
-  const linkedChanged =(value) => {
-    setLinked(value);
-    props.handleServiceDisabled(value);
-  }
-  const onCodeEntry = (value) => {
-    props.handleInputs(value);
-    const codes = utils.formatCodes(value.value);
-    if(codes) {
-        const service = codes.reduce((acc, code) => {
-            const service = getValueFromPair("codeServicePairs", code);
-            if(service) {
-                acc.push(service);
-                linkedChanged(true);
-            } else linkedChanged(false);
-            return acc;
-        }, [])
-        props.handleInputs({name: "service", value: formatMultiServices(service)});
-    } else {
-      setLinked(false);
-      props.handleInputs({name: "service", value: ""})
-    }
-  }
-  const onLinkClick = () => {
-    const code = props.values.code;
-    const service = props.values.service;
-    if(!linked && code && code !== "") {
-        savePair("codeServicePairs", [{[code]:service}])
-        linkedChanged(true)
-        
-    } else if(linked) {
-        savePair("codeServicePairs", [{[code]: ""}])
-        linkedChanged(false);
-    }
-  }
+
   return (
     <div className={classes.container}>
       <Grid container row="true" className={classes.card}>       
           <div className={classes.inputs}>
-            <TextInput id="code" placeholder="" label="Suspended Codes" updateValue={onCodeEntry} />
+            <TextInput id="code" placeholder="" label="Suspended Codes" />
             <TextInput 
               id="service" 
               placeholder="" 
               label="Service" 
-              updateValue={props.handleInputs} 
-              disabled={props.serviceDisabled} 
+              disabled={serviceDisabled} 
               helperText={helperText} />            
           </div>
           <LinkButton 
             tooltipTitle={tooltipTitle} 
             linkColor={linkColor} 
             linkDisabled={linkDisabled} 
-            onLinkClick={onLinkClick} 
-            linked={linked} 
+            id="linked"
           />       
       </Grid>
       <div className={classes.linkLine} style={{borderColor: linkLineColor}} />

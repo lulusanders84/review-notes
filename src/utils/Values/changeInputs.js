@@ -2,6 +2,8 @@ import * as savingPendsUtils from '../ReviewNotes/savingPends'
 import { formatToSentence } from '../Notes/formatToSentence';
 import { initialValues } from "../Values";
 import { serviceTypes } from '../../data/serviceTypes';
+import { formatCodes } from '../formatCodes';
+import { getValueFromPair, formatMultiServices, savePair } from '../Inputs';
 
 const savePends = savingPendsUtils.savePends;
 
@@ -31,6 +33,25 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
         };
         break;
       case "code":
+        const codes = formatCodes(value.value);
+        if(codes) {
+            const service = codes.reduce((acc, code) => {
+                const service = getValueFromPair("codeServicePairs", code);
+                if(service && service !== "") {
+                    acc.push(service);
+                    returnObj.linked = true;
+                    returnObj.serviceDisabled = true;
+                } else {
+                  returnObj.linked = false;
+                  returnObj.serviceDisabled = false;
+                }
+                return acc;
+            }, [])
+            returnObj.service = formatMultiServices(service);
+        } else {
+          returnObj.linked = false;
+          returnObj.service = "";
+        }
         returnObj.serviceType = serviceSelect(value);
         break; 
       case "deter":
@@ -52,6 +73,17 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
           default: break;
         }
         break; 
+      case "linked": 
+        const linked = value.value;
+        const code = values.code;
+        const service = values.service;
+        if(linked && code && code !== "" && service !== "") {
+            savePair("codeServicePairs", [{[code]:service}])
+        } else if(!linked) {
+            savePair("codeServicePairs", [{[code]: ""}])
+            returnObj.serviceDisabled = false;
+        }
+        break;
       case "lob":
         storage(value);
         if(value.value === "FEP") {
@@ -99,7 +131,7 @@ const handleInputsSwitch = (serviceSelect, storage, info, value, values) => {
           : value.value === "DME"
             ? "DME"
             : values.specificType;
-        break;        
+        break;     
       case "special":
         if(value.value === "host") {
           returnObj.claimSystem = "INSINQ";
@@ -165,8 +197,7 @@ const checkRules = (codeValue) => {
       if(type["Rule"].includes(firstChar)) {
         acc = type["Service Type"]
       }  
-    }
-    
+    }  
     return acc;
   }, false)
 }

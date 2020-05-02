@@ -1,5 +1,5 @@
 import React from 'react';
-import RadioInput from './RadioInput';
+import RadioInput from './BaseInputs/RadioInput';
 
 const ProviderType = (props) => {
   return (

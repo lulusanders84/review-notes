@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import Note from '../Notes/Note';
 
 export function LetterNote(props) {
-  const {...values} = props.values;
+  const {req} = props.values;
   return (
     <Note title="Note for Letter">
-      REQ-{values.req}: Additional Info Requested
+      REQ-{req}: Additional Info Requested
       <Info visible />
       <FaxAndDate visible />
     </Note>

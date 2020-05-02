@@ -1,6 +1,5 @@
-import React, { useEffect} from 'react';
+import React from 'react';
 import Info from './Info'
-import { setClaimNoteData } from '../../redux/actions';
 import { 
   withVisibility, 
   setComposed 
@@ -8,15 +7,12 @@ import {
 import FaxAndDate from './FaxAndDate';
 import NoteContainer from './NoteContainer';
 import Note from './Note';
+import withNoteDataDispatch from '../../HOCs/withNoteDataDispatch/withNoteDataDispatch';
 
 export function ClaimNote(props) {
   const values = props.values;
-  const { dispatch, visible, notes } = props;
+  const { visible, notes } = props;
   const { ocwaNote, instructions, modifier22, remainder } = notes;
-  useEffect(() => {
-    dispatch(setClaimNoteData(values));
-  }, [dispatch, values]);
-
   return (
     <NoteContainer visible={visible}>
       <Note title="Claim Note">
@@ -34,6 +30,6 @@ const mapStateToProps = (state) => ({
   id: "claimNote"
 });
 
-const composed = setComposed(mapStateToProps, withVisibility, ClaimNote);
+const composed = setComposed(mapStateToProps, [withVisibility, withNoteDataDispatch], ClaimNote);
 export default composed;
 

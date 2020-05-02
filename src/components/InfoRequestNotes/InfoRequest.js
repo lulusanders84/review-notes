@@ -1,33 +1,21 @@
 import React from 'react';
 import Note from '../Notes/Note';
 import Info from '../Notes/Info';
-import { setInfoRequestData } from '../../redux/actions/notes';
-import { connect } from 'react-redux';
+import { withNoteDataDispatch } from '../../HOCs/withNoteDataDispatch/withNoteDataDispatch';
+import { setComposed } from '../../HOCs';
+import NoteLines from '../Notes/NoteLines';
 
 export function InfoRequest(props) {
-  const {values, dispatch, notes} = props;
-  const { policyString, code, pend, route, related, } = notes;
-
-  React.useEffect(() => {
-    dispatch(setInfoRequestData(values))
-  }, [dispatch, values]);
-
   return (
     <Note title="Info Request Note">
-      REQ-{values.req}: Additional Info Requested
-      <br />Suspended codes: {code}
-      <br />Suspension: {pend}
-      <br />Medical Policy/Criteria: {policyString}
-      <br />PA research: No PA found, no history of info requests in UM
-      <br />Related UM requests: {related}
-      <br />Route: {route}
+      <NoteLines noteType="InfoRequest" /> 
       <Info visible />
     </Note>
   )
 }
 const mapStateToProps = (state) => ({
   values: state.values,
-  notes: state.notes
 });
 
-export default connect(mapStateToProps)(InfoRequest)
+const composed = setComposed(mapStateToProps, [withNoteDataDispatch], InfoRequest);
+export default composed;

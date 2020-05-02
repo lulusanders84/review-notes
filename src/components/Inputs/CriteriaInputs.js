@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactSelectSingle from './ReactSelectSingle';
+import ReactSelectSingle from './BaseInputs/ReactSelectSingle';
 import CriteriaQuill from './CriteriaQuill';
 import { referReasons } from '../../data/referReasons'; 
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ export function CriteriaInputs(props) {
     <div className={classes.card}>
         <CriteriaQuill id="criteriaMet" label="Criteria Met" handleInputs={props.handleInputs}  />
         <CriteriaQuill id="criteriaNotMet" label="Criteria Not Met" handleInputs={props.handleInputs} />
-        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral" updateValue={props.handleInputs}  /> 
+        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral"   /> 
     </div>
   )
 }

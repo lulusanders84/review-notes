@@ -1,15 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { setClaimNoteData } from '../../redux/actions/notes'
+import { setComposed } from '../../HOCs';
+import { withNoteDataDispatch } from '../../HOCs/withNoteDataDispatch/withNoteDataDispatch'
 import Note from './Note';
 
 export function MisrouteClaimNote(props) {
-  const { dispatch, values, notes } = props;
-  const { req, misrouteRationale } = values;
-  React.useEffect(() => {
-    dispatch(setClaimNoteData(values));
-  }, [dispatch, values])
-  
+  const { values, notes } = props;
+  const { req, misrouteRationale } = values;  
   return (
     <Note title="Claim Note">
       REQ-{req}: {notes.ocwaNote} Claim referred in error, see DLP for claim resolution. {misrouteRationale}
@@ -22,4 +18,5 @@ const mapStateToProps = (state) => ({
   notes: state.notes,
 });
 
-export default connect(mapStateToProps)(MisrouteClaimNote)
+const composed = setComposed(mapStateToProps, [withNoteDataDispatch], MisrouteClaimNote);
+export default composed;

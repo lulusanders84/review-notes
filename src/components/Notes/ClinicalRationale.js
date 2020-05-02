@@ -20,5 +20,5 @@ const mapStateToProps = (state) => ({
     id: "clinRat"
   });
   
-  const composed = setComposed(mapStateToProps, withVisibility, ClinicalRationale);
+  const composed = setComposed(mapStateToProps, [withVisibility], ClinicalRationale);
   export default composed;
