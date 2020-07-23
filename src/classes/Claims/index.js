@@ -6,4 +6,5 @@ export { ClaimsTotal } from './ClaimsTotal';
 export { DailyClaims } from './DailyClaims';
 export { DailyTarget } from './DailyTarget';
 export { Workdays } from './Workdays';
+export { WorkHours } from './WorkHours';
 export { Weekdays } from './Weekdays';

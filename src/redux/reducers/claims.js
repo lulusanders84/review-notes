@@ -2,7 +2,7 @@ import {ClaimsData,
 DailyClaims } from '../../classes/Claims';
 
 const data = new ClaimsData();
-const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal, average } = data;
+const { claimLog, claimsGoal, workHours, workdays, dailyTarget, claimsTotal, average } = data;
 const claims = new DailyClaims(claimLog, Date.now());
 const dailyClaims = claims.get();
 const dailyClaimsTotal = claims.getTotal();
@@ -10,6 +10,7 @@ const initialState = {
   claimLog,
   claimsTotal,
   claimsGoal,
+  workHours,
   workdays,
   dailyTarget,
   average,

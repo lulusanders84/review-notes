@@ -3,6 +3,7 @@ import { Typography, TextField,  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux';
 import { updateClaimsGoal, updateWorkdays } from '../../redux/actions/claims';
+import SimpleSelect from '../Inputs/BaseInputs/SimpleSelect';
 import InfiniteCalendar, {
   Calendar,
   defaultMultipleDateInterpolation,
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
 })
 
 const ClaimSettings = (props) => {
+  console.log(props.workHours)
   const classes = useStyles();
   const initialWorkdays = props.workdays[props.month];
   const [workdays, setWorkdays] = React.useState(initialWorkdays)
@@ -52,6 +54,13 @@ const ClaimSettings = (props) => {
         value={props.claimsGoal}
         onChange={e => {handleGoalChange(e)}} 
       />
+      <SimpleSelect 
+        className={classes.input}
+        id="hours" 
+        options={["8"," 10"]} 
+        value={props.workHours}
+        label="Hours Worked Per Day" 
+      />             
       <Typography
         className={classes.input}
         variant="body1"
@@ -76,6 +85,7 @@ const mapStateToProps = (state) => ({
   claimLog: state.claims.claimLog,
   workdays: state.claims.workdays,
   month: state.claims.month,
-  year: state.claims.year
+  year: state.claims.year,
+  workHours: state.claims.workHours
 });
 export default connect(mapStateToProps)(ClaimSettings);

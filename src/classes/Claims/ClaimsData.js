@@ -1,5 +1,6 @@
 import { ClaimLog, 
-  Workdays, 
+  Workdays,
+  WorkHours, 
   ClaimsGoal, 
   DailyTarget, 
   ClaimsTotal, 
@@ -16,6 +17,7 @@ export class ClaimsData {
     this.dailyTarget = new DailyTarget(this.claimLog, this.claimsGoal, this.workdays).get();
     this.claimsTotal = new ClaimsTotal(this.claimLog).getToday();
     this.average = new ClaimsPerDayAverage(this.claimLog).get();
+    this.workHours = new WorkHours().get();
     
   }
 }
