@@ -8,13 +8,15 @@ export const getFullnames = (values) => {
     const name = policy["Full Policy"];
     const isNotNumber = isNaN(number.charAt(0))
     let policyOrigin = isNotNumber 
-    ? "Blue Cross Blue Shield of Minnesota Medical Policy for" 
-    : "Federal Employee Program (FEP) Medical Policy for";
+    ? "Blue Cross Blue Shield of Minnesota Medical Policy" 
+    : "Federal Employee Program (FEP) Medical Policy";
     policyOrigin = policy.type === "LCD" || policy.type === "NCD"
       ? `Medicare ${policy.type} for`
       : policyOrigin;
     return values.interqual
       ? <li key={index}>{interqual}</li>
-      : <li key={index}>{number} {policyOrigin} {name}</li>
+      : isNotNumber
+        ? <li key={index}>{number} {policyOrigin} for {name}</li>
+        : <li key={index}> {policyOrigin} {number} for {name}</li>
   })
 }
