@@ -106,14 +106,12 @@ export const getPolicies = (policyNames) => {
   const fullPolicies = getAllPolicies();
   if(policyNames) {
     return policyNames.map(policyName => {
-      if(!policyName["Policy #"]){
         const policy = fullPolicies.find(policy => {
           return policy["Policy #"] === policyName.value;
         })
         policy.value = policyName.value;
         policy.label = policyName.label;
-        return policy;
-      } else return policyName;    
+        return policy;   
     })
   } else return policyNames;
 }
