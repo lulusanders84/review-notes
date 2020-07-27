@@ -10,11 +10,7 @@ import BackFromPeer from './NoteTemplates/BackFromPeer';
 import InfoRequest from './NoteTemplates/InfoRequest';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
-import { handleInputs } from '../../actions';
-import { savePoliciesToStorage } from '../../data/medPolicies';
-import { fepPolicies } from '../../data/fepPolicies';
-import { medPolicies } from '../../data/medPolicies';
-import { formatPolicy } from '../../data/scrapePolicies';
+import { handleInputs } from '../../redux/actions';
 
 const styles = theme => ({
   '@global': {
@@ -100,10 +96,6 @@ class ReviewNotes extends React.Component {
   }
   handleServiceDisabled = (disabled) => {
     this.setState({serviceDisabled: disabled});
-  }
-  componentDidMount() {
-    savePoliciesToStorage("bcbsmnPolicies", medPolicies);
-    savePoliciesToStorage("fepPolicies", fepPolicies.map(policy => { return formatPolicy(policy)}));
   }
   render() {
     const { classes } = this.props;

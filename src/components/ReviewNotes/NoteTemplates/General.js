@@ -45,7 +45,7 @@ function General(props) {
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
     
       <PendInput updateValue={props.handleInputs} />             
-      <RadioInput id="reviewed" options={["no", "yes"]} label="Service previously reviewed" onChange={props.handleReviewed} updateValue={props.handleInputs} />  
+      <RadioInput id="reviewed" options={["no", "yes"]} label="Following a decision:" onChange={props.handleReviewed} updateValue={props.handleInputs} />  
       <ReviewedInputs reviewed={props.reviewed} handleInputs={props.handleInputs} rationaleValue={props.values.rationale}  />
       <TextInput id="req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs}  />
       <TextInput id="age" placeholder="" label="Age" updateValue={props.handleInputs}  /> 

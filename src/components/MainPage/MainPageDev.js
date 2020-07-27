@@ -1,21 +1,22 @@
 import React from 'react';
 import Title from '../Title/Title';
-import ReviewNotes from '../ReviewNotes/ReviewNotes';
-import ClaimLog from '../ClaimLog/ClaimLog';
 import AddClaimButton from '../ClaimCount/AddClaimButton';
+import { setDateTimeOfLastScrape } from '../../utils/setDateTimeOfLastScrape';
+import setUpdatingText from './setUpdatingText';
+import setDisplayComponent from './setDisplayComponent';
 
 function MainPageDev(props) {
   const [tabValue, setTabValue] = React.useState(0);
+  const { date, time } = setDateTimeOfLastScrape();
+  
     return (
     <div className={props.paper}>
+      <div>
+        {setUpdatingText(props.updating, date, time)}
+      </div>
       <Title setTabValue={setTabValue} tabValue={tabValue} />
       <div >
-        {tabValue === 0
-        ? <ReviewNotes showType={true} />
-        : tabValue === 1
-          ? <ClaimLog />
-          : null
-        }
+        {setDisplayComponent(tabValue)}
       </div>
       <AddClaimButton /> 
     </div>
@@ -23,3 +24,7 @@ function MainPageDev(props) {
   }
 
 export default MainPageDev;
+
+
+
+

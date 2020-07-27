@@ -1,8 +1,10 @@
-import { fepPolicies as fepPoliciesOnFile } from '../../data/fepPolicies';
+import fepPoliciesOnFile from '../../data/fullPolicies';
 import { formatPolicy } from '../../data/scrapePolicies';
 import { bcbsmnCodes } from '../../data/bcbsmnCodes';
 import { formattedMedicareCodes } from '../../data/medicareCodes';
 import { medPolicies } from '../../data/medPolicies';
+import { refreshPolicies } from '../../data/refreshPolicies';
+import { getStorage } from '../../utils';
 
 export const setPolicyByCode = (codes, lob) => {
   const isJ3490 = codes.includes("J3490");
@@ -101,11 +103,7 @@ export const mergePolicyNameArrays = (newPolicyNames, policyNames) => {
   })
 }
 export const getPolicies = (policyNames) => {
-  const fepPolicies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile.map(policy => {
-    return formatPolicy(policy)
-  });;
-  const bcbsmnPolicies = window.localStorage.getItem("bcbsmnPolicies") ? JSON.parse(window.localStorage.getItem("bcbsmnPolicies")) : medPolicies;
-  const fullPolicies = [...bcbsmnPolicies, ...fepPolicies]; 
+  const fullPolicies = getAllPolicies();
   if(policyNames) {
     return policyNames.map(policyName => {
       if(!policyName["Policy #"]){
@@ -120,4 +118,17 @@ export const getPolicies = (policyNames) => {
   } else return policyNames;
 }
 
+
+export function getAllPolicies() {
+  let fepPolicies = getStorage("fepPolicies", null);
+  if (fepPolicies === null) {
+    const dummySetUpdating = (value) => {}
+    refreshPolicies(dummySetUpdating, "fep");
+    fepPolicies = getStorage("fepPolicies", null);
+  }
+  const storedBcbsmnPolicies = getStorage("bcbsmnPolicies", null);
+  let bcbsmnPolicies = storedBcbsmnPolicies !== null ? storedBcbsmnPolicies : medPolicies;
+  const fullPolicies = [...fepPolicies, ...bcbsmnPolicies];
+  return fullPolicies;
+}
 

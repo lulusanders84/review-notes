@@ -1,11 +1,13 @@
-import { allCapWords } from "./allCapWords";
+import { CapWords } from "../../classes/CapWords";
+
+const capWords = new CapWords();
 
 export const formatToSentence = (input) => {
   if(input) {
     const inputArr = input.split(". ");
     return inputArr.map(input => {
       input = input.split(" ").map(word => {
-        return allCapWords.includes(word.toUpperCase())
+        return capWords.getAll().includes(word.toUpperCase())
           ? word.toUpperCase()
           : word.toLowerCase();
       }).join(" ");

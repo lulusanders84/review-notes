@@ -1,39 +1,24 @@
 import React from 'react';
-import MedDirectorNote from './MedDirectorNote';
+import FollowDecisionNote from './FollowDecisionNote';
+import FullReviewNote from './FullReviewNote';
 import { connect } from 'react-redux';
-import { setMedClaimReviewData } from '../../../actions/notes';
-import NoteContainer from '../NoteContainer';
-import { formatCriteria } from '../../../utils/Notes/formatCriteria';
-import 'react-quill/dist/quill.snow.css';
+
+
+
 
 export function MedClaimReviewNote(props) {
-  const { dispatch, values, notes } = props;
-  React.useEffect(() => {
-    dispatch(setMedClaimReviewData(values))
-  }, [dispatch, values])
-  return (
-    <NoteContainer title="Medical Claim Review Note">
-      REQ-{values.req}: Clinical Note
-        <br />Clinician name/Extension: {values.name}
-        <br />LOB: {notes.lob}
-        <br />Service: {notes.service}
-        <br />Drug Request: {notes.drugRequest}
-        <br />Suspended codes: {notes.code}
-        <br />Suspension: {notes.pend}
-        <br />PA on file: {notes.pa}
-        <br />Claim history: {notes.claimHistory}
-        <br />Medical Policy/Criteria: {notes.policyString}
-        <br />Benefits: {notes.benefits}
-        <br />Case summary: {notes.summary} 
-        <br />Extenuating Circumstances: {values.exCircum}
-        <br />Criteria Met: <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria(notes.criteriaMet)}} />
-        <br />Criteria Not Met: <span className="ql-editor" style={{paddingLeft: 0}} dangerouslySetInnerHTML={{__html: formatCriteria(notes.criteriaNotMet)}} />
-        <br />Determination: {notes.deter}
-        {values.deter === "send to medical director" ?
-          <MedDirectorNote />
-          : null}
-    </NoteContainer>
-  )
+  const { values } = props;
+    const noteTemplateComponent = () => {
+      return values.reviewed === "no"
+        ? <FullReviewNote />
+        : <FollowDecisionNote />
+    }
+    return (
+      <div>
+        {noteTemplateComponent()}  
+      </div>
+      
+    )
 }
 const mapStateToProps = (state) => ({
   values: state.values,

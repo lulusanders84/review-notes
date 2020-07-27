@@ -4,7 +4,7 @@ ClaimLog,
 ClaimsTotal,
 ClaimsGoal,
 ClaimsPerDayAverage,
-DailyClaims } from "../classes/Claims";
+DailyClaims } from "../../classes/Claims";
 
 export const updateClaimLogDate = (increment) => (dispatch) => {
   const changeToDate = increment > 0

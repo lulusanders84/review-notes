@@ -1,10 +1,10 @@
 import React from 'react';
-import { getClaimNoteData } from '../utils/ClaimNote/getClaimNoteData';
-import { referReasons } from '../data/referReasons';
-import { getFullnames, getQueue } from '../utils/Notes';
-import { setInterqual } from '../utils/Notes/setPolicyString';
-import { getInfoRequestData } from '../utils/InfoRequestNote/getInfoRequestData';
-import { getMedClaimReviewData } from '../utils/MedClaimReviewNote/getMedClaimReviewData';
+import { getClaimNoteData } from '../../utils/ClaimNote/getClaimNoteData';
+import { referReasons } from '../../data/referReasons';
+import { getFullnames, getQueue } from '../../utils/Notes';
+import { setInterqual } from '../../utils/Notes/setPolicyString';
+import { getInfoRequestData } from '../../utils/InfoRequestNote/getInfoRequestData';
+import { getMedClaimReviewData } from '../../utils/MedClaimReviewNote/getMedClaimReviewData';
 
 
 export const setClaimNoteData = (values) => (dispatch) => {

@@ -1,17 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { withVisibility, setComposed } from '../../HOCs';
+import Note from './Note';
 import NoteContainer from './NoteContainer';
+import { formatValues } from '../../utils/Notes';
 
-export const ClinicalRationale = (props) => {
+export function ClinicalRationale(props) {
     return (
-        <NoteContainer title="Clinical Rationale">
-            {props.values["clinical-rationale"]}
-        </NoteContainer>
-      )
+        <NoteContainer visible={props.visible}>
+            <Note title="Clinical Rationale">
+                {props.values["clinical-rationale"]}
+            </Note>  
+        </NoteContainer>    
+    )
 }
 
 const mapStateToProps = (state) => ({
-    values: state.values,
+    values: formatValues(state.values),
+    notes: state.notes,
+    id: "clinRat"
   });
   
-  export default connect(mapStateToProps)(ClinicalRationale)
+  const composed = setComposed(mapStateToProps, withVisibility, ClinicalRationale);
+  export default composed;

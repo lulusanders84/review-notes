@@ -1,6 +1,3 @@
-
-import { bcbsmnPolicies } from './bcbsmnPolicies';
-
 export const medPolicies =
 [
    {
@@ -3055,32 +3052,4 @@ export const medPolicies =
    }
 ]
 
-
-export const addPolcyNameToMedPolicies = () => {
-   return medPolicies.map(policy => {
-      const number = policy["Policy #"];
-      const name = policy["Full Policy"];
-      delete policy.number;
-      policy.policyName = {value: number, label: number, name,};
-      return policy;
-      })
- }
-
- export const mergeInfoToPolicies = () => {
-   medPolicies.forEach(medPolicy => {
-      const bcbsmnPolicy = bcbsmnPolicies.find(bcbsmnPolicy => {
-         return bcbsmnPolicy["Policy #"] === medPolicy["Policy #"]
-      })
-
-      medPolicy.info = bcbsmnPolicy ? bcbsmnPolicy.info : "";
-   })
-   return medPolicies;
- }
-
- export const savePoliciesToStorage = (storageLocation, policies) => {
-    const storedPolicies = window.localStorage.getItem(storageLocation);
-    if(!storedPolicies || storedPolicies === undefined){
-       window.localStorage.setItem(storageLocation, JSON.stringify(policies));
-    }
- }
 

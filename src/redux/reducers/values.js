@@ -1,4 +1,4 @@
-import {initialValues} from '../utils/Values'
+import {initialValues} from '../../utils/Values'
 
 const initialState = initialValues;
 

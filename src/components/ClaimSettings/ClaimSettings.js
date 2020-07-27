@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, TextField,  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux';
-import { updateClaimsGoal, updateWorkdays } from '../../actions/claims';
+import { updateClaimsGoal, updateWorkdays } from '../../redux/actions/claims';
 import InfiniteCalendar, {
   Calendar,
   defaultMultipleDateInterpolation,

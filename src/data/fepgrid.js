@@ -681,8 +681,8 @@ export const fepGrid = [
    "code": "V2632",
    "bene": "p. 58",
    "BPM": "ch. 03.1-410-000 / 05.1-100-000",
-   "FEPMP": "NA",
-   "BCMP": "NA",
+   "FEPMP": "N/A",
+   "BCMP": "N/A",
    "info": "H&P, operative report, specific type of intraocular lens used"
  },
  {
@@ -1066,11 +1066,11 @@ export const fepGrid = [
  {
    "name": "Cologuard",
    "code": "81528",
-   "bene": "NA",
-   "BPM": "NA",
+   "bene": "N/A",
+   "BPM": "N/A",
    "FEPMP": "2.04.29",
-   "BCMP": "NA",
-   "info": "NA"
+   "BCMP": "N/A",
+   "info": "N/A"
  },
  {
    "code": "88237"

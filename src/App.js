@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from '../src/store';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import MainPageContainer from './components/MainPage/MainPageContainer';
+import { handleCapWords } from './utils/Notes/handleCapWords';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,8 +18,10 @@ const theme = createMuiTheme({
   },
 });
 function App() {
+  const [updating, setUpdating] = React.useState(false);
   React.useEffect(() => {
-    handlePolicyScraping();
+    handlePolicyScraping(setUpdating);
+    handleCapWords();
   }, []);
   return (
     <Provider store={store}>
@@ -28,7 +31,7 @@ function App() {
             <MainPageContainer component={<MainPage />} />
           </Route>
           <Route path="/dev" exact={true}>
-            <MainPageContainer component={<MainPageDev />} />
+            <MainPageContainer component={<MainPageDev updating={updating} />} />
           </Route>
         </Router>
       </ThemeProvider>  
