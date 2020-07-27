@@ -21,6 +21,7 @@ export const saveInfoToPolicy = (values) => {
     });
     storedPolicies[policyIndex].info = values.info;
   })
+  console.log(storedPolicies)
   window.localStorage.setItem(storageLocation, JSON.stringify(storedPolicies))
 }
 

@@ -3,7 +3,7 @@ import { formatPolicy } from '../../data/scrapePolicies';
 import { bcbsmnCodes } from '../../data/bcbsmnCodes';
 import { formattedMedicareCodes } from '../../data/medicareCodes';
 import { medPolicies } from '../../data/medPolicies';
-import { refreshFepPolicies } from '../../data/refreshFepPolicies';
+import { refreshPolicies } from '../../data/refreshPolicies';
 import { getStorage } from '../../utils';
 
 export const setPolicyByCode = (codes, lob) => {
@@ -122,7 +122,8 @@ export const getPolicies = (policyNames) => {
 export function getAllPolicies() {
   let fepPolicies = getStorage("fepPolicies", null);
   if (fepPolicies === null) {
-    refreshFepPolicies();
+    const dummySetUpdating = (value) => {}
+    refreshPolicies(dummySetUpdating, "fep");
     fepPolicies = getStorage("fepPolicies", null);
   }
   const storedBcbsmnPolicies = getStorage("bcbsmnPolicies", null);

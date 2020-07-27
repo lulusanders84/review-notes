@@ -1,7 +1,7 @@
 import $ from 'jquery';
 // import { fepPolicies } from './fepPolicies';
 import { saveToStorage, setStorage, getStorage } from '../utils';
-import { refreshFepPolicies } from './refreshFepPolicies';
+import { refreshPolicies } from './refreshPolicies';
 
 
 const store = {};
@@ -9,9 +9,14 @@ const store = {};
 export const handlePolicyScraping = (setUpdating) => {
   const nextScrape = getStorage("nextScrape", NaN);
   const fepPolicies = getStorage("fepPolicies");
-  if(isNaN(nextScrape) || nextScrape < Date.now() || fepPolicies === undefined) {
+  const bcbsmnPolicies = getStorage("bcbsmnPolicies");
+  if(isNaN(nextScrape) 
+    || nextScrape < Date.now() 
+    || fepPolicies === undefined
+    || bcbsmnPolicies === undefined) {
     setUpdating(true);
-    refreshFepPolicies(setUpdating);
+    refreshPolicies(setUpdating, "fep");
+    refreshPolicies(setUpdating, "commercial");
   }
 }
 export const scrapePolicies = async (setUpdating) => {
@@ -78,15 +83,18 @@ export const updateFepPolicies = (store, policies) => {
 }
 
 export const formatPolicy = (rawPolicy) => {
-  const fullName = rawPolicy["Brand Drug Name"] !== undefined
-    ? rawPolicy["Brand Drug Name"]
-    : rawPolicy["Full Policy Description (or Generic Name (s) of Drug)"];
-  const policy = {
-  "Policy #": rawPolicy["Policy #"],
-  "Full Policy": fullName,
-  "CPT": rawPolicy["CPT Code (s)"],
-  "HCPCS": rawPolicy["HCPCS Code (s)"],   
-  "info": rawPolicy["info"]
-  }
-  return policy;
+  if(rawPolicy["Full Policy"] === undefined){
+    const fullName = rawPolicy["Brand Drug Name"] !== undefined && rawPolicy["Brand Drug Name"] !== ""
+      ? rawPolicy["Brand Drug Name"]
+      : rawPolicy["Full Policy Description (or Generic Name (s) of Drug)"];
+    
+    const policy = {
+    "Policy #": rawPolicy["Policy #"],
+    "Full Policy": fullName,
+    "CPT": rawPolicy["CPT Code (s)"],
+    "HCPCS": rawPolicy["HCPCS Code (s)"],   
+    "info": rawPolicy["info"]
+    }
+    return policy;
+  } else return rawPolicy;
 }
