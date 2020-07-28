@@ -6,18 +6,16 @@ import { medicareCodes } from '../data/medicareCodes';
 
 export class Policies {
   constructor(lob) {
-    console.log(lob, typeof lob)
     this.lob = lob;
     const policies = lob === "fep"
       ? getStorage("fepPolicies", fepPolicies)
       : lob === "commercial"
-        ? this.buildPoliciesFromCodes(bcbsmnCodes, "bcbsmn")
-        : this.buildPoliciesFromCodes(medicareCodes, "medicare");
+        ? this.buildPoliciesFromCodes(bcbsmnCodes)
+        : this.buildPoliciesFromCodes(medicareCodes);
     this.policyObj = this.convertPoliciesToObj(policies);
     this.policyArr = policies;
   }
-  buildPoliciesFromCodes(codes, source) {
-    console.log(source)
+  buildPoliciesFromCodes(codes) {
     const policies = {};
     Object.keys(codes).forEach(code => {
       codes[code].forEach(policy => {
@@ -25,6 +23,11 @@ export class Policies {
         policies[policyNo] = policy;
       })
     })
+    policies["InterQual"] = {
+      "Policy #": "InterQual",
+      "Full Policy": "",
+      info: ""
+    };
     const policiesArr = [];
     Object.keys(policies).forEach(policy => {
       policiesArr.push(policies[policy]);
