@@ -21,10 +21,13 @@ const theme = createMuiTheme({
 function App() {
   const [updating, setUpdating] = React.useState(false);
   React.useEffect(() => {
-    const name = getStorage("name")
+    const name = getStorage("name");
     const lob = getStorage("lob");
     if(typeof name !== "string") {
       window.localStorage.removeItem("name");
+    }
+    if(typeof lob !== "string") {
+      window.localStorage.removeItem("lob");
     }
     handlePolicyScraping(setUpdating);
     handleCapWords();
