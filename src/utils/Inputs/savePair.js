@@ -1,12 +1,15 @@
+import { getStorage } from "../getStorage";
+import { saveToStorage } from "../saveToStorage";
+
 export const savePair = (storageLocation, pairArray) => {
-    const storedPairs = JSON.parse(window.localStorage.getItem(storageLocation));
-    const pairs =  storedPairs ? storedPairs : {};
+    const storedPairs = getStorage(storageLocation);
+    const pairs = storedPairs ? storedPairs : {};
     pairArray.forEach(pair => {
         Object.keys(pair).forEach(key => {
           pairs[key] = pair[key].toLowerCase();  
         })  
     })
-    window.localStorage.setItem(storageLocation, JSON.stringify(pairs))
+    saveToStorage(storageLocation, pairs);
 }
 
 export const saveInfoToPolicy = (values) => {
@@ -14,14 +17,13 @@ export const saveInfoToPolicy = (values) => {
   if(values.lob === "commercial") {
     storageLocation = "bcbsmnPolicies";
   }
-  const storedPolicies = JSON.parse(window.localStorage.getItem(storageLocation));
+  const storedPolicies = getStorage(storageLocation);
   values.policy.forEach(policy => {
     const policyIndex = storedPolicies.findIndex(storedPolicy => {
       return storedPolicy["Policy #"] === policy["Policy #"];
     });
     storedPolicies[policyIndex].info = values.info;
   })
-  console.log(storedPolicies)
-  window.localStorage.setItem(storageLocation, JSON.stringify(storedPolicies))
+  saveToStorage(storageLocation, storedPolicies);
 }
 

@@ -1,4 +1,6 @@
-const setLob = window.localStorage.getItem("lob") ? window.localStorage.getItem("lob") : "commercial";
+import { getStorage } from "../getStorage";
+
+const setLob = getStorage("lob", "commercial");
 const setName = typeof window.localStorage.getItem("name") === "string" 
     ? JSON.parse(window.localStorage.getItem("name"))
     : window.localStorage.getItem("name")
