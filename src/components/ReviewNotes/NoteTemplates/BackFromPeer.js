@@ -15,6 +15,7 @@ import { Divider } from '@material-ui/core';
 import { handleInputs } from '../../../redux/actions';
 import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
+import { getStorage } from '../../../utils';
 
 function BackFromPeer(props) {
   const { classes, options } = props;
@@ -42,7 +43,7 @@ function BackFromPeer(props) {
         ?<TextInput id="code" placeholder="" label="Suspended Codes" updateValue={props.handleInputs} />
         : null
         }
-        <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />
+        <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={getStorage("type", [])} />
       {props.values.deter === "approve"
         ? <div>
         <PendInput updateValue={props.handleInputs} />  

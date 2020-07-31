@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import { Grid, makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { createSelectValue } from '../../utils';
+import { createSelectValue, saveToStorage } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   checkButton: {
@@ -30,7 +30,7 @@ function EditSelectOption(props) {
     })
     const newValue = props.values[props.id];
     options[optionIndex] = createSelectValue(newValue, props.labelFormat);
-    window.localStorage.setItem(props.id, JSON.stringify(options));
+    saveToStorage(props.id, options);
     props.setNewValue(options[optionIndex])
   }
   const handleChange = (event) => {

@@ -3,10 +3,10 @@ import TextInput from './TextInput';
 import { Grid } from '@material-ui/core';
 import ReactSelectSingle from './ReactSelectSingle';
 import { connect } from 'react-redux';
-import { createSelectValue, saveToStorage } from '../../utils';
+import { createSelectValue, saveToStorage, getStorage } from '../../utils';
 
 export const DoseInput = (props) => {
-  const storedOptions = JSON.parse(window.localStorage.getItem("doseUnit"))
+  const storedOptions = getStorage("doseUnit");
   if(storedOptions === null) {
     saveToStorage("doseUnit", [createSelectValue("mg", "lower")])
   }
@@ -22,7 +22,7 @@ export const DoseInput = (props) => {
           label="Unit:" 
           labelFormat="lower"
           updateValue={props.handleInputs}
-          suggestions={JSON.parse(window.localStorage.getItem("doseUnit"))} />
+          suggestions={getStorage("doseUnit", [])} />
       </Grid>
     </Grid>  
   )

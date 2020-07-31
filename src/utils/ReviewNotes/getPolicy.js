@@ -1,4 +1,6 @@
-const fepPolicies = JSON.parse(window.localStorage.getItem("fepPolicies"))
+import { getStorage } from "../getStorage";
+
+const fepPolicies = getStorage("fepPolicies", [])
 
 export const getFepPolicy = (policyName) => {
     const l = policyName.length;

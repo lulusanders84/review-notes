@@ -1,4 +1,4 @@
-import { setStorage, saveToStorage } from '../../utils';
+import { setStorage, saveToStorage, getStorage } from '../../utils';
 
 export class ClaimsGoal {
   constructor() {
@@ -6,7 +6,7 @@ export class ClaimsGoal {
     this.saveClaimsGoalToStorage();
   }
   getClaimsGoalFromStorage() {
-    let claimsGoal = parseInt(JSON.parse(window.localStorage.getItem("claimsGoal")));
+    let claimsGoal = parseInt(getStorage("claimsGoal"));
     claimsGoal = isNaN(claimsGoal)
       ? null
       : claimsGoal;

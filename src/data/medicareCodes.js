@@ -2746,20 +2746,3 @@ export const reduceMedicareCodes = () => {
 export const formattedMedicareCodes = () => {
    return reduceMedicareCodes();
 }
-
-export const reducePolicies = () => {
-   const policies = reduceMedicareCodes();
-   const policyObj = {};
-   Object.keys(policies).forEach(key => {
-      policies[key].forEach(policy => {
-         policyObj[policy["Policy #"]] = policy;
-      })
-   })
-   // medicareCodes.forEach(policy => {
-   //   policyObj[policy["Policy #"]] = policy;
-   // })
-   const policyArr = Object.keys(policyObj).map(key => {
-      return policyObj[key]
-   })
-   return JSON.stringify(policyArr);
-}

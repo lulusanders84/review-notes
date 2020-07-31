@@ -1,5 +1,6 @@
 import { saveToStorage } from '../../utils/saveToStorage';
 import { Weekdays } from './';
+import { getStorage } from '../../utils';
 
 export class Workdays {
   constructor() {
@@ -7,7 +8,7 @@ export class Workdays {
     this.saveWorkdaysToStorage();
   }
   getWorkdaysFromStorage() {
-    let workdays = JSON.parse(window.localStorage.getItem("workdays"));
+    let workdays = getStorage("workdays");
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
     if(workdays === undefined || workdays === null) {

@@ -11,7 +11,7 @@ import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
 import { formatToName } from '../../utils/Notes';
 import { connect } from 'react-redux';
-import { createSelectValue } from '../../utils';
+import { createSelectValue, saveToStorage } from '../../utils';
 import { formatToSentence } from '../../utils/Notes/formatToSentence';
 
 const useStyles = makeStyles(theme => ({
@@ -329,7 +329,7 @@ function IntegrationReactSelect(props) {
         const storage = props.id === "pa-provider"
           ? "provider"
           : props.id;
-        window.localStorage.setItem(storage, JSON.stringify(newOptions));
+        saveToStorage(storage, newOptions);
       }   
     }
     const newValue = value ? value.value : null;

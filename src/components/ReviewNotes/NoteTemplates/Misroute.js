@@ -14,6 +14,7 @@ import { Divider } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../../redux/actions';
 import PendInput from '../../Inputs/PendInput';
+import { getStorage } from '../../../utils';
 
 function Misroute(props) {
   const { dispatch } = props;
@@ -39,7 +40,7 @@ function Misroute(props) {
       <PendInput updateValue={props.handleInputs} />  
       <TextInput id="req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs} />
       <TextInput id="code" placeholder="" label="Suspended Codes" updateValue={props.handleInputs} />
-      <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={JSON.parse(window.localStorage.getItem("type"))} />         
+      <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={getStorage("type", [])} />         
       <TextInput id="misrouteRationale" placeholder="" label="Misroute Rationale" updateValue={props.handleInputs} />
     <Divider variant="fullWidth" />
     <div className={classes.notes}>

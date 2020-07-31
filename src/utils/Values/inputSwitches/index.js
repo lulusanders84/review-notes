@@ -1,0 +1,3 @@
+export { inputSwitch } from './inputSwitch';
+
+

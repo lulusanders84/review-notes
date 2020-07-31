@@ -1,4 +1,4 @@
 
-export {initialValues} from './setInitialValues'
-export {handleChangeInputs} from './handleChangeInputs'
-export {handleBenefits} from './changeInputs';
+export { initialValues } from './setInitialValues'
+export { handleChangeInputs } from './handleChangeInputs'
+export { formatInput } from './formatInput';
