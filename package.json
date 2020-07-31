@@ -5,10 +5,6 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
-    "@types/jest": "^25.1.3",
-    "@types/node": "^13.7.7",
-    "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
     "@types/react-select": "^3.0.10",
     "autosuggest-highlight": "^3.1.1",
     "deromanize": "^1.0.0",
@@ -40,7 +36,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy-dev": "aws s3 cp ./build s3://${S3_BUCKET_NAME}/ --recursive",
-    "postdeploy": "aws cloudfront create-invalidation --distribution-id ELP80NUAGMRO --paths '/*'"
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E26ELGO2S5I13I --paths '/*'"
   },
   "eslintConfig": {
     "extends": "react-app"
