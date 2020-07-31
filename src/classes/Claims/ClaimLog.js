@@ -1,4 +1,4 @@
-import { setStorage, saveToStorage } from '../../utils';
+import { saveToStorage, getStorage } from '../../utils';
 
 export class ClaimLog {
   constructor() {
@@ -9,7 +9,7 @@ export class ClaimLog {
     return this.log;
   }
   getLogFromStorage() {
-    return setStorage(JSON.parse(window.localStorage.getItem("claimLog")), []);
+    return getStorage("claimLog", []);
   }
   saveLogToStorage() {
     saveToStorage("claimLog", this.log);

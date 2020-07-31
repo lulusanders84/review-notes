@@ -1,13 +1,8 @@
 import { setStorage } from "./setStorage";
+import { parseItem } from "./parseItem";
 
 export const getStorage = (storageLocation, defaultValue) => {
-  let item;
-  item = window.localStorage.getItem(storageLocation);
-  console.log(item, typeof item);
-  if(typeof item === "string") {
-    item = JSON.parse(item);
-  }
-  
-
+  const item = parseItem(window.localStorage.getItem(storageLocation));
   return setStorage(item, defaultValue);
 }
+

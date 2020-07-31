@@ -23,6 +23,7 @@ import PendInput from '../../Inputs/PendInput';
 import ProviderType from '../../Inputs/ProviderType';
 import BenefitsInput from '../../Inputs/BenefitsInput';
 import ServiceTypeInput from '../../Inputs/ServiceTypeInput';
+import { getStorage } from '../../../utils';
 
 function General(props) {
   const { classes, options } = props;
@@ -67,7 +68,7 @@ function General(props) {
       <PolicyInput handleInputs={props.handleInputs}  />  
       <BenefitsInput values={props.values} handleInputs={props.handleInputs} />     
       <TextInput id="diagnosis" placeholder="" label="Diagnosis" updateValue={props.handleInputs}  />
-      <ReactSelectSingle id="provider" placeholder="" label="Provider" updateValue={props.handleInputs}  suggestions={JSON.parse(window.localStorage.getItem("provider"))} />             
+      <ReactSelectSingle id="provider" placeholder="" label="Provider" updateValue={props.handleInputs}  suggestions={getStorage("provider", [])} />             
       <ProviderType updateValue={props.handleInputs} />
       <RadioInput id="proPar" options={["Par", "Non-Par"]} label="Par Status" updateValue={props.handleInputs} />
       <TextInput id="summary" multiline={true} rows="5" label="Additional Clinical information"  updateValue={props.handleInputs} />

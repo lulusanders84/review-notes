@@ -1,6 +1,6 @@
 import $ from 'jquery';
 // import { fepPolicies } from './fepPolicies';
-import { saveToStorage, setStorage, getStorage } from '../utils';
+import { saveToStorage, getStorage } from '../utils';
 import { refreshPolicies } from './refreshPolicies';
 
 
@@ -31,7 +31,7 @@ export const scrapePolicies = async (setUpdating) => {
     workingStore = await getPage(url, pageNumber, workingStore);
     pageNumber += 1;
   }
-  const storedPolicies = setStorage(JSON.parse(window.localStorage.getItem("fepPolicies")), []);
+  const storedPolicies = getStorage("fepPolicies", []);
   const updatedPolicies = updateFepPolicies(workingStore, storedPolicies);
   saveToStorage("fepPolicies", updatedPolicies);
   setUpdating(false);

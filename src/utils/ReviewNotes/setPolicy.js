@@ -27,7 +27,8 @@ const policyByCodes = (codes, codeObj) => {
   return policies;
 }
 const fep = (codes) => {
-  const policies =  window.localStorage.getItem("fepPolicies") ? JSON.parse(window.localStorage.getItem("fepPolicies")) : fepPoliciesOnFile.map(policy => {
+  const storedPolicies = getStorage("fepPolicies");
+  const policies =  storedPolicies ? storedPolicies : fepPoliciesOnFile.map(policy => {
     return formatPolicy(policy)
   });
   
