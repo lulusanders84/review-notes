@@ -7,6 +7,11 @@ export const serviceType = (value, values) => {
       ? "Injectable Drug"
       : value.value === "DME"
         ? "DME"
-        : values.specificType
+        : values.specificType,
+    noPricingRationale: value.value === "DME"
+      ? "DME"
+      : value.value === "Diagnostic Lab" 
+      ? "Lab"
+      : values.noPricingRationale
   }
 }
