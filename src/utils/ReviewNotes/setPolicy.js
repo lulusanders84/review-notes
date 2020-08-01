@@ -1,9 +1,9 @@
 import fepPoliciesOnFile from '../../data/fullPolicies';
-import { formatPolicy } from '../../data/scrapePolicies';
+import { formatPolicy } from "../../utils/Policies/formatPolicy";
 import { bcbsmnCodes } from '../../data/bcbsmnCodes';
-import { formattedMedicareCodes } from '../../data/medicareCodes';
+import { formattedMedicareCodes } from "../../data/formattedMedicareCodes";
 import { medPolicies } from '../../data/medPolicies';
-import { refreshPolicies } from '../../data/refreshPolicies';
+import { refreshPolicies } from '../../utils/Policies/refreshPolicies';
 import { getStorage } from '../../utils';
 
 export const setPolicyByCode = (codes, lob) => {

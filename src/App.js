@@ -5,7 +5,7 @@ import MainPageDev from '../src/components/MainPage/MainPageDev'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { blue } from '@material-ui/core/colors';
-import { handlePolicyScraping } from '../src/data/scrapePolicies';
+import { handlePolicyScraping } from "../src/utils/Policies/handlePolicyScraping";
 import { Provider } from 'react-redux';
 import store from '../src/store';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
@@ -14,7 +14,7 @@ import { handleCapWords } from './utils/Notes/handleCapWords';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: blue[500] }, // Purple and green play nicely together.
+    primary: { main: blue[500] }
   },
 });
 function App() {

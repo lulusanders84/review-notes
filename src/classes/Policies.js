@@ -1,4 +1,4 @@
-import { formatPolicy } from '../data/scrapePolicies';
+import { formatPolicy } from "../utils/Policies/formatPolicy";
 import { getStorage } from '../utils';
 import { fepPolicies } from '../data/fepPolicies';
 import { bcbsmnCodes } from '../data/bcbsmnCodes';

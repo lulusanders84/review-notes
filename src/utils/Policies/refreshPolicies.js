@@ -1,8 +1,8 @@
 import { scrapePolicies} from './scrapePolicies';
-import { saveToStorage, getStorage } from '../utils';
-import { fepGrid } from './fepgrid';
-import { Policies } from '../classes/Policies'
-import { medPolicies } from './medPolicies';
+import { saveToStorage, getStorage } from '../';
+import { fepGrid } from '../../data/fepgrid';
+import { Policies } from '../../classes/Policies'
+import { medPolicies } from '../../data/medPolicies';
 
 export const refreshPolicies = (setUpdating, lob) => {
     const storageLocation = lob === "fep"
