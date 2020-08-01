@@ -26,7 +26,7 @@ function PricingInput(props) {
           </div>
         : props.values.pricing === "DPW"
           ? <TextInput id="allowable" placeholder="" label="Allowable amount" updateValue={props.handleInputs} /> 
-          : <RadioInput id="noPricingRationale" options={["Home claim", "POC provider", "Facility claim"]} label="Reason pricing is not required" updateValue={props.handleInputs} />
+          : <RadioInput id="noPricingRationale" options={["Home claim", "POC provider", "Facility claim", "DME", "Lab", "Unclassified code with pricing in PPPWeb"]} label="Reason pricing is not required" updateValue={props.handleInputs} />
       }
     </div>
   )
