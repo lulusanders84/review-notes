@@ -10,6 +10,6 @@ const switches = {
   "paProvider": ["provider"],
   "policy": ["info", "interqual", "deter", "rationale", "exCircum"],
   "rationale": ["exCircum"],
-  "serviceType": ["drugReview", "specificType"],
+  "serviceType": ["drugReview", "specificType", "noPricingRationale"],
   "special": ["claimSystem"]
 }
