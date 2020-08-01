@@ -11,7 +11,7 @@ export const setCaseSummary = (values) => {
     const service = formatValue(values.service);
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
     const diagnosis = formatValue(values.diagnosis);
-    let proVerb; 
+    // let proVerb; 
     const type = serviceTypes.find(type => type["Service Type"] === serviceType);
     let serviceVerb = type["Verb"] ? type["Verb"] : "underwent";
     const pricingSummary = setPricingNote(values, "summary");
@@ -22,14 +22,16 @@ export const setCaseSummary = (values) => {
         : ""; 
     const checkServiceFirstChar = vowels.includes(service.charAt(0).toLowerCase());
     serviceVerb = serviceType === "DME" && checkServiceFirstChar ? serviceVerb + "n" : serviceVerb;
-    const proTypeVerb = values.proType === "professional" ? "by" : "at";
+    let proTypeVerb = type["ProVerb"] 
+        ? type["ProVerb"]
+        :values.proType === "professional" ? "by" : "at";
     const summary = formatToSentence(values.summary);
     const dose = values.drugReview && values.lob === "commercial"
         ? `(${values.dose} ${values.doseUnit})`
         : "";
     return (
         <span>
-        {age}-year old member {serviceVerb} {service} {dose} for {diagnosis} {proVerb} {proTypeVerb} {provider} on {dos}. {summary}{pricingSummary} {modifier22}
+        {age}-year old member {serviceVerb} {service} {dose} for {diagnosis} {proTypeVerb} {provider} on {dos}. {summary}{pricingSummary} {modifier22}
         </span>
     )
 }
