@@ -3,6 +3,7 @@ import { getStorage } from '../utils';
 import { fepPolicies } from '../data/fepPolicies';
 import { bcbsmnCodes } from '../data/bcbsmnCodes';
 import { medicareCodes } from '../data/medicareCodes';
+import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmnPolicyHrefAndEffectiveDate";
 
 export class Policies {
   constructor(lob) {
@@ -12,6 +13,7 @@ export class Policies {
       : lob === "commercial"
         ? this.buildPoliciesFromCodes(bcbsmnCodes)
         : this.buildPoliciesFromCodes(medicareCodes);
+    
     this.policyObj = this.convertPoliciesToObj(policies);
     this.policyArr = policies;
   }
@@ -42,7 +44,6 @@ export class Policies {
     return policiesObj;
   };
   convertPoliciesToArr = () => {
-    console.log(this.policyArr)
     this.policyArr = Object.keys(this.policyObj).map(key => {
       return formatPolicy(this.policyObj[key]);
     });
@@ -58,5 +59,21 @@ export class Policies {
         }
       }
     });
+  
   };
+  addLinkAndEffectiveDate = async () => {
+    if(this.lob === "commercial") {
+      const policies = this.policyArr.map(async policy => {
+        const data = await getBcbsmnPolicyHrefAndEffectiveDate(policy);
+        const { href, effective } = data;
+        policy.href = href;
+        policy.effective = effective;
+        return policy;
+    })
+    return Promise.all(policies).then(policies => {
+      this.policyArr = policies;
+      return this.policyArr;
+    })
+    }
+  }
 }
