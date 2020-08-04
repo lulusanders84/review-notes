@@ -4,7 +4,7 @@ import ClaimLog from '../ClaimLog/ClaimLog';
 
 export default function (tabValue) {
   return tabValue === 0
-    ? <ReviewNotes showType={true} />
+    ? <ReviewNotes />
     : tabValue === 1
       ? <ClaimLog />
       : null;

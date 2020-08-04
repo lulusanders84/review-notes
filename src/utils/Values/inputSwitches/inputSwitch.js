@@ -11,6 +11,7 @@ import { paProvider } from './paProvider';
 import { pend } from './pend';
 import { policy } from './policy';
 import { rationale } from './rationale';
+import { reviewed } from './reviewed';
 import { serviceType } from './serviceType';
 import { special } from './special';
 
@@ -28,6 +29,7 @@ export const inputSwitch = {
   "pend": pend,
   "policy": policy,
   "rationale": rationale,
+  "reviewed": reviewed,
   "serviceType": serviceType,
   "special": special
 };

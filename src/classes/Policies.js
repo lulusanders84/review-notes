@@ -4,6 +4,7 @@ import { fepPolicies } from '../data/fepPolicies';
 import { bcbsmnCodes } from '../data/bcbsmnCodes';
 import { medicareCodes } from '../data/medicareCodes';
 import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmnPolicyHrefAndEffectiveDate";
+import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
 
 export class Policies {
   constructor(lob) {
@@ -13,7 +14,6 @@ export class Policies {
       : lob === "commercial"
         ? this.buildPoliciesFromCodes(bcbsmnCodes)
         : this.buildPoliciesFromCodes(medicareCodes);
-    
     this.policyObj = this.convertPoliciesToObj(policies);
     this.policyArr = policies;
   }
@@ -59,21 +59,31 @@ export class Policies {
         }
       }
     });
-  
   };
-  addLinkAndEffectiveDate = async () => {
-    if(this.lob === "commercial") {
-      const policies = this.policyArr.map(async policy => {
-        const data = await getBcbsmnPolicyHrefAndEffectiveDate(policy);
-        const { href, effective } = data;
-        policy.href = href;
-        policy.effective = effective;
-        return policy;
+  addHrefAndEffectiveDate = async () => {
+    return this.hrefAndEffectiveDateSwitch[this.lob]().then((policies) => {
+      this.policyArr = policies;
+      return policies;
+    });
+  }
+  addBcbsHrefAndEffectiveDate = async () => {
+    const policies = this.policyArr.map(async policy => {
+      const data = await getBcbsmnPolicyHrefAndEffectiveDate(policy);
+      const { href, effective } = data;
+      policy.href = href;
+      policy.effective = effective;
+      return policy;
     })
     return Promise.all(policies).then(policies => {
-      this.policyArr = policies;
-      return this.policyArr;
+      return policies;
+
     })
-    }
+  }
+  addFepHref = async () => {
+    return await fetchFepPolicies(this.policyArr);
+  }
+  hrefAndEffectiveDateSwitch = {
+    "commercial": this.addBcbsHrefAndEffectiveDate,
+    "fep": this.addFepHref
   }
 }

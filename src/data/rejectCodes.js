@@ -6,7 +6,8 @@ export const rejectCodes = {
       "Host Par": "N/A",
       "Host Non-Par": "N/A",
       "Home Par": "E6175",
-      "Home Non-Par": "E6175"
+      "Home Non-Par": "E6175",
+      clinicalRationale: true
    },
    "Experimental/Investigative": {
       "connector": "as",
@@ -15,7 +16,8 @@ export const rejectCodes = {
       "Host Par": "N/A",
       "Host Non-Par": "N/A",
       "Home Par": "E6137",
-      "Home Non-Par": "E6137"
+      "Home Non-Par": "E6137",
+      clinicalRationale: true
    },
    "Information Request": {
       "Local Par": "E5661",
@@ -41,7 +43,8 @@ export const rejectCodes = {
       "Host Par": "N/A",
       "Host Non-Par": "N/A",
       "Home Par": "E5641",
-      "Home Non-Par": "E5641"
+      "Home Non-Par": "E5641",
+      clinicalRationale: true
    },
    "Undocumented Service": {
       "connector": "as an",

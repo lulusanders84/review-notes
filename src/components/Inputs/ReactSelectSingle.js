@@ -13,6 +13,7 @@ import { formatToName } from '../../utils/Notes';
 import { connect } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
 import { formatToSentence } from '../../utils/Notes/formatToSentence';
+import { handleInputs } from '../../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -333,7 +334,7 @@ function IntegrationReactSelect(props) {
       }   
     }
     const newValue = value ? value.value : null;
-    props.updateValue({name: props.id, value: newValue})
+    props.dispatch(handleInputs({name: props.id, value: newValue}))
     setSingle(value);   
   }
 
@@ -355,7 +356,6 @@ function IntegrationReactSelect(props) {
             values={props.values} 
             label={props.label} 
             setEdit={setEdit}
-            updateValue={props.updateValue}
             options={options}
             labelFormat={props.labelFormat}
             setNewValue={setSingle} />

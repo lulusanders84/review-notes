@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { handleInputChange } from '../../utils/Inputs';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,14 +24,6 @@ const useStyles = makeStyles(theme => ({
 
 function RadioInput(props) {
   const classes = useStyles();
-  function handleChange(event) {
-    if(props.id === "reviewed" || props.id === "pa-deter") {
-      props.onChange(event);
-    }
-    const selectValue = {name: props.id, value: event.target.value}
-    props.updateValue(selectValue);
-  }
-
   const renderRadioOptions = () => {
     const options = props.options;
     return options.map((option, index) => {
@@ -50,7 +43,7 @@ function RadioInput(props) {
             name={props.label}
             className={classes.group}
             value={props.values[props.id]}
-            onChange={handleChange}
+            onChange={e => {handleInputChange(props, e)}}
           >
             {renderRadioOptions()}
           </RadioGroup>

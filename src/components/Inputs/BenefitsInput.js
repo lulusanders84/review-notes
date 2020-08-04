@@ -7,8 +7,8 @@ const BenefitsInput = (props) => {
   return (
     <div style={{width: "100%"}}>
     {props.values.lob === "FEP"
-      ? <ReactSelectSingle id="fepBenefits" placeholder="" label="Benefits" labelFormat="lower" updateValue={props.handleInputs}  suggestions={getStorage("fepBenefits", [])} sentence={true} />               
-      : <TextInput id="benefits" placeholder="" label="Benefits" updateValue={props.handleInputs}  />
+      ? <ReactSelectSingle id="fepBenefits" placeholder="" label="Benefits" labelFormat="lower"   suggestions={getStorage("fepBenefits", [])} sentence={true} />               
+      : <TextInput id="benefits" placeholder="" label="Benefits" />
     }   
     </div>  
   )

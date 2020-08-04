@@ -1,25 +1,13 @@
 import { saveToStorage } from '../';
-import { fetchFepPolicies } from './fetchFepPolicies';
 
-
-export const store = {};
-
-export const scrapePolicies = async (setUpdating, lob) => {
+export const startScrapingPolicies = () => {
   const now = Date.now();
   saveToStorage("lastScrape", now);
   saveToStorage("nextScrape", now + 86400000);
-  console.log("started scraping");
-  if(lob === "fep") {
-    await fetchFepPolicies();
-    handleSetUpdating(setUpdating);
-  } else {
-    handleSetUpdating(setUpdating);
-  }  
+  console.log("started scraping");  
 }
 
-
-
-function handleSetUpdating(setUpdating) {
+export const finishedScrapingPolicies = (setUpdating) => {
   setUpdating(false);
   console.log("scraped");
 }

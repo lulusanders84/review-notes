@@ -1,45 +1,36 @@
 import fepPoliciesOnFile from '../../data/fullPolicies';
 import { formatPolicy } from "../../utils/Policies/formatPolicy";
-import { bcbsmnCodes } from '../../data/bcbsmnCodes';
-import { formattedMedicareCodes } from "../../data/formattedMedicareCodes";
 import { medPolicies } from '../../data/medPolicies';
 import { refreshPolicies } from '../../utils/Policies/refreshPolicies';
 import { getStorage } from '../../utils';
 
-export const setPolicyByCode = (codes, lob) => {
-  const isJ3490 = codes.includes("J3490");
-  const codeObj = lob === "GP"
-    ? formattedMedicareCodes()
-    : bcbsmnCodes;
-  const policies = codes && !isJ3490
-    ? lob === "FEP" 
-      ? fep(codes)
-      : policyByCodes(codes, codeObj)
-    : [];
-  return setValueAndLabel(policies);
-}
-
-const policyByCodes = (codes, codeObj) => {
+export const getPolicyByCodes = (codes, codeObj) => {
   let policies = [];
   codes.forEach(code => {
     policies = codeObj[code] ? [...policies, ...codeObj[code]] : policies;
   })
+  const fullPolicies = getStorage("bcbsmnPolicies");
+  policies = policies.map(policy => {
+    
+    return fullPolicies.find(fullPolicy => {
+      return fullPolicy["Policy #"] === policy["Policy #"];
+    });
+  })
   return policies;
 }
-const fep = (codes) => {
+export const getFepPolicyByCodes = (codes) => {
   const storedPolicies = getStorage("fepPolicies");
   const policies =  storedPolicies ? storedPolicies : fepPoliciesOnFile.map(policy => {
     return formatPolicy(policy)
   });
-  
   if (policies) {
     return policies.reduce((acc, policy) => {
-      const hcpcs = !policy["HCPCS"] || policy["HCPCS"] === "No HCPCS" || policy["HCPCS"] === ""
+      const hcpcs = !policy["HCPCS Code (s)"] || policy["HCPCS Code (s)"] === "No HCPCS" || policy["HCPCS Code (s)"] === ""
         ? []
-        : policy["HCPCS"].split(",");
-      const cpts = !policy["CPT"] || policy["CPT"] === "No CPT" || policy["CPT"] === ""
+        : policy["HCPCS Code (s)"].split(",");
+      const cpts = !policy["CPT Code (s)"] || policy["CPT Code (s)"] === "No CPT" || policy["CPT Code (s)"] === ""
         ? []
-        : policy["CPT"].toString().split(",");
+        : policy["CPT Code (s)"].toString().split(",");
       const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
       codes.forEach(code => {
         if(code !== ""){
@@ -53,7 +44,7 @@ const fep = (codes) => {
   } else return [];
 }
 
-const setValueAndLabel = (policies) => {
+export const setValueAndLabel = (policies) => {
   policies.forEach(policy => {
     policy.value = policy["Policy #"];
     policy.label = `${policy["Policy #"]}: ${policy["Full Policy"]}`
@@ -121,10 +112,14 @@ export const getPolicies = (policyNames) => {
 export function getAllPolicies() {
   let fepPolicies = getStorage("fepPolicies", null);
   if (fepPolicies === null) {
-    const dummySetUpdating = (value) => {}
-    refreshPolicies(dummySetUpdating, "fep");
-    fepPolicies = getStorage("fepPolicies", null);
+    fepPolicies = fepPoliciesOnFile;
+    // const dummySetUpdating = (value) => {};
+    refreshPolicies(() => {}, "fep");
   }
+  return buildFullPolicies(fepPolicies);
+}
+
+function buildFullPolicies(fepPolicies) {
   const storedBcbsmnPolicies = getStorage("bcbsmnPolicies", null);
   let bcbsmnPolicies = storedBcbsmnPolicies !== null ? storedBcbsmnPolicies : medPolicies;
   const fullPolicies = [...fepPolicies, ...bcbsmnPolicies];

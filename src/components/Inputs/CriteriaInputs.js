@@ -15,9 +15,9 @@ export function CriteriaInputs(props) {
   const classes = useStyles();
   return (
     <div className={classes.card}>
-        <CriteriaQuill id="criteriaMet" label="Criteria Met" handleInputs={props.handleInputs}  />
-        <CriteriaQuill id="criteriaNotMet" label="Criteria Not Met" handleInputs={props.handleInputs} />
-        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral" updateValue={props.handleInputs}  /> 
+        <CriteriaQuill id="criteriaMet" label="Criteria Met"   />
+        <CriteriaQuill id="criteriaNotMet" label="Criteria Not Met"  />
+        <ReactSelectSingle id="referReason" suggestions={suggestions(referReasons)} label="Reason for Referral"   /> 
     </div>
   )
 }

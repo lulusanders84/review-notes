@@ -1,4 +1,5 @@
 import { setPolicyString } from '../Notes/setPolicyString';
+import { formatCodes } from '../formatCodes';
 
 export const getInfoRequestData = (values) => {
   const data = {
@@ -12,7 +13,8 @@ export const getInfoRequestData = (values) => {
 }
 
 export const setCode = (values) => {
-  return values.code.toUpperCase();
+  const codes = formatCodes(values.code, "set code");
+  return codes;
 }
 export const setPend = (values) => {
   return values.pend 

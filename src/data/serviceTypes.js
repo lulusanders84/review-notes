@@ -1,5 +1,23 @@
 export const serviceTypes = [
   {
+    "Service": "Info Request",
+    "Codes": null,
+    "Rule": null,
+    "Service Type": "Info Request"
+  },
+  {
+    "Service": "Misroute",
+    "Codes": null,
+    "Rule": null,
+    "Service Type": "Misroute"
+  },
+  {
+    "Service": "Review Decision",
+    "Codes": null,
+    "Rule": null,
+    "Service Type": "Review Decision"
+  },
+  {
     "Service": "Surgical - Other ",
     "Codes": "10021-69990",
     "Rule": "(Excluding Spinal Fusion and Bariatric)",

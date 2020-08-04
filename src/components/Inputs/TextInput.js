@@ -2,13 +2,9 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import {handleInputChange} from '../../utils/Inputs/';
 
 function TextInput(props) {
-  const handleChange = event => {
-    event.persist();
-    const value = {name: props.id, value: event.target.value};
-    props.updateValue(value);
-  };
   return (
     <Grid item xs={12}>
       <TextField
@@ -20,7 +16,7 @@ function TextInput(props) {
         placeholder={props.placeholder}
         fullWidth={true}
         margin="dense"
-        onChange={handleChange}
+        onChange={e => {handleInputChange(props, e)}}
         value={props.values[props.id]}
         InputLabelProps={{shrink: props.shrink}}
         disabled={props.disabled}
@@ -35,3 +31,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(TextInput)
+
+

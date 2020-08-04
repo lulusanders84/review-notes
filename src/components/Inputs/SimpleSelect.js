@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import { handleInputChange } from '../../utils/Inputs';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,9 +25,6 @@ const useStyles = makeStyles(theme => ({
 
 function SimpleSelect(props) {
   const classes = useStyles();
-  function handleChange(event) {
-    props.updateValue({name: props.id, value: event.target.value})
-  }
   const menuItems = props.options.map((option, index) => {
     return <MenuItem key={index} value={option}>{option}</MenuItem>
   })
@@ -38,7 +36,7 @@ function SimpleSelect(props) {
         </InputLabel>
         <Select
           value={props.values[props.id]}
-          onChange={handleChange}
+          onChange={e => {handleInputChange(props, e)}}
           input={<Input name="age" id="age-label-placeholder" />}
           displayEmpty
           name={props.id}

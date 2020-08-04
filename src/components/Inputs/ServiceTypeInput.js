@@ -18,7 +18,7 @@ const ServiceTypeInput = (props) => {
     return 0;
   })
   return (
-    <ReactSelectSingle notClearable id="serviceType" placeholder="" label="Service Type" updateValue={props.handleInputs} suggestions={suggestions} value={{value:props.values.type, label: props.values.type}} />
+    <ReactSelectSingle notClearable id="serviceType" placeholder="" label="Service Type"  suggestions={suggestions} value={{value:props.values.type, label: props.values.type}} />
   )
 }
 
