@@ -10,7 +10,6 @@ export const setNewOptions = (lob) => (dispatch) => {
 }
 
 const pendOptions = (lob)=> {
-  console.log(pends, fepPends);
   return lob === "FEP" ? [...fepPends, ...pends] : pends;
 }
 const pendSuggestions = (lob) => {
