@@ -23,17 +23,11 @@ export const getFepPolicyByCodes = (codes) => {
   const policies =  storedPolicies ? storedPolicies : fepPoliciesOnFile.map(policy => {
     return formatPolicy(policy)
   });
-  console.log(policies)
   if (policies) {
     return policies.reduce((acc, policy) => {
-      const hcpcs = !policy["HCPCS Code (s)"] || policy["HCPCS Code (s)"] === "No HCPCS" || policy["HCPCS Code (s)"] === ""
-        ? policy["HCPCS"] 
-          ? policy["HCPCS"].split(",")
-          : []
-        : policy["HCPCS Code (s)"].split(",");
-      const cpts = !policy["CPT Code (s)"] || policy["CPT Code (s)"] === "No CPT" || policy["CPT Code (s)"] === ""
-        ? []
-        : policy["CPT Code (s)"].toString().split(",");
+      const hcpcs = findCodesInPolicy(policy, "HCPCS");
+      const cpts = findCodesInPolicy(policy, "CPT");
+      console.log(hcpcs, cpts)
       const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
       codes.forEach(code => {
         console.log(code)
@@ -48,6 +42,13 @@ export const getFepPolicyByCodes = (codes) => {
   } else return [];
 }
 
+const findCodesInPolicy = (policy, codeType) => {
+  return !policy[`${codeType} Code (s)`] || policy[`${codeType} Code (s)`] === `No ${codeType}` || policy[`${codeType} Code (s)`] === ""
+  ? policy[`${codeType}`] 
+    ? policy[`${codeType}`].split(",")
+    : []
+  : policy[`${codeType} Code (s)`].split(",");
+}
 export const setValueAndLabel = (policies) => {
   policies.forEach(policy => {
     policy.value = policy["Policy #"];
