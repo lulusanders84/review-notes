@@ -27,7 +27,9 @@ export const getFepPolicyByCodes = (codes) => {
   if (policies) {
     return policies.reduce((acc, policy) => {
       const hcpcs = !policy["HCPCS Code (s)"] || policy["HCPCS Code (s)"] === "No HCPCS" || policy["HCPCS Code (s)"] === ""
-        ? []
+        ? policy["HCPCS"] 
+          ? policy["HCPCS"].split(",")
+          : []
         : policy["HCPCS Code (s)"].split(",");
       const cpts = !policy["CPT Code (s)"] || policy["CPT Code (s)"] === "No CPT" || policy["CPT Code (s)"] === ""
         ? []
