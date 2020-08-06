@@ -3,7 +3,9 @@ import { formattedMedicareCodes } from "../../data/formattedMedicareCodes";
 import { getFepPolicyByCodes, getPolicyByCodes, setValueAndLabel } from './setPolicy';
 
 export const setPolicyByCode = (codes, lob) => {
+  console.log(codes, lob)
   const isJ3490 = codes.includes("J3490");
+  console.log(isJ3490, "isJ3490");
   const codeObj = lob === "GP"
     ? formattedMedicareCodes()
     : bcbsmnCodes;
@@ -12,5 +14,6 @@ export const setPolicyByCode = (codes, lob) => {
       ? getFepPolicyByCodes(codes)
       : getPolicyByCodes(codes, codeObj)
     : [];
+    console.log(policies)
   return setValueAndLabel(policies);
 };

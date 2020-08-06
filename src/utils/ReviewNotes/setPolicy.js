@@ -23,6 +23,7 @@ export const getFepPolicyByCodes = (codes) => {
   const policies =  storedPolicies ? storedPolicies : fepPoliciesOnFile.map(policy => {
     return formatPolicy(policy)
   });
+  console.log(policies)
   if (policies) {
     return policies.reduce((acc, policy) => {
       const hcpcs = !policy["HCPCS Code (s)"] || policy["HCPCS Code (s)"] === "No HCPCS" || policy["HCPCS Code (s)"] === ""
@@ -33,6 +34,7 @@ export const getFepPolicyByCodes = (codes) => {
         : policy["CPT Code (s)"].toString().split(",");
       const codesList = [...hcpcs, ...cpts].map(code => { return code.toUpperCase().trim()});
       codes.forEach(code => {
+        console.log(code)
         if(code !== ""){
           if(codesList.includes(code)) {
             acc.push(policy)
