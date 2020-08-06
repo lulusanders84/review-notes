@@ -36,7 +36,7 @@ const setFaxAndDate =() => {
   )   
 }
 const setDenialType = (values) => {
-  return values.denialType === "entire claim" ? "claim" : values.code;
+  return values.denialType === "entire claim" ? "entire claim" : values.code;
 }
 const setCodeType = (values) => {
   return `${utils.capWord(values.claimType)} ${values.proPar}`;

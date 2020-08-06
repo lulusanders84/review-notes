@@ -10,8 +10,7 @@ import NoteContainer from './NoteContainer';
 import Note from './Note';
 
 export function ClaimNote(props) {
-  const values = props.values;
-  const { dispatch, visible, notes } = props;
+  const { dispatch, values, visible, notes } = props;
   const { ocwaNote, instructions, modifier22, remainder } = notes;
   useEffect(() => {
     dispatch(setClaimNoteData(values));
