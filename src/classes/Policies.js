@@ -1,6 +1,5 @@
 import { formatPolicy } from "../utils/Policies/formatPolicy";
 import { getStorage } from '../utils';
-import { fepPolicies } from '../data/fepPolicies';
 import { bcbsmnCodes } from '../data/bcbsmnCodes';
 import { medicareCodes } from '../data/medicareCodes';
 import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmnPolicyHrefAndEffectiveDate";
@@ -10,7 +9,7 @@ export class Policies {
   constructor(lob) {
     this.lob = lob;
     const policies = lob === "fep"
-      ? getStorage("fepPolicies", fepPolicies)
+      ? getStorage("fepPolicies")
       : lob === "commercial"
         ? this.buildPoliciesFromCodes(bcbsmnCodes)
         : this.buildPoliciesFromCodes(medicareCodes);

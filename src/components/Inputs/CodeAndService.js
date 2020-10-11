@@ -5,6 +5,7 @@ import LinkButton from './LinkButton';
 import { Grid } from '@material-ui/core';
 import * as inputUtils from '../../utils/Inputs';
 import { connect } from 'react-redux';
+import { handleInputs } from '../../redux/actions';
 
 const savePair = inputUtils.savePair;
 
@@ -53,7 +54,7 @@ function CodeAndService(props) {
   const helperText = linked ? "Unlink to edit service" : " ";
   const linkDisabled = props.values.code === null || props.values.code === "" ? true : false;
   const linkedChanged =(value) => {
-    props.handleInputs({name: "linked", value,});
+    props.dispatch(handleInputs({name: "linked", value,}));
   }
   const onLinkClick = () => {
     const {code, service } = props.values;

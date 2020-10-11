@@ -1,6 +1,5 @@
-import fepPoliciesOnFile from '../../data/fullPolicies';
+import { fepPolicies } from '../../data/fepPolicies';
 import { formatPolicy } from "../../utils/Policies/formatPolicy";
-import { medPolicies } from '../../data/medPolicies';
 import { refreshPolicies } from '../../utils/Policies/refreshPolicies';
 import { getStorage } from '../../utils';
 
@@ -19,8 +18,8 @@ export const getPolicyByCodes = (codes, codeObj) => {
   return policies;
 }
 export const getFepPolicyByCodes = (codes) => {
-  const storedPolicies = getStorage("fepPolicies");
-  const policies =  storedPolicies ? storedPolicies : fepPoliciesOnFile.map(policy => {
+  const storedPolicies = getStorage("fepPolicies", []);
+  const policies =  storedPolicies.map(policy => {
     return formatPolicy(policy)
   });
   if (policies) {
@@ -41,7 +40,6 @@ export const getFepPolicyByCodes = (codes) => {
 }
 
 const findCodesInPolicy = (policy, codeType) => {
-  console.log(policy[`${codeType}`]);
   return !policy[`${codeType} Code (s)`] || policy[`${codeType} Code (s)`] === `No ${codeType}` || policy[`${codeType} Code (s)`] === ""
   ? policy[`${codeType}`] 
     ? policy[`${codeType}`].split(",")
@@ -114,19 +112,17 @@ export const getPolicies = (policyNames) => {
 
 
 export function getAllPolicies() {
-  let fepPolicies = getStorage("fepPolicies", null);
-  if (fepPolicies === null) {
-    fepPolicies = fepPoliciesOnFile;
+  let storedPolicies = getStorage("fepPolicies", null);
+  if (storedPolicies === null) {
+    storedPolicies = fepPolicies;
     // const dummySetUpdating = (value) => {};
     refreshPolicies(() => {}, "fep");
   }
-  return buildFullPolicies(fepPolicies);
+  return buildFullPolicies(storedPolicies);
 }
 
 function buildFullPolicies(fepPolicies) {
-  const storedBcbsmnPolicies = getStorage("bcbsmnPolicies", null);
-  let bcbsmnPolicies = storedBcbsmnPolicies !== null ? storedBcbsmnPolicies : medPolicies;
-  const fullPolicies = [...fepPolicies, ...bcbsmnPolicies];
-  return fullPolicies;
+  const bcbsmnPolicies = getStorage("bcbsmnPolicies", []);
+  return [...bcbsmnPolicies, ...fepPolicies];
 }
 
