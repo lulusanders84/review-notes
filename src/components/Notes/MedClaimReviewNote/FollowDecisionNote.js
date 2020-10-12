@@ -15,7 +15,7 @@ export function FollowDecisionNote(props) {
   const decisionReqInfo = pa === "Y" ? notes.pa : notes.claimHistory;
   return (
     <Note title="Medical Claim Review Note">
-      REQ-{values.req}: Clinical Note
+      REQ-{values.req}
       <br />Clinician name/Extension: {values.name}
       <br />LOB: {notes.lob}
       <br />Service: {notes.service}
