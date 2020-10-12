@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { Divider } from '@material-ui/core';
-import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
 import ReviewedInputs from '../../Inputs/ReviewedInputs';
@@ -20,7 +19,6 @@ import PendInput from '../../Inputs/PendInput';
 import ProviderType from '../../Inputs/ProviderType';
 import BenefitsInput from '../../Inputs/BenefitsInput';
 import ServiceTypeInput from '../../Inputs/ServiceTypeInput';
-import { getStorage } from '../../../utils';
 import DeterInputs from '../../Inputs/DeterInputs';
 
 function General(props) {
@@ -52,7 +50,7 @@ function General(props) {
       <PolicyInput   />  
       <BenefitsInput values={props.values}  />     
       <TextInput id="diagnosis" placeholder="" label="Diagnosis"   />
-      <ReactSelectSingle id="provider" placeholder="" label="Provider"   suggestions={getStorage("provider", [])} />             
+      <TextInput id="provider" placeholder="" label="Provider" />             
       <ProviderType  />
       <RadioInput id="proPar" options={["Par", "Non-Par"]} label="Par Status"  />
       <TextInput id="summary" multiline={true} rows="5" label="Additional Clinical information"   />
