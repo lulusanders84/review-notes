@@ -16,7 +16,7 @@ export function FullReviewNote(props) {
   }, [dispatch, values])
   return (
     <Note title="Medical Claim Review Note" capWordButtons>
-      REQ-{values.req}: Clinical Note
+      REQ-{values.req}
       <br />Clinician name/Extension: {values.name}
       <br />LOB: {notes.lob}
       <br />Service: {notes.service}
