@@ -4,12 +4,15 @@ import { bcbsmnCodes } from '../data/bcbsmnCodes';
 import { medicareCodes } from '../data/medicareCodes';
 import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmnPolicyHrefAndEffectiveDate";
 import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
+import { fepPolicies } from "../data/fepPolicies";
 
 export class Policies {
   constructor(lob) {
     this.lob = lob;
     const policies = lob === "fep"
-      ? getStorage("fepPolicies")
+      ? getStorage("fepPolicies") === undefined
+        ? fepPolicies
+        : getStorage("fepPolicies")
       : lob === "commercial"
         ? this.buildPoliciesFromCodes(bcbsmnCodes)
         : this.buildPoliciesFromCodes(medicareCodes);
@@ -36,6 +39,7 @@ export class Policies {
     return policiesArr;
   }
   convertPoliciesToObj = (policyArr) => {
+    console.log(policyArr)
     const policiesObj = {};
     policyArr.forEach(policy => {
       policiesObj[policy["Policy #"].trim()] = policy;

@@ -21,7 +21,7 @@ function addPolicyNoAndHrefToArray(array) {
       ? $(li).find('span').html()
       : null;
     policy.href = li
-      ? "https://www.fepblue.org/benefit-plans/medical-policies-and-utilization-management-guidelines/" + $(li).find('a').attr("href")
+      ? "https://www.fepblue.org/" + $(li).find('a').attr("href")
       : null;
     if (policy.number) {
       policy.number = policy.number.split("\n").join("").trim();
