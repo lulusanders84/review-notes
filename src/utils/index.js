@@ -1,5 +1,5 @@
 export { createSelectValue}  from './createSelectValue';
-export { formatCodes } from './formatCodes';
+export { formatArrInput } from './formatArrInput';
 export { getTwoWeeksFromNow } from './getTwoWeeksFromNow';
 export { saveToStorage } from './saveToStorage';
 export { formatDate } from './formatDate';

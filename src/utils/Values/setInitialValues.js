@@ -1,16 +1,19 @@
 import { getStorage } from "../getStorage";
+import { baseCodeService } from "../../data/baseCodeService";
 
 const setLob = getStorage("lob", "commercial");
 const setName = getStorage("name", "");
 export const initialValues = {
+    codeAndService: [baseCodeService],
     name: setName || "",
     req: "",
     reviewed: "no",
     pend: [],
-    code: "",
+    code: [""],
+    modifier: "00",
     age: "",
     dos: "",
-    service: "",
+    service: [""],
     paList: "no",
     pricingClaim: "no",
     pricing: "Not required",
@@ -55,7 +58,7 @@ export const initialValues = {
     doseUnit: "mg",
     exCircum: "No specific medical policy applies, service appears medically necessary.",
     "clinical-rationale": "",
-    linked: false
+    linked: [false]
 }
 
 

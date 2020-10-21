@@ -2,7 +2,8 @@ import { handleInputsChange } from './changeInputs';
 
 interface Value {
   value: string | any[],
-  name: string
+  name: string,
+  index?: number
 }
 
 interface ChangedValue {

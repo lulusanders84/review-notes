@@ -1,16 +1,19 @@
 import { 
   handleChangeInputs, 
-  formatInput } from '../../utils/Values';
+  formatInput, 
+  handleArrInputs} from '../../utils/Values';
 
 export const handleInputs = value => (dispatch, getState) => {  
   if(value.value === null) {
     value.value = ""
   };
-  value = formatInput(value);
-  dispatch(setValue(value));
   const values = getState().values;
+  value = handleArrInputs(formatInput(value), values[value.name]); 
+  dispatch(setValue(value));
+
   let newValues = handleChangeInputs(value, values);
   newValues.forEach(value => {
+    value = handleArrInputs(formatInput(value), values[value.name]); 
     dispatch(setValue(value)) 
   }) 
 }

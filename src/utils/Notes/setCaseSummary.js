@@ -5,10 +5,11 @@ import { setPricingNote } from "./setPricingNote";
 import { formatToSentence } from './formatToSentence';
 import { serviceTypes } from '../../data/serviceTypes';
 import { CapWords } from '../../classes/CapWords'
+import { formatArrInput } from '../formatArrInput';
 
 export const setCaseSummary = (values) => {
     const { age, serviceType, dos } = values;
-    const service = formatValue(values.service);
+    const service = formatArrInput(values.service);
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
     const diagnosis = formatValue(values.diagnosis);
     // let proVerb; 

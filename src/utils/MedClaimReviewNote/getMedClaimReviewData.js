@@ -1,12 +1,13 @@
 import * as utils from '../../utils/Notes';
-import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
+import { setPend } from '../InfoRequestNote/getInfoRequestData';
+import { formatArrInput } from '../formatArrInput';
 
 export const getMedClaimReviewData = (values) => {
   const data = {
     lob: setLob(values),
     service: setService(values),
     drugRequest: setDrugRequest(values),
-    code: setCode(values),
+    code: formatArrInput(values.code),
     pend: setPend(values),
     policyString: utils.setPolicyString(values, "med policy"),
     pa: setPa(values),
@@ -25,7 +26,11 @@ const setLob = (values) => {
   return utils.capWord(values.lob);
 }
 const setService = (values) => {
-  return utils.formatToName(values.service.toLowerCase());
+  const services = values.service.map(service => {
+    return utils.formatToName(service.toLowerCase());
+  })
+  return formatArrInput(services);
+  
 }
 const setDrugRequest = (values) => {
   return values.serviceType === "drug" 

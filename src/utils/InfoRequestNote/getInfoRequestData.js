@@ -1,10 +1,10 @@
 import { setPolicyString } from '../Notes/setPolicyString';
-import { formatCodes } from '../formatCodes';
+import { formatArrInput } from '../formatArrInput';
 
 export const getInfoRequestData = (values) => {
   const data = {
     policyString: setPolicyString(values, "med policy"),
-    code: setCode(values),
+    code: formatArrInput(values),
     pend: setPend(values),
     related: setRelated(values),
     route: setRoute(values)
@@ -12,10 +12,6 @@ export const getInfoRequestData = (values) => {
   return data;
 }
 
-export const setCode = (values) => {
-  const codes = formatCodes(values.code, "set code");
-  return codes;
-}
 export const setPend = (values) => {
   return values.pend 
     ? values.pend.map(pend => { return pend.value }).join(" / ") 

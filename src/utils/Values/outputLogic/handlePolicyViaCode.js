@@ -4,6 +4,7 @@ export const handlePolicyViaCode = (value, values) => {
   const { lob, policy } = values;
   const codes = value.value;
   const policies = setPolicyByCode(codes, lob);
+
   if(policies) {
     const policiesInValues = policy;
     const allPolicies = [...policiesInValues, ...policies];

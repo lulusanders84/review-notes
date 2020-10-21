@@ -1,6 +1,4 @@
-
-import { formatCodes } from '../../formatCodes';
 export const code = (value) => {
-  value.value = formatCodes(value.value, "input formattings")
+  value.value = value.value.toUpperCase();
   return value;
 };

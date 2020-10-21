@@ -12,7 +12,7 @@ import ReviewedInputs from '../../Inputs/ReviewedInputs';
 import PricingInputs from '../../Inputs/PricingInputs';
 import PolicyInput from '../../Inputs/PolicyInput';
 import GeneralNotes from '../../GeneralNotes/GeneralNotes';
-import CodeAndService from '../../Inputs/CodeAndService';
+import CodeAndServiceInputs from '../../Inputs/CodeAndServiceInputs';
 import DoseInput from '../../Inputs/DoseInput';
 import ClaimInfoInputs from '../../Inputs/ClaimInfoInputs';
 import PendInput from '../../Inputs/PendInput';
@@ -33,7 +33,7 @@ function General(props) {
       <TextInput id="req" placeholder="Enter number" label="REQ-"   />
       <TextInput id="age" placeholder="" label="Age"   /> 
       <TextInput id="dos" placeholder="" label="Date of service"   />              
-      <CodeAndService  />
+      <CodeAndServiceInputs  />
       <ServiceTypeInput  /> 
       {props.values.drugReview  && props.values.lob === "commercial"
         ? <DoseInput  />

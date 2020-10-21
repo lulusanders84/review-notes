@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import {handleInputChange} from '../../utils/Inputs/';
 
 function TextInput(props) {
+  const value = props.index !== undefined
+    ? props.values[props.id][props.index]
+    : props.values[props.id]
   return (
     <Grid item xs={12}>
       <TextField
@@ -17,10 +20,11 @@ function TextInput(props) {
         fullWidth={true}
         margin="dense"
         onChange={e => {handleInputChange(props, e)}}
-        value={props.values[props.id]}
+        value={value}
         InputLabelProps={{shrink: props.shrink}}
         disabled={props.disabled}
         helperText={props.helperText}
+        classes={props.classes}
       />
     </Grid>
   );

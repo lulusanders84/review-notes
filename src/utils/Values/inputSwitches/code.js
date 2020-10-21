@@ -4,9 +4,10 @@ import { getValueFromPair, formatMultiServices } from '../../Inputs';
 
 export const code = (value, values) => {
   const codes = value.value;
+  console.log(value, "codes")
   let service = "";
   let{ linked } = values;
-    if(codes) {
+    if(codes && value.index !== undefined) {
         service = codes.reduce((acc, code) => {
             const service = getValueFromPair("codeServicePairs", code);
             if(service) {
@@ -17,7 +18,7 @@ export const code = (value, values) => {
         }, [])
         service = formatMultiServices(service)
     } else {
-      linked = false;
+      linked = "";
       service = "";
     }
   return {
