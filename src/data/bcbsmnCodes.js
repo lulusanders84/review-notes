@@ -1,4 +1,28 @@
 export const bcbsmnCodes = {
+   "170": [
+      {
+         "Policy #": "II-166",
+         "Full Policy": "General Anesthesia Services for Dental Procedures"
+      }
+   ],
+   "172": [
+      {
+         "Policy #": "II-166",
+         "Full Policy": "General Anesthesia Services for Dental Procedures"
+      }
+   ],
+   "174": [
+      {
+         "Policy #": "II-166",
+         "Full Policy": "General Anesthesia Services for Dental Procedures"
+      }
+   ],
+   "176": [
+      {
+         "Policy #": "II-166",
+         "Full Policy": "General Anesthesia Services for Dental Procedures"
+      }
+   ],
    "11102": [
       {
          "Policy #": "II-177",
@@ -690,7 +714,7 @@ export const bcbsmnCodes = {
    "17999": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       },
       {
          "Policy #": "II-223",
@@ -776,7 +800,7 @@ export const bcbsmnCodes = {
    "20527": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders"
       }
    ],
    "20550": [
@@ -818,7 +842,7 @@ export const bcbsmnCodes = {
    "20611": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "20930": [
@@ -836,25 +860,25 @@ export const bcbsmnCodes = {
    "20936": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "20937": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "20938": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "20939": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "20974": [
@@ -902,7 +926,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "21010": [
@@ -1136,7 +1160,7 @@ export const bcbsmnCodes = {
    "21320": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "21480": [
@@ -1160,7 +1184,7 @@ export const bcbsmnCodes = {
    "22505": [
       {
          "Policy #": "II-116",
-         "Full Policy": "Spinal Manipulation Under Anesthesia "
+         "Full Policy": "Spinal Manipulation Under Anesthesia"
       }
    ],
    "22510": [
@@ -1214,25 +1238,25 @@ export const bcbsmnCodes = {
    "22533": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22534": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22558": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22585": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22586": [
@@ -1244,121 +1268,121 @@ export const bcbsmnCodes = {
    "22612": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22614": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22630": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22632": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22633": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22634": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22800": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22802": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22804": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22808": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22810": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22812": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22842": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22843": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22844": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22845": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22846": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22847": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22853": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22854": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22856": [
@@ -1382,7 +1406,7 @@ export const bcbsmnCodes = {
    "22859": [
       {
          "Policy #": "IV-87",
-         "Full Policy": "Spinal Fusion: Lumbar "
+         "Full Policy": "Spinal Fusion: Lumbar"
       }
    ],
    "22861": [
@@ -1448,7 +1472,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "22999": [
@@ -1460,13 +1484,13 @@ export const bcbsmnCodes = {
    "23929": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "26341": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders"
       }
    ],
    "26989": [
@@ -1476,7 +1500,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "27130": [
@@ -1524,25 +1548,25 @@ export const bcbsmnCodes = {
    "27299": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "27412": [
       {
          "Policy #": "IV-113",
-         "Full Policy": "Autologous Chondrocyte Implantation of Focal Articular Cartilage Lesions "
+         "Full Policy": "Autologous Chondrocyte Implantation of Focal Articular Cartilage Lesions"
       }
    ],
    "27415": [
       {
          "Policy #": "IV-115",
-         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions "
+         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions"
       }
    ],
    "27416": [
       {
          "Policy #": "IV-115",
-         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions "
+         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions"
       }
    ],
    "27438": [
@@ -1608,25 +1632,25 @@ export const bcbsmnCodes = {
    "27599": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "27899": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "28291": [
       {
          "Policy #": "IV-153",
-         "Full Policy": "Synthetic Cartilage Implants "
+         "Full Policy": "Synthetic Cartilage Implants"
       }
    ],
    "28446": [
       {
          "Policy #": "IV-115",
-         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions "
+         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions"
       }
    ],
    "28890": [
@@ -1638,7 +1662,7 @@ export const bcbsmnCodes = {
    "28899": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       },
       {
          "Policy #": "IV-26",
@@ -1646,7 +1670,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "IV-153",
-         "Full Policy": "Synthetic Cartilage Implants "
+         "Full Policy": "Synthetic Cartilage Implants"
       }
    ],
    "29200": [
@@ -1718,13 +1742,13 @@ export const bcbsmnCodes = {
    "29866": [
       {
          "Policy #": "IV-115",
-         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions "
+         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions"
       }
    ],
    "29867": [
       {
          "Policy #": "IV-115",
-         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions "
+         "Full Policy": "Osteochondral Allografts and Autografts in the Treatment of Focal Articular Cartilage Lesions"
       }
    ],
    "29868": [
@@ -1736,19 +1760,19 @@ export const bcbsmnCodes = {
    "29914": [
       {
          "Policy #": "IV-112",
-         "Full Policy": "Surgical Treatment of Femoroacetabular Impingement "
+         "Full Policy": "Surgical Treatment of Femoroacetabular Impingement"
       }
    ],
    "29915": [
       {
          "Policy #": "IV-112",
-         "Full Policy": "Surgical Treatment of Femoroacetabular Impingement "
+         "Full Policy": "Surgical Treatment of Femoroacetabular Impingement"
       }
    ],
    "29916": [
       {
          "Policy #": "IV-112",
-         "Full Policy": "Surgical Treatment of Femoroacetabular Impingement "
+         "Full Policy": "Surgical Treatment of Femoroacetabular Impingement"
       }
    ],
    "30120": [
@@ -1760,7 +1784,7 @@ export const bcbsmnCodes = {
    "30140": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "30400": [
@@ -1808,73 +1832,73 @@ export const bcbsmnCodes = {
    "30520": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "31295": [
       {
          "Policy #": "IV-01",
-         "Full Policy": "Balloon Ostial Dilatation for Treatment of Chronic Rhinosinusitis "
+         "Full Policy": "Balloon Ostial Dilation"
       }
    ],
    "31296": [
       {
          "Policy #": "IV-01",
-         "Full Policy": "Balloon Ostial Dilatation for Treatment of Chronic Rhinosinusitis "
+         "Full Policy": "Balloon Ostial Dilation"
       }
    ],
    "31297": [
       {
          "Policy #": "IV-01",
-         "Full Policy": "Balloon Ostial Dilatation for Treatment of Chronic Rhinosinusitis "
+         "Full Policy": "Balloon Ostial Dilation"
       }
    ],
    "31298": [
       {
          "Policy #": "IV-01",
-         "Full Policy": "Balloon Ostial Dilatation for Treatment of Chronic Rhinosinusitis "
+         "Full Policy": "Balloon Ostial Dilation"
       }
    ],
    "31299": [
       {
          "Policy #": "IV-01",
-         "Full Policy": "Balloon Ostial Dilatation for Treatment of Chronic Rhinosinusitis "
+         "Full Policy": "Balloon Ostial Dilation"
       }
    ],
    "31599": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "31626": [
       {
          "Policy #": "II-132",
-         "Full Policy": "Electromagnetic Navigational Bronchoscopy "
+         "Full Policy": "Electromagnetic Navigational Bronchoscopy"
       }
    ],
    "31627": [
       {
          "Policy #": "II-132",
-         "Full Policy": "Electromagnetic Navigational Bronchoscopy "
+         "Full Policy": "Electromagnetic Navigational Bronchoscopy"
       }
    ],
    "31660": [
       {
          "Policy #": "IV-117",
-         "Full Policy": "Bronchial Thermoplasty "
+         "Full Policy": "Bronchial Thermoplasty"
       }
    ],
    "31661": [
       {
          "Policy #": "IV-117",
-         "Full Policy": "Bronchial Thermoplasty "
+         "Full Policy": "Bronchial Thermoplasty"
       }
    ],
    "31899": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "32664": [
@@ -2024,7 +2048,7 @@ export const bcbsmnCodes = {
    "33289": [
       {
          "Policy #": "II-43",
-         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting "
+         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting"
       }
    ],
    "33340": [
@@ -2294,7 +2318,7 @@ export const bcbsmnCodes = {
    "36012": [
       {
          "Policy #": "V-26",
-         "Full Policy": "Ovarian and Internal Iliac Vein Embolization as a Treatment for Pelvic Congestion Syndrome "
+         "Full Policy": "Ovarian and Internal Iliac Vein Embolization as a Treatment for Pelvic Congestion Syndrome"
       }
    ],
    "36200": [
@@ -2408,7 +2432,7 @@ export const bcbsmnCodes = {
    "37241": [
       {
          "Policy #": "V-26",
-         "Full Policy": "Ovarian and Internal Iliac Vein Embolization as a Treatment for Pelvic Congestion Syndrome "
+         "Full Policy": "Ovarian and Internal Iliac Vein Embolization as a Treatment for Pelvic Congestion Syndrome"
       }
    ],
    "37242": [
@@ -2490,7 +2514,7 @@ export const bcbsmnCodes = {
    "38206": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       },
       {
          "Policy #": "Transplant\nPolicies",
@@ -2554,7 +2578,7 @@ export const bcbsmnCodes = {
    "38220": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       },
       {
          "Policy #": "Transplant\nPolicies",
@@ -2576,7 +2600,7 @@ export const bcbsmnCodes = {
    "38230": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       },
       {
          "Policy #": "Transplant\nPolicies",
@@ -2586,7 +2610,7 @@ export const bcbsmnCodes = {
    "38232": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       },
       {
          "Policy #": "Transplant\nPolicies",
@@ -2602,7 +2626,7 @@ export const bcbsmnCodes = {
    "38241": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       },
       {
          "Policy #": "Transplant\nPolicies",
@@ -2708,13 +2732,13 @@ export const bcbsmnCodes = {
    "43229": [
       {
          "Policy #": "II-94",
-         "Full Policy": "Endoscopic Radiofrequency Ablation or Cryoablation for Barrett's Esophagus "
+         "Full Policy": "Endoscopic Radiofrequency Ablation or Cryoablation for Barrett's Esophagus"
       }
    ],
    "43235": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "43236": [
@@ -2726,13 +2750,13 @@ export const bcbsmnCodes = {
    "43239": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "43249": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "43252": [
@@ -2750,7 +2774,7 @@ export const bcbsmnCodes = {
    "43270": [
       {
          "Policy #": "II-94",
-         "Full Policy": "Endoscopic Radiofrequency Ablation or Cryoablation for Barrett's Esophagus "
+         "Full Policy": "Endoscopic Radiofrequency Ablation or Cryoablation for Barrett's Esophagus"
       }
    ],
    "43284": [
@@ -2774,7 +2798,7 @@ export const bcbsmnCodes = {
    "43499": [
       {
          "Policy #": "IV-159",
-         "Full Policy": "Peroral Endoscopic Myotomy (POEM) "
+         "Full Policy": "Peroral Endoscopic Myotomy (POEM)"
       }
    ],
    "43644": [
@@ -3004,25 +3028,25 @@ export const bcbsmnCodes = {
    "45378": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "45380": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "45384": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "45385": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "46999": [
@@ -3228,13 +3252,13 @@ export const bcbsmnCodes = {
    "54200": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders"
       }
    ],
    "54235": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders"
       }
    ],
    "54400": [
@@ -3306,13 +3330,13 @@ export const bcbsmnCodes = {
    "55970": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "55980": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "56620": [
@@ -3330,47 +3354,47 @@ export const bcbsmnCodes = {
    "56805": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "57291": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "57292": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "57335": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "58578": [
       {
          "Policy #": "II-98",
-         "Full Policy": "Laparoscopic and Percutaneous Techniques for the Myolysis of Uterine Fibroids  "
+         "Full Policy": "Laparoscopic and Percutaneous Techniques for the Myolysis of Uterine Fibroids"
       },
       {
          "Policy #": "IV-94",
-         "Full Policy": "Surgical Interruption of Pelvic Nerve Pathways for Treatment of Pelvic Pain (Primary and Secondary Dysmenorrhea) "
+         "Full Policy": "Surgical Interruption of Pelvic Nerve Pathways for Treatment of Pelvic Pain (Primary and Secondary Dysmenorrhea)"
       }
    ],
    "58674": [
       {
          "Policy #": "II-98",
-         "Full Policy": "Laparoscopic and Percutaneous Techniques for the Myolysis of Uterine Fibroids  "
+         "Full Policy": "Laparoscopic and Percutaneous Techniques for the Myolysis of Uterine Fibroids"
       }
    ],
    "58999": [
       {
          "Policy #": "II-98",
-         "Full Policy": "Laparoscopic and Percutaneous Techniques for the Myolysis of Uterine Fibroids  "
+         "Full Policy": "Laparoscopic and Percutaneous Techniques for the Myolysis of Uterine Fibroids"
       }
    ],
    "61630": [
@@ -3417,8 +3441,8 @@ export const bcbsmnCodes = {
    ],
    "61885": [
       {
-         "Policy #": "IV-07",
-         "Full Policy": "Treatment of Obstructive Sleep Apnea and Snoring in Adults"
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
       },
       {
          "Policy #": "IV-131",
@@ -3426,6 +3450,10 @@ export const bcbsmnCodes = {
       }
    ],
    "61886": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
       {
          "Policy #": "IV-161",
          "Full Policy": "Responsive Neurostimulation for the Treatment of Refractory Focal (Partial) Epilepsy"
@@ -3436,6 +3464,10 @@ export const bcbsmnCodes = {
       }
    ],
    "61888": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
       {
          "Policy #": "IV-161",
          "Full Policy": "Responsive Neurostimulation for the Treatment of Refractory Focal (Partial) Epilepsy"
@@ -3456,13 +3488,13 @@ export const bcbsmnCodes = {
    "62287": [
       {
          "Policy #": "IV-96",
-         "Full Policy": "Percutaneous and Endoscopic Techniques for Disc Decompression "
+         "Full Policy": "Percutaneous and Endoscopic Techniques for Disc Decompression"
       }
    ],
    "62380": [
       {
          "Policy #": "IV-96",
-         "Full Policy": "Percutaneous and Endoscopic Techniques for Disc Decompression "
+         "Full Policy": "Percutaneous and Endoscopic Techniques for Disc Decompression"
       }
    ],
    "63650": [
@@ -3492,11 +3524,11 @@ export const bcbsmnCodes = {
    "64555": [
       {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       }
    ],
    "64561": [
@@ -3513,28 +3545,46 @@ export const bcbsmnCodes = {
    ],
    "64568": [
       {
-         "Policy #": "IV-07",
-         "Full Policy": "Treatment of Obstructive Sleep Apnea and Snoring in Adults"
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
       },
       {
          "Policy #": "IV-131",
          "Full Policy": "Vagus Nerve Stimulation"
       }
    ],
+   "64569": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      }
+   ],
+   "64570": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      }
+   ],
    "64575": [
       {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       }
    ],
    "64581": [
       {
          "Policy #": "IV-83",
          "Full Policy": "Sacral Nerve Neuromodulation/Stimulation for Selected Conditions"
+      }
+   ],
+   "64585": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
       }
    ],
    "64590": [
@@ -3554,7 +3604,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       }
    ],
    "64620": [
@@ -3572,7 +3622,7 @@ export const bcbsmnCodes = {
    "64625": [
       {
          "Policy #": "IV-95",
-         "Full Policy": "Percutaneous Facet Joint Denervation "
+         "Full Policy": "Percutaneous Facet Joint Denervation"
       }
    ],
    "64630": [
@@ -3590,25 +3640,25 @@ export const bcbsmnCodes = {
    "64633": [
       {
          "Policy #": "IV-95",
-         "Full Policy": "Percutaneous Facet Joint Denervation "
+         "Full Policy": "Percutaneous Facet Joint Denervation"
       }
    ],
    "64634": [
       {
          "Policy #": "IV-95",
-         "Full Policy": "Percutaneous Facet Joint Denervation "
+         "Full Policy": "Percutaneous Facet Joint Denervation"
       }
    ],
    "64635": [
       {
          "Policy #": "IV-95",
-         "Full Policy": "Percutaneous Facet Joint Denervation "
+         "Full Policy": "Percutaneous Facet Joint Denervation"
       }
    ],
    "64636": [
       {
          "Policy #": "IV-95",
-         "Full Policy": "Percutaneous Facet Joint Denervation "
+         "Full Policy": "Percutaneous Facet Joint Denervation"
       }
    ],
    "64640": [
@@ -3664,11 +3714,11 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "II-195",
-         "Full Policy": "Sphenopalatine Ganglion Nerve Block "
+         "Full Policy": "Sphenopalatine Ganglion Nerve Block"
       },
       {
          "Policy #": "IV-74",
@@ -3730,7 +3780,7 @@ export const bcbsmnCodes = {
    "67027": [
       {
          "Policy #": "II-100",
-         "Full Policy": "Intravitreal Corticosteroid Implants (Ozurdex®, Retisert™, Iluvien®, Yutiq™)"
+         "Full Policy": "Intravitreal Corticosteroid Implants"
       }
    ],
    "67028": [
@@ -3740,7 +3790,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-100",
-         "Full Policy": "Intravitreal Corticosteroid Implants (Ozurdex®, Retisert™, Iluvien®, Yutiq™)"
+         "Full Policy": "Intravitreal Corticosteroid Implants"
       }
    ],
    "67221": [
@@ -3800,13 +3850,13 @@ export const bcbsmnCodes = {
    "69436": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "69631": [
       {
          "Policy #": "XI-03",
-         "Full Policy": "Site of Service for Selected Outpatient Procedures"
+         "Full Policy": "Site of Service for Selected Outpatient Procedures: Outpatient Hospital and Ambulatory Surgery Center"
       }
    ],
    "69676": [
@@ -3852,7 +3902,7 @@ export const bcbsmnCodes = {
    "75894": [
       {
          "Policy #": "V-26",
-         "Full Policy": "Ovarian and Internal Iliac Vein Embolization as a Treatment for Pelvic Congestion Syndrome "
+         "Full Policy": "Ovarian and Internal Iliac Vein Embolization as a Treatment for Pelvic Congestion Syndrome"
       },
       {
          "Policy #": "II-190",
@@ -3890,7 +3940,7 @@ export const bcbsmnCodes = {
    "76942": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       },
       {
          "Policy #": "IV-142",
@@ -3940,7 +3990,7 @@ export const bcbsmnCodes = {
    "77049": [
       {
          "Policy #": "V-07",
-         "Full Policy": "Selected Treatments for Varicose Veins of the Lower Extremities"
+         "Full Policy": "Magnetic Resonance Imaging (MRI) of the Breast"
       }
    ],
    "77299": [
@@ -3952,91 +4002,25 @@ export const bcbsmnCodes = {
    "77520": [
       {
          "Policy #": "V-20",
-         "Full Policy": "Proton Beam Radiation Therapy "
+         "Full Policy": "Proton Beam Radiation Therapy"
       }
    ],
    "77522": [
       {
          "Policy #": "V-20",
-         "Full Policy": "Proton Beam Radiation Therapy "
+         "Full Policy": "Proton Beam Radiation Therapy"
       }
    ],
    "77523": [
       {
          "Policy #": "V-20",
-         "Full Policy": "Proton Beam Radiation Therapy "
+         "Full Policy": "Proton Beam Radiation Therapy"
       }
    ],
    "77525": [
       {
          "Policy #": "V-20",
-         "Full Policy": "Proton Beam Radiation Therapy "
-      }
-   ],
-   "78429": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78430": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78431": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78432": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78433": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78434": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78459": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78491": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78492": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78608": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78609": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
+         "Full Policy": "Proton Beam Radiation Therapy"
       }
    ],
    "78803": [
@@ -4045,50 +4029,10 @@ export const bcbsmnCodes = {
          "Full Policy": "Single Photon Emission Computed Tomography (SPECT) for Mental Health Disorders"
       }
    ],
-   "78811": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78812": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78813": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78814": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78815": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "78816": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
    "78999": [
       {
          "Policy #": "V-24",
-         "Full Policy": "Positron Emission Mammography "
-      },
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
+         "Full Policy": "Positron Emission Mammography"
       },
       {
          "Policy #": "X-16",
@@ -4222,7 +4166,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "VI-33",
-         "Full Policy": "Genetic Testing for Warfarin Dose "
+         "Full Policy": "Genetic Testing for Warfarin Dose"
       }
    ],
    "81228": [
@@ -4252,7 +4196,7 @@ export const bcbsmnCodes = {
    "81232": [
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       }
    ],
    "81243": [
@@ -4288,19 +4232,19 @@ export const bcbsmnCodes = {
    "81346": [
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       }
    ],
    "81355": [
       {
          "Policy #": "VI-33",
-         "Full Policy": "Genetic Testing for Warfarin Dose "
+         "Full Policy": "Genetic Testing for Warfarin Dose"
       }
    ],
    "81361": [
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       }
    ],
    "81400": [
@@ -4310,7 +4254,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       }
    ],
    "81401": [
@@ -4324,7 +4268,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       }
    ],
    "81404": [
@@ -4473,12 +4417,16 @@ export const bcbsmnCodes = {
    ],
    "81479": [
       {
+         "Policy #": "VI-59",
+         "Full Policy": "Expanded Gastrointestinal Biomarker Panels"
+      },
+      {
          "Policy #": "VI-49",
          "Full Policy": "Expanded Molecular Panel Testing of Solid Tumors"
       },
       {
          "Policy #": "VI-57",
-         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management "
+         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management"
       },
       {
          "Policy #": "VI-10",
@@ -4570,19 +4518,19 @@ export const bcbsmnCodes = {
    "81525": [
       {
          "Policy #": "VI-34",
-         "Full Policy": "Multigene Expression Assays for Predicting Risk of Recurrence in Colon Cancer "
+         "Full Policy": "Multigene Expression Assays for Predicting Risk of Recurrence in Colon Cancer"
       }
    ],
    "81535": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "81536": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "81540": [
@@ -4594,13 +4542,13 @@ export const bcbsmnCodes = {
    "81541": [
       {
          "Policy #": "VI-57",
-         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management "
+         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management"
       }
    ],
    "81542": [
       {
          "Policy #": "VI-57",
-         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management "
+         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management"
       }
    ],
    "81545": [
@@ -4613,6 +4561,10 @@ export const bcbsmnCodes = {
       {
          "Policy #": "VI-51",
          "Full Policy": "Expanded Cardiovascular Risk Panels"
+      },
+      {
+         "Policy #": "VI-59",
+         "Full Policy": "Expanded Gastrointestinal Biomarker Panels"
       },
       {
          "Policy #": "VI-10",
@@ -4638,13 +4590,13 @@ export const bcbsmnCodes = {
    "82172": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "82610": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "82948": [
@@ -4656,37 +4608,37 @@ export const bcbsmnCodes = {
    "83090": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "83695": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "83698": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "83700": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "83701": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "83704": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "84999": [
@@ -4700,11 +4652,11 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       },
       {
          "Policy #": "VI-34",
-         "Full Policy": "Multigene Expression Assays for Predicting Risk of Recurrence in Colon Cancer "
+         "Full Policy": "Multigene Expression Assays for Predicting Risk of Recurrence in Colon Cancer"
       },
       {
          "Policy #": "VI-15",
@@ -4714,25 +4666,25 @@ export const bcbsmnCodes = {
    "85384": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "85385": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "86152": [
       {
          "Policy #": "VI-25",
-         "Full Policy": "Testing of Circulating Tumor Cells "
+         "Full Policy": "Testing of Circulating Tumor Cells"
       }
    ],
    "86153": [
       {
          "Policy #": "VI-25",
-         "Full Policy": "Testing of Circulating Tumor Cells "
+         "Full Policy": "Testing of Circulating Tumor Cells"
       }
    ],
    "86617": [
@@ -4750,13 +4702,13 @@ export const bcbsmnCodes = {
    "86849": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "87230": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "87475": [
@@ -4774,19 +4726,19 @@ export const bcbsmnCodes = {
    "87999": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "88104": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "88305": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       },
       {
          "Policy #": "II-177",
@@ -4796,7 +4748,7 @@ export const bcbsmnCodes = {
    "88313": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "88314": [
@@ -4820,7 +4772,7 @@ export const bcbsmnCodes = {
    "88358": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "88375": [
@@ -4832,23 +4784,17 @@ export const bcbsmnCodes = {
    "89050": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "89240": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       },
       {
          "Policy #": "VI-15",
          "Full Policy": "PathfinderTG® Molecular Testing"
-      }
-   ],
-   "89290": [
-      {
-         "Policy #": "II-02",
-         "Full Policy": "Preimplantation Genetic Testing"
       }
    ],
    "89291": [
@@ -4998,7 +4944,7 @@ export const bcbsmnCodes = {
    "91112": [
       {
          "Policy #": "II-134",
-         "Full Policy": "Wireless Gastric Motility Monitoring "
+         "Full Policy": "Wireless Gastric Motility Monitoring"
       }
    ],
    "91299": [
@@ -5016,13 +4962,13 @@ export const bcbsmnCodes = {
    "92548": [
       {
          "Policy #": "II-108",
-         "Full Policy": "Computerized Dynamic Posturography "
+         "Full Policy": "Computerized Dynamic Posturography"
       }
    ],
    "92549": [
       {
          "Policy #": "II-108",
-         "Full Policy": "Computerized Dynamic Posturography "
+         "Full Policy": "Computerized Dynamic Posturography"
       }
    ],
    "92553": [
@@ -5088,7 +5034,7 @@ export const bcbsmnCodes = {
    "93264": [
       {
          "Policy #": "II-43",
-         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting "
+         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting"
       }
    ],
    "93285": [
@@ -5154,19 +5100,19 @@ export const bcbsmnCodes = {
    "93656": [
       {
          "Policy #": "II-95",
-         "Full Policy": "Catheter Ablation as Treatment for Atrial Fibrillation "
+         "Full Policy": "Catheter Ablation as Treatment for Atrial Fibrillation"
       }
    ],
    "93657": [
       {
          "Policy #": "II-95",
-         "Full Policy": "Catheter Ablation as Treatment for Atrial Fibrillation "
+         "Full Policy": "Catheter Ablation as Treatment for Atrial Fibrillation"
       }
    ],
    "93701": [
       {
          "Policy #": "II-43",
-         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting "
+         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting"
       }
    ],
    "93702": [
@@ -5184,11 +5130,11 @@ export const bcbsmnCodes = {
    "93799": [
       {
          "Policy #": "II-43",
-         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting "
+         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting"
       },
       {
          "Policy #": "II-95",
-         "Full Policy": "Catheter Ablation as Treatment for Atrial Fibrillation "
+         "Full Policy": "Catheter Ablation as Treatment for Atrial Fibrillation"
       }
    ],
    "94681": [
@@ -5256,7 +5202,7 @@ export const bcbsmnCodes = {
    "95803": [
       {
          "Policy #": "II-127",
-         "Full Policy": "Actigraphy "
+         "Full Policy": "Actigraphy"
       }
    ],
    "95805": [
@@ -5430,13 +5376,13 @@ export const bcbsmnCodes = {
    "96116": [
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96121": [
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96125": [
@@ -5452,7 +5398,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96131": [
@@ -5462,7 +5408,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96132": [
@@ -5472,7 +5418,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96133": [
@@ -5482,7 +5428,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96136": [
@@ -5492,7 +5438,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96137": [
@@ -5502,7 +5448,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96138": [
@@ -5512,7 +5458,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96139": [
@@ -5522,7 +5468,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96146": [
@@ -5532,7 +5478,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "X-45",
-         "Full Policy": "Psychological and Neuropsychological Testing "
+         "Full Policy": "Psychological and Neuropsychological Testing"
       }
    ],
    "96360": [
@@ -5562,7 +5508,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       }
    ],
    "96366": [
@@ -5580,7 +5526,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       }
    ],
    "96367": [
@@ -5612,7 +5558,7 @@ export const bcbsmnCodes = {
    "96374": [
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       },
       {
          "Policy #": "II-165",
@@ -5622,13 +5568,13 @@ export const bcbsmnCodes = {
    "96375": [
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       }
    ],
    "96376": [
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       }
    ],
    "96567": [
@@ -6096,27 +6042,27 @@ export const bcbsmnCodes = {
    "J1325": [
       {
          "Policy #": "II-107",
-         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension  "
+         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension"
       }
    ],
    "J3285": [
       {
          "Policy #": "II-107",
-         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension  "
+         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension"
       }
    ],
    "J3490": [
       {
          "Policy #": "II-107",
-         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension  "
+         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension"
+      },
+      {
+         "Policy #": "II-237",
+         "Full Policy": "Afamelanotide (Scenesse)"
       },
       {
          "Policy #": "II-187",
          "Full Policy": "Axicabtagene Ciloleucel (Yescarta™)"
-      },
-      {
-         "Policy #": "II-231",
-         "Full Policy": "Brexanolone (Zulresso)"
       },
       {
          "Policy #": "II-228",
@@ -6128,7 +6074,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       },
       {
          "Policy #": "II-225",
@@ -6143,16 +6089,16 @@ export const bcbsmnCodes = {
          "Full Policy": "Naltrexone Implants"
       },
       {
+         "Policy #": "II-241",
+         "Full Policy": "Peanut Allergy Therapy\n(Palforzia)"
+      },
+      {
          "Policy #": "II-38",
          "Full Policy": "Progesterone Therapy to Reduce Preterm Birth in High-Risk Pregnancies (Makena™)"
       },
       {
          "Policy #": "II-159",
          "Full Policy": "Subcutaneous Hormone Pellets"
-      },
-      {
-         "Policy #": "II-239",
-         "Full Policy": "Teprotumumab (Tepezza)"
       },
       {
          "Policy #": "II-183",
@@ -6162,13 +6108,13 @@ export const bcbsmnCodes = {
    "K0455": [
       {
          "Policy #": "II-107",
-         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension  "
+         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension"
       }
    ],
    "S0155": [
       {
          "Policy #": "II-107",
-         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension  "
+         "Full Policy": "Advanced Pharmocologic Therapies for Pulmonary Arterial Hypertension"
       }
    ],
    "J0180": [
@@ -6216,7 +6162,7 @@ export const bcbsmnCodes = {
    "J0202": [
       {
          "Policy #": "II-184",
-         "Full Policy": "Alemtuzumab "
+         "Full Policy": "Alemtuzumab"
       }
    ],
    "J0221": [
@@ -6415,6 +6361,12 @@ export const bcbsmnCodes = {
          "Full Policy": "Amniotic Membrane and Amniotic Fluid"
       }
    ],
+   "Q4176": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
    "Q4183": [
       {
          "Policy #": "IV-145",
@@ -6589,7 +6541,145 @@ export const bcbsmnCodes = {
          "Full Policy": "Amniotic Membrane and Amniotic Fluid"
       }
    ],
+   "Q4227": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4228": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4229": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4230": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4231": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4232": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4233": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4234": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4235": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4236": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4237": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4239": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4240": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4241": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4242": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
    "Q4244": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4245": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4246": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4247": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4248": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4249": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4250": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4254": [
+      {
+         "Policy #": "IV-145",
+         "Full Policy": "Amniotic Membrane and Amniotic Fluid"
+      }
+   ],
+   "Q4255": [
       {
          "Policy #": "IV-145",
          "Full Policy": "Amniotic Membrane and Amniotic Fluid"
@@ -6745,7 +6835,7 @@ export const bcbsmnCodes = {
          "Full Policy": "Autism Spectrum Disorders: Assessment and Early Intensive Behavioral Intervention"
       }
    ],
-   "V5008 ": [
+   "V5008": [
       {
          "Policy #": "X-43",
          "Full Policy": "Autism Spectrum Disorders: Assessment and Early Intensive Behavioral Intervention"
@@ -6766,13 +6856,45 @@ export const bcbsmnCodes = {
    "J7330": [
       {
          "Policy #": "IV-113",
-         "Full Policy": "Autologous Chondrocyte Implantation of Focal Articular Cartilage Lesions "
+         "Full Policy": "Autologous Chondrocyte Implantation of Focal Articular Cartilage Lesions"
       }
    ],
    "S2112": [
       {
          "Policy #": "IV-113",
-         "Full Policy": "Autologous Chondrocyte Implantation of Focal Articular Cartilage Lesions "
+         "Full Policy": "Autologous Chondrocyte Implantation of Focal Articular Cartilage Lesions"
+      }
+   ],
+   "C9399": [
+      {
+         "Policy #": "II-187",
+         "Full Policy": "Axicabtagene Ciloleucel (Yescarta™)"
+      },
+      {
+         "Policy #": "II-227",
+         "Full Policy": "Enzyme Replacement Therapy for the Treatment of Adenosine Deaminase Severe Combined Immune Deficiency (ADA-SCID)"
+      },
+      {
+         "Policy #": "II-183",
+         "Full Policy": "Tisagenlecleucel (Kymriah™)"
+      }
+   ],
+   "J3590": [
+      {
+         "Policy #": "II-187",
+         "Full Policy": "Axicabtagene Ciloleucel (Yescarta™)"
+      },
+      {
+         "Policy #": "II-227",
+         "Full Policy": "Enzyme Replacement Therapy for the Treatment of Adenosine Deaminase Severe Combined Immune Deficiency (ADA-SCID)"
+      },
+      {
+         "Policy #": "II-71",
+         "Full Policy": "Intravitreal Angiogenesis Inhibitors for Treatment of Retinal and Choroidal Vascular Conditions"
+      },
+      {
+         "Policy #": "II-183",
+         "Full Policy": "Tisagenlecleucel (Kymriah™)"
       }
    ],
    "Q2041": [
@@ -6854,6 +6976,12 @@ export const bcbsmnCodes = {
       }
    ],
    "C1763": [
+      {
+         "Policy #": "IV-137",
+         "Full Policy": "Bioengineered Skin and Soft Tissue Substitutes"
+      }
+   ],
+   "C1849": [
       {
          "Policy #": "IV-137",
          "Full Policy": "Bioengineered Skin and Soft Tissue Substitutes"
@@ -7243,6 +7371,12 @@ export const bcbsmnCodes = {
          "Full Policy": "Bioengineered Skin and Soft Tissue Substitutes"
       }
    ],
+   "Q4238": [
+      {
+         "Policy #": "IV-137",
+         "Full Policy": "Bioengineered Skin and Soft Tissue Substitutes"
+      }
+   ],
    "E0748": [
       {
          "Policy #": "II-104",
@@ -7311,7 +7445,7 @@ export const bcbsmnCodes = {
          "Full Policy": "Breast Implant, Removal or Replacement"
       }
    ],
-   "C9055": [
+   "J1632": [
       {
          "Policy #": "II-231",
          "Full Policy": "Brexanolone (Zulresso)"
@@ -7323,13 +7457,13 @@ export const bcbsmnCodes = {
          "Full Policy": "Buprenorphine Implant (Probuphine®)"
       }
    ],
-   "J0584 ": [
+   "J0584": [
       {
          "Policy #": "II-212",
          "Full Policy": "Burosumab (Crysvita®)"
       }
    ],
-   "C9047 ": [
+   "C9047": [
       {
          "Policy #": "II-228",
          "Full Policy": "Caplacizumab (Cablivi)"
@@ -7338,19 +7472,19 @@ export const bcbsmnCodes = {
    "C2624": [
       {
          "Policy #": "II-43",
-         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting "
+         "Full Policy": "Cardiac Hemodynamic Monitoring for the Management of Heart Failure in the Outpatient Setting"
       }
    ],
    "0052U": [
       {
          "Policy #": "VI-24",
-         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers "
+         "Full Policy": "Cardiovascular Disease Risk Assessment and Management: Laboratory Evaluation of Non-Traditional Lipid and Nonlipid Biomarkers"
       }
    ],
    "Q2043": [
       {
          "Policy #": "II-144",
-         "Full Policy": "Cellular Immunotherapy for Prostate Cancer (Provenge®) "
+         "Full Policy": "Cellular Immunotherapy for Prostate Cancer (Provenge®)"
       }
    ],
    "J0567": [
@@ -7474,25 +7608,25 @@ export const bcbsmnCodes = {
    "E0217": [
       {
          "Policy #": "VII-14",
-         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting "
+         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting"
       }
    ],
    "E0218": [
       {
          "Policy #": "VII-14",
-         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting "
+         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting"
       }
    ],
    "E0236": [
       {
          "Policy #": "VII-14",
-         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting "
+         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting"
       }
    ],
    "E0249": [
       {
          "Policy #": "VII-14",
-         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting "
+         "Full Policy": "Cooling/Heating Devices Used in the Outpatient Setting"
       }
    ],
    "0402T": [
@@ -7564,7 +7698,7 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "VII-59",
-         "Full Policy": "Spinal Unloading Devices: Patient-Operated "
+         "Full Policy": "Spinal Unloading Devices: Patient-Operated"
       },
       {
          "Policy #": "II-85",
@@ -7835,34 +7969,10 @@ export const bcbsmnCodes = {
          "Full Policy": "Endovascular Therapies for Extracranial Vertebral Artery Disease"
       }
    ],
-   "C9399": [
-      {
-         "Policy #": "II-227",
-         "Full Policy": "Enzyme Replacement Therapy for the Treatment of Adenosine Deaminase Severe Combined Immune Deficiency (ADA-SCID)"
-      },
-      {
-         "Policy #": "II-239",
-         "Full Policy": "Teprotumumab (Tepezza)"
-      }
-   ],
    "J2504": [
       {
          "Policy #": "II-227",
          "Full Policy": "Enzyme Replacement Therapy for the Treatment of Adenosine Deaminase Severe Combined Immune Deficiency (ADA-SCID)"
-      }
-   ],
-   "J3590": [
-      {
-         "Policy #": "II-227",
-         "Full Policy": "Enzyme Replacement Therapy for the Treatment of Adenosine Deaminase Severe Combined Immune Deficiency (ADA-SCID)"
-      },
-      {
-         "Policy #": "II-71",
-         "Full Policy": "Intravitreal Angiogenesis Inhibitors for Treatment of Retinal and Choroidal Vascular Conditions"
-      },
-      {
-         "Policy #": "II-239",
-         "Full Policy": "Teprotumumab (Tepezza)"
       }
    ],
    "J1428": [
@@ -7877,6 +7987,12 @@ export const bcbsmnCodes = {
          "Full Policy": "Expanded Cardiovascular Risk Panels"
       }
    ],
+   "Multiple Procedure Codes": [
+      {
+         "Policy #": "VI-59",
+         "Full Policy": "Expanded Gastrointestinal Biomarker Panels"
+      }
+   ],
    "0022U": [
       {
          "Policy #": "VI-49",
@@ -7889,13 +8005,13 @@ export const bcbsmnCodes = {
          "Full Policy": "Expanded Molecular Panel Testing of Solid Tumors"
       }
    ],
-   "0174U ": [
+   "0174U": [
       {
          "Policy #": "VI-49",
          "Full Policy": "Expanded Molecular Panel Testing of Solid Tumors"
       }
    ],
-   " 0179U": [
+   "0179U": [
       {
          "Policy #": "VI-49",
          "Full Policy": "Expanded Molecular Panel Testing of Solid Tumors"
@@ -7904,37 +8020,37 @@ export const bcbsmnCodes = {
    "T1002": [
       {
          "Policy #": "IX-01",
-         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions "
+         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions"
       }
    ],
-   "T1002TG": [
+   "T1002 TG": [
       {
          "Policy #": "IX-01",
-         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions "
+         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions"
       }
    ],
-   "T1002TT": [
+   "T1002 TT": [
       {
          "Policy #": "IX-01",
-         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions "
+         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions"
       }
    ],
    "T1003": [
       {
          "Policy #": "IX-01",
-         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions "
+         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions"
       }
    ],
-   "T1003TG": [
+   "T1003 TG": [
       {
          "Policy #": "IX-01",
-         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions "
+         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions"
       }
    ],
-   "T1003TT": [
+   "T1003 TT": [
       {
          "Policy #": "IX-01",
-         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions "
+         "Full Policy": "Extended Hours Skilled Nursing in the Home for Patients with Medically Complex Conditions"
       }
    ],
    "0101T": [
@@ -7952,7 +8068,7 @@ export const bcbsmnCodes = {
    "0202T": [
       {
          "Policy #": "IV-110",
-         "Full Policy": "Facet Arthroplasty  "
+         "Full Policy": "Facet Arthroplasty"
       }
    ],
    "G0455": [
@@ -7961,7 +8077,7 @@ export const bcbsmnCodes = {
          "Full Policy": "Fecal Microbiota Transplantation"
       }
    ],
-   "E0731 ": [
+   "E0731": [
       {
          "Policy #": "VII-11",
          "Full Policy": "Functional Neuromuscular Electrical Stimulation Devices in the Home Setting"
@@ -8001,12 +8117,16 @@ export const bcbsmnCodes = {
          "Full Policy": "Gastric Electrical Stimulation"
       },
       {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
+      {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-83",
@@ -8028,11 +8148,11 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-83",
@@ -8054,11 +8174,11 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-83",
@@ -8080,11 +8200,11 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-83",
@@ -8105,12 +8225,16 @@ export const bcbsmnCodes = {
          "Full Policy": "Gastric Electrical Stimulation"
       },
       {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
+      {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-83",
@@ -8125,16 +8249,16 @@ export const bcbsmnCodes = {
          "Full Policy": "Vagus Nerve Stimulation"
       }
    ],
-   "Multiple Surgical Procedure Codes ": [
+   "Multiple Surgical Procedure Codes": [
       {
          "Policy #": "IV-123",
-         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria  "
+         "Full Policy": "Gender Affirming Procedures for Gender Dysphoria"
       }
    ],
    "0047U": [
       {
          "Policy #": "VI-57",
-         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management "
+         "Full Policy": "Gene Expression Profiling and Protein Biomarkers for Prostate Cancer Management"
       }
    ],
    "0045U": [
@@ -8149,13 +8273,13 @@ export const bcbsmnCodes = {
          "Full Policy": "Gene Expression Profiling for the Management of Breast Cancer Treatment"
       }
    ],
-   "0089U ": [
+   "0089U": [
       {
          "Policy #": "VI-26",
          "Full Policy": "Gene Expression Profiling or Genetic Testing for Melanoma"
       }
    ],
-   "0090U ": [
+   "0090U": [
       {
          "Policy #": "VI-26",
          "Full Policy": "Gene Expression Profiling or Genetic Testing for Melanoma"
@@ -8165,30 +8289,6 @@ export const bcbsmnCodes = {
       {
          "Policy #": "VI-38",
          "Full Policy": "Gene Expression Testing for Cancers of Unknown Primary"
-      }
-   ],
-   "00170": [
-      {
-         "Policy #": "II-166",
-         "Full Policy": "General Anesthesia Services for Dental Procedures"
-      }
-   ],
-   "00172": [
-      {
-         "Policy #": "II-166",
-         "Full Policy": "General Anesthesia Services for Dental Procedures"
-      }
-   ],
-   "00174": [
-      {
-         "Policy #": "II-166",
-         "Full Policy": "General Anesthesia Services for Dental Procedures"
-      }
-   ],
-   "00176": [
-      {
-         "Policy #": "II-166",
-         "Full Policy": "General Anesthesia Services for Dental Procedures"
       }
    ],
    "0013U": [
@@ -8219,12 +8319,6 @@ export const bcbsmnCodes = {
          "Full Policy": "Genetic Testing for Hereditary Breast and/or Ovarian Cancer"
       }
    ],
-   "Multiple Codes Apply": [
-      {
-         "Policy #": "VI-09",
-         "Full Policy": "Genetic Testing"
-      }
-   ],
    "S3861": [
       {
          "Policy #": "VI-19",
@@ -8238,6 +8332,12 @@ export const bcbsmnCodes = {
       }
    ],
    "0170U": [
+      {
+         "Policy #": "VI-48",
+         "Full Policy": "Genetic Testing to Evaluate Patients with Developmental Delay/Intellectual Disability, Autism Spectrum Disorder, or Congenital Anomalies"
+      }
+   ],
+   "0209U": [
       {
          "Policy #": "VI-48",
          "Full Policy": "Genetic Testing to Evaluate Patients with Developmental Delay/Intellectual Disability, Autism Spectrum Disorder, or Congenital Anomalies"
@@ -8261,22 +8361,28 @@ export const bcbsmnCodes = {
          "Full Policy": "Genetic Testing for Hereditary Breast and/or Ovarian Cancer"
       }
    ],
+   "Multiple Codes Apply": [
+      {
+         "Policy #": "VI-09",
+         "Full Policy": "Genetic Testing for Inherited Non-Cancer Conditions"
+      }
+   ],
    "0030U": [
       {
          "Policy #": "VI-33",
-         "Full Policy": "Genetic Testing for Warfarin Dose "
+         "Full Policy": "Genetic Testing for Warfarin Dose"
       }
    ],
    "G9143": [
       {
          "Policy #": "VI-33",
-         "Full Policy": "Genetic Testing for Warfarin Dose "
+         "Full Policy": "Genetic Testing for Warfarin Dose"
       }
    ],
    "J0223": [
       {
          "Policy #": "II-234",
-         "Full Policy": "Givosiran (Givlaari) "
+         "Full Policy": "Givosiran (Givlaari)"
       }
    ],
    "J1602": [
@@ -8333,10 +8439,14 @@ export const bcbsmnCodes = {
          "Full Policy": "Hippotherapy"
       }
    ],
-   "N/A\n*see notes": [
+   "N/A\n see notes": [
       {
          "Policy #": "IV-11",
          "Full Policy": "Humanitarian Use Devices"
+      },
+      {
+         "Policy #": "XI-06",
+         "Full Policy": "Site of Service for Selected Specialty Medical Drugs"
       }
    ],
    "A4575": [
@@ -8360,7 +8470,7 @@ export const bcbsmnCodes = {
    "J1743": [
       {
          "Policy #": "II-215",
-         "Full Policy": "Idursulfase (Elaprase®)  "
+         "Full Policy": "Idursulfase (Elaprase®)"
       }
    ],
    "G9147": [
@@ -8379,6 +8489,24 @@ export const bcbsmnCodes = {
       {
          "Policy #": "II-189",
          "Full Policy": "Intermittent Intravenous Insulin Therapy"
+      }
+   ],
+   "J1347": [
+      {
+         "Policy #": "II-243",
+         "Full Policy": "Intravenous Iron Replacement Therapy"
+      }
+   ],
+   "J1439": [
+      {
+         "Policy #": "II-243",
+         "Full Policy": "Intravenous Iron Replacement Therapy"
+      }
+   ],
+   "Q0138": [
+      {
+         "Policy #": "II-243",
+         "Full Policy": "Intravenous Iron Replacement Therapy"
       }
    ],
    "0274T": [
@@ -8540,37 +8668,37 @@ export const bcbsmnCodes = {
    "0564T": [
       {
          "Policy #": "VI-30",
-         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays "
+         "Full Policy": "In Vitro Chemoresistance and Chemosensitivity Assays"
       }
    ],
    "J1745": [
       {
          "Policy #": "II-97",
-         "Full Policy": "Infliximab  "
+         "Full Policy": "Infliximab"
       }
    ],
    "Q5103": [
       {
          "Policy #": "II-97",
-         "Full Policy": "Infliximab  "
+         "Full Policy": "Infliximab"
       }
    ],
    "Q5104": [
       {
          "Policy #": "II-97",
-         "Full Policy": "Infliximab  "
+         "Full Policy": "Infliximab"
       }
    ],
    "Q5109": [
       {
          "Policy #": "II-97",
-         "Full Policy": "Infliximab  "
+         "Full Policy": "Infliximab"
       }
    ],
-   "Q5121 ": [
+   "Q5121": [
       {
          "Policy #": "II-97",
-         "Full Policy": "Infliximab  "
+         "Full Policy": "Infliximab"
       }
    ],
    "L8605": [
@@ -8588,7 +8716,7 @@ export const bcbsmnCodes = {
    "J0775": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders"
       }
    ],
    "S8130": [
@@ -8612,85 +8740,85 @@ export const bcbsmnCodes = {
    "J7318": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7320": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7321": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7322": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7323": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7324": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7325": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7326": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7327": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7328": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7329": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7331": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7332": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "J7333": [
       {
          "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
+         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteoarthritis"
       }
    ],
    "S2348": [
@@ -8700,13 +8828,13 @@ export const bcbsmnCodes = {
       },
       {
          "Policy #": "IV-96",
-         "Full Policy": "Percutaneous and Endoscopic Techniques for Disc Decompression "
+         "Full Policy": "Percutaneous and Endoscopic Techniques for Disc Decompression"
       }
    ],
    "J2001": [
       {
          "Policy #": "II-141",
-         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain "
+         "Full Policy": "Intravenous Anesthetics for the Treatment of Chronic Pain"
       }
    ],
    "J1786": [
@@ -8725,60 +8853,6 @@ export const bcbsmnCodes = {
       {
          "Policy #": "II-214",
          "Full Policy": "Intravenous Enzyme Replacement Therapy for Gaucher Disease"
-      }
-   ],
-   "J9306": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "J9354": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "J9355": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "J9356": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "Q5112": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "Q5113": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "Q5114": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "Q5116": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
-      }
-   ],
-   "Q5117": [
-      {
-         "Policy #": "II-158",
-         "Full Policy": "Intravenous Human Epidermal Growth Factor Receptor 2 (HER2)-Targeted Agents (Herceptin®)"
       }
    ],
    "C9257": [
@@ -8830,25 +8904,79 @@ export const bcbsmnCodes = {
    "J7311": [
       {
          "Policy #": "II-100",
-         "Full Policy": "Intravitreal Corticosteroid Implants (Ozurdex®, Retisert™, Iluvien®, Yutiq™)"
+         "Full Policy": "Intravitreal Corticosteroid Implants"
       }
    ],
    "J7312": [
       {
          "Policy #": "II-100",
-         "Full Policy": "Intravitreal Corticosteroid Implants (Ozurdex®, Retisert™, Iluvien®, Yutiq™)"
+         "Full Policy": "Intravitreal Corticosteroid Implants"
       }
    ],
    "J7313": [
       {
          "Policy #": "II-100",
-         "Full Policy": "Intravitreal Corticosteroid Implants (Ozurdex®, Retisert™, Iluvien®, Yutiq™)"
+         "Full Policy": "Intravitreal Corticosteroid Implants"
       }
    ],
    "J7314": [
       {
          "Policy #": "II-100",
-         "Full Policy": "Intravitreal Corticosteroid Implants (Ozurdex®, Retisert™, Iluvien®, Yutiq™)"
+         "Full Policy": "Intravitreal Corticosteroid Implants"
+      }
+   ],
+   "0466T": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      }
+   ],
+   "0467T": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      }
+   ],
+   "0468T": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      }
+   ],
+   "C1767": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
+      {
+         "Policy #": "IV-131",
+         "Full Policy": "Vagus Nerve Stimulation"
+      }
+   ],
+   "C1778": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
+      {
+         "Policy #": "IV-131",
+         "Full Policy": "Vagus Nerve Stimulation"
+      }
+   ],
+   "C1787": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      }
+   ],
+   "L8681": [
+      {
+         "Policy #": "IV-80",
+         "Full Policy": "Implanted Hypoglossal Nerve Stimulation for the Treatment of Obstructive Sleep Apnea"
+      },
+      {
+         "Policy #": "IV-83",
+         "Full Policy": "Sacral Nerve Neuromodulation/Stimulation for Selected Conditions"
       }
    ],
    "0584T": [
@@ -8900,7 +9028,7 @@ export const bcbsmnCodes = {
    "S3722": [
       {
          "Policy #": "VI-41",
-         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer "
+         "Full Policy": "Laboratory and Genetic Testing for Use of 5-Fluorouracil (5-FU) in Patients with Cancer"
       }
    ],
    "J1931": [
@@ -8953,6 +9081,12 @@ export const bcbsmnCodes = {
       {
          "Policy #": "II-42",
          "Full Policy": "Selected Treatments for Tinnitus"
+      }
+   ],
+   "J0896": [
+      {
+         "Policy #": "II-237",
+         "Full Policy": "Luspatercept (Reblozyl)"
       }
    ],
    "0041U": [
@@ -9144,7 +9278,7 @@ export const bcbsmnCodes = {
    "J2182": [
       {
          "Policy #": "II-201",
-         "Full Policy": "Mepolizumab (NUCALA®) "
+         "Full Policy": "Mepolizumab (NUCALA®)"
       }
    ],
    "L2006": [
@@ -9202,6 +9336,18 @@ export const bcbsmnCodes = {
       }
    ],
    "0026U": [
+      {
+         "Policy #": "VI-50",
+         "Full Policy": "Molecular Marker Evaluation of Thyroid Nodules"
+      }
+   ],
+   "0204U": [
+      {
+         "Policy #": "VI-50",
+         "Full Policy": "Molecular Marker Evaluation of Thyroid Nodules"
+      }
+   ],
+   "0208U": [
       {
          "Policy #": "VI-50",
          "Full Policy": "Molecular Marker Evaluation of Thyroid Nodules"
@@ -9573,7 +9719,7 @@ export const bcbsmnCodes = {
          "Full Policy": "Non-FDA approved (NFDA)"
       }
    ],
-   "  0611T": [
+   "0611T": [
       {
          "Policy #": "N/A",
          "Full Policy": "Non-FDA approved (NFDA)"
@@ -9591,7 +9737,7 @@ export const bcbsmnCodes = {
          "Full Policy": "Non-FDA approved (NFDA)"
       }
    ],
-   " C9760": [
+   "C9760": [
       {
          "Policy #": "N/A",
          "Full Policy": "Non-FDA approved (NFDA)"
@@ -9606,11 +9752,11 @@ export const bcbsmnCodes = {
    "L8679": [
       {
          "Policy #": "II-140",
-         "Full Policy": "Occipital Nerve Stimulation "
+         "Full Policy": "Occipital Nerve Stimulation"
       },
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-74",
@@ -9635,7 +9781,7 @@ export const bcbsmnCodes = {
    ],
    "J3399": [
       {
-         "Policy #": "II-230 ",
+         "Policy #": "II-230",
          "Full Policy": "Onasemnogene Abeparvovec (Zolgensma®)"
       }
    ],
@@ -9762,7 +9908,7 @@ export const bcbsmnCodes = {
    "L8682": [
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-131",
@@ -9772,53 +9918,35 @@ export const bcbsmnCodes = {
    "L8683": [
       {
          "Policy #": "II-149",
-         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain "
+         "Full Policy": "Peripheral Nerve Stimulation of the Trunk or Limbs for Treatment of Pain"
       },
       {
          "Policy #": "IV-131",
          "Full Policy": "Vagus Nerve Stimulation"
       }
    ],
-   "J0593": [
-      {
-         "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
-      }
-   ],
    "J0596": [
       {
          "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
+         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema"
       }
    ],
    "J0597": [
       {
          "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
+         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema"
       }
    ],
    "J0598": [
       {
          "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
-      }
-   ],
-   "J0599": [
-      {
-         "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
+         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema"
       }
    ],
    "J1290": [
       {
          "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
-      }
-   ],
-   "J1744": [
-      {
-         "Policy #": "II-102",
-         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema  "
+         "Full Policy": "Pharmacologic Therapies for Hereditary Angioedema"
       }
    ],
    "J3396": [
@@ -9959,154 +10087,112 @@ export const bcbsmnCodes = {
          "Full Policy": "Pneumatic Compression Devices in the Outpatient or Home Setting"
       }
    ],
-   "A4641": [
+   "K1007": [
       {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "A9552": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "A9586": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "G0219": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "G0235": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "G0252": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "Q9982": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
-      }
-   ],
-   "Q9983": [
-      {
-         "Policy #": "V-27",
-         "Full Policy": "Positron Emission Tomography (PET)"
+         "Policy #": "VII-63",
+         "Full Policy": "Powered Exoskeleton"
       }
    ],
    "A4640": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0181": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0182": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0184": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0185": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0186": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0187": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0193": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0194": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0196": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0197": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0198": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0199": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0277": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0371": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0372": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "E0373": [
       {
          "Policy #": "VII-54",
-         "Full Policy": "Pressure Reducing Support Surfaces "
+         "Full Policy": "Pressure Reducing Support Surfaces"
       }
    ],
    "J1726": [
@@ -10154,7 +10240,7 @@ export const bcbsmnCodes = {
    "S8030": [
       {
          "Policy #": "V-20",
-         "Full Policy": "Proton Beam Radiation Therapy "
+         "Full Policy": "Proton Beam Radiation Therapy"
       }
    ],
    "S8040": [
@@ -10205,28 +10291,28 @@ export const bcbsmnCodes = {
          "Full Policy": "Reslizumab (CINQAIR®)"
       }
    ],
-   "J9311 ": [
+   "J9311": [
       {
          "Policy #": "II-47",
-         "Full Policy": "Rituximab  "
+         "Full Policy": "Rituximab"
       }
    ],
    "J9312": [
       {
          "Policy #": "II-47",
-         "Full Policy": "Rituximab  "
+         "Full Policy": "Rituximab"
       }
    ],
-   "Q5115 ": [
+   "Q5115": [
       {
          "Policy #": "II-47",
-         "Full Policy": "Rituximab  "
+         "Full Policy": "Rituximab"
       }
    ],
-   "Q5119 ": [
+   "Q5119": [
       {
          "Policy #": "II-47",
-         "Full Policy": "Rituximab  "
+         "Full Policy": "Rituximab"
       }
    ],
    "J2796": [
@@ -10236,12 +10322,6 @@ export const bcbsmnCodes = {
       }
    ],
    "A4290": [
-      {
-         "Policy #": "IV-83",
-         "Full Policy": "Sacral Nerve Neuromodulation/Stimulation for Selected Conditions"
-      }
-   ],
-   "L8681": [
       {
          "Policy #": "IV-83",
          "Full Policy": "Sacral Nerve Neuromodulation/Stimulation for Selected Conditions"
@@ -10352,7 +10432,7 @@ export const bcbsmnCodes = {
    "G0452": [
       {
          "Policy #": "VI-32",
-         "Full Policy": "Single-Nucleotide Polymorphism (SNF) Breast Cancer Risk Assessment  "
+         "Full Policy": "Single-Nucleotide Polymorphism (SNP) Breast Cancer Risk Assessment"
       }
    ],
    "G0398": [
@@ -10470,25 +10550,25 @@ export const bcbsmnCodes = {
    "E0830": [
       {
          "Policy #": "VII-59",
-         "Full Policy": "Spinal Unloading Devices: Patient-Operated "
+         "Full Policy": "Spinal Unloading Devices: Patient-Operated"
       }
    ],
    "E0941": [
       {
          "Policy #": "VII-59",
-         "Full Policy": "Spinal Unloading Devices: Patient-Operated "
+         "Full Policy": "Spinal Unloading Devices: Patient-Operated"
       }
    ],
    "0565T": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "0566T": [
       {
          "Policy #": "II-142",
-         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications "
+         "Full Policy": "Stem-Cell Therapy for Orthopedic Applications"
       }
    ],
    "0263T": [
@@ -10507,6 +10587,12 @@ export const bcbsmnCodes = {
       {
          "Policy #": "II-151",
          "Full Policy": "Stem-Cell Therapy for Peripheral Arterial Disease"
+      }
+   ],
+   "N/A\nsee notes": [
+      {
+         "Policy #": "II-242",
+         "Full Policy": "Step Therapy Bypass Supplement"
       }
    ],
    "S0189": [
@@ -10548,25 +10634,31 @@ export const bcbsmnCodes = {
    "L8641": [
       {
          "Policy #": "IV-153",
-         "Full Policy": "Synthetic Cartilage Implants "
+         "Full Policy": "Synthetic Cartilage Implants"
       }
    ],
    "L8642": [
       {
          "Policy #": "IV-153",
-         "Full Policy": "Synthetic Cartilage Implants "
+         "Full Policy": "Synthetic Cartilage Implants"
       }
    ],
    "L8699": [
       {
          "Policy #": "IV-153",
-         "Full Policy": "Synthetic Cartilage Implants "
+         "Full Policy": "Synthetic Cartilage Implants"
       }
    ],
    "0091U": [
       {
          "Policy #": "VI-25",
-         "Full Policy": "Testing of Circulating Tumor Cells "
+         "Full Policy": "Testing of Circulating Tumor Cells"
+      }
+   ],
+   "J3241": [
+      {
+         "Policy #": "II-239",
+         "Full Policy": "Teprotumumab (Tepezza)"
       }
    ],
    "0168U": [
@@ -10575,7 +10667,7 @@ export const bcbsmnCodes = {
          "Full Policy": "Testing of Fetal Nucleic Acids in Maternal Blood for Detection of Fetal Aneuploidy"
       }
    ],
-   "J3245 ": [
+   "J3245": [
       {
          "Policy #": "II-222",
          "Full Policy": "Tidrakizumb (Ilumya®)"
@@ -10609,24 +10701,6 @@ export const bcbsmnCodes = {
       {
          "Policy #": "IV-152",
          "Full Policy": "Transcatheter Mitral Valve Repair (TMVR)"
-      }
-   ],
-   "0466T": [
-      {
-         "Policy #": "IV-07",
-         "Full Policy": "Treatment of Obstructive Sleep Apnea and Snoring in Adults"
-      }
-   ],
-   "0467T": [
-      {
-         "Policy #": "IV-07",
-         "Full Policy": "Treatment of Obstructive Sleep Apnea and Snoring in Adults"
-      }
-   ],
-   "0468T": [
-      {
-         "Policy #": "IV-07",
-         "Full Policy": "Treatment of Obstructive Sleep Apnea and Snoring in Adults"
       }
    ],
    "E0470": [
@@ -10674,13 +10748,13 @@ export const bcbsmnCodes = {
    "A4555": [
       {
          "Policy #": "II-164",
-         "Full Policy": "Tumor Treatment Fields Therapy"
+         "Full Policy": "Tumor Treating Fields Therapy"
       }
    ],
    "E0766": [
       {
          "Policy #": "II-164",
-         "Full Policy": "Tumor Treatment Fields Therapy"
+         "Full Policy": "Tumor Treating Fields Therapy"
       }
    ],
    "C9747": [
@@ -10735,18 +10809,6 @@ export const bcbsmnCodes = {
       {
          "Policy #": "IV-132",
          "Full Policy": "Vagus Nerve Blocking Therapy"
-      }
-   ],
-   "C1767": [
-      {
-         "Policy #": "IV-131",
-         "Full Policy": "Vagus Nerve Stimulation"
-      }
-   ],
-   "C1778": [
-      {
-         "Policy #": "IV-131",
-         "Full Policy": "Vagus Nerve Stimulation"
       }
    ],
    "C1816": [
@@ -11794,6 +11856,30 @@ export const bcbsmnCodes = {
       }
    ],
    "0094U": [
+      {
+         "Policy #": "VI-54",
+         "Full Policy": "Whole Exome and Whole Genome Sequencing for Diagnosis of Patients with Suspected Genetic Disorders"
+      }
+   ],
+   "0212U": [
+      {
+         "Policy #": "VI-54",
+         "Full Policy": "Whole Exome and Whole Genome Sequencing for Diagnosis of Patients with Suspected Genetic Disorders"
+      }
+   ],
+   "0213U": [
+      {
+         "Policy #": "VI-54",
+         "Full Policy": "Whole Exome and Whole Genome Sequencing for Diagnosis of Patients with Suspected Genetic Disorders"
+      }
+   ],
+   "0214U": [
+      {
+         "Policy #": "VI-54",
+         "Full Policy": "Whole Exome and Whole Genome Sequencing for Diagnosis of Patients with Suspected Genetic Disorders"
+      }
+   ],
+   "0215U": [
       {
          "Policy #": "VI-54",
          "Full Policy": "Whole Exome and Whole Genome Sequencing for Diagnosis of Patients with Suspected Genetic Disorders"

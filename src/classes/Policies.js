@@ -5,10 +5,17 @@ import { medicareCodes } from '../data/medicareCodes';
 import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmnPolicyHrefAndEffectiveDate";
 import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
 import { fepPolicies } from "../data/fepPolicies";
+import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
+
+const fepVersion = "Oct2020";
+const bcbsmnVersion = "10/19/2020";
 
 export class Policies {
   constructor(lob) {
     this.lob = lob;
+    const version = lob === "fep" ? fepVersion : bcbsmnVersion
+    console.log(version);
+    updatePolicyVersion(lob, version)
     const policies = lob === "fep"
       ? getStorage("fepPolicies") === undefined
         ? fepPolicies
