@@ -8,6 +8,7 @@ import React from 'react';
 import { Divider } from '@material-ui/core';
 import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
+import * as Fields from '../../Inputs/FieldInputs';
 import ReviewedInputs from '../../Inputs/ReviewedInputs';
 import PricingInputs from '../../Inputs/PricingInputs';
 import PolicyInput from '../../Inputs/PolicyInput';
@@ -25,14 +26,14 @@ function General(props) {
   const { classes } = props;
   return (
     <div>
-      <TextInput id="name" placeholder="" label="Clinician:" />
+      <Fields.Name />
       <ClaimInfoInputs  />          
       <PendInput  />             
       <RadioInput id="reviewed" options={["no", "yes"]} label="Following a decision:"  />  
       <ReviewedInputs  />
-      <TextInput id="req" placeholder="Enter number" label="REQ-"   />
-      <TextInput id="age" placeholder="" label="Age"   /> 
-      <TextInput id="dos" placeholder="" label="Date of service"   />              
+      <Fields.Req />
+      <Fields.Age />
+      <Fields.Dos />
       <CodeAndService  />
       <ServiceTypeInput  /> 
       {props.values.drugReview  && props.values.lob === "commercial"
@@ -49,11 +50,11 @@ function General(props) {
         : null}           
       <PolicyInput   />  
       <BenefitsInput values={props.values}  />     
-      <TextInput id="diagnosis" placeholder="" label="Diagnosis"   />
-      <TextInput id="provider" placeholder="" label="Provider" />             
+      <Fields.Diagnosis />
+      <Fields.Provider />
       <ProviderType  />
-      <RadioInput id="proPar" options={["Par", "Non-Par"]} label="Par Status"  />
-      <TextInput id="summary" multiline={true} rows="5" label="Additional Clinical information"   />
+      <Fields.Par />
+      <Fields.Summary />
       <DeterInputs  addOptions={["send to medical director"]}  />
       {props.values.deter === "approve" && props.values.allMet === false
         ? <TextInput id="exCircum" placeholder="" label="Extenuating Circumstances"  />

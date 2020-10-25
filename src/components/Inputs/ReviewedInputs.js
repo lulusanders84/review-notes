@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import DeniedInputs from './DeniedInputs';
 import { connect } from 'react-redux';
 import { displayClinicalRationale } from '../../utils/Inputs/displayClinicalRationale';
+import * as Fields from './FieldInputs';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -21,10 +22,10 @@ function ReviewedInputs (props) {
     ? <Card className={classes.card} >
         <Typography component="h3" variant="h6">Prior review details</Typography>
         <RadioInput id="pa-type" options={["PA", "related claim"]} label="Review type:"  />
-        <TextInput id="pa-req" placeholder="Enter number" label="REQ-"  /> 
-        <TextInput id="pa-dos" placeholder="" label="Date of Service:"  />
-        <TextInput id="pa-diagnosis" placeholder="" label="Diagnosis:"  />
-        <TextInput id="pa-provider" placeholder="" label="Provider:" />             
+        <Fields.Req id="pa-req" /> 
+        <Fields.Dos id="pa-dos" />
+        <Fields.Diagnosis id="pa-diagnosis" />
+        <Fields.Provider id="pa-provider" />             
         <RadioInput id="pa-deter" options={["approved", "denied"]} label="Decision:"  />
         {props.values["pa-deter"] === "denied" 
           ? 
