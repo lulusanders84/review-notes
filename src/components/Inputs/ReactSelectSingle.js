@@ -317,10 +317,7 @@ function IntegrationReactSelect(props) {
         const newOption = createSelectValue(formattedName, props.labelFormat)
         const newOptions = options ? [newOption, ...options] : [newOption];
         setOptions(newOptions)
-        const storage = props.id === "pa-provider"
-          ? "provider"
-          : props.id;
-        saveToStorage(storage, newOptions);
+        saveToStorage(props.id, newOptions);
       }   
     }
     const newValue = value ? value.value : null;
