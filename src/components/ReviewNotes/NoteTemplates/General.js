@@ -17,7 +17,6 @@ import CodeAndService from '../../Inputs/CodeAndService';
 import DoseInput from '../../Inputs/DoseInput';
 import ClaimInfoInputs from '../../Inputs/ClaimInfoInputs';
 import PendInput from '../../Inputs/PendInput';
-import ProviderType from '../../Inputs/ProviderType';
 import BenefitsInput from '../../Inputs/BenefitsInput';
 import ServiceTypeInput from '../../Inputs/ServiceTypeInput';
 import DeterInputs from '../../Inputs/DeterInputs';
@@ -52,7 +51,6 @@ function General(props) {
       <BenefitsInput values={props.values}  />     
       <Fields.Diagnosis />
       <Fields.Provider />
-      <ProviderType  />
       <Fields.Par />
       <Fields.Summary />
       <DeterInputs  addOptions={["send to medical director"]}  />
