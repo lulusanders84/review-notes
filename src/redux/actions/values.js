@@ -3,7 +3,6 @@ import {
   formatInput } from '../../utils/Values';
 
 export const handleInputs = value => (dispatch, getState) => {  
-  console.log(value);
   if(value.value === null) {
     value.value = ""
   };

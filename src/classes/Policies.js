@@ -3,10 +3,16 @@ import { getStorage } from '../utils';
 import { fepPolicies } from '../data/fepPolicies';
 import { bcbsmnCodes } from '../data/bcbsmnCodes';
 import { medicareCodes } from '../data/medicareCodes';
+import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
+
+const fepVersion = "Oct2020";
+const bcbsmnVersion = "10/19/2020";
 
 export class Policies {
   constructor(lob) {
     this.lob = lob;
+    const version = lob === "fep" ? fepVersion : bcbsmnVersion
+    updatePolicyVersion(lob, version)
     const policies = lob === "fep"
       ? getStorage("fepPolicies", fepPolicies)
       : lob === "commercial"
@@ -42,7 +48,6 @@ export class Policies {
     return policiesObj;
   };
   convertPoliciesToArr = () => {
-    console.log(this.policyArr)
     this.policyArr = Object.keys(this.policyObj).map(key => {
       return formatPolicy(this.policyObj[key]);
     });
