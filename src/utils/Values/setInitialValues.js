@@ -3,6 +3,8 @@ import { getStorage } from "../getStorage";
 const setLob = getStorage("lob", "commercial");
 const setName = getStorage("name", "");
 export const initialValues = {
+    c3xPend: false,
+    c3x: "No",
     name: setName || "",
     req: "",
     reviewed: "no",

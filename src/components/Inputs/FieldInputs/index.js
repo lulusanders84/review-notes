@@ -6,3 +6,4 @@ export {default as Diagnosis} from './Diagnosis';
 export {default as Provider} from './Provider';
 export {default as Par} from './Par';
 export {default as Summary} from './Summary';
+export {default as C3XList} from './C3XList';

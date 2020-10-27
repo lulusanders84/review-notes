@@ -28,9 +28,10 @@ export const setCaseSummary = (values) => {
     const dose = values.drugReview && values.lob === "commercial"
         ? `(${values.dose} ${values.doseUnit})`
         : "";
+    const c3x = values.c3xPend && values.c3x === "No" ? "Review not required, drug(s) not listed on C3X deferral edit." : null;
     return (
         <span>
-        {age}-year old member diagnosed with {diagnosis}, claim  submitted by {provider} for {service} {dose} (DOS: {dos}). {summary}{pricingSummary} {modifier22}
+        {age}-year old member diagnosed with {diagnosis}, claim  submitted by {provider} for {service} {dose} (DOS: {dos}). {summary}{pricingSummary} {modifier22}{c3x}
         </span>
     )
 }

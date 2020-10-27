@@ -27,7 +27,7 @@ function General(props) {
     <div>
       <Fields.Name />
       <ClaimInfoInputs  />          
-      <PendInput  />             
+      <PendInput  />
       <RadioInput id="reviewed" options={["no", "yes"]} label="Following a decision:"  />  
       <ReviewedInputs  />
       <Fields.Req />
@@ -35,6 +35,7 @@ function General(props) {
       <Fields.Dos />
       <CodeAndService  />
       <ServiceTypeInput  /> 
+      <Fields.C3XList c3xPend={props.values.c3xPend} />            
       {props.values.drugReview  && props.values.lob === "commercial"
         ? <DoseInput  />
         : null }
