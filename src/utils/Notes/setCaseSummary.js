@@ -31,7 +31,7 @@ export const setCaseSummary = (values) => {
     const c3x = values.c3xPend && values.c3x === "No" ? "Review not required, drug(s) not listed on C3X deferral edit." : null;
     return (
         <span>
-        {age}-year old member diagnosed with {diagnosis}, claim  submitted by {provider} for {service} {dose} (DOS: {dos}). {summary}{pricingSummary} {modifier22}{c3x}
+        {age}-year old member diagnosed with {diagnosis}; claim  submitted by {provider} for {service} {dose} (DOS: {dos}). {summary}{pricingSummary} {modifier22}{c3x}
         </span>
     )
 }
@@ -44,5 +44,5 @@ export const setCaseSummary = (values) => {
             return capWordsList.includes(word)
                 ? word
                 : word.toLowerCase();
-        }).join(" ");
+        }).join(" ").trim();
     }
