@@ -51,7 +51,7 @@ const setSummary = (values) => {
 const setCriteriaMet = (values, data) => {
   const { policyString } = data;
   return values.deter === "approve" && policyString !== "N/A" 
-    ? `Applicable ${policyString} criteria met`
+    ? `All ${policyString} criteria met`
     : values.deter === "send to medical director"
           ? values.criteriaMet 
           : "N/A";
