@@ -16,7 +16,12 @@ export const formatSections = (sections) => {
   })
 }
 const editLi = (item) => {
-  $( item ).html(`<input type="checkbox">${item.innerHTML}</input>`)
+  $( item ).find("div").each(function() {
+    $(this).contents().unwrap().wrap('<span/>');
+  })
+  if(item.innerText.trim() !== "AND" && item.innerText.trim() !== "OR") {
+    $( item ).html(`<input type="checkbox">${item.innerHTML}</input>`)  
+  }
 }
 const findAndEditLis = (item) => {
   if(item.nodeName === "LI") {

@@ -3,9 +3,9 @@ import $ from 'jquery';
 export const scrapeCriteriaData = async () => {
   const policy = {};
   const href = 
-  "https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/policies/Medicine/II-161/II-161-010.html";
+  // "https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/policies/Medicine/II-161/II-161-010.html";
 //  "https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/policies/Medicine/II-16/II-16-011.html";
-// "https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/policies/Laboratory/VI-09/VI-09-009.html";
+"https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/policies/Laboratory/VI-09/VI-09-009.html";
   await $.getJSON('https://api.allorigins.win/get?url=' + encodeURIComponent(href), function (data) {
     const htmlObj = document.createElement("div");
     policy.html = document.createElement("div")
