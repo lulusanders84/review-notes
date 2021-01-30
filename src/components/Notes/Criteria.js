@@ -25,12 +25,21 @@ const useStyles = makeStyles((theme) => ({
 export function Criteria(props) {
   const classes = useStyles();
     const [menuItems, setMenuItems] = useState("");
+    const [selectedCriteria, setSelectedCriteria] = useState([]);
     const [policySection, setPolicySection] = useState("");
+    const onClick = (e) => {
+      console.log(e)
+    }
     useEffect(() => {
       scrapeCriteriaData().then(res => {
-        const policySections = createCriteria(res.html.innerHTML).map((section, index) => {
-          const item = <span dangerouslySetInnerHTML={{__html:section.title}}></span>; 
-          return <MenuItem value={section.policy} key={index}> {item} </MenuItem>
+        const policySections = createCriteria(res.html.innerHTML, onClick).map((section, index) => {
+          const item = <span dangerouslySetInnerHTML={{__html:section.title}}></span>;
+          console.log(section.policy)
+          const value = Object.keys(section.policy).map(key => {
+            const element = section.policy[key];
+            return section.policy[key].innerHTML
+          })
+          return <MenuItem value={value} key={index}> {item} </MenuItem>
         });
         
         setMenuItems(policySections)
