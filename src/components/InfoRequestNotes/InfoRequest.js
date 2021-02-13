@@ -5,7 +5,8 @@ import { setInfoRequestData } from '../../redux/actions/notes';
 import { connect } from 'react-redux';
 
 export function InfoRequest(props) {
-  const {values, dispatch, notes} = props;
+  const { values, dispatch, notes } = props;
+  const { relatedInfo } = values;
   const { policyString, code, pend, route, related, } = notes;
 
   React.useEffect(() => {
@@ -14,7 +15,7 @@ export function InfoRequest(props) {
 
   return (
     <Note title="Info Request Note">
-      REQ-{values.req}: Additional Info Requested
+      REQ-{values.req}: Additional Info Requested {relatedInfo === "related" ? `on REQ-${values.initialReq}` : null}
       <br />Suspended codes: {code}
       <br />Suspension: {pend}
       <br />Medical Policy/Criteria: {policyString}

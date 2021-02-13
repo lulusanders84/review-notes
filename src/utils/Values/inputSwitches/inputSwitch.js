@@ -14,6 +14,7 @@ import { rationale } from './rationale';
 import { reviewed } from './reviewed';
 import { serviceType } from './serviceType';
 import { special } from './special';
+import { relatedInfo } from './relatedInfo';
 
 export const inputSwitch = {
   "allMet": allMet,
@@ -29,6 +30,7 @@ export const inputSwitch = {
   "pend": pend,
   "policy": policy,
   "rationale": rationale,
+  "relatedInfo": relatedInfo,
   "reviewed": reviewed,
   "serviceType": serviceType,
   "special": special
