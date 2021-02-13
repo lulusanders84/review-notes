@@ -6,6 +6,7 @@ import { Grid } from '@material-ui/core';
 import * as inputUtils from '../../utils/Inputs';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../redux/actions';
+import ListEditor from '../ListEditor/ListEditor';
 
 const savePair = inputUtils.savePair;
 
@@ -68,28 +69,32 @@ function CodeAndService(props) {
     }
   }
   return (
-    <div className={classes.container}>
-      <Grid container row="true" className={classes.card}>       
-          <div className={classes.inputs}>
-            <TextInput id="code" placeholder="" label="Suspended Codes" />
-            <TextInput 
-              id="service" 
-              placeholder="" 
-              label="Service" 
-              disabled={linked} 
-              helperText={helperText} />            
-          </div>
-          <LinkButton 
-            tooltipTitle={tooltipTitle} 
-            linkColor={linkColor} 
-            linkDisabled={linkDisabled} 
-            onLinkClick={onLinkClick} 
-            linked={linked} 
-          />       
-      </Grid>
-      <div className={classes.linkLine} style={{borderColor: linkLineColor}} />
-      <div className={classes.linkLineCover} style={{width: linkLineCoverWidth}} />
+    <div>
+      <div className={classes.container}>
+        <Grid container row="true" className={classes.card}>       
+            <div className={classes.inputs}>
+              <TextInput id="code" placeholder="" label="Suspended Codes" />
+              <TextInput 
+                id="service" 
+                placeholder="" 
+                label="Service" 
+                disabled={linked} 
+                helperText={helperText} />            
+            </div>
+            <LinkButton 
+              tooltipTitle={tooltipTitle} 
+              linkColor={linkColor} 
+              linkDisabled={linkDisabled} 
+              onLinkClick={onLinkClick} 
+              linked={linked} 
+            /> 
+        </Grid>
+        <div className={classes.linkLine} style={{borderColor: linkLineColor}} />
+        <div className={classes.linkLineCover} style={{width: linkLineCoverWidth}} />     
+      </div>
+      <ListEditor type="code/service"/>      
     </div>
+
     
   )
 }
