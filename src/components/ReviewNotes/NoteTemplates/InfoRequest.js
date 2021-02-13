@@ -44,7 +44,12 @@ function InfoRequest(props) {
         : null
       }                      
       <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
-      <PendInput updateValue={props.handleInputs} />  
+      <PendInput updateValue={props.handleInputs} />
+      <RadioInput id="relatedInfo" options={["new", "related"]} label="Request Type:" updateValue={props.handleInputs} />
+      {props.values["relatedInfo"] === "related"
+        ? <TextInput id="initialReq" placeholder="Enter number" label="Initial REQ-" updateValue={props.handleInputs} />
+        : null
+      }
       <TextInput id="req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs}  />
       <TextInput id="dos" placeholder="" label="Date of service" updateValue={props.handleInputs}  />              
       <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
