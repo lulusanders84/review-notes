@@ -57,7 +57,9 @@ export const initialValues = {
     doseUnit: "mg",
     exCircum: "No specific medical policy applies, service appears medically necessary.",
     "clinical-rationale": "",
-    linked: false
+    linked: false,
+    relatedInfo: "new",
+    initialReq: ""
 }
 
 

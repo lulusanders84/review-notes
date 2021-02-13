@@ -15,6 +15,7 @@ import { handleInputs } from '../../../redux/actions';
 import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
 import ClaimInfoInputs from '../../Inputs/ClaimInfoInputs';
+import RadioInput from '../../Inputs/RadioInput';
 
 function InfoRequest(props) {
   const { classes, dispatch } = props;
@@ -33,7 +34,12 @@ function InfoRequest(props) {
         ?<TextInput id="sccf" placeholder="" label="SCCF:"  />
         : null
       }                      
-      <PendInput  />  
+      <PendInput  />
+      <RadioInput id="relatedInfo" options={["new", "related"]} label="Request Type:" />
+      {props.values["relatedInfo"] === "related"
+        ? <TextInput id="initialReq" placeholder="Enter number" label="Initial REQ-" />
+        : null
+      }
       <TextInput id="req" placeholder="Enter number" label="REQ-"   />
       <TextInput id="dos" placeholder="" label="Date of service"   />              
       <CodeAndService  />
