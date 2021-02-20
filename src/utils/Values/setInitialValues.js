@@ -59,7 +59,9 @@ export const initialValues = {
     "clinical-rationale": "",
     linked: false,
     relatedInfo: "new",
-    initialReq: ""
+    initialReq: "",
+    initialSccf: ""
+
 }
 
 

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 export function InfoRequest(props) {
   const { values, dispatch, notes } = props;
-  const { relatedInfo } = values;
+  const { relatedInfo, initialSccf, claimType } = values;
   const { policyString, code, pend, route, related, } = notes;
 
   React.useEffect(() => {
@@ -22,6 +22,12 @@ export function InfoRequest(props) {
       <br />PA research: No PA found, no history of info requests in UM
       <br />Related UM requests: {related}
       <br />Route: {route}
+      {relatedInfo === "related" && claimType === "home" 
+        ? <div>
+            Original info request sent on SCCF: {initialSccf}
+          </div>
+        : null
+      }
       <Info visible />
     </Note>
   )

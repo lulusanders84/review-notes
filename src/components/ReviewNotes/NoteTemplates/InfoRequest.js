@@ -37,7 +37,13 @@ function InfoRequest(props) {
       <PendInput  />
       <RadioInput id="relatedInfo" options={["new", "related"]} label="Request Type:" />
       {props.values["relatedInfo"] === "related"
-        ? <TextInput id="initialReq" placeholder="Enter number" label="Initial REQ-" />
+        ? <div>
+            <TextInput id="initialReq" placeholder="Enter number" label="Initial REQ-" />
+            {props.values.claimType === "home" 
+              ? <TextInput id="initialSccf" placeholder="Enter number" label="Initial SCCF" />
+              : null 
+            }
+          </div>
         : null
       }
       <TextInput id="req" placeholder="Enter number" label="REQ-"   />
