@@ -5,8 +5,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import { handleInputChange } from '../../utils/Inputs';
+import { connect } from 'react-redux';
 
- export default function MyCheckBox(props) {
+ export function MyCheckBox(props) {
   const [value] = React.useState('female');
 
   return (
@@ -25,3 +26,9 @@ import { handleInputChange } from '../../utils/Inputs';
     </Grid>
   );
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(MyCheckBox)

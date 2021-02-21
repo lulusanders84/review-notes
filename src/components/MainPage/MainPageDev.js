@@ -4,6 +4,7 @@ import AddClaimButton from '../ClaimCount/AddClaimButton';
 import { setDateTimeOfLastScrape } from '../../utils/setDateTimeOfLastScrape';
 import setUpdatingText from './setUpdatingText';
 import setDisplayComponent from './setDisplayComponent';
+import Checkbox from '../Inputs/Checkbox';
 
 function MainPageDev(props) {
   const [tabValue, setTabValue] = React.useState(0);
@@ -18,7 +19,8 @@ function MainPageDev(props) {
       <div >
         {setDisplayComponent(tabValue)}
       </div>
-      <AddClaimButton /> 
+      <Checkbox id="moveToDecision"  label="Save info as related claim" disabled={false} {...props} />
+      <AddClaimButton />
     </div>
     );
   }

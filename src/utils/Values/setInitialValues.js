@@ -45,6 +45,7 @@ export const initialValues = {
     lob: setLob,
     allMet: false,
     employee: false,
+    moveToDecision: false,
     denialType: "entire claim",
     summary: "",
     related: "N/A",

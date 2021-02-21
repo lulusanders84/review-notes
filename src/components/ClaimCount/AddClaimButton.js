@@ -5,6 +5,7 @@ import * as claimCountutils from '../../utils/ClaimCount';
 import { updateClaimLog } from '../../redux/actions';
 import { connect } from 'react-redux';
 import { handleInputs } from '../../redux/actions';
+import { populateReviewedValues } from '../../utils/Values/populateReviewValues';
 
 const { formatClaim } = claimCountutils;
 const useStyles = makeStyles({
@@ -17,6 +18,9 @@ function AddClaimButton(props) {
   const {values} = props;
   const [label, setLabel] = React.useState("Add Claim to Log");
   const handleClick = () => {
+    if(values.moveToDecision) {
+      populateReviewedValues(values, props.dispatch)
+    }
     const newClaim = formatClaim(values);
     props.dispatch(updateClaimLog(newClaim));
     setLabel("Added");
