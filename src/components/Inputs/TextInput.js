@@ -4,11 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import {handleInputChange, setProps} from '../../utils/Inputs/';
 import { textInputPropValues } from '../../data/inputPropValues';
-// import { formatCodesToString } from '../../utils/formatCodes';
+import { formatCodesToString } from '../../utils/formatCodes';
 
 function TextInput(props) {
   const { id, values, shrink } = props;
   const inputProps = setProps(props, textInputPropValues)
+  const value = id === "code" ? formatCodesToString(values[id]) : values[id];
 
   return (
     <Grid item xs={12}>
@@ -17,7 +18,7 @@ function TextInput(props) {
         fullWidth={true}
         margin="dense"
         onChange={e => {handleInputChange(props, e)}}
-        value={values[id]}
+        value={value}
         InputLabelProps={{shrink: shrink}}
       />
     </Grid>

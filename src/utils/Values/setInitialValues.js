@@ -9,7 +9,7 @@ export const initialValues = {
     req: "",
     reviewed: "no",
     pend: [],
-    code: "",
+    code: [],
     age: "",
     dos: "",
     service: "",

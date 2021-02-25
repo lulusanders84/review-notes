@@ -3,6 +3,7 @@ import * as utils from '../../utils/Notes';
 import {rejectCodes} from '../../data/rejectCodes';
 import { setDenialMessage } from '../Notes';
 import { getTwoWeeksFromNow } from '../../utils';
+import { formatCodesToString } from '../formatCodes';
 
 export const getClaimNoteData = (values) => {
   const data =  {
@@ -36,7 +37,7 @@ const setFaxAndDate =() => {
   )   
 }
 const setDenialType = (values) => {
-  return values.denialType === "entire claim" ? "entire claim" : values.code;
+  return values.denialType === "entire claim" ? "entire claim" : formatCodesToString(values.code);
 }
 const setCodeType = (values) => {
   return `${utils.capWord(values.claimType)} ${values.proPar}`;
