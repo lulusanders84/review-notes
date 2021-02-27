@@ -14,7 +14,6 @@ export class Policies {
   constructor(lob) {
     this.lob = lob;
     const version = lob === "fep" ? fepVersion : bcbsmnVersion
-    console.log(version);
     updatePolicyVersion(lob, version)
     const policies = lob === "fep"
       ? getStorage("fepPolicies") === undefined
@@ -46,7 +45,6 @@ export class Policies {
     return policiesArr;
   }
   convertPoliciesToObj = (policyArr) => {
-    console.log(policyArr)
     const policiesObj = {};
     policyArr.forEach(policy => {
       policiesObj[policy["Policy #"].trim()] = policy;
