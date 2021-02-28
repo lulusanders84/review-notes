@@ -3,6 +3,7 @@ import { getStorage } from "../getStorage";
 const setLob = getStorage("lob", "commercial");
 const setName = getStorage("name", "");
 export const initialValues = {
+    covidRelated: "No",
     c3xPend: false,
     c3x: "No",
     name: setName || "",

@@ -53,6 +53,7 @@ function General(props) {
       <Fields.Diagnosis />
       <Fields.Provider />
       <Fields.Par />
+      <Fields.covidRelated values={props.values} />
       <Fields.Summary />
       <DeterInputs  addOptions={["send to medical director"]}  />
       {props.values.deter === "approve" && props.values.allMet === false

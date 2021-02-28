@@ -13,6 +13,7 @@ export const getClaimNoteData = (values) => {
     pricing: setPricing(values),
     ocwaNote: setOcwaNote(values),
     modifier22: setModifier22(values),
+    CZB: setCZB(values),
     denialMessage: setDenialMessage(values),
     claimNoteAddendum: setClaimAddendum(values)
     
@@ -21,6 +22,14 @@ export const getClaimNoteData = (values) => {
   data.instructions = setInstructions(values, data);
   data.remainder = setRemainder(values, data);
   return data;
+}
+
+const setCZB = (values) => {
+  return values.pend.some(element => element.value === "CZB")
+    ? values.covidRelated === "Yes" 
+      ? "(care related to COVID-19 treatment)"
+      : "(care not related to COVID-19 treatment)"
+    : ""
 }
 
 const setClaimAddendum = (values) => {
@@ -56,11 +65,11 @@ const setOcwaNote = (values) => {
   return values.claimSystem === "OCWA" ? "Remove E1057/E1058 from claim.": "";
 }
 const setInstructions = (values, data) => {
-  const { pend, pricing, denialType, rejectCode, denialMessage } = data;
+  const { pend, pricing, denialType, rejectCode, denialMessage, CZB } = data;
   return values.pend && values.pend.some(pend => {return pend.value === "R5027"})
     ? `Ignore ${pend},`
     : values.deter === "approve" 
-      ? `Ignore ${pend}${pricing}`
+      ? `Ignore ${pend}${pricing} ${CZB}`
       : `Deny ${denialType} ${denialMessage} (${rejectCode})`;
 }
 const setModifier22 = (values) => {
