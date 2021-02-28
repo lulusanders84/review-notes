@@ -15,11 +15,15 @@ import { reviewed } from './reviewed';
 import { serviceType } from './serviceType';
 import { special } from './special';
 import { relatedInfo } from './relatedInfo';
+import { shiftDays } from './shiftDays';
+import { shiftHours } from './shiftHours' 
+import { daysOff } from './daysOff';
 
 export const inputSwitch = {
   "allMet": allMet,
   "claimType": claimType,
   "code": code,
+  "daysOff": daysOff,
   "deter": deter,
   "lob": lob,
   "name": name,
@@ -33,5 +37,7 @@ export const inputSwitch = {
   "relatedInfo": relatedInfo,
   "reviewed": reviewed,
   "serviceType": serviceType,
+  "shiftDays": shiftDays,
+  "shiftHours": shiftHours,
   "special": special
 };

@@ -2,8 +2,10 @@ const switches = {
   "allMet": ["exCircum"],
   "claimType": ["noPricingRationale"],
   "code": ["service"],
+  "daysOff": [],
   "deter": ["exCircum", "allMet", "code", "rationale", "specficType"],
   "lob": ["claimType"],
+  "name": [],
   "paDiagnosis": ["diagnosis"],
   "paDeter": ["deter", "disableAllMet"],
   "paMatch": ["deter", "disableAllMet"],
@@ -12,5 +14,8 @@ const switches = {
   "rationale": ["exCircum"],
   "relatedInfo": ["rationale"],
   "serviceType": ["drugReview", "specificType", "noPricingRationale"],
-  "special": ["claimSystem"]
+  "special": ["claimSystem"],
+  "shiftDays": [],
+  "shiftHours": [],
+
 }

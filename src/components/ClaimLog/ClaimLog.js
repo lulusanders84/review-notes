@@ -44,7 +44,7 @@ function ClaimLog(props) {
     : false;
   return (
     <div className={classes.root}>
-      <Grid container row alignContent="flex-end" alignItems="center" justify="space-evenly" style={{marginTop: "10px"}}>
+      <Grid container row="true" alignContent="flex-end" alignItems="center" justify="space-evenly" style={{marginTop: "10px"}}>
         <DailyClaimTotal dailyClaimsTotal={props.dailyClaimsTotal} />
         <DailyClaimAvg average={props.average} />
       </Grid>

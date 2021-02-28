@@ -1,19 +1,16 @@
-import { suggestions } from "../AutoComplete";
-import { getStorage } from "../getStorage";
 
-const setLob = getStorage("lob", "commercial");
-const setName = getStorage("name", "");
-const setShiftDays = getStorage("shiftDays", "5")
-const setShiftHours = getStorage("shiftHours", "8")
+import stored from "./setStoredValues";
+
+const { lob, name, daysOff, shiftDays, shiftHours } = stored;
 
 export const initialValues = {
-    daysOff: suggestions(["Saturday", "Sunday"]),
-    shiftDays: setShiftDays,
-    shiftHours: setShiftHours,
+    daysOff,
+    shiftDays,
+    shiftHours,
     covidRelated: "No",
     c3xPend: false,
     c3x: "No",
-    name: setName || "",
+    name,
     req: "",
     reviewed: "no",
     pend: [],
@@ -50,7 +47,7 @@ export const initialValues = {
     "pa-match": "yes",
     "pa-rationale": "",
     rationale: "",
-    lob: setLob,
+    lob,
     allMet: false,
     employee: false,
     moveToDecision: false,
@@ -70,7 +67,6 @@ export const initialValues = {
     relatedInfo: "new",
     initialReq: "",
     initialSccf: ""
-
 }
 
 
