@@ -50,7 +50,7 @@ const ClaimSettings = (props) => {
       </Typography>
       <TextField
         fullWidth
-        label="Claims/Day Goal"
+        label="Claims/Hour Goal"
         type="number"
         value={props.claimsGoal}
         onChange={e => {handleGoalChange(e)}} 
