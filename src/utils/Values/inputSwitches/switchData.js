@@ -15,7 +15,6 @@ const switches = {
   "relatedInfo": ["rationale"],
   "serviceType": ["drugReview", "specificType", "noPricingRationale"],
   "special": ["claimSystem"],
-  "shiftDays": [],
   "shiftHours": [],
 
 }

@@ -10,7 +10,6 @@ let stored = {};
 const storedValues = {
   "lob": "commercial", 
   "name": "", 
-  "shiftDays": "5", 
   "shiftHours": "8", 
   "daysOff": suggestions(["Saturday", "Sunday"])
 };

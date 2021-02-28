@@ -55,7 +55,6 @@ const ClaimSettings = (props) => {
         value={props.claimsGoal}
         onChange={e => {handleGoalChange(e)}} 
       />
-      <RadioInput id="shiftDays" options={["5", "4"]} label="Shifts per week:" />
       <RadioInput id="shiftHours" options={["8", "10"]} label="Hours per shift:" />
       <ReactSelect id="daysOff" suggestions={props.daysOffOptions} label="Usual days off:" />
       <Typography

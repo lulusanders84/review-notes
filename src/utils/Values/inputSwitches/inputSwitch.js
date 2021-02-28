@@ -15,7 +15,6 @@ import { reviewed } from './reviewed';
 import { serviceType } from './serviceType';
 import { special } from './special';
 import { relatedInfo } from './relatedInfo';
-import { shiftDays } from './shiftDays';
 import { shiftHours } from './shiftHours' 
 import { daysOff } from './daysOff';
 
@@ -27,17 +26,17 @@ export const inputSwitch = {
   deter,
   lob,
   name,
-  paDiagnosis: paDiagnosis,
-  paDeter: paDeter,
-  "paMatch": paMatch,
-  "paProvider": paProvider,
+  paDiagnosis,
+  paDeter,
+  paMatch,
+  paProvider,
   pend,
   policy,
   rationale,
   relatedInfo,
   reviewed,
   serviceType,
-  shiftDays,
+
   shiftHours,
   special
 };
