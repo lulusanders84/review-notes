@@ -46,15 +46,28 @@ export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
   dispatch(setDailyTarget(dailyTarget));
 }
 
-export const updateWorkdays = (month, day) => (dispatch, getState) => {
-  day = new Date(day).toISOString();
-  const year = new Date(day).getFullYear();
-  const workdays = new Workdays();
-  workdays.updateWorkDays(year, month, day);
+const updateWorkdays = (workdays, year) => (dispatch, getState) => {
+  year = year === undefined
+    ? new Date(Date.now()).getFullYear()
+    : year;
   const { claimLog, claimsGoal } = getState().claims;
   const dailyTarget = new DailyTarget(claimLog, claimsGoal, workdays.get(year)).get();
   dispatch(setWorkdays(workdays.get(year)));
   dispatch(setDailyTarget(dailyTarget));
+}
+
+export const addOrRemoveWorkday = (month, day) => dispatch => {
+  day = new Date(day).toISOString();
+  const year = new Date(day).getFullYear();
+  const workdays = new Workdays();
+  workdays.updateWorkDays(year, month, day);
+  dispatch(updateWorkdays(workdays, year));
+}
+
+export const resetWorkdays = () => dispatch => {
+  window.localStorage.removeItem("workdays");
+  const workdays = new Workdays();
+  dispatch(updateWorkdays(workdays));
 }
 
 export const updateClaimsPerDayAverage = () => (dispatch, getState) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, TextField,  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux';
-import { updateClaimsGoal, updateWorkdays } from '../../redux/actions/claims';
+import { updateClaimsGoal, addOrRemoveWorkday } from '../../redux/actions/claims';
 import InfiniteCalendar, {
   Calendar,
   defaultMultipleDateInterpolation,
@@ -31,12 +31,13 @@ const ClaimSettings = (props) => {
   React.useEffect(() => {
     setWorkdays(initialWorkdays);
   }, [initialWorkdays] )
+  
   const handleGoalChange = (event) => {
     const claimsGoal = event.target.value;
     props.dispatch(updateClaimsGoal(claimsGoal))
   }
   const handleCalendarSelect = (event) => {
-    props.dispatch(updateWorkdays(props.month, event))
+    props.dispatch(addOrRemoveWorkday(props.month, event))
   }
   return (
     <div className={classes.paper}>

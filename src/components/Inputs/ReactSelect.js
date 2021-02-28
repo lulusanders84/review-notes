@@ -310,7 +310,7 @@ function ReactSelect(props) {
   }, [props.suggestions])
   function handleChangeMulti(value) {
     const newValue = {name: props.id, value,}
-    props.dispatch(handleInputs(newValue));
+    props.dispatch(handleInputs(newValue, props.dispatch));
     if(value) {
       value.forEach(value => {
         if(value.__isNew__) { 
