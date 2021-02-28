@@ -9,6 +9,8 @@ import InfiniteCalendar, {
   withMultipleDates,
 } from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css';
+import RadioInput from '../Inputs/RadioInput';
+import ReactSelect from '../Inputs/ReactSelect';
 
 const MultipleDatesCalendar = withMultipleDates(Calendar);
 
@@ -52,6 +54,9 @@ const ClaimSettings = (props) => {
         value={props.claimsGoal}
         onChange={e => {handleGoalChange(e)}} 
       />
+      <RadioInput id="shiftDays" options={["5", "4"]} label="Shifts per week:" />
+      <RadioInput id="shiftHours" options={["8", "10"]} label="Hours per shift:" />
+      <ReactSelect id="daysOff" suggestions={props.daysOffOptions} label="Usual days off:" />
       <Typography
         className={classes.input}
         variant="body1"
@@ -67,6 +72,7 @@ const ClaimSettings = (props) => {
         min={new Date(props.year, props.month)}
         max={new Date(props.year, props.month)}
       />
+
     </div>
   )
 }
@@ -76,6 +82,7 @@ const mapStateToProps = (state) => ({
   claimLog: state.claims.claimLog,
   workdays: state.claims.workdays,
   month: state.claims.month,
-  year: state.claims.year
+  year: state.claims.year,
+  daysOffOptions: state.suggestions.daysOffOptions
 });
 export default connect(mapStateToProps)(ClaimSettings);

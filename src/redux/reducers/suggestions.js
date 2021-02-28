@@ -1,8 +1,10 @@
 
-import { setNetworkSuggestions, policySuggestions} from "../../utils/AutoComplete";
+import { daysOfTheWeek } from "../../data/daysOfTheWeek";
+import { setNetworkSuggestions, policySuggestions, suggestions} from "../../utils/AutoComplete";
 
 const initialState = {
   policy: policySuggestions(),
+  daysOffOptions: suggestions(daysOfTheWeek),
   options: [],
   networkSuggestions: setNetworkSuggestions()
 }

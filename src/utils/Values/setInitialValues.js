@@ -1,8 +1,15 @@
+import { suggestions } from "../AutoComplete";
 import { getStorage } from "../getStorage";
 
 const setLob = getStorage("lob", "commercial");
 const setName = getStorage("name", "");
+const setShiftDays = getStorage("shiftDays", "5")
+const setShiftHours = getStorage("shiftHours", "8")
+
 export const initialValues = {
+    daysOff: suggestions(["Saturday", "Sunday"]),
+    shiftDays: setShiftDays,
+    shiftHours: setShiftHours,
     covidRelated: "No",
     c3xPend: false,
     c3x: "No",
