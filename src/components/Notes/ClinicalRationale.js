@@ -8,7 +8,7 @@ export function ClinicalRationale(props) {
     return (
         <NoteContainer visible={props.visible}>
             <Note title="Clinical Rationale">
-                {props.values["clinical-rationale"]}
+                {props.values["clinicalRationale"]}
             </Note>  
         </NoteContainer>    
     )

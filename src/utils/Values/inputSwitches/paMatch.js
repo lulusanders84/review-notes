@@ -1,6 +1,6 @@
 export const paMatch = (value, values) => {
   return {
-    deter: values["pa-deter"] === "approved" 
+    deter: values.paDeter === "approved" 
       ? "approve" 
       : "deny",
     disableAllMet: value.value === "yes" 

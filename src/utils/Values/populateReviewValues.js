@@ -4,14 +4,14 @@ export const populateReviewedValues = (values, dispatch) => {
   const { req, dos, diagnosis, provider } = values;
   const decisionInputs = { 
   "reviewed": "yes",
-  "pa-type": "related claim",
-  "pa-req": req,
-  "pa-dos": dos,
-  "pa-diagnosis": diagnosis,
-  "pa-provider": provider,
-  "pa-deter": "approved",
-  "pa-match": "yes",
-  "pa-rationale": "",
+  "paType": "related claim",
+  "paReq": req,
+  "paDos": dos,
+  paDiagnosis: diagnosis,
+  "paProvider": provider,
+  paDeter: "approved",
+  "paMatch": "yes",
+  "paRationale": "",
   }
   Object.keys(decisionInputs).forEach(key => {
     const value = { 

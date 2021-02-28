@@ -26,7 +26,7 @@ export const getClaimNoteData = (values) => {
 
 const setCZB = (values) => {
   return values.pend.some(element => element.value === "CZB")
-    ? values.covidRelated === "Yes" 
+    ? values.covidRelated === "yes" 
       ? "(care related to COVID-19 treatment)"
       : "(care not related to COVID-19 treatment)"
     : ""

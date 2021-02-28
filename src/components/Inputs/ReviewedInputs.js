@@ -21,24 +21,24 @@ function ReviewedInputs (props) {
   return props.values.reviewed === "yes"
     ? <Card className={classes.card} >
         <Typography component="h3" variant="h6">Prior review details</Typography>
-        <RadioInput id="pa-type" options={["PA", "related claim"]} label="Review type:"  />
-        <Fields.Req id="pa-req" /> 
-        <Fields.Dos id="pa-dos" />
-        <Fields.Diagnosis id="pa-diagnosis" />
-        <Fields.Provider id="pa-provider" />             
-        <RadioInput id="pa-deter" options={["approved", "denied"]} label="Decision:"  />
-        {props.values["pa-deter"] === "denied" 
+        <RadioInput id="paType" options={["PA", "related claim"]} label="Review type:"  />
+        <Fields.Req id="paReq" /> 
+        <Fields.Dos id="paDos" />
+        <Fields.Diagnosis id="paDiagnosis" />
+        <Fields.Provider id="paProvider" />             
+        <RadioInput id="paDeter" options={["approved", "denied"]} label="Decision:"  />
+        {props.values.paDeter === "denied" 
           ? 
           <div>
-            <DeniedInputs  denialId="pa-rationale" />
-            { displayClinicalRationale(props.values["pa-rationale"])
-              ? <TextInput id="clinical-rationale" multiline={true} rows="10" placeholder="" label="Clinical Rationale"  />
+            <DeniedInputs  denialId="paRationale" />
+            { displayClinicalRationale(props.values["paRationale"])
+              ? <TextInput id="clinicalRationale" multiline={true} rows="10" placeholder="" label="Clinical Rationale"  />
               : null
             }
             
           </div>
           : null}
-        <RadioInput id="pa-match" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:"  />
+        <RadioInput id="paMatch" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:"  />
       </Card>
     : null;
 }
