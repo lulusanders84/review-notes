@@ -1,5 +1,6 @@
 import { daysOfTheWeek } from "../../data/daysOfTheWeek";
 import { getStorage } from "../../utils";
+import { initialValues } from "../../utils/Values";
 
 export class Weekdays {
   constructor(month, year) {
@@ -28,7 +29,7 @@ export class Weekdays {
     for(let i=1; i< this.daysInThisMonth + 1; i++) {
       const date = new Date(`${this.month + 1}/${i}/${this.year}`)
       const dayOfWeek = date.getDay();
-      const daysOff = getStorage("daysOff");
+      const daysOff = getStorage("daysOff", initialValues.daysOff);
       const daysOffIndices = [];
       daysOff.forEach(day => {
         const i = daysOfTheWeek.indexOf(day.value);
