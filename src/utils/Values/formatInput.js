@@ -2,14 +2,16 @@ import {
   benefits, 
   misrouteRationale, 
   policy,
-  code } from "./inputFormatting";
+  code,
+  pend } from "./inputFormatting";
 
 const formatSwitch = {
-  "benefits": benefits,
+  benefits,
+  code,
   "fepBenefits": benefits,
-  "misrouteRationale": misrouteRationale,
-  "policy": policy,
-  "code": code
+  misrouteRationale,
+  pend,
+  policy,
 }
 
 export const formatInput = (value) => {
