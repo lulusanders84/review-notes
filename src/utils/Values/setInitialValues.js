@@ -27,6 +27,7 @@ const blankValues = [
 
 const emptyArrayValues = [
     "code",
+    "compCode",
     "pend",
     "policy",
 ];
