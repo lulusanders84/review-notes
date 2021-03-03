@@ -4,7 +4,8 @@ ClaimLog,
 ClaimsTotal,
 ClaimsGoal,
 ClaimsPerDayAverage,
-DailyClaims } from "../../classes/Claims";
+DailyClaims, 
+ClaimsPerDayTarget} from "../../classes/Claims";
 
 export const updateClaimLogDate = (increment) => (dispatch) => {
   const changeToDate = increment > 0
@@ -44,6 +45,11 @@ export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
   goal.setClaimsGoal(claimsGoal);
   dispatch(setClaimsGoal(goal.get()));
   dispatch(setDailyTarget(dailyTarget));
+}
+
+export const updateClaimsPerDayTarget = () => dispatch => {
+  const target = new ClaimsPerDayTarget().get();
+  dispatch(setClaimsPerDayTarget(target))
 }
 
 const updateWorkdays = (workdays, year) => (dispatch, getState) => {
@@ -98,7 +104,11 @@ export const setClaimsPerDayAverage = (average) => ({
   type: SET_CLAIMSPERDAYAVERAGE,
   average,
 });
-
+const SET_CLAIMSPERDAYTARGET = 'SET_CLAIMSPERDAYTARGET';
+export const setClaimsPerDayTarget = (target) => ({
+  type: SET_CLAIMSPERDAYTARGET,
+  target,
+});
 const SET_CLAIMLOG = 'SET_CLAIMLOG';
 export const setClaimLog = (claimLog) => ({
   type: SET_CLAIMLOG,

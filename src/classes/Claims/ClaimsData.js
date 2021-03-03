@@ -1,10 +1,12 @@
-import { ClaimLog, 
+import { 
+  ClaimLog, 
   Workdays, 
   ClaimsGoal, 
   DailyTarget, 
   ClaimsTotal, 
-  ClaimsPerDayAverage} from "./";
-
+  ClaimsPerDayAverage,
+  ClaimsPerDayTarget
+} from "./";
 
 export class ClaimsData {
   constructor() {
@@ -16,6 +18,7 @@ export class ClaimsData {
     this.dailyTarget = new DailyTarget(this.claimLog, this.claimsGoal, this.workdays).get();
     this.claimsTotal = new ClaimsTotal(this.claimLog).getToday();
     this.average = new ClaimsPerDayAverage(this.claimLog).get();
+    this.claimsPerDayTarget = new ClaimsPerDayTarget().get();
     
   }
 }

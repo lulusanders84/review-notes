@@ -2,7 +2,7 @@ import {ClaimsData,
 DailyClaims } from '../../classes/Claims';
 
 const data = new ClaimsData();
-const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal, average } = data;
+const { claimLog, claimsGoal, claimsPerDayTarget, workdays, dailyTarget, claimsTotal, average } = data;
 const claims = new DailyClaims(claimLog, Date.now());
 const dailyClaims = claims.get();
 const dailyClaimsTotal = claims.getTotal();
@@ -10,6 +10,7 @@ const initialState = {
   claimLog,
   claimsTotal,
   claimsGoal,
+  claimsPerDayTarget,
   workdays,
   dailyTarget,
   average,
@@ -42,6 +43,11 @@ const reducer = (state=initialState, action) => {
       return Object.assign({}, state, {
         average,
       });
+      case "SET_CLAIMSPERDAYTARGET":
+        const { target } = action; 
+        return Object.assign({}, state, {
+          claimsPerDayTarget: target,
+        });
     case "SET_CLAIMLOG":
       const { claimLog } = action; 
       return Object.assign({}, state, {
