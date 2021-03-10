@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
+import { Time } from '../../classes/Time';
 import { getStorage } from '../../utils';
 import HourBlock from './HourBlock';
 
 export function DailyProgress(props) {
   const { claimsGoal, total } = props;  
-
+  const [minuteNow, setMinuteNow] = useState(new Time().getMinuteOfNow());
+  const [hourNow, setHourNow] = useState(new Time().getHourOfNow());
+  useEffect(() => {
+    setMinuteNow(new Time().getMinuteOfNow());
+    setHourNow(new Time().getHourOfNow());
+  }, [total]);
   const setBuildHourBlocks = () => {
     const shiftHours = getStorage("shiftHours");
     const blocks = [];
     for(let i = 0; i < shiftHours; i++) {
-      blocks.push(<HourBlock i={i} key={i} claimsGoal={claimsGoal} shiftHours={shiftHours} total={total} />)
+      const hourProps = {
+        i,
+        claimsGoal,
+        shiftHours,
+        total,
+        hourNow,
+        minuteNow,
+      }
+      blocks.push(<HourBlock key={i} {...hourProps} />)
     }
     return blocks;
   }
