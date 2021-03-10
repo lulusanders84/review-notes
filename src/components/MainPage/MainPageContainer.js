@@ -24,6 +24,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    width: "425px"
   },
   page: {
     width: "425px",

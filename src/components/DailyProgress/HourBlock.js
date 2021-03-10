@@ -1,17 +1,26 @@
 import React from 'react';
+import { setStyles } from '../../styles/hourBlockStyles'
+import { createHourBlockProps } from '../../utils/HourBlock/createHourBlockProps';
+import { setStyleParameters } from '../../utils/HourBlock/setStyleParameters';
+import Minutes from './Minutes';
 
 export default function HourBlock(props) {
-  const { claimsGoal, i, shiftHours, total } = props;
-  const border = i < shiftHours - 1
-    ? "1px dashed black"
-    : "";
-  const claimsMarker = (i + 1) * claimsGoal;
-  const color = total < claimsMarker - 2
-    ? {backgroundColor: ""}
-    : total === claimsMarker - 1
-      ? {backgroundImage: "linear-gradient(to right, #00b300, #E5E5E5 75%)"}
-      : {backgroundColor: "#00b300"}
+ 
+  let allProps = {...props, ...createHourBlockProps(props)};
+  allProps = {...allProps, ...setStyleParameters(allProps)};
+  const { hour, hourNow } = allProps;
+  const { hourBlock, label, ...styles } = setStyles(allProps);
+
+  const minutesProps = {
+    hour, 
+    hourNow, 
+    styles,
+  }
+
   return (
-    <div style={{ display: "flex", alignContent: "center", alignItems: "center", justifyContent: "center", flex: "1", borderRight: border, ...color }}>{ i + 7 }</div>
+    <div style={hourBlock}>
+      <Minutes {...minutesProps} />
+      <div className="label" style={label}>{ hour }</div>
+    </div>
   )
 }
