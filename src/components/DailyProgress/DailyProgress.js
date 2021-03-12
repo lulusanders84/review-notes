@@ -6,8 +6,12 @@ import HourBlock from './HourBlock';
 
 export function DailyProgress(props) {
   const { claimsGoal, total } = props;  
-  const [minuteNow, setMinuteNow] = useState(new Time().getMinuteOfNow());
-  const [hourNow, setHourNow] = useState(new Time().getHourOfNow());
+  const initial = {
+    minute: new Time().getMinuteOfNow(),
+    hour: new Time().getHourOfNow()
+  }
+  const [minuteNow, setMinuteNow] = useState(initial.minute);
+  const [hourNow, setHourNow] = useState(initial.hour);
   useEffect(() => {
     setMinuteNow(new Time().getMinuteOfNow());
     setHourNow(new Time().getHourOfNow());

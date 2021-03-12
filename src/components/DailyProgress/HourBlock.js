@@ -10,8 +10,11 @@ export default function HourBlock(props) {
   allProps = {...allProps, ...setStyleParameters(allProps)};
   const { hour, hourNow } = allProps;
   const { hourBlock, label, ...styles } = setStyles(allProps);
+  const { backgroundImage, backgroundColor } = hourBlock;
 
   const minutesProps = {
+    backgroundColor,
+    backgroundImage,
     hour, 
     hourNow, 
     styles,
