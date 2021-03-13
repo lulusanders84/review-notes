@@ -27,18 +27,31 @@ const setRadiusStyle = (props) => {
 }
 
 const setColorStyles = (props) => {
-  const { complete, colorTime, colorShade, total, claimsMarker } = props;
+  const { complete, colorTime, colorShade, total, claimsMarker, claimsGoal } = props;
   const color = {};
   color.backgroundColor = complete
     ? colors.complete
     : colors[colorTime][colorShade];
-  if(total === claimsMarker - 1) {
-    color.backgroundImage = `linear-gradient(to right, #00b300, ${colors[colorTime][colorShade]} 75%)`;
+  if(total > claimsMarker - claimsGoal && total < claimsMarker) {
+    const gradient = setGradientPercent(total, claimsMarker, claimsGoal)
+    color.backgroundImage = `linear-gradient(to right, #00b300, ${colors[colorTime][colorShade]} ${gradient}%)`;
     color.backgroundColor = null;
   }
   return color;
 }
 
+const setGradientPercent = (total, claimsMarker, claimsGoal) => {
+  let count = 0;
+  let segment = 0;
+  let inc = 100 / claimsGoal;
+  const diff = claimsGoal - (claimsMarker - total)
+  const spacer = inc / 2;
+  while(count < diff) {
+    segment += inc;
+    count += 1;
+  }
+  return segment + spacer;
+}
 const setFontStyle = (props) => {
   const { complete, colorTime } = props;
   const font = {};

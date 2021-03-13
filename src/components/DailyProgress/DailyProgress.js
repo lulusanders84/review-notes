@@ -7,14 +7,14 @@ import HourBlock from './HourBlock';
 export function DailyProgress(props) {
   const { claimsGoal, total } = props;  
   const initial = {
-    minute: new Time().getMinuteOfNow(),
-    hour: new Time().getHourOfNow()
+    minute: 43,
+    hour: 8
   }
   const [minuteNow, setMinuteNow] = useState(initial.minute);
   const [hourNow, setHourNow] = useState(initial.hour);
   useEffect(() => {
-    setMinuteNow(new Time().getMinuteOfNow());
-    setHourNow(new Time().getHourOfNow());
+    setMinuteNow(43);
+    setHourNow(8);
   }, [total]);
   const setBuildHourBlocks = () => {
     const shiftHours = getStorage("shiftHours");
