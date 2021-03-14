@@ -5,7 +5,7 @@ import { setStyleParameters } from '../../utils/HourBlock/setStyleParameters';
 import Minutes from './Minutes';
 
 export default function HourBlock(props) {
- 
+  
   let allProps = {...props, ...createHourBlockProps(props)};
   allProps = {...allProps, ...setStyleParameters(allProps)};
   const { hour, hourNow } = allProps;

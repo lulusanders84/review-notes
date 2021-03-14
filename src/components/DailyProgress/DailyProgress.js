@@ -1,50 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux';
-import { Time } from '../../classes/Time';
-import { getStorage } from '../../utils';
-import HourBlock from './HourBlock';
+import React from 'react'
+import HourBlocks from './HourBlocks';
 
-export function DailyProgress(props) {
-  const { claimsGoal, total } = props;  
-  const initial = {
-    minute: 43,
-    hour: 8
-  }
-  const [minuteNow, setMinuteNow] = useState(initial.minute);
-  const [hourNow, setHourNow] = useState(initial.hour);
-  useEffect(() => {
-    setMinuteNow(43);
-    setHourNow(8);
-  }, [total]);
-  const setBuildHourBlocks = () => {
-    const shiftHours = getStorage("shiftHours");
-    const blocks = [];
-    for(let i = 0; i < shiftHours; i++) {
-      const hourProps = {
-        i,
-        claimsGoal,
-        shiftHours,
-        total,
-        hourNow,
-        minuteNow,
-      }
-      blocks.push(<HourBlock key={i} {...hourProps} />)
-    }
-    return blocks;
-  }
+export default function DailyProgress() {
+
     return (
       <div style={{marginTop: "20px", width: "100%", height: "50px"}}>
-        <div style={{display: "flex", width: "100%", height: "25px", borderRadius: "5px", backgroundColor: "#E5E5E5"}}>
-          {setBuildHourBlocks()}
-        </div>
+        <HourBlocks />
       </div>
     )
 }
-
-const mapStateToProps = (state) => ({
-  total: state.claims.dailyClaimsTotal,
-  target: state.claims.claimsPerDayTarget,
-  claimsGoal: state.claims.claimsGoal
-});
-
-export default connect(mapStateToProps)(DailyProgress)
