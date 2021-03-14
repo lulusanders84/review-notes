@@ -1,14 +1,20 @@
 export class Time {
-  getNowDate() {
-    return new Date(Date.now())
+  constructor() {
+    this.refreshTime();
   }
-  getMinuteOfNow() {
-    return this.getNowDate().getMinutes();
+  refreshTime() {
+    this.time = new Date(Date.now())
   }
-  getHourOfNow() {
-    return this.getNowDate().getHours();
+  getMinute() {
+    this.refreshTime()
+    return this.time.getMinutes();
   }
-  getSecondOfNow() {
-    return this.getNowDate().getSeconds();
+  getHour() {
+    this.refreshTime()
+    return this.time.getHours();
+  }
+  getSecond() {
+    this.refreshTime();
+    return this.time.getSeconds();
   }
 }

@@ -15,13 +15,13 @@ export const colors = {
   }
 }
 
-const radiusAmount = "10px";
+const radiusAmount = "6px";
 
 const setRadiusStyle = (props) => {
   const { i, shiftHours } = props;
   return i === 0 
     ? {borderTopLeftRadius: radiusAmount, borderBottomLeftRadius: radiusAmount}
-    : i === shiftHours - 1
+    : i === parseInt(shiftHours) 
       ? {borderTopRightRadius: radiusAmount, borderBottomRightRadius: radiusAmount}
       : ""
 }
