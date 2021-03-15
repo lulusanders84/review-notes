@@ -8,7 +8,7 @@ import { fepPolicies } from "../data/fepPolicies";
 import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
 
 const fepVersion = "Oct2020";
-const bcbsmnVersion = "10/19/2020";
+const bcbsmnVersion = "2/22/2021";
 
 export class Policies {
   constructor(lob) {
@@ -26,8 +26,13 @@ export class Policies {
     this.policyArr = policies;
   }
   buildPoliciesFromCodes(codes) {
+    console.log("building policies from codes")
     const policies = {};
     Object.keys(codes).forEach(code => {
+
+      if(code === "C1825") {
+        console.log(codes[code])
+      }
       codes[code].forEach(policy => {
         const policyNo = policy["Policy #"]
         policies[policyNo] = policy;
