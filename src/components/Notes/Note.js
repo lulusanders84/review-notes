@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../styles/noteStyles';
-import { CapWordButtons } from '../CapWordButtons/CapWordButtons';
+import CapWordButtons from '../CapWordButtons/CapWordButtons';
 
 const useStyles = makeStyles(() => (styles));
 
