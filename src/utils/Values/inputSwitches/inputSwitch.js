@@ -1,6 +1,7 @@
 import { allMet } from './allMet'; 
 import { claimType } from './claimType';
 import { code } from './code';
+import { covidRelated } from './covidRelated';
 import { deter } from './deter'; 
 import { lob } from './lob';
 import { name } from './name';
@@ -22,6 +23,7 @@ export const inputSwitch = {
   allMet,
   claimType,
   code,
+  covidRelated,
   daysOff,
   deter,
   lob,

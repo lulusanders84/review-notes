@@ -2,6 +2,7 @@ const switches = {
   "allMet": ["exCircum"],
   "claimType": ["noPricingRationale"],
   "code": ["service"],
+  "covidRelated": ["summary"],
   "daysOff": [],
   "deter": ["exCircum", "allMet", "code", "rationale", "specficType"],
   "lob": ["claimType"],
