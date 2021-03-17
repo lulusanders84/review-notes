@@ -22,7 +22,10 @@ export class Time {
   }
   getDateAndTime() {
     const { m, d, h, min } = this;
-    return `${m + 1}/${d} ${h}:${min}`;
+    const leadingZero = min < 10 
+      ? "0"
+      : ""
+    return `${m + 1}/${d} ${h}:${leadingZero + min}`;
   }
   getUnixTime(date) {
     return new Date(date).getTime();
