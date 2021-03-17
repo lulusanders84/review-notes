@@ -28,10 +28,7 @@ export function DailyClaimAvg(props) {
 }
 
 const mapStateToProps = (state) => ({
-  claimLog: state.claims.claimLog,
-  claimsTotal: state.claims.claimsTotal,
-  dailyTarget: state.claims.dailyTarget,
-  claimsGoal: state.claims.claimsGoal,
+  average: state.claims.average
 });
 
 export default connect(mapStateToProps)(DailyClaimAvg)

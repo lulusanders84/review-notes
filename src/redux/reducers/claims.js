@@ -3,6 +3,7 @@ DailyClaims } from '../../classes/Claims';
 
 const data = new ClaimsData();
 const { claimLog, claimsGoal, claimsPerDayTarget, workdays, dailyTarget, claimsTotal, average } = data;
+console.log(average)
 const claims = new DailyClaims(claimLog, Date.now());
 const dailyClaims = claims.get();
 const dailyClaimsTotal = claims.getTotal();

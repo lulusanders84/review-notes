@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/styles';
 import Back from '@material-ui/icons/KeyboardArrowLeft'
 import Forward from '@material-ui/icons/KeyboardArrowRight'
 import { IconButton, Typography, Button, Grid } from '@material-ui/core';
-import { DailyClaimAvg } from '../DailyClaimAvg/DailyClaimAvg';
-import { DailyClaimTotal } from '../DailyClaimTotal/DailyClaimTotal';
+import DailyClaimAvg from '../DailyClaimAvg/DailyClaimAvg';
+import DailyClaimTotal from '../DailyClaimTotal/DailyClaimTotal';
 import { updateClaimLogDate } from '../../redux/actions/claims';
 import { ClaimLog } from './classes';
 
@@ -44,8 +44,8 @@ function ClaimLogComponent(props) {
   return (
     <div className={classes.root}>
       <Grid container row="true" className={classes.statsContainer}>
-        <DailyClaimTotal dailyClaimsTotal={props.dailyClaimsTotal} />
-        <DailyClaimAvg average={props.average} />
+        <DailyClaimTotal />
+        <DailyClaimAvg />
       </Grid>
       
       <div className={classes.dateBar}>
@@ -80,7 +80,6 @@ const mapStateToProps = (state) => ({
   claimsTotal: state.claims.claimsTotal,
   dailyTarget: state.claims.dailyTarget,
   claimsGoal: state.claims.claimsGoal,
-  average: state.claims.average,
   claimlogDate: state.claims.claimlogDate,
   dailyClaimsTotal: state.claims.dailyClaimsTotal
 });
