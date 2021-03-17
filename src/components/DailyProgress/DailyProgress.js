@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import HourBlocks from './HourBlocks';
+import { styles } from '../../styles/dailyProgressStyles';
 
 export default function DailyProgress() {
-
     return (
-      <div style={{marginTop: "20px", width: "100%", height: "50px"}}>
+      <div style={styles}>
         <HourBlocks />
       </div>
     )
