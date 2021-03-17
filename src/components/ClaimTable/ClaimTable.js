@@ -1,8 +1,8 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, makeStyles} from '@material-ui/core';
 import { connect } from 'react-redux';
-import { formatDateTime} from '../../utils';
 import uuidv4 from 'uuid/v4';
+import { Time } from '../../classes/Time';
 
 const useStyles = makeStyles({
   table: {
@@ -23,16 +23,18 @@ function ClaimTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.dailyClaims.map(claim => (
+            {props.dailyClaims.map(claim => {
+              const dateAndTime = new Time(claim.dateTime).getDateAndTime();
+              return (
               <TableRow key={uuidv4()}>
                 <TableCell component="th" scope="row">
                   REQ-{claim.req}
                 </TableCell>
-                <TableCell align="right">{formatDateTime(claim.dateTime)}</TableCell>
+                <TableCell align="right">{dateAndTime}</TableCell>
                 <TableCell align="right">{claim.serviceType}</TableCell>
                 <TableCell align="right">{claim.lob}</TableCell>
               </TableRow>
-            ))}
+            )})}
           </TableBody>
         </Table>   
   )

@@ -19,7 +19,6 @@ export class AddClaim {
     };
   };
   handleClick(e, dispatch, setLabel) {
-    console.log(this);
     if (this.values.moveToDecision) {
       populateReviewedValues(this.values, dispatch);
     }

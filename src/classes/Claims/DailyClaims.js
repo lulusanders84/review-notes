@@ -1,15 +1,15 @@
-import { formatDate } from "../../utils";
+import { Time } from "../Time";
 
 export class DailyClaims {
   constructor(claimLog, today) {
     this.claims = this.setDailyClaims(claimLog, today);
   }
   setDailyClaims = (claimLog, today) => {
-    today = formatDate(today);
-    today = new Date(today).getTime();
-    const nextDay = today + 86400000;
+    const time = new Time(today);
+    const todaysDate = time.getDateInUnix();
+    const nextDay = todaysDate + 86400000;
     const claims = claimLog.reduce((acc, claim) => {
-      if(claim.dateTime > today && claim.dateTime < nextDay) {
+      if(claim.dateTime > todaysDate && claim.dateTime < nextDay) {
         acc.push(claim)
       }
       return acc;

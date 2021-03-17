@@ -6,10 +6,10 @@ import { makeStyles } from '@material-ui/styles';
 import Back from '@material-ui/icons/KeyboardArrowLeft'
 import Forward from '@material-ui/icons/KeyboardArrowRight'
 import { IconButton, Typography, Button, Grid } from '@material-ui/core';
-import { formatDate } from '../../utils';
 import { DailyClaimAvg } from '../DailyClaimAvg/DailyClaimAvg';
 import { DailyClaimTotal } from '../DailyClaimTotal/DailyClaimTotal';
 import { updateClaimLogDate } from '../../redux/actions/claims';
+import { ClaimLog } from './classes';
 
 const useStyles = makeStyles(theme =>({
   root: { 
@@ -19,6 +19,12 @@ const useStyles = makeStyles(theme =>({
     alignContent: "center",
     alignItems: "center"
   },
+  statsContainer: {
+    alignContent: "flex-end",
+    alignItems: "center", 
+    justifyContent: "space-evenly",
+    marginTop: "10px"
+  },
   dateBar: {
     width: "425px",
     display: "flex",
@@ -27,44 +33,37 @@ const useStyles = makeStyles(theme =>({
     alignItems: "center"
   }
 }))
-function ClaimLog(props) {
+
+function ClaimLogComponent(props) {
+  const lib = new ClaimLog(props);
   const classes = useStyles();
   const [settings, setSettings] = React.useState(false)
-  const handleSettings = () => {
-    setSettings(!settings);
-  }
-  const handleDateChange = (increment) => {
-    props.dispatch(updateClaimLogDate(increment))
-  }
-  const createTime = (time) => {
-    return new Date(formatDate(time)).getTime();
-  }
-  const disabled = createTime(props.claimlogDate) === createTime(Date.now())
-    ? true
-    : false;
+  const disabled = lib.setForwardDisabled();
+  const date = lib.getClaimlogDate();
+
   return (
     <div className={classes.root}>
-      <Grid container row="true" alignContent="flex-end" alignItems="center" justify="space-evenly" style={{marginTop: "10px"}}>
+      <Grid container row="true" className={classes.statsContainer}>
         <DailyClaimTotal dailyClaimsTotal={props.dailyClaimsTotal} />
         <DailyClaimAvg average={props.average} />
       </Grid>
       
       <div className={classes.dateBar}>
-        <IconButton onClick={e => {handleDateChange(-1)}}>
+        <IconButton onClick={e => props.dispatch(updateClaimLogDate(-1))}>
           <Back />
         </IconButton>
         <Typography
           variant="body1"
         >
-          {formatDate(props.claimlogDate)}
+          {date}
         </Typography>
-        <IconButton onClick={e => {handleDateChange(1)}} disabled={disabled}>
+        <IconButton onClick={e => props.dispatch(updateClaimLogDate(1))} disabled={disabled}>
           <Forward />
         </IconButton>
       </div>
       <ClaimTable />
       <Button
-        onClick={handleSettings}
+        onClick={ e => setSettings(!settings)}
       >
       Claim Settings</Button>
       {settings
@@ -86,4 +85,4 @@ const mapStateToProps = (state) => ({
   dailyClaimsTotal: state.claims.dailyClaimsTotal
 });
 
-export default connect(mapStateToProps)(ClaimLog)
+export default connect(mapStateToProps)(ClaimLogComponent)
