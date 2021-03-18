@@ -94,6 +94,12 @@ export const setDailyClaimsTotal = (dailyClaimsTotal) => ({
   dailyClaimsTotal,
 });
 
+const SET_ELAPSED_TIME_RESET = 'SET_ELAPSED_TIME_RESET';
+export const setElapsedTimeReset = (elapsedTimeReset) => ({
+  type: SET_ELAPSED_TIME_RESET,
+  elapsedTimeReset,
+});
+
 const SET_CLAIMLOG_DATE = "SET_CLAIMLOG_DATE";
 export const setClaimlogDate = (increment) => ({
   type: SET_CLAIMLOG_DATE,

@@ -1,5 +1,6 @@
 import { updateClaimLog, handleInputs } from '../../../redux/actions';
 import { populateReviewedValues } from '../../../utils/Values/populateReviewValues';
+import { setElapsedTimeReset } from '../../../redux/actions';
 
 export class AddClaim {
   constructor(values) {
@@ -18,11 +19,12 @@ export class AddClaim {
       peer,
     };
   };
-  handleClick(e, dispatch, setLabel) {
+  handleClick(e, dispatch, setLabel, elapsedTimeReset) {
     if (this.values.moveToDecision) {
       populateReviewedValues(this.values, dispatch);
     }
     const newClaim = this._compileClaim();
+    dispatch(setElapsedTimeReset(!elapsedTimeReset))
     dispatch(updateClaimLog(newClaim));
     dispatch(handleInputs({ name: "req", value: "" }));
     setLabel("Added");
