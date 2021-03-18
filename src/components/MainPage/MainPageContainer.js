@@ -19,7 +19,7 @@ const styles = theme => ({
     paddingLeft: 10,
   },
   paper: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(0),
     justifyContent: "flex-start",
     display: 'flex',
     flexDirection: 'column',

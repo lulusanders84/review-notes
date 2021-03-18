@@ -3,23 +3,25 @@ DailyClaims } from '../../classes/Claims';
 
 const data = new ClaimsData();
 const { claimLog, claimsGoal, claimsPerDayTarget, workdays, dailyTarget, claimsTotal, average } = data;
-console.log(average)
 const claims = new DailyClaims(claimLog, Date.now());
 const dailyClaims = claims.get();
 const dailyClaimsTotal = claims.getTotal();
 const initialState = {
-  claimLog,
-  claimsTotal,
-  claimsGoal,
-  claimsPerDayTarget,
-  workdays,
-  dailyTarget,
   average,
-  month: new Date().getMonth(),
-  year: new Date().getFullYear(),
+  claimsGoal,
+  claimLog,
   claimlogDate: Date.now(),
+  claimsPerDayTarget,  
+  claimsTotal,
   dailyClaimsTotal,
   dailyClaims,
+  dailyTarget,
+  elapsedTimeReset: false, 
+  month: new Date().getMonth(),
+  workdays,
+  year: new Date().getFullYear(),
+  
+  
 
 }
 const reducer = (state=initialState, action) => {
@@ -73,7 +75,12 @@ const reducer = (state=initialState, action) => {
         const { dailyTarget } = action; 
         return Object.assign({}, state, {
           dailyTarget,
-        });    
+        }); 
+        case "SET_ELAPSED_TIME_RESET":
+        const { elapsedTimeReset } = action; 
+        return Object.assign({}, state, {
+          elapsedTimeReset,
+        });      
     default:
       return state;
   }

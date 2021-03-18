@@ -5,7 +5,7 @@ import { setDateTimeOfLastScrape } from '../../utils/setDateTimeOfLastScrape';
 import setUpdatingText from './setUpdatingText';
 import setDisplayComponent from './setDisplayComponent';
 import Checkbox from '../Inputs/Checkbox';
-import DailyProgress from '../DailyProgress/DailyProgress';
+import StatsBar from '../StatsBar/StatsBar';
 
 function MainPageDev(props) {
   const [tabValue, setTabValue] = React.useState(0);
@@ -13,11 +13,11 @@ function MainPageDev(props) {
   
     return (
     <div className={props.paper}>
-      <div>
+      <StatsBar />
+      <div style={{marginTop: "100px"}}>
         {setUpdatingText(props.updating, date, time)}
       </div>
       <Title setTabValue={setTabValue} tabValue={tabValue} />
-      <DailyProgress />  
       <div >
         {setDisplayComponent(tabValue)}
       </div>

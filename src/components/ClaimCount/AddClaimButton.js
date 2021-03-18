@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   }
 })
 function AddClaimButton(props) {
-  const {values, dispatch} = props;
+  const {values, dispatch, elapsedTimeReset} = props;
   const lib = new AddClaim(values);
   const classes = useStyles();
   const [label, setLabel] = React.useState("Add Claim to Log");
@@ -21,7 +21,7 @@ function AddClaimButton(props) {
   return (
     <Button 
       className = {classes.button}
-      onClick={e => {lib.handleClick(e, dispatch, setLabel)}}
+      onClick={e => {lib.handleClick(e, dispatch, setLabel, elapsedTimeReset)}}
       disabled={disabled}
     >
       {label}
@@ -30,6 +30,7 @@ function AddClaimButton(props) {
 }
 
 const mapStateToProps = (state) => ({
-  values: state.values
+  values: state.values,
+  elapsedTimeReset: state.claims.elapsedTimeReset
 });
 export default connect(mapStateToProps)(AddClaimButton)

@@ -2,7 +2,8 @@ import React from 'react';
 import {Typography, Tooltip} from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { connect } from 'react-redux';
-import { theme, useStyles } from '../../styles/claimLogStyles'
+import { theme } from '../../styles/theme';
+import { useStyles } from '../../styles/claimLogStyles'
 
 export function DailyClaimTotal(props) {
   const classes = useStyles();
