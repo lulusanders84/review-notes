@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { theme } from '../../styles/theme';
 import { ElapsedTime } from './classes';
 import { connect } from 'react-redux';
+import { getStorage } from '../../utils';
 
 const useStyles = makeStyles({
   root: {
@@ -37,10 +38,13 @@ const useStyles = makeStyles({
 export function ElapsedTimeComponent(props) {
   const classes = useStyles();
   const { elapsedTimeReset } = props;
-  const [time, setTime] = useState({min: 0, sec: "0" + 0})
+  const savedTime = getStorage("elapsedTime", [{min: 0, sec: 0}]);
+  const { min, sec } = savedTime;
+  const leadingZero = sec < 10 ? "0" : "";
+  const [time, setTime] = useState({min, sec: leadingZero + sec});
 
   useEffect(() => {
-    const lib = new ElapsedTime();
+    const lib = new ElapsedTime(savedTime);
     const { incrementTime, getTime } = lib;    
     const incrementer = setInterval(() => {
       incrementTime();
@@ -49,7 +53,7 @@ export function ElapsedTimeComponent(props) {
     return () => {
       clearInterval(incrementer);
     };
-  }, [elapsedTimeReset])
+  }, [savedTime, elapsedTimeReset])
 
   return (
     <ThemeProvider theme={theme}>
