@@ -24,7 +24,7 @@ export class AddClaim {
       populateReviewedValues(this.values, dispatch);
     }
     const newClaim = this._compileClaim();
-    dispatch(setElapsedTimeReset(!elapsedTimeReset))
+    dispatch(setElapsedTimeReset(true))
     dispatch(updateClaimLog(newClaim));
     dispatch(handleInputs({ name: "req", value: "" }));
     setLabel("Added");
