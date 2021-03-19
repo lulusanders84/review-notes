@@ -37,11 +37,19 @@ const cleanObj = (items) => {
   })
   return items;
 }
+
 const isItemCleaned = (item) => {
   return cleanMethods[typeof item](item);
 }
+
 const cleanStringItem = (item) => {
   return item === ""
+    ? true
+    : false
+}
+
+const cleanNumberItem = (item) => {
+  return item === null
     ? true
     : false
 }
@@ -62,7 +70,8 @@ const cleanByStorageTypes = {
 
 const cleanMethods = {
   "string": cleanStringItem,
-  "object": cleanObjItem
+  "object": cleanObjItem,
+  "number": cleanNumberItem
 }
 
 
