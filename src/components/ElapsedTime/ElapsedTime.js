@@ -28,34 +28,34 @@ export function ElapsedTimeComponent(props) {
     variant: "h4",
     color: "inherit"
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Button onClick={() => {handleTimeButtonClick(setTime)}}>
-      <Card className={classes.root}>
-        <CardContent classes={{root: classes.content}}>
-          <Typography 
-            align="right"
-            {...typographyProps}
-            classes={{root: classes.min}}
-          >
-            {time.min}
-          </Typography>
-          <Typography 
-            align="center"
-            {...typographyProps}
-          >
-            :
-          </Typography>
-          <Typography 
-            align="left"
-            {...typographyProps}
-            classes={{root: classes.sec}}
-          >
-            {time.sec}
-          </Typography>
-        </CardContent>
-      </Card>   
+        <Card className={classes.root}>
+          <CardContent classes={{root: classes.content}}>
+            <Typography 
+              align="right"
+              {...typographyProps}
+              classes={{root: classes.min}}
+            >
+              {time.min}
+            </Typography>
+            <Typography 
+              align="center"
+              {...typographyProps}
+            >
+              :
+            </Typography>
+            <Typography 
+              align="left"
+              {...typographyProps}
+              classes={{root: classes.sec}}
+            >
+              {time.sec}
+            </Typography>
+          </CardContent>
+        </Card>   
       </Button>   
     </ThemeProvider>
   )

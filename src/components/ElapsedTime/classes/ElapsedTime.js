@@ -3,14 +3,16 @@ import { saveToStorage, getStorage } from "../../../utils";
 export class ElapsedTime {
   constructor() {
     const savedTime = getStorage("elapsedTime", [{min: 0, sec: 0}]);
-    Object.assign(this, savedTime);
-    this.secZero = this._getLeadingZero("sec")
-    this._running = false;
-    this.handleTimeButtonClick = this.handleTimeButtonClick.bind(this);
-    this.startTime = this.startTime.bind(this); 
-    this.stopTime = this.stopTime.bind(this);
-    this.resetTime = this.resetTime.bind(this);  
+    Object.assign(this, {
+      ...savedTime,
+      secZero: this._getLeadingZero("sec"),
+      _running: false
+    });
+    ["handleTimeButtonClick", "resetTime", "startTime", "stopTime", ].forEach(func => {
+      this[func] = this[func].bind(this)
+    })
   }
+  
   _getTime() {
     return {
       sec: this._getLeadingZero("sec") + this.sec,
