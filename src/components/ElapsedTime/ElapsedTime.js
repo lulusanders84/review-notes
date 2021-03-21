@@ -1,94 +1,62 @@
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Button, Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import React, { useEffect, useState } from 'react';
 import { theme } from '../../styles/theme';
 import { ElapsedTime } from './classes';
 import { connect } from 'react-redux';
-import { getStorage } from '../../utils';
 import { setElapsedTimeReset } from '../../redux/actions';
+import { styles } from '../../styles/elapsedTimeStyles';
 
-const useStyles = makeStyles({
-  root: {
-    justifyContent: "center",
-    width: "100px",
-    height: "auto",
-    marginRight: "8px",
-    paddingTop: "8px",
-    paddingBottom: "8px"
-
-  },
-  content: {
-    display: "flex",
-    alignContent: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    margin: '0',
-    padding: "0px",
-    "&:last-child": {
-      paddingBottom: "0px"
-    }
-  },
-  min: {
-    minWidth: "25px"
-  },
-  sec: {
-    minWidth: "40px"
-  }
-});
+const useStyles = makeStyles(styles);
 
 export function ElapsedTimeComponent(props) {
   const classes = useStyles();
   const { elapsedTimeReset, dispatch } = props;
-  const savedTime = getStorage("elapsedTime", [{min: 0, sec: 0}]);
-  const { min, sec } = savedTime;
-  const leadingZero = sec < 10 ? "0" : "";
-  const [time, setTime] = useState({min, sec: leadingZero + sec});
+  const { min, sec, secZero, startTime, resetTime, handleTimeButtonClick } = new ElapsedTime();
+  const [time, setTime] = useState({min, sec: secZero + sec});
 
   useEffect(() => {
-    const lib = new ElapsedTime(savedTime);
-    const { incrementTime, getTime, resetTime } = lib;
     if(elapsedTimeReset) {
       resetTime();
       dispatch(setElapsedTimeReset(false))
     }
-    const incrementer = setInterval(() => {
-      incrementTime();
-      setTime(getTime());
-    }, 1000);
-    return () => {
-      clearInterval(incrementer);
-    };
-  }, [dispatch, elapsedTimeReset, savedTime])
+    return startTime(setTime);
+  }, [dispatch, elapsedTimeReset, startTime, resetTime])
 
+  const typographyProps = {
+    component: "span",
+    variant: "h4",
+    color: "inherit"
+  }
+  
   return (
     <ThemeProvider theme={theme}>
+      <Button onClick={() => {handleTimeButtonClick(setTime)}}>
       <Card className={classes.root}>
         <CardContent classes={{root: classes.content}}>
           <Typography 
-              align="right"
-              component="span"
-              variant="h4"
-              color="inherit"
-              classes={{root: classes.min}}>
+            align="right"
+            {...typographyProps}
+            classes={{root: classes.min}}
+          >
             {time.min}
           </Typography>
           <Typography 
-              align="center"
-              component="span"
-              variant="h4"
-              color="inherit">
+            align="center"
+            {...typographyProps}
+          >
             :
           </Typography>
           <Typography 
-              align="left"
-              component="span"
-              variant="h4"
-              color="inherit"
-              classes={{root: classes.sec}}>
+            align="left"
+            {...typographyProps}
+            classes={{root: classes.sec}}
+          >
             {time.sec}
           </Typography>
         </CardContent>
-      </Card>      
+      </Card>   
+      </Button>   
     </ThemeProvider>
   )
 }

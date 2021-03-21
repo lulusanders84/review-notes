@@ -1,34 +1,31 @@
-import { saveToStorage } from "../../../utils";
+import { saveToStorage, getStorage } from "../../../utils";
 
 export class ElapsedTime {
-  constructor(savedTime) {
-    this.sec = savedTime.sec;
-    this.min = savedTime.min;
-    this.getTime = this.getTime.bind(this);
-    this.incrementTime = this.incrementTime.bind(this);  
+  constructor() {
+    const savedTime = getStorage("elapsedTime", [{min: 0, sec: 0}]);
+    Object.assign(this, savedTime);
+    this.secZero = this._getLeadingZero("sec")
+    this._running = false;
+    this.handleTimeButtonClick = this.handleTimeButtonClick.bind(this);
+    this.startTime = this.startTime.bind(this); 
+    this.stopTime = this.stopTime.bind(this);
     this.resetTime = this.resetTime.bind(this);  
   }
-  _increment(counter) {
-    this[counter] += 1;
-  }
-  _reset(counter) {
-    this[counter] = 0;
-  }
-  _save() {
-    saveToStorage("elapsedTime", {sec: this.sec, min: this.min})
-  }
-  getTime() {
+  _getTime() {
     return {
-      sec: this.getLeadingZero("sec") + this.sec,
+      sec: this._getLeadingZero("sec") + this.sec,
       min: this.min
     };
   }
-  getLeadingZero(counter) {
+  _getLeadingZero(counter) {
     return this[counter] < 10
       ? "0"
       : ""
   }
-  incrementTime() {
+  _increment(counter) {
+    this[counter] += 1;
+  }
+  _incrementTime() {
     if (this.sec < 59) {
       this._increment("sec");
     } else {
@@ -37,10 +34,36 @@ export class ElapsedTime {
     }
     this._save();
   }
+  _reset(counter) {
+    this[counter] = 0;
+  }
+  _save() {
+    saveToStorage("elapsedTime", {sec: this.sec, min: this.min})
+  }
+  handleTimeButtonClick(setTime) {
+    if(this._running) {
+      this.stopTime()
+    } else {
+      this.startTime(setTime)
+    }
+  }
   resetTime() {
     this._reset("min");
     this._reset("sec");
     this._save();
+  }  
+  startTime(setTime) {
+    this._running = true;
+    this._incrementerInt = setInterval(() => {
+      this._incrementTime();
+      setTime(this._getTime());
+    }, 1000);
+    return () => {
+      clearInterval(this._incrementerInt);
+    };
+  }  
+  stopTime() {
+    this._running = false;
+    clearInterval(this._incrementerInt)
   }
-
 }
