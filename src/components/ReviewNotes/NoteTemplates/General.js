@@ -35,7 +35,7 @@ function General(props) {
       <Fields.Dos />
       <CodeAndService  />
       <ServiceTypeInput  /> 
-      <Fields.C3XList c3xPend={props.values.c3xPend} />            
+      {/* <Fields.C3XList c3xPend={props.values.c3xPend} />             */}
       {props.values.drugReview  && props.values.lob === "commercial"
         ? <DoseInput  />
         : null }
