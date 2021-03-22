@@ -3,7 +3,6 @@ export const styles = {
     justifyContent: "center",
     width: "100px",
     height: "auto",
-    marginRight: "8px",
     paddingTop: "8px",
     paddingBottom: "8px"
 
