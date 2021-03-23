@@ -1,10 +1,6 @@
 import { suggestions } from "../AutoComplete";
-import { getStorage } from "../getStorage";
+import { saveToStorageIfUndefined, setValueFromStorage } from "../";
 
-const setValueFromStorage = (location, defaultValue, store) => {
-  store[location] = getStorage(location, defaultValue)
-  return store;
-}
 
 let stored = {};
 const storedValues = {
@@ -15,6 +11,7 @@ const storedValues = {
 };
 Object.keys(storedValues).forEach(key => {
   stored = setValueFromStorage(key, storedValues[key], stored)
+  saveToStorageIfUndefined(key, storedValues[key])
 })
 
 export default stored;
