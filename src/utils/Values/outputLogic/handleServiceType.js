@@ -1,7 +1,7 @@
 import { serviceTypes } from '../../../data/serviceTypes';
 
 export const handleService = (value) => {
-  const codeValue = value.value.toUpperCase().split(",")[0];
+  const codeValue = value.value[0].toUpperCase().split(",")[0];
   let type = checkRules(codeValue);
   type = checkCodes(codeValue, type);
   return type ? type : "Medical";

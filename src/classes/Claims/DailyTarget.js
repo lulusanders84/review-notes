@@ -1,3 +1,5 @@
+import { getStorage } from "../../utils";
+
 export class DailyTarget {
   constructor(claimLog, claimGoal, workdays) {
     this.target = this.getDailyTarget(claimLog, claimGoal, workdays)
@@ -8,7 +10,8 @@ export class DailyTarget {
   getDailyTarget = (claimLog, claimGoal, workdays) => {
     const daysData = this.getDaysData(workdays);
     const { daysLeft, firstOfTheMonth, days } = daysData;
-    const totalClaims = claimGoal * days;
+    const shiftHours = getStorage("shiftHours")
+    const totalClaims = claimGoal * days * shiftHours;
     const claimsSoFar = this.calcClaimsSoFar(claimLog, firstOfTheMonth);
     const claimsPerDay = this.calcClaimsPerDay(totalClaims, claimsSoFar, daysLeft);
     return claimsPerDay;

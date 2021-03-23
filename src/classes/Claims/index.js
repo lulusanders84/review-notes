@@ -3,6 +3,7 @@ export { ClaimsData } from './ClaimsData';
 export { ClaimsGoal } from './ClaimsGoal';
 export { ClaimsPerDayAverage } from './ClaimsPerDayAverage';
 export { ClaimsTotal } from './ClaimsTotal';
+export { ClaimsPerDayTarget } from './ClaimsPerDayTarget';
 export { DailyClaims } from './DailyClaims';
 export { DailyTarget } from './DailyTarget';
 export { Workdays } from './Workdays';

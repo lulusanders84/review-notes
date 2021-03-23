@@ -1,5 +1,6 @@
 export {capWord} from './capitalizeWord';
 export {formatToName} from './formatToName';
+export {formatToSentence} from './formatToSentence';
 export {setHistory} from './setHistory';
 export {setCaseSummary} from './setCaseSummary';
 export {setRationale} from './setRationale';

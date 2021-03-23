@@ -1,3 +1,7 @@
+import { daysOfTheWeek } from "../../data/daysOfTheWeek";
+import { getStorage } from "../../utils";
+import { initialValues } from "../../utils/Values";
+
 export class Weekdays {
   constructor(month, year) {
     Object.assign(this, {
@@ -25,9 +29,13 @@ export class Weekdays {
     for(let i=1; i< this.daysInThisMonth + 1; i++) {
       const date = new Date(`${this.month + 1}/${i}/${this.year}`)
       const dayOfWeek = date.getDay();
-      const sun = 0;
-      const sat = 6;
-      if(dayOfWeek !== sun && dayOfWeek !== sat) {
+      const daysOff = getStorage("daysOff", initialValues.daysOff);
+      const daysOffIndices = [];
+      daysOff.forEach(day => {
+        const i = daysOfTheWeek.indexOf(day.value);
+        daysOffIndices.push(i)
+      })
+      if(!daysOffIndices.includes(dayOfWeek)) {
         weekdays.push(date)
       }
     }

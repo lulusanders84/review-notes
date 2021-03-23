@@ -1,5 +1,5 @@
 export const paDeter = (value, values) => {
-  return values["pa-match"] === "yes" 
+  return values["paMatch"] === "yes" 
     ?
     { deter: value.value === "approved" 
       ? "approve" 

@@ -10,7 +10,6 @@ import 'react-quill/dist/quill.snow.css';
 
 export function FullReviewNote(props) {
   const { dispatch, values, notes } = props;
-
   React.useEffect(() => {
     dispatch(setMedClaimReviewData(values))
   }, [dispatch, values])

@@ -20,11 +20,14 @@ const pricingSummary = (values) => {
     const pricingRationale = values.noPricingRationale === "Home claim" 
         ? "Per B2"
         : values.noPricingRationale;
+    const compCode = values.pricing === "PPPWeb"
+        ? ` based on comparable code ${values.compCode}`
+        : "";
     return values.pend && values.pend.some(pend => {return pend.value === "P5194"})
         ? values.deter !== "send to medical director"
             ? values.pricing === "Not required"
                 ? `${pricingRationale}, pricing not required.`
-                : `Per ${values.pricing}${medicareNetwork}, for ${values.code} allow ${values.allowable} based on comparable code ${values.compCode}.`
+                : `Per ${values.pricing}${medicareNetwork}, for ${values.code} allow ${values.allowable}${compCode}.`
             : ""
         : "";
 }

@@ -6,57 +6,52 @@
 
 import React from 'react';
 import { Divider, Button } from '@material-ui/core';
-import ReactSelectSingle from '../../Inputs/ReactSelectSingle';
 import TextInput from '../../Inputs/TextInput';
-import RadioInput from '../../Inputs/RadioInput';
 import PolicyInput from '../../Inputs/PolicyInput';
 import InfoRequestNotes from '../../InfoRequestNotes/InfoRequestNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
-import SimpleSelect from '../../Inputs/SimpleSelect';
 import { saveInfoToPolicy } from '../../../utils/Inputs/savePair';
 import { handleInputs } from '../../../redux/actions';
 import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
-import { getStorage } from '../../../utils';
+import ClaimInfoInputs from '../../Inputs/ClaimInfoInputs';
+import RadioInput from '../../Inputs/RadioInput';
 
 function InfoRequest(props) {
-  const { classes, options } = props;
+  const { classes, dispatch } = props;
   const onSaveClick = (value) => {
       saveInfoToPolicy(props.values)  
   }
-  const { dispatch } = props;
   React.useEffect(() => {
-    dispatch(handleInputs({name: "type", value: "Info Request"}))
+    dispatch(handleInputs({name: "serviceType", value: "Info Request"}))
   }, [dispatch])
   
   return (
     <div>
-      <TextInput id="name" placeholder="" label="Clinician:" updateValue={props.handleInputs} />
-      <RadioInput id="lob" options={["commercial", "FEP", "GP"]} label="LOB" updateValue={props.handleInputs} />      
-      { props.values.lob !== "FEP" 
-        ? <RadioInput id="claimType" options={options.claimTypeOptions} label="Claim Type" updateValue={props.handleInputs} />
-        : null}
-      { props.values.lob === "commercial"
-        ? <SimpleSelect id="special" options={["N/A", "employee", "foreign", "hormel", "host", ]} label="Specialty claim" updateValue={props.handleInputs} />             
-        : null} 
+      <TextInput id="name" placeholder="" label="Clinician:"  />
+      <ClaimInfoInputs  />
       {props.values.claimType === "home"
-        ?<TextInput id="sccf" placeholder="" label="SCCF:" updateValue={props.handleInputs} />
+        ?<TextInput id="sccf" placeholder="" label="SCCF:"  />
         : null
       }                      
-      <RadioInput id="claimSystem" options={options.claimSystemOptions} label="Claim System" updateValue={props.handleInputs} />             
-      <PendInput updateValue={props.handleInputs} />
-      <RadioInput id="relatedInfo" options={["new", "related"]} label="Request Type:" updateValue={props.handleInputs} />
+      <PendInput  />
+      <RadioInput id="relatedInfo" options={["new", "related"]} label="Request Type:" />
       {props.values["relatedInfo"] === "related"
-        ? <TextInput id="initialReq" placeholder="Enter number" label="Initial REQ-" updateValue={props.handleInputs} />
+        ? <div>
+            <TextInput id="initialReq" placeholder="Enter number" label="Initial REQ-" />
+            {props.values.claimType === "home" 
+              ? <TextInput id="initialSccf" placeholder="Enter number" label="Initial SCCF" />
+              : null 
+            }
+          </div>
         : null
       }
-      <TextInput id="req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs}  />
-      <TextInput id="dos" placeholder="" label="Date of service" updateValue={props.handleInputs}  />              
-      <CodeAndService handleInputs={props.handleInputs}  linked={props.linked} onLinkClick={props.onLinkClick} handleServiceDisabled={props.handleServiceDisabled} serviceDisabled={props.serviceDisabled} />
-      <ReactSelectSingle id="type" placeholder="" label="Specific Type" updateValue={props.handleInputs} suggestions={getStorage("type", [])} />
-      <PolicyInput handleInputs={props.handleInputs} /> 
-      <TextInput id="related" label="Related UM REQs:" updateValue={props.handleInputs} />
-      <TextInput id="info" multiline={true} rows="5" label="Info To Request:"  updateValue={props.handleInputs} />
+      <TextInput id="req" placeholder="Enter number" label="REQ-"   />
+      <TextInput id="dos" placeholder="" label="Date of service"   />              
+      <CodeAndService  />
+      <PolicyInput  /> 
+      <TextInput id="related" label="Related UM REQs:"  />
+      <TextInput id="info" multiline={true} rows="5" label="Info To Request:"   />
       <Button onClick={onSaveClick}>
         Save Info to Policy
       </Button>

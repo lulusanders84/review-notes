@@ -17,7 +17,6 @@ const setPolicyType = (number) => {
       : "FEP"
     : ""
 }
-
 export const setInterqual = (values, field) => {
   const { iqYear, iqLoc, iqSubset } = values;
   switch(field) {

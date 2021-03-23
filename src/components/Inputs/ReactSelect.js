@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Tooltip } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { handleInputs } from '../../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 10,
     marginTop: theme.spacing(1),
     left: 0,
     right: 0,
@@ -239,10 +240,11 @@ function ValueContainer(props) {
 
 function MultiValue(props) {
   const classes = useStyles();
-  const label = <a href={props.data.href} target="blank">{props.data.value}</a>
+  const label = <a href={props.data.href} target="blank">{props.data.value}</a>;
+  const title = props.data['Full Policy'] ? props.data['Full Policy'] : "";
   return (
     <Tooltip
-      title={props.data['Full Policy']}
+      title={title}
       classes={{tooltip: classes.tooltip}}
     >
       <Chip
@@ -308,7 +310,7 @@ function ReactSelect(props) {
   }, [props.suggestions])
   function handleChangeMulti(value) {
     const newValue = {name: props.id, value,}
-    props.updateValue(newValue)
+    props.dispatch(handleInputs(newValue, props.dispatch));
     if(value) {
       value.forEach(value => {
         if(value.__isNew__) { 

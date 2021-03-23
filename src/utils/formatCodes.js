@@ -1,4 +1,4 @@
-export const formatCodes = (codesStr) => {
+export const formatCodesToArray = (codesStr) => {
     codesStr = !codesStr ? "" : codesStr; 
     codesStr = codesStr.toUpperCase().trim();
     const comma = codesStr.includes(",");
@@ -13,4 +13,16 @@ export const formatCodes = (codesStr) => {
     } else {
         return [""];
     }
+}
+
+export const formatCodesToString = (codesArr) => {
+    return codesArr.join(", ");
+}
+
+export const formatCodes = (codes, source) => {
+    const codesTypes = {
+        "string": formatCodesToArray,
+        "object": formatCodesToString
+    }
+    return codesTypes[typeof codes](codes);
 }

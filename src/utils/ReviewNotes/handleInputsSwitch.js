@@ -4,15 +4,15 @@ export const handleInputsSwitch = (handler, serviceSelect, storage, info, value,
         case "policy":
           info(value.value);
           break;
-        case "pa-deter":
-          if(values["pa-match"] === "yes") {
+        case paDeter:
+          if(values["paMatch"] === "yes") {
             const newValue = value.value === "approved" ? "approve" : "deny";
             handler({name: "deter", value: newValue});
             returnObj.disableAllMet = true;
           } 
           break;           
-        case "pa-match": 
-          const newValue = values["pa-deter"] === "approved" ? "approve" : "deny";
+        case "paMatch": 
+          const newValue = values.paDeter === "approved" ? "approve" : "deny";
           handler({name: "deter", value: newValue});
           const disableAllMet = value.value === "yes" ? true : false;
           returnObj.disableAllMet = disableAllMet;
@@ -30,11 +30,11 @@ export const handleInputsSwitch = (handler, serviceSelect, storage, info, value,
             returnObj.claimType = "local"
           }
           break;
-        case "pa-diagnosis":
+        case paDiagnosis:
             value.name = "diagnosis";
             handler(value);
             break;
-        case "pa-provider":
+        case "paProvider":
           value.name = "provider";
           handler(value);
           break;

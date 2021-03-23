@@ -2,22 +2,26 @@ import {ClaimsData,
 DailyClaims } from '../../classes/Claims';
 
 const data = new ClaimsData();
-const { claimLog, claimsGoal, workdays, dailyTarget, claimsTotal, average } = data;
+const { claimLog, claimsGoal, claimsPerDayTarget, workdays, dailyTarget, claimsTotal, average } = data;
 const claims = new DailyClaims(claimLog, Date.now());
 const dailyClaims = claims.get();
 const dailyClaimsTotal = claims.getTotal();
 const initialState = {
-  claimLog,
-  claimsTotal,
-  claimsGoal,
-  workdays,
-  dailyTarget,
   average,
-  month: new Date().getMonth(),
-  year: new Date().getFullYear(),
+  claimsGoal,
+  claimLog,
   claimlogDate: Date.now(),
+  claimsPerDayTarget,  
+  claimsTotal,
   dailyClaimsTotal,
   dailyClaims,
+  dailyTarget,
+  elapsedTimeReset: false, 
+  month: new Date().getMonth(),
+  workdays,
+  year: new Date().getFullYear(),
+  
+  
 
 }
 const reducer = (state=initialState, action) => {
@@ -42,6 +46,11 @@ const reducer = (state=initialState, action) => {
       return Object.assign({}, state, {
         average,
       });
+      case "SET_CLAIMSPERDAYTARGET":
+        const { target } = action; 
+        return Object.assign({}, state, {
+          claimsPerDayTarget: target,
+        });
     case "SET_CLAIMLOG":
       const { claimLog } = action; 
       return Object.assign({}, state, {
@@ -66,7 +75,12 @@ const reducer = (state=initialState, action) => {
         const { dailyTarget } = action; 
         return Object.assign({}, state, {
           dailyTarget,
-        });    
+        }); 
+        case "SET_ELAPSED_TIME_RESET":
+        const { elapsedTimeReset } = action; 
+        return Object.assign({}, state, {
+          elapsedTimeReset,
+        });      
     default:
       return state;
   }

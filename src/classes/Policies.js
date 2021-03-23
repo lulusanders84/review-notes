@@ -1,12 +1,14 @@
-import { formatPolicy } from '../data/scrapePolicies';
+import { formatPolicy } from "../utils/Policies/formatPolicy";
 import { getStorage } from '../utils';
-import { fepPolicies } from '../data/fepPolicies';
 import { bcbsmnCodes } from '../data/bcbsmnCodes';
 import { medicareCodes } from '../data/medicareCodes';
+import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmnPolicyHrefAndEffectiveDate";
+import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
+import { fepPolicies } from "../data/fepPolicies";
 import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
 
-const fepVersion = "Oct2020";
-const bcbsmnVersion = "10/19/2020";
+const fepVersion = "Jan2021";
+const bcbsmnVersion = "2/22/2021";
 
 export class Policies {
   constructor(lob) {
@@ -14,7 +16,9 @@ export class Policies {
     const version = lob === "fep" ? fepVersion : bcbsmnVersion
     updatePolicyVersion(lob, version)
     const policies = lob === "fep"
-      ? getStorage("fepPolicies", fepPolicies)
+      ? getStorage("fepPolicies") === undefined
+        ? fepPolicies
+        : getStorage("fepPolicies")
       : lob === "commercial"
         ? this.buildPoliciesFromCodes(bcbsmnCodes)
         : this.buildPoliciesFromCodes(medicareCodes);
@@ -22,8 +26,13 @@ export class Policies {
     this.policyArr = policies;
   }
   buildPoliciesFromCodes(codes) {
+    console.log("building policies from codes")
     const policies = {};
     Object.keys(codes).forEach(code => {
+
+      if(code === "C1825") {
+        console.log(codes[code])
+      }
       codes[code].forEach(policy => {
         const policyNo = policy["Policy #"]
         policies[policyNo] = policy;
@@ -64,4 +73,30 @@ export class Policies {
       }
     });
   };
+  addHrefAndEffectiveDate = async () => {
+    return this.hrefAndEffectiveDateSwitch[this.lob]().then((policies) => {
+      this.policyArr = policies;
+      return policies;
+    });
+  }
+  addBcbsHrefAndEffectiveDate = async () => {
+    const policies = this.policyArr.map(async policy => {
+      const data = await getBcbsmnPolicyHrefAndEffectiveDate(policy);
+      const { href, effective } = data;
+      policy.href = href;
+      policy.effective = effective;
+      return policy;
+    })
+    return Promise.all(policies).then(policies => {
+      return policies;
+
+    })
+  }
+  addFepHref = async () => {
+    return await fetchFepPolicies(this.policyArr);
+  }
+  hrefAndEffectiveDateSwitch = {
+    "commercial": this.addBcbsHrefAndEffectiveDate,
+    "fep": this.addFepHref
+  }
 }

@@ -4,7 +4,8 @@ ClaimLog,
 ClaimsTotal,
 ClaimsGoal,
 ClaimsPerDayAverage,
-DailyClaims } from "../../classes/Claims";
+DailyClaims, 
+ClaimsPerDayTarget} from "../../classes/Claims";
 
 export const updateClaimLogDate = (increment) => (dispatch) => {
   const changeToDate = increment > 0
@@ -46,15 +47,33 @@ export const updateClaimsGoal = (claimsGoal) => (dispatch, getState) => {
   dispatch(setDailyTarget(dailyTarget));
 }
 
-export const updateWorkdays = (month, day) => (dispatch, getState) => {
-  day = new Date(day).toISOString();
-  const year = new Date(day).getFullYear();
-  const workdays = new Workdays();
-  workdays.updateWorkDays(year, month, day);
+export const updateClaimsPerDayTarget = () => dispatch => {
+  const target = new ClaimsPerDayTarget().get();
+  dispatch(setClaimsPerDayTarget(target))
+}
+
+const updateWorkdays = (workdays, year) => (dispatch, getState) => {
+  year = year === undefined
+    ? new Date(Date.now()).getFullYear()
+    : year;
   const { claimLog, claimsGoal } = getState().claims;
   const dailyTarget = new DailyTarget(claimLog, claimsGoal, workdays.get(year)).get();
   dispatch(setWorkdays(workdays.get(year)));
   dispatch(setDailyTarget(dailyTarget));
+}
+
+export const addOrRemoveWorkday = (month, day) => dispatch => {
+  day = new Date(day).toISOString();
+  const year = new Date(day).getFullYear();
+  const workdays = new Workdays();
+  workdays.updateWorkDays(year, month, day);
+  dispatch(updateWorkdays(workdays, year));
+}
+
+export const resetWorkdays = () => dispatch => {
+  window.localStorage.removeItem("workdays");
+  const workdays = new Workdays();
+  dispatch(updateWorkdays(workdays));
 }
 
 export const updateClaimsPerDayAverage = () => (dispatch, getState) => {
@@ -75,6 +94,12 @@ export const setDailyClaimsTotal = (dailyClaimsTotal) => ({
   dailyClaimsTotal,
 });
 
+const SET_ELAPSED_TIME_RESET = 'SET_ELAPSED_TIME_RESET';
+export const setElapsedTimeReset = (elapsedTimeReset) => ({
+  type: SET_ELAPSED_TIME_RESET,
+  elapsedTimeReset,
+});
+
 const SET_CLAIMLOG_DATE = "SET_CLAIMLOG_DATE";
 export const setClaimlogDate = (increment) => ({
   type: SET_CLAIMLOG_DATE,
@@ -85,7 +110,11 @@ export const setClaimsPerDayAverage = (average) => ({
   type: SET_CLAIMSPERDAYAVERAGE,
   average,
 });
-
+const SET_CLAIMSPERDAYTARGET = 'SET_CLAIMSPERDAYTARGET';
+export const setClaimsPerDayTarget = (target) => ({
+  type: SET_CLAIMSPERDAYTARGET,
+  target,
+});
 const SET_CLAIMLOG = 'SET_CLAIMLOG';
 export const setClaimLog = (claimLog) => ({
   type: SET_CLAIMLOG,

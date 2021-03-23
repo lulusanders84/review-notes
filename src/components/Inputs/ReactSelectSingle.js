@@ -9,10 +9,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
-import { formatToName } from '../../utils/Notes';
 import { connect } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
-import { formatToSentence } from '../../utils/Notes/formatToSentence';
+import { formatToName } from '../../utils/Notes';
+import { formatToSentence } from '../../utils/Notes';
+import { formatSuggestions } from '../../utils/AutoComplete';
+import { handleInputs } from '../../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -283,16 +285,6 @@ const components = {
 };
 
 function IntegrationReactSelect(props) {
-  const formatSuggestions = (options, sentence) => {
-    if(options) {
-   return options.map(option => {
-      option.label = sentence 
-        ? formatToSentence(option.label)
-        : formatToName(option.label);
-      return option;
-    })      
-    } else return []
-  }
   const name = props.values[props.id];
   const initialValue = {value: name, label: name}
   const classes = useStyles();
@@ -319,21 +311,17 @@ function IntegrationReactSelect(props) {
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-
         const formattedName = props.sentence 
           ? formatToSentence(value.value.toLowerCase())
           : formatToName(value.value.toLowerCase());
         const newOption = createSelectValue(formattedName, props.labelFormat)
         const newOptions = options ? [newOption, ...options] : [newOption];
         setOptions(newOptions)
-        const storage = props.id === "pa-provider"
-          ? "provider"
-          : props.id;
-        saveToStorage(storage, newOptions);
+        saveToStorage(props.id, newOptions);
       }   
     }
     const newValue = value ? value.value : null;
-    props.updateValue({name: props.id, value: newValue})
+    props.dispatch(handleInputs({name: props.id, value: newValue}))
     setSingle(value);   
   }
 
@@ -355,7 +343,6 @@ function IntegrationReactSelect(props) {
             values={props.values} 
             label={props.label} 
             setEdit={setEdit}
-            updateValue={props.updateValue}
             options={options}
             labelFormat={props.labelFormat}
             setNewValue={setSingle} />

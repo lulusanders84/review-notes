@@ -2,13 +2,15 @@ import React from 'react';
 import { Typography, TextField,  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux';
-import { updateClaimsGoal, updateWorkdays } from '../../redux/actions/claims';
+import { updateClaimsGoal, addOrRemoveWorkday } from '../../redux/actions/claims';
 import InfiniteCalendar, {
   Calendar,
   defaultMultipleDateInterpolation,
   withMultipleDates,
 } from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css';
+import RadioInput from '../Inputs/RadioInput';
+import ReactSelect from '../Inputs/ReactSelect';
 
 const MultipleDatesCalendar = withMultipleDates(Calendar);
 
@@ -24,18 +26,8 @@ const useStyles = makeStyles({
 
 const ClaimSettings = (props) => {
   const classes = useStyles();
-  const initialWorkdays = props.workdays[props.month];
-  const [workdays, setWorkdays] = React.useState(initialWorkdays)
-  React.useEffect(() => {
-    setWorkdays(initialWorkdays);
-  }, [initialWorkdays] )
-  const handleGoalChange = (event) => {
-    const claimsGoal = event.target.value;
-    props.dispatch(updateClaimsGoal(claimsGoal))
-  }
-  const handleCalendarSelect = (event) => {
-    props.dispatch(updateWorkdays(props.month, event))
-  }
+  const { claimsGoal, daysOffOptions, dispatch, month, workdays, year } = props;
+  
   return (
     <div className={classes.paper}>
       <Typography
@@ -47,11 +39,13 @@ const ClaimSettings = (props) => {
       </Typography>
       <TextField
         fullWidth
-        label="Claims/Day Goal"
+        label="Claims/Hour Goal"
         type="number"
-        value={props.claimsGoal}
-        onChange={e => {handleGoalChange(e)}} 
+        value={claimsGoal}
+        onChange={e => dispatch(updateClaimsGoal(e.target.value))} 
       />
+      <RadioInput id="shiftHours" options={["8", "10"]} label="Hours per shift:" />
+      <ReactSelect id="daysOff" suggestions={daysOffOptions} label="Usual days off:" />
       <Typography
         className={classes.input}
         variant="body1"
@@ -62,10 +56,10 @@ const ClaimSettings = (props) => {
       <InfiniteCalendar
         Component={MultipleDatesCalendar}
         interpolateSelection={defaultMultipleDateInterpolation}
-        selected={workdays}
-        onSelect={handleCalendarSelect}
-        min={new Date(props.year, props.month)}
-        max={new Date(props.year, props.month)}
+        selected={workdays[month]}
+        onSelect={e => dispatch(addOrRemoveWorkday(month, e))}
+        min={new Date(year, month)}
+        max={new Date(year, month)}
       />
     </div>
   )
@@ -73,9 +67,9 @@ const ClaimSettings = (props) => {
 
 const mapStateToProps = (state) => ({
   claimsGoal: state.claims.claimsGoal,
-  claimLog: state.claims.claimLog,
   workdays: state.claims.workdays,
   month: state.claims.month,
-  year: state.claims.year
+  year: state.claims.year,
+  daysOffOptions: state.suggestions.daysOffOptions
 });
 export default connect(mapStateToProps)(ClaimSettings);

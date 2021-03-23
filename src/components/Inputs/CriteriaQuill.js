@@ -3,12 +3,13 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
+import { handleInputChange } from '../../utils/Inputs';
 
 export function CriteriaQuill(props) {
-  const handleChange = (value) => {
-    const newValue = { name: props.id, value, };
-    props.handleInputs(newValue);
-  }
+  // const handleChange = (value) => {
+  //   const newValue = { name: props.id, value, };
+  //   props.dispatch(handleInputs(newValue));
+  // }
   return (
     <div>
       <style dangerouslySetInnerHTML = {{__html: `
@@ -18,7 +19,7 @@ export function CriteriaQuill(props) {
       <Typography component="h5" variant="body1">
         {props.label}
       </Typography>
-      <ReactQuill style={{borderBottom: "1px solid black"}} value={props.values[props.id] || ''} onChange={handleChange} theme="bubble" />
+      <ReactQuill style={{borderBottom: "1px solid black"}} value={props.values[props.id] || ''} onChange={e => {handleInputChange(props, e)}} theme="bubble" />
     </div>
     
   )

@@ -2,29 +2,24 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import {handleInputChange, setProps} from '../../utils/Inputs/';
+import { textInputPropValues } from '../../data/inputPropValues';
+import { formatCodesToString } from '../../utils/formatCodes';
 
 function TextInput(props) {
-  const handleChange = event => {
-    event.persist();
-    const value = {name: props.id, value: event.target.value};
-    props.updateValue(value);
-  };
+  const { id, values, shrink } = props;
+  const inputProps = setProps(props, textInputPropValues)
+  const value = id === "code" ? formatCodesToString(values[id]) : values[id];
+
   return (
     <Grid item xs={12}>
       <TextField
-        multiline={props.multiline}
-        rows={props.rows}
-        type={props.type}
-        id={props.id}
-        label={props.label}
-        placeholder={props.placeholder}
+        {...inputProps}
         fullWidth={true}
         margin="dense"
-        onChange={handleChange}
-        value={props.values[props.id]}
-        InputLabelProps={{shrink: props.shrink}}
-        disabled={props.disabled}
-        helperText={props.helperText}
+        onChange={e => {handleInputChange(props, e)}}
+        value={value}
+        InputLabelProps={{shrink: shrink}}
       />
     </Grid>
   );
@@ -35,3 +30,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(TextInput)
+
+

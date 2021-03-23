@@ -13,7 +13,9 @@ const pendOptions = (lob)=> {
   return lob === "FEP" ? [...fepPends, ...pends] : pends;
 }
 const pendSuggestions = (lob) => {
-  return suggestions(setPendOrder(pendOptions(lob), lob));
+  const pendOrder = setPendOrder(pendOptions(lob), lob)
+  const options = suggestions(pendOrder)
+  return options;
 }
 
 const SET_OPTIONS = 'SET_OPTIONS';

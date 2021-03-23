@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Grid, makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
+import { handleInputs } from '../../redux/actions';
 
 const useStyles = makeStyles((theme) => ({
   checkButton: {
@@ -36,7 +37,7 @@ function EditSelectOption(props) {
   const handleChange = (event) => {
     event.persist();
     const value = {name: props.id, value: event.target.value};
-    props.updateValue(value);
+    props.dispatch(handleInputs(value));
     setSaved(false);
   }
     return (

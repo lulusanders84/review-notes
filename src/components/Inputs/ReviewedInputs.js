@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TextInput from './TextInput';
 import RadioInput from './RadioInput';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import DeniedInputs from './DeniedInputs';
-import ReactSelectSingle from './ReactSelectSingle';
-import { getStorage } from '../../utils';
+import { connect } from 'react-redux';
+import { displayClinicalRationale } from '../../utils/Inputs/displayClinicalRationale';
+import * as Fields from './FieldInputs';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -15,33 +16,35 @@ const useStyles = makeStyles(theme => ({
     overflow: "visible"
   }
 }));
-export default function (props) {
+function ReviewedInputs (props) {
   const classes = useStyles();
-  const [rationale, setRationale] = useState(false);
-  const handlePriorDecision = event => {
-    if(event.target.value === "denied") {
-      setRationale(true);
-    } else setRationale(false);
-  }
-  return props.reviewed 
+  return props.values.reviewed === "yes"
     ? <Card className={classes.card} >
         <Typography component="h3" variant="h6">Prior review details</Typography>
-        <RadioInput id="pa-type" options={["PA", "related claim"]} label="Review type:" updateValue={props.handleInputs} />
-        <TextInput id="pa-req" placeholder="Enter number" label="REQ-" updateValue={props.handleInputs} /> 
-        <TextInput id="pa-dos" placeholder="" label="Date of Service:" updateValue={props.handleInputs} />
-        <TextInput id="pa-diagnosis" placeholder="" label="Diagnosis:" updateValue={props.handleInputs} />
-        <ReactSelectSingle id="pa-provider" placeholder="" label="Provider" updateValue={props.handleInputs} suggestions={getStorage("provider", [])} />             
-        <RadioInput id="pa-deter" options={["approved", "denied"]} label="Decision:" updateValue={props.handleInputs} onChange={handlePriorDecision} />
-        {rationale ? 
+        <RadioInput id="paType" options={["PA", "related claim"]} label="Review type:"  />
+        <Fields.Req id="paReq" /> 
+        <Fields.Dos id="paDos" />
+        <Fields.Diagnosis id="paDiagnosis" />
+        <Fields.Provider id="paProvider" />             
+        <RadioInput id="paDeter" options={["approved", "denied"]} label="Decision:"  />
+        {props.values.paDeter === "denied" 
+          ? 
           <div>
-            <DeniedInputs handleInputs={props.handleInputs} denialId="pa-rationale" rationaleValue={props.rationaleValue} />
-            <TextInput id="clinical-rationale" multiline={true} rows="10" placeholder="" label="Clinical Rationale" updateValue={props.handleInputs} />
-
+            <DeniedInputs  denialId="paRationale" />
+            { displayClinicalRationale(props.values["paRationale"])
+              ? <TextInput id="clinicalRationale" multiline={true} rows="10" placeholder="" label="Clinical Rationale"  />
+              : null
+            }
+            
           </div>
-           : null}
-        <RadioInput id="pa-match" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:" updateValue={props.handleInputs} />
+          : null}
+        <RadioInput id="paMatch" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:"  />
       </Card>
     : null;
-        
-
 }
+
+const mapStateToProps = (state) => ({
+  values: state.values,
+});
+
+export default connect(mapStateToProps)(ReviewedInputs)

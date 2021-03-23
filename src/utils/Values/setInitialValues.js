@@ -1,63 +1,88 @@
-import { getStorage } from "../getStorage";
+import stored from "./setStoredValues";
+import { setBulkValues } from "./setBulkValues";
 
-const setLob = getStorage("lob", "commercial");
-const setName = getStorage("name", "");
+const blankValues = [
+    "age",
+    "clinicalRationale",
+    "diagnosis",
+    "dos",
+    "info",
+    "initialReq",
+    "initialSccf",
+    "iqYear",
+    "iqLoc",
+    "iqSubset",
+    "paDiagnosis", 
+    "paDos",
+    "paProvider",
+    "paRationale",
+    "paReq",  
+    "provider",
+    "rationale",
+    "req",
+    "sccf",   
+    "service",
+    "summary"
+];
+
+const emptyArrayValues = [
+    "code",
+    "compCode",
+    "pend",
+    "policy",
+];
+
+const falseValues = [
+    "allMet",
+    "cx3Pend",
+    "employee",
+    "linked",
+    "moveToDecision",
+];
+
+const noValues = [
+    "c3x",
+    "covidRelated",
+    "paList",
+    "pricingClaim",
+    "reviewed"
+];
+
+const blanks = setBulkValues(blankValues, "");
+const falses = setBulkValues(falseValues, false);
+const emptyArrays = setBulkValues(emptyArrayValues, []);
+const nos = setBulkValues(noValues, "no");
+
 export const initialValues = {
-    name: setName || "",
-    req: "",
-    reviewed: "no",
-    pend: [],
-    code: "",
-    age: "",
-    dos: "",
-    service: "",
-    paList: "no",
-    pricingClaim: "no",
-    pricing: "Not required",
-    noPricingRationale: "POC provider",
-    msr: "Eligible",
+    ...blanks,
+    ...emptyArrays,
+    ...falses,
+    ...nos,
+    ...stored,   
     allowable: "$",
-    serviceType: "Medical",
-    drugReviewType: "new",
-    diagnosis: "",
-    provider: "",
-    proType: "professional",
-    proPar: "Par",
-    policy: [],
     benefits: "General benefits verified",
-    fepBenefits: "General benefits verified",
-    plan: "MAPD",
-    claimType: "local",
     claimSystem: "INSINQ",
-    special: "N/A",
-    deter: "approve",
-    "pa-type": "PA",
-    "pa-req": "",
-    "pa-dos": "",
-    "pa-diagnosis": "",
-    "pa-provider": "",
-    "pa-deter": "approved",
-    "pa-match": "yes",
-    "pa-rationale": "",
-    rationale: "",
-    lob: setLob,
-    allMet: false,
-    employee: false,
+    claimType: "local",
     denialType: "entire claim",
-    summary: "",
-    related: "N/A",
-    info: "",
-    sccf: "",
-    iqYear: "",
-    iqLoc: "",
-    iqSubset: "",
-    noteType: 1,
-    doseUnit: "mg",
+    deter: "approve",
+    doseUnit: "mg",    
+    drugReviewType: "new",
     exCircum: "No specific medical policy applies, service appears medically necessary.",
-    "clinical-rationale": "",
-    relatedInfo: "new",
-    initialReq: ""
-
+    fepBenefits: "General benefits verified",
+    msr: "Eligible",    
+    noPricingRationale: "POC provider",  
+    noteType: 1, 
+    paDeter: "approved",     
+    paMatch: "yes",    
+    paType: "PA",      
+    plan: "MAPD",          
+    pricing: "Not required",
+    proPar: "Par",  
+    proType: "professional",           
+    related: "N/A", 
+    relatedInfo: "new",                
+    serviceType: "Medical",
+    special: "N/A",
 }
 
 

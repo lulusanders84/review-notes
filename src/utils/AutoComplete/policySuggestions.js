@@ -1,11 +1,10 @@
-// import {fepPolicies} from "../../data/fepPolicies";
-import { medPolicies } from "../../data/medPolicies";
 import medicarePolicies from "../../data/medicarePolicies";
 import { getAllPolicies } from "../ReviewNotes/setPolicy";
+import { getStorage } from "../getStorage";
 
 export function policySuggestions(lob) {
     const policies = lob === "commercial" 
-        ? medPolicies 
+        ? getStorage("bcbsmnPolicies", [])
         : lob === "FEP" 
             ? getAllPolicies()
             : medicarePolicies;
@@ -13,7 +12,13 @@ export function policySuggestions(lob) {
         return buildPolicy(policy)
     });
 
-    return suggestions;
+    return suggestions.sort((a, b) => {
+        return a.label < b.label
+            ? -1
+            : a.label > b.label
+                ? 1
+                : 0
+    });
 }
 
 export function buildPolicy(policy) {

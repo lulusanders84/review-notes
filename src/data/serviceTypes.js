@@ -1,5 +1,23 @@
 export const serviceTypes = [
   {
+    "Service": "Info Request",
+    "Codes": null,
+    "Rule": null,
+    "Service Type": "Info Request"
+  },
+  {
+    "Service": "Misroute",
+    "Codes": null,
+    "Rule": null,
+    "Service Type": "Misroute"
+  },
+  {
+    "Service": "Review Decision",
+    "Codes": null,
+    "Rule": null,
+    "Service Type": "Review Decision"
+  },
+  {
     "Service": "Surgical - Other ",
     "Codes": "10021-69990",
     "Rule": "(Excluding Spinal Fusion and Bariatric)",
@@ -66,6 +84,7 @@ export const serviceTypes = [
     "Codes": null,
     "Rule": ["B", "C", "E"],
     "Verb": "received a",
+    "ProVerb": "from",
     "Service Type": "DME"
   },
   {
@@ -92,6 +111,7 @@ export const serviceTypes = [
     "Codes": "0570, 0571, 0572",
     "Rule": null,
     "Verb": "received care from a",
+    "ProVerb": "from",
     "Service Type": "Home Health Aide"
   },
   {
@@ -99,6 +119,7 @@ export const serviceTypes = [
     "Codes": "0550, 0551, 0552",
     "Rule": null,
     "Verb": "received ",
+    "ProVerb": "from",
     "Service Type": "Skilled Nursing"
   },
   {
@@ -106,6 +127,7 @@ export const serviceTypes = [
     "Codes": "0650, 0651, 0655",
     "Rule": null,
     "Verb": "received",
+    "ProVerb": "from",
     "Service Type": "Hospice"
   },
   {
@@ -113,6 +135,7 @@ export const serviceTypes = [
     "Codes": "T1002, T1003",
     "Rule": null,
     "Verb": "received",
+    "ProVerb": "from",
     "Service Type": "Private Duty Nursing"
   },
   {
@@ -166,6 +189,7 @@ export const serviceTypes = [
     "Codes": null,
     "Rule": null,
     "Verb": "received care at a",
+    "ProVerb": "from",
     "Service Type": "Skilled Nursing Facility"
   }
  ]
