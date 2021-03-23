@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 export function HourBlocks(props) {
   const { claimsGoal, total } = props;
-  const shiftHours = getStorage("shiftHours");
+  const shiftHours = getStorage("shiftHours", 8);
   const time =  new Time();
   const [minuteNow, setMinuteNow] = useState(time.getMinute());
   const [hourNow, setHourNow] = useState(time.getHour());

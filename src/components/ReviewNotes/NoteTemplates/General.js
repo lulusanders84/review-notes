@@ -35,7 +35,7 @@ function General(props) {
       <Fields.Dos />
       <CodeAndService  />
       <ServiceTypeInput  /> 
-      {/* <Fields.C3XList c3xPend={props.values.c3xPend} />             */}
+      <Fields.C3XList c3xPend={props.values.c3xPend} />            
       {props.values.drugReview  && props.values.lob === "commercial"
         ? <DoseInput  />
         : null }
@@ -53,7 +53,7 @@ function General(props) {
       <Fields.Diagnosis />
       <Fields.Provider />
       <Fields.Par />
-      {/* <Fields.covidRelated values={props.values} /> */}
+      <Fields.covidRelated values={props.values} />
       <Fields.Summary />
       <DeterInputs  addOptions={["send to medical director"]}  />
       {props.values.deter === "approve" && props.values.allMet === false
