@@ -39,7 +39,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy-dev": "aws s3 cp ./build s3://${S3_BUCKET_NAME}/ --recursive",
-    "postdeploy": "aws cloudfront create-invalidation --distribution-id ELP80NUAGMRO --paths '/*'"
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths '/*'"
   },
   "eslintConfig": {
     "extends": "react-app"
