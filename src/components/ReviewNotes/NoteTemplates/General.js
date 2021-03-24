@@ -54,7 +54,7 @@ function General(props) {
       <Fields.Provider />
       <Fields.Par />
       <Fields.covidRelated values={props.values} />
-      <Fields.Summary />
+      {props.values.reviewed === "no" ? <Fields.ClaimHistory /> : props.values.paType !== "PA" ? <Fields.ClaimHistory /> : null}
       <DeterInputs  addOptions={["send to medical director"]}  />
       {props.values.deter === "approve" && props.values.allMet === false
         ? <TextInput id="exCircum" placeholder="" label="Extenuating Circumstances"  />

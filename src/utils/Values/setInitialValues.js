@@ -61,6 +61,7 @@ export const initialValues = {
     ...stored,   
     allowable: "$",
     benefits: "General benefits verified",
+    claimHistory: "No pertinent claim history found",
     claimSystem: "INSINQ",
     claimType: "local",
     denialType: "entire claim",

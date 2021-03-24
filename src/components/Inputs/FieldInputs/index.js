@@ -8,3 +8,4 @@ export {default as Par} from './Par';
 export {default as Summary} from './Summary';
 export {default as C3XList} from './C3XList';
 export {default as covidRelated} from './covidRelated';
+export {default as ClaimHistory} from './ClaimHistory';
