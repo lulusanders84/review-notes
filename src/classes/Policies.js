@@ -7,7 +7,7 @@ import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
 import { fepPolicies } from "../data/fepPolicies";
 import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
 
-const fepVersion = "Jan2021";
+const fepVersion = "January 2021";
 const bcbsmnVersion = "2/22/2021";
 
 export class Policies {
