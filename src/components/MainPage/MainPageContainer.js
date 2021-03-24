@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container, Typography } from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import { version } from '../../version';
+import { getStorage } from '../../utils';
 
 const styles = theme => ({
   '@global': {
@@ -33,7 +34,15 @@ const styles = theme => ({
   },
   title: {
     marginBottom: theme.spacing(3)
+  },
+  version: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "24px", 
+    paddingBottom: "15px",
+
   }
+
 
 })
 
@@ -43,9 +52,20 @@ function MainPageContainer(props) {
       <Container id="main container" component="main" classes={{root: classes.page}}>
         <CssBaseline />     
         {React.cloneElement(props.component, classes)}
-        <Typography component="i" variant="overline" style={{paddingBottom: "15px"}}>
-          version: {version}
-        </Typography>           
+        <div style={{marginTop: "24px", marginBottom: "24px"}}>
+          <Typography variant="overline" >
+            Sources
+          </Typography>
+          <Typography variant="body2" align="left">
+            Commercial Policy & Coding Management Tool ({getStorage("commercialPolicyVersion", "")})
+          </Typography> 
+          <Typography variant="body2" align="left">
+            {getStorage("fepPolicyVersion", "")} FEP Medical Coding Resource Tool
+          </Typography>    
+          <Typography component="i" variant="overline" align="right" classes={{root: classes.version}}>
+            version: {version}
+          </Typography>                
+        </div>
       </Container>
     );
   }
