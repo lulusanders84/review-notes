@@ -4,6 +4,7 @@ import { formatToName } from "./formatToName";
 export const setHistory = (values, type) => {
     const reviewed = values.reviewed;
     const noPA = "PA not found";
+    const { claimHistory } = values;
     if(type === values.paType) {
         const paEnforcement = values.lob === "FEP" 
             ? "FEP claim"
@@ -18,7 +19,7 @@ export const setHistory = (values, type) => {
                 ? `${noPA}. Service not held to PA enforcement (${paEnforcement}).`
                 : noPA;        
     } else {
-        return type === "PA" ? noPA : "No claim history found";
+        return type === "PA" ? noPA : claimHistory;
     }
 
 }
