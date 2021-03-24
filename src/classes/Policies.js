@@ -26,13 +26,8 @@ export class Policies {
     this.policyArr = policies;
   }
   buildPoliciesFromCodes(codes) {
-    console.log("building policies from codes")
     const policies = {};
     Object.keys(codes).forEach(code => {
-
-      if(code === "C1825") {
-        console.log(codes[code])
-      }
       codes[code].forEach(policy => {
         const policyNo = policy["Policy #"]
         policies[policyNo] = policy;
