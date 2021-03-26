@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import PendInput from '../../Inputs/PendInput';
 import ClaimInfoInputs from '../../Inputs/ClaimInfoInputs';
 import RadioInput from '../../Inputs/RadioInput';
+import Conditional from '../../Inputs/ConditionalInputs/conditionalInputs';
 
 function InfoRequest(props) {
   const { classes, dispatch } = props;
@@ -25,15 +26,11 @@ function InfoRequest(props) {
   React.useEffect(() => {
     dispatch(handleInputs({name: "serviceType", value: "Info Request"}))
   }, [dispatch])
-  
   return (
     <div>
       <TextInput id="name" placeholder="" label="Clinician:"  />
       <ClaimInfoInputs  />
-      {props.values.claimType === "home"
-        ?<TextInput id="sccf" placeholder="" label="SCCF:"  />
-        : null
-      }                      
+      <Conditional.SCCF values={props.values} />                      
       <PendInput  />
       <RadioInput id="relatedInfo" options={["new", "related"]} label="Request Type:" />
       {props.values["relatedInfo"] === "related"

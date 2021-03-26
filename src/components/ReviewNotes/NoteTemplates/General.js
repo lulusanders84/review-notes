@@ -6,15 +6,13 @@
 
 import React from 'react';
 import { Divider } from '@material-ui/core';
-import TextInput from '../../Inputs/TextInput';
 import RadioInput from '../../Inputs/RadioInput';
 import * as Fields from '../../Inputs/FieldInputs';
+import Conditional from '../../Inputs/ConditionalInputs/conditionalInputs';
 import ReviewedInputs from '../../Inputs/ReviewedInputs';
-import PricingInputs from '../../Inputs/PricingInputs';
 import PolicyInput from '../../Inputs/PolicyInput';
 import GeneralNotes from '../../GeneralNotes/GeneralNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
-import DoseInput from '../../Inputs/DoseInput';
 import ClaimInfoInputs from '../../Inputs/ClaimInfoInputs';
 import PendInput from '../../Inputs/PendInput';
 import BenefitsInput from '../../Inputs/BenefitsInput';
@@ -22,7 +20,8 @@ import ServiceTypeInput from '../../Inputs/ServiceTypeInput';
 import DeterInputs from '../../Inputs/DeterInputs';
 
 function General(props) {
-  const { classes } = props;
+  const { classes, values } = props;
+
   return (
     <div>
       <Fields.Name />
@@ -35,36 +34,27 @@ function General(props) {
       <Fields.Dos />
       <CodeAndService  />
       <ServiceTypeInput  /> 
-      <Fields.C3XList c3xPend={props.values.c3xPend} />            
-      {props.values.drugReview  && props.values.lob === "commercial"
-        ? <DoseInput  />
-        : null }
-      {props.values.drugReview && props.values.reviewed === "no"
-        ? <RadioInput id="drugReviewType" options={["new", "renewal"]} label="Drug Review Type" />
-        : null } 
-      {props.values.claimType === "local" && props.values.lob === "commercial" 
-        ? <RadioInput id="paList" options={["no", "yes"]} label="On PA List?" />
-        : null } 
-      {props.values.pend && props.values.pend.some(pend => {return pend.value === "P5194"})
-        ? <PricingInputs   />
-        : null}           
+      <Conditional.C3XList values={values} /> 
+      <Conditional.Dose />          
+      <Conditional.DrugReviewType values={values}/> 
+      <Conditional.PricingInputs />          
       <PolicyInput   />  
-      <BenefitsInput values={props.values}  />     
+      <BenefitsInput values={values}  />     
       <Fields.Diagnosis />
       <Fields.Provider />
       <Fields.Par />
-      <Fields.covidRelated values={props.values} />
-      <Fields.ClaimHistory values={props.values} />
+      <Conditional.PAList values={values} /> 
+      <Conditional.CovidRelated values={values} />
+      <Fields.ClaimHistory values={values} />
       <Fields.Summary />
       <DeterInputs  addOptions={["send to medical director"]}  />
-      {props.values.deter === "approve" && props.values.allMet === false
-        ? <TextInput id="exCircum" placeholder="" label="Extenuating Circumstances"  />
-        : null
-      }
-    <Divider variant="fullWidth" />
-    <div className={classes.notes}>
-      <GeneralNotes />
-    </div>
+      <Conditional.ExCircum values={values}/>
+
+      <Divider variant="fullWidth" />
+
+      <div className={classes.notes}>
+        <GeneralNotes />
+      </div>
     </div>
   );
 }

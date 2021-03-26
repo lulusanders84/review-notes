@@ -1,11 +1,11 @@
 import React from 'react';
-import TextInput from './TextInput';
+import TextInput from '../TextInput';
 import { Grid } from '@material-ui/core';
-import ReactSelectSingle from './ReactSelectSingle';
-import { connect } from 'react-redux';
-import { createSelectValue, saveToStorage, getStorage } from '../../utils';
+import ReactSelectSingle from '../ReactSelectSingle';
+import { withInputLogicTest, setComposed } from '../../../HOCs';
+import { createSelectValue, saveToStorage, getStorage } from '../../../utils';
 
-export const DoseInput = (props) => {
+export const Dose = (props) => {
   const storedOptions = getStorage("doseUnit");
   if(storedOptions === null) {
     saveToStorage("doseUnit", [createSelectValue("mg", "lower")])
@@ -28,7 +28,8 @@ export const DoseInput = (props) => {
   )
 }
 const mapStateToProps = (state) => ({
+  id: "doseInput",
   values: state.values,
 });
 
-export default connect(mapStateToProps)(DoseInput)
+export default setComposed(mapStateToProps, withInputLogicTest, Dose)

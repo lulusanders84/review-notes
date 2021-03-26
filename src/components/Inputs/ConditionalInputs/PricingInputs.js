@@ -1,9 +1,9 @@
 import React from 'react';
-import TextInput from './TextInput';
-import RadioInput from './RadioInput';
+import TextInput from '../TextInput';
+import RadioInput from '../RadioInput';
 import { makeStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import ReactSelectSingle from './ReactSelectSingle';
+import { setComposed, withInputLogicTest } from '../../../HOCs';
+import ReactSelectSingle from '../ReactSelectSingle';
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
@@ -33,8 +33,9 @@ function PricingInput(props) {
 }
 
 const mapStateToProps = (state) => ({
+  id: "pricingInputs",
   values: state.values,
   suggestions: state.suggestions
 });
 
-export default connect(mapStateToProps)(PricingInput)
+export default setComposed(mapStateToProps, withInputLogicTest, PricingInput)
