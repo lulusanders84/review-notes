@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
 
-import { AddClaim } from './classes';
+import { AddClaim } from '../classes'
 
 const useStyles = makeStyles({
   button: {
@@ -12,16 +12,16 @@ const useStyles = makeStyles({
   }
 })
 function AddClaimButton(props) {
-  const {values, dispatch, elapsedTimeReset} = props;
-  const lib = new AddClaim(values);
+  const {values, dispatch} = props;
+  const {handleClick, disabled} = new AddClaim(values);
   const classes = useStyles();
   const [label, setLabel] = React.useState("Add Claim to Log");
-  const disabled = values.req === "" ? true : false;
+  
   
   return (
     <Button 
       className = {classes.button}
-      onClick={e => {lib.handleClick(e, dispatch, setLabel, elapsedTimeReset)}}
+      onClick={e => {handleClick(e, dispatch, setLabel)}}
       disabled={disabled}
     >
       {label}
@@ -31,6 +31,5 @@ function AddClaimButton(props) {
 
 const mapStateToProps = (state) => ({
   values: state.values,
-  elapsedTimeReset: state.claims.elapsedTimeReset
 });
 export default connect(mapStateToProps)(AddClaimButton)

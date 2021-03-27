@@ -1,5 +1,5 @@
-import { withInputLogicTest } from '../../../HOCs'
+import { withConditionTest } from '../../../HOCs'
 
 export const buildComponent = (component, props) => {
-  return withInputLogicTest(component, props)
+  return withConditionTest(component, props)
 }

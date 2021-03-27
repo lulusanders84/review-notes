@@ -1,1 +1,0 @@
-export { AddClaim } from './AddClaim';

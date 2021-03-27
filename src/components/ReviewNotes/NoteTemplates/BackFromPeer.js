@@ -3,7 +3,7 @@
 import React from 'react';
 import TextInput from '../../Inputs/TextInput';
 import * as Fields from '../../Inputs/FieldInputs';
-import BackFromPeerNotes from '../../BackFromPeerNotes/BackFromPeerNotes';
+import BackFromPeerNotes from '../../BackFromPeerNotes';
 import DeterInputs from '../../Inputs/DeterInputs';
 import { Divider } from '@material-ui/core';
 import { handleInputs } from '../../../redux/actions';

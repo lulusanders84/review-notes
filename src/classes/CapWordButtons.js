@@ -1,18 +1,25 @@
-import { CapWords } from '../../../classes/CapWords';
+import { CapWords } from './';
 
 export class CapWordButtons {
   constructor() {
     this.capWords = new CapWords();
+    this.handleAddCapWord = this.handleAddCapWord.bind(this);
+    this.handleRemoveCapWord = this.handleRemoveCapWord.bind(this);
+    this.setTitle = this.setTitle.bind(this);
   }
+
   handleAddCapWord = () => {
     this._handleCapWordChange("add");
   };
+
   handleRemoveCapWord = () => {
     this._handleCapWordChange("delete");
   };
+
   setTitle = (verb) => {
     return "Select word and click here to " + verb + " capitalized words list";
   };
+
   _handleCapWordChange = (changeType) => {
     const word = document.getSelection().toString();
     const [changeFunc, replacementWord] = this._changeTypeProps[changeType];
@@ -34,6 +41,7 @@ export class CapWordButtons {
       range.text = replacementText;
     }
   };
+  
   _changeTypeProps = {
     "add": ["addWord", (word) => word.toUpperCase()],
     "delete": ["deleteWord", (word) => word.toLowerCase()]

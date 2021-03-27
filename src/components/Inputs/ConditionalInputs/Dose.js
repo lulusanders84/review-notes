@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../TextInput';
 import { Grid } from '@material-ui/core';
 import ReactSelectSingle from '../ReactSelectSingle';
-import { withInputLogicTest, setComposed } from '../../../HOCs';
+import { withConditionTest, setComposed } from '../../../HOCs';
 import { createSelectValue, saveToStorage, getStorage } from '../../../utils';
 
 export const Dose = (props) => {
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => ({
   values: state.values,
 });
 
-export default setComposed(mapStateToProps, withInputLogicTest, Dose)
+export default setComposed(mapStateToProps, withConditionTest, Dose)

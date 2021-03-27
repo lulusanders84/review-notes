@@ -1,1 +1,0 @@
-export { CapWordButtons } from './CapWordButtons';
