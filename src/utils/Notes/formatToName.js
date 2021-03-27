@@ -1,6 +1,5 @@
 import {capWord } from './capitalizeWord';
 import {prepositions} from './prepositions';
-import { nonCapWords } from './nonCapWords';
 import { CapWords } from '../../classes/CapWords'
 
 const capWords = new CapWords();
@@ -9,7 +8,7 @@ export const formatToName = (entry) => {
     if(entry !== undefined) {
     const nameArray = entry.trim().split(" ");
     return nameArray.map(word => {
-        return [...prepositions, ...nonCapWords].includes(word) 
+        return prepositions.includes(word) 
             ? word
             : capWords.getAll().includes(word.toUpperCase())
                 ? word.toUpperCase()

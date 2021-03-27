@@ -1,11 +1,11 @@
 import React from 'react';
 import { formatToName } from "./formatToName"; 
 import { setPricingNote } from "./setPricingNote";
-import { formatToSentence } from './formatToSentence';
+// import { formatToSentence } from './formatToSentence';
 import { CapWords } from '../../classes/CapWords'
 
 export const setCaseSummary = (values) => {
-    const { age, dos } = values;
+    const { age, dos, summary } = values;
     const service = formatValue(values.service);
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
     const diagnosis = formatValue(values.diagnosis);
@@ -15,7 +15,6 @@ export const setCaseSummary = (values) => {
             ? " Operative report demonstrates increased complexity warranting additional allowance."
             : " Operative report doesn't demonstrate increased complexity or unusual services that would warrant any additional allowance."
         : ""; 
-    const summary = formatToSentence(values.summary);
     const dose = values.drugReview && values.lob === "commercial"
         ? `(${values.dose} ${values.doseUnit})`
         : "";
