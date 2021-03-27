@@ -1,14 +1,15 @@
 import { updateClaimLog, handleInputs } from '../redux/actions';
 import { populateReviewedValues } from '../utils/Values/populateReviewValues';
 import { setElapsedTimeReset } from '../redux/actions';
+import { bindMethods } from '../utils/Classes';
 
 export class AddClaim {
   constructor(values) {
     this.values = values;
-    this.handleClick = this.handleClick.bind(this);
+    bindMethods(this);
     this.disabled = values.req === "" ? true : false;
   };
-  handleClick(e, dispatch, setLabel) {
+  handleClick = (e, dispatch, setLabel) => {
     if (this.values.moveToDecision) {
       populateReviewedValues(this.values, dispatch);
     }

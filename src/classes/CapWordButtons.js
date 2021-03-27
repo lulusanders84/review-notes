@@ -1,14 +1,13 @@
 import { CapWords } from './';
+import {bindMethods} from '../utils/Classes'
 
 export class CapWordButtons {
   constructor() {
-    this.capWords = new CapWords();
-    this.handleAddCapWord = this.handleAddCapWord.bind(this);
-    this.handleRemoveCapWord = this.handleRemoveCapWord.bind(this);
-    this.setTitle = this.setTitle.bind(this);
+    this._capWords = new CapWords();
+    bindMethods(this)
   }
 
-  handleAddCapWord = () => {
+  handleAddCapWord = () =>  {
     this._handleCapWordChange("add");
   };
 
@@ -23,7 +22,7 @@ export class CapWordButtons {
   _handleCapWordChange = (changeType) => {
     const word = document.getSelection().toString();
     const [changeFunc, replacementWord] = this._changeTypeProps[changeType];
-    this.capWords[changeFunc](word);
+    this._capWords[changeFunc](word);
     this._replaceSelectedText(replacementWord(word));
   };
 
