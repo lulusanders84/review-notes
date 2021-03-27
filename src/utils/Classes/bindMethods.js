@@ -5,6 +5,7 @@ export const bindMethods = (thisObj) => {
       boundMethods.push(key)
     }
   })
+  console.log(boundMethods)
   boundMethods.forEach(method => {
     thisObj[method] = thisObj[method].bind(thisObj)
   })

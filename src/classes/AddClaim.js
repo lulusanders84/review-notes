@@ -5,12 +5,12 @@ import { bindMethods } from '../utils/Classes';
 
 export class AddClaim {
   constructor(values) {
-    this.values = values;
+    this._values = values;
     bindMethods(this);
     this.disabled = values.req === "" ? true : false;
   };
   handleClick = (e, dispatch, setLabel) => {
-    if (this.values.moveToDecision) {
+    if (this._values.moveToDecision) {
       populateReviewedValues(this.values, dispatch);
     }
     const newClaim = this._compileClaim();
@@ -22,7 +22,7 @@ export class AddClaim {
   }
 
   _compileClaim = () => {
-    const { req, lob, deter, serviceType } = this.values;
+    const { req, lob, deter, serviceType } = this._values;
     const peer = deter === "send to medical director"
       ? true
       : false;
