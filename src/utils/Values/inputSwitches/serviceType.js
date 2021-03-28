@@ -1,5 +1,4 @@
 export const serviceType = (value, values) => {
-  console.log(value)
   return { 
     drugReview: value.value === "Injectable Drug" 
       ? true 

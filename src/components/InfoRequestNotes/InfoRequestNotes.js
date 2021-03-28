@@ -7,7 +7,8 @@ import { handleInputs } from '../../redux/actions';
 import { connect } from 'react-redux';
 
 export const InfoRequestNotes = (props) => {
-  const { dispatch } = props;
+  const { dispatch, values } = props;
+  const letterNoteVisible = values.claimType === "local" || values.lob === "fep" ? true : false
   React.useEffect(() => {
     dispatch(handleInputs({name: "deter", value: "deny"}))
     dispatch(handleInputs({name: "rationale", value: "Information Request"}))
@@ -18,7 +19,7 @@ export const InfoRequestNotes = (props) => {
     <div>
       <InfoRequest /> 
       <ClaimNote info={true} faxAndDate={true} />
-      <LetterNote />
+      <LetterNote visible={letterNoteVisible} />
       <Routing /> 
     </div>  
   )  
