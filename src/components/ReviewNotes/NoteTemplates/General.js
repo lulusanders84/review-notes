@@ -9,7 +9,6 @@ import { Divider } from '@material-ui/core';
 import RadioInput from '../../Inputs/RadioInput';
 import * as Fields from '../../Inputs/FieldInputs';
 import Conditional from '../../Inputs/ConditionalInputs/conditionalInputs';
-import ReviewedInputs from '../../Inputs/ReviewedInputs';
 import PolicyInput from '../../Inputs/PolicyInput';
 import GeneralNotes from '../../GeneralNotes/GeneralNotes';
 import CodeAndService from '../../Inputs/CodeAndService';
@@ -28,7 +27,7 @@ function General(props) {
       <ClaimInfoInputs  />          
       <PendInput  />
       <RadioInput id="reviewed" options={["no", "yes"]} label="Following a decision:"  />  
-      <ReviewedInputs  />
+      <Conditional.ReviewedInputs  />
       <Fields.Req />
       <Fields.Age />
       <Fields.Dos />

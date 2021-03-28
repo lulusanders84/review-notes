@@ -11,6 +11,7 @@ const switches = {
   "paDeter": ["deter", "disableAllMet"],
   "paMatch": ["deter", "disableAllMet"],
   "paProvider": ["provider"],
+  "paRationale": ["rationale"],
   "policy": ["info", "interqual", "deter", "rationale", "exCircum"],
   "rationale": ["exCircum"],
   "relatedInfo": ["rationale"],

@@ -9,6 +9,7 @@ import { paMatch } from './paMatch';
 import { paDiagnosis } from './paDiagnosis'; 
 import { paDeter } from './paDeter'; 
 import { paProvider } from './paProvider'; 
+import { paRationale } from './paRationale'; 
 import { pend } from './pend';
 import { policy } from './policy';
 import { rationale } from './rationale';
@@ -32,13 +33,13 @@ export const inputSwitch = {
   paDeter,
   paMatch,
   paProvider,
+  paRationale,
   pend,
   policy,
   rationale,
   relatedInfo,
   reviewed,
   serviceType,
-
   shiftHours,
   special
 };
