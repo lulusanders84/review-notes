@@ -2,6 +2,7 @@ import React from 'react';
 import { withVisibility, setComposed } from '../../HOCs';
 import Note from './Note';
 import NoteContainer from './NoteContainer';
+import DenialLetter from './DenialLetter';
 import { formatValues } from '../../utils/Notes';
 
 export function ClinicalRationale(props) {
@@ -9,6 +10,7 @@ export function ClinicalRationale(props) {
         <NoteContainer visible={props.visible}>
             <Note title="Clinical Rationale">
                 {props.values["clinicalRationale"]}
+                <DenialLetter visible />
             </Note>  
         </NoteContainer>    
     )
