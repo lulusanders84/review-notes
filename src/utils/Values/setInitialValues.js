@@ -6,6 +6,7 @@ const blankValues = [
     "clinicalRationale",
     "diagnosis",
     "dos",
+    "dose",
     "info",
     "initialReq",
     "initialSccf",

@@ -1,5 +1,5 @@
 import { getStorage } from "../getStorage"
-import { createSelectValue } from "../createSelectValue"
+import { createSelectValue } from "../"
 import { saveToStorage } from "../saveToStorage";
 
 const networkNames = [

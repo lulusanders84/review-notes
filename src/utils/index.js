@@ -1,4 +1,4 @@
-export { createSelectValue}  from './createSelectValue';
+export { createSelectValue}  from './createSelectValue.ts';
 export { formatCodes } from './formatCodes';
 export { getStorage } from './getStorage';
 export { getTwoWeeksFromNow } from './getTwoWeeksFromNow';

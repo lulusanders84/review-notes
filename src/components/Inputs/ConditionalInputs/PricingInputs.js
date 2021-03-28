@@ -17,7 +17,7 @@ function PricingInput(props) {
       {props.values.pricing === "PPPWeb"
         ? <div>
             {props.values.lob === "GP"
-              ? <ReactSelectSingle id="network" placeholder="" label="Network"  suggestions={props.suggestions.networkSuggestions}  />
+              ? <ReactSelectSingle id="network" placeholder="" label="Network" suggestions={props.suggestions.networkSuggestions}  />
               : null
             }
            <TextInput id="compCode" placeholder="" label="Comparable code"  /> 

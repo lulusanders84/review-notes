@@ -10,6 +10,7 @@ export const Dose = (props) => {
   if(storedOptions === null) {
     saveToStorage("doseUnit", [createSelectValue("mg", "lower")])
   }
+
   return (
     <Grid container row style={{marginTop: "10px"}}>
       <Grid item xs={6}>
@@ -20,8 +21,7 @@ export const Dose = (props) => {
           id="doseUnit" 
           placeholder="" 
           label="Unit:" 
-          labelFormat="lower"
-          
+          keepFormat
           suggestions={getStorage("doseUnit", [])} />
       </Grid>
     </Grid>  

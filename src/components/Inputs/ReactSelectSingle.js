@@ -11,8 +11,6 @@ import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
-import { formatToName } from '../../utils/Notes';
-import { formatToSentence } from '../../utils/Notes';
 import { formatSuggestions } from '../../utils/AutoComplete';
 import { handleInputs } from '../../redux/actions';
 
@@ -284,44 +282,46 @@ const components = {
   ValueContainer,
 };
 
-function IntegrationReactSelect(props) {
-  const name = props.values[props.id];
+function IntegrationReactSelect({dispatch, keepFormat, id, label, notClearable, placeholder, sentence, suggestions, values}) {
+
+  const name = values[id];
   const initialValue = {value: name, label: name}
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(initialValue);
-  const [options, setOptions] = React.useState(formatSuggestions(props.suggestions, props.sentence));
+  const [options, setOptions] = React.useState(formatSuggestions(suggestions, sentence, keepFormat));
   const [edit, setEdit] = React.useState(false);
   const [isClearable, setIsClearable] = React.useState(true);
   
   useEffect(() => {
-    const name = props.values[props.id];
     setSingle({value: name, label: name})
-  }, [props.values, props.id])
+  }, [name])
   
   useEffect(() => {
-    const value = props.notClearable 
+    const value = notClearable 
       ? false
       : true;
       setIsClearable(value);
-  }, [props.notClearable])
+  }, [notClearable])
+
   function handleEditClick() {
     setEdit(true);
   }
+  
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-        const formattedName = props.sentence 
-          ? formatToSentence(value.value.toLowerCase())
-          : formatToName(value.value.toLowerCase());
-        const newOption = createSelectValue(formattedName, props.labelFormat)
+        const formattedName = formatSuggestions(value.value, sentence, keepFormat)
+        console.log(formattedName)
+        const newOption = createSelectValue(formattedName, keepFormat)
+        console.log(newOption)
         const newOptions = options ? [newOption, ...options] : [newOption];
         setOptions(newOptions)
-        saveToStorage(props.id, newOptions);
+        saveToStorage(id, newOptions);
       }   
     }
     const newValue = value ? value.value : null;
-    props.dispatch(handleInputs({name: props.id, value: newValue}))
+    dispatch(handleInputs({name: id, value: newValue}))
     setSingle(value);   
   }
 
@@ -339,35 +339,35 @@ function IntegrationReactSelect(props) {
     <Grid item xs={12}>
       {edit 
         ? <EditSelectOption 
-            id={props.id} 
-            values={props.values} 
-            label={props.label} 
+            id={id} 
+            values={values} 
+            label={label} 
             setEdit={setEdit}
             options={options}
-            labelFormat={props.labelFormat}
+            labelFormat={keepFormat}
             setNewValue={setSingle} />
         : <Grid container justify="space-between" alignItems="flex-end"> 
-            <Grid item xs={props.notClearable ? 12 : 10}>
+            <Grid item xs={notClearable ? 12 : 10}>
               <CreatableSelect
                 isClearable={isClearable}
                 classes={classes}
                 styles={selectStyles}
-                inputId={`react-select-single-${props.id}`}
+                inputId={`react-select-single-${id}`}
                 TextFieldProps={{
-                  label: props.label,
+                  label: label,
                   InputLabelProps: {
                     htmlFor: 'react-select-single',
                     shrink: true,
                   },
                 }}
-                placeholder={props.placeholder}
+                placeholder={placeholder}
                 options={options}
                 components={components}
                 value={single}
                 onChange={handleChangeSingle}
               />
             </Grid>
-            {props.notClearable
+            {notClearable
             ? null
             : <Grid item>
               <Button onClick={handleEditClick}>Edit</Button>
@@ -378,6 +378,23 @@ function IntegrationReactSelect(props) {
   );
 }
 
+IntegrationReactSelect.propTypes = {
+  dispatch: PropTypes.func.isRequired, 
+  keepFormat: PropTypes.bool, 
+  id: PropTypes.string.isRequired, 
+  label: PropTypes.string.isRequired, 
+  notClearable: PropTypes.bool, 
+  placeholder: PropTypes.string, 
+  sentence: PropTypes.bool,
+  suggestions: PropTypes.array.isRequired, 
+  values: PropTypes.object.isRequired};
+
+IntegrationReactSelect.defaultProps = {
+  keepFormat: false,
+  notClearable: false,
+  placeholder: "",
+  sentence: false
+};
 const mapStateToProps = (state) => ({
   values: state.values,
 });
