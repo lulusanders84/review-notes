@@ -6,12 +6,14 @@ const blankValues = [
     "clinicalRationale",
     "diagnosis",
     "dos",
+    "dose",
     "info",
     "initialReq",
     "initialSccf",
     "iqYear",
     "iqLoc",
     "iqSubset",
+    "mainSummary",
     "paDiagnosis", 
     "paDos",
     "paProvider",
@@ -26,6 +28,7 @@ const blankValues = [
 ];
 
 const emptyArrayValues = [
+    "addOnSummary",
     "code",
     "compCode",
     "pend",

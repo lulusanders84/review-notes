@@ -18,7 +18,6 @@ const theme = createMuiTheme({
   },
 });
 function App() {
-  console.log("testing...")
   const [updating, setUpdating] = React.useState(false);
   React.useEffect(() => {
     handlePolicyScraping(setUpdating);

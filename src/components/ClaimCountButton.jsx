@@ -2,14 +2,15 @@ import React from 'react';
 import {Typography, Tooltip} from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { connect } from 'react-redux';
-import { theme } from '../../styles/theme';
-import { useStyles } from '../../styles/claimLogStyles'
+import { theme } from '../styles/theme';
+import { useStyles } from '../styles/claimLogStyles'
 
 export function ClaimCountButton(props) {
   const classes = useStyles();
+  const {claimsGoal, claimsTotal, dailyTarget} = props;
   return (
     <ThemeProvider theme={theme}>
-      <Tooltip title={`per hour target: ${props.claimsGoal}`}>
+      <Tooltip title={`per hour target: ${claimsGoal}`}>
         <div 
           className={classes.button}
         >
@@ -19,7 +20,7 @@ export function ClaimCountButton(props) {
             variant="h2"
             color="inherit"
           >
-            {props.claimsTotal}
+            {claimsTotal}
           </Typography>
           <Typography
             className={classes.goal}
@@ -27,7 +28,7 @@ export function ClaimCountButton(props) {
             variant="h2"
             color="inherit"
           >
-            {props.dailyTarget}
+            {dailyTarget}
           </Typography>
         </div>        
       </Tooltip>

@@ -14,7 +14,7 @@ export function InfoRequest(props) {
   }, [dispatch, values]);
 
   return (
-    <Note title="Info Request Note">
+    <Note title="Info Request Note" capWordButtons>
       REQ-{values.req}: Additional Info Requested {relatedInfo === "related" ? `on REQ-${values.initialReq}` : null}
       <br />Suspended codes: {code}
       <br />Suspension: {pend}

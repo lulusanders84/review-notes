@@ -7,7 +7,12 @@ const BenefitsInput = (props) => {
   return (
     <div style={{width: "100%"}}>
     {props.values.lob === "FEP"
-      ? <ReactSelectSingle id="fepBenefits" placeholder="" label="Benefits" labelFormat="lower"   suggestions={getStorage("fepBenefits", [])} sentence={true} />               
+      ? <ReactSelectSingle 
+        id="fepBenefits" 
+        placeholder="" 
+        label="Benefits" 
+        suggestions={getStorage("fepBenefits", [])} 
+        sentence />               
       : <TextInput id="benefits" placeholder="" label="Benefits" />
     }   
     </div>  

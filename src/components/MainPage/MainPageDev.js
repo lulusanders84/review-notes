@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from '../Title/Title';
-import AddClaimButton from '../ClaimCount/AddClaimButton';
+import AddClaimButton from '../AddClaimButton.jsx';
 import { setDateTimeOfLastScrape } from '../../utils/setDateTimeOfLastScrape';
 import setUpdatingText from './setUpdatingText';
 import setDisplayComponent from './setDisplayComponent';

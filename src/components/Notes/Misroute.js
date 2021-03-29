@@ -6,7 +6,7 @@ export function Misroute(props) {
   const { values, notes } = props;
   const { code, misrouteRationale } = values;
     return (
-    <Note title="Misroute Note">
+    <Note title="Misroute Note" capWordButtons>
       REQ-{values.req}: Misroute
       <br />Suspended codes: {code}
       <br />Suspension: {notes.pend}

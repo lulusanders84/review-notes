@@ -9,7 +9,7 @@ export const formatToSentence = (input) => {
       input = input.split(" ").map(word => {
         return capWords.getAll().includes(word.toUpperCase())
           ? word.toUpperCase()
-          : word.toLowerCase();
+          : word
       }).join(" ");
       const l1 = input.charAt(0).toUpperCase();
       return l1 + input.substring(1);

@@ -1,0 +1,1 @@
+export {bindMethods} from './bindMethods';
