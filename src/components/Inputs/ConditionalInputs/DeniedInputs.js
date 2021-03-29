@@ -19,7 +19,7 @@ export function DeniedInputs(props) {
     <div className={classes.card}>
         <ReactSelectSingle id={denialId} suggestions={suggestions(rejectCodes)} label="Denial Rationale:" /> 
         <Conditional.DenialType values={{denialId}} />
-        <Conditional.ClinicalRationale values={values} />
+        <Conditional.ClinicalRationale values={{denialId, ...values}} />
     </div>
   )
 }

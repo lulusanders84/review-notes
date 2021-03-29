@@ -6,7 +6,7 @@ export const logic = {
     inputs: {
       c3x: values => values.c3xPend,  
       covidRelated: values => values.pend.some(element => element.value === "CZB") ? true : false,
-      clinicalRationale: displayClinicalRationale,         
+      clinicalRationale: values => values.denialId === "paRationale" ? displayClinicalRationale(values) : false,         
       denialType: values => values.denialId !== "paRationale" ? true : false,
       deniedInputs: values => values.deter === "deny" || values.paDeter === "denied" ? true : false,
       doseInput: values => values.drugReview && values.lob === "commercial" ? true : false,
