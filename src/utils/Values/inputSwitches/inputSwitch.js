@@ -10,6 +10,7 @@ import { paDiagnosis } from './paDiagnosis';
 import { paDeter } from './paDeter'; 
 import { paProvider } from './paProvider'; 
 import { paRationale } from './paRationale'; 
+import { paType } from './paType';
 import { pend } from './pend';
 import { policy } from './policy';
 import { rationale } from './rationale';
@@ -34,6 +35,7 @@ export const inputSwitch = {
   paMatch,
   paProvider,
   paRationale,
+  paType,
   pend,
   policy,
   rationale,

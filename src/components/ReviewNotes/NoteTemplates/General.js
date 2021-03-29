@@ -20,7 +20,6 @@ import DeterInputs from '../../Inputs/DeterInputs';
 
 function General(props) {
   const { classes, values } = props;
-
   return (
     <div>
       <Fields.Name />

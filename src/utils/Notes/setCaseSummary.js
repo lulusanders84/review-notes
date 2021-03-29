@@ -6,6 +6,8 @@ import { CapWords } from '../../classes/CapWords'
 
 export const setCaseSummary = (values) => {
     const { age, dos, summary } = values;
+    const addOnSummary = values.addOnSummary.join(" ");
+    console.log(addOnSummary);
     const service = formatValue(values.service);
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
     const diagnosis = formatValue(values.diagnosis);
@@ -21,7 +23,7 @@ export const setCaseSummary = (values) => {
     const c3x = values.c3xPend && values.c3x === "no" ? "Review not required, drug(s) not listed on C3X deferral edit." : null;
     return (
         <span>
-        {age}-year old member diagnosed with {diagnosis}; claim  submitted by {provider} for {service} {dose} (DOS: {dos}). {summary}{pricingSummary} {modifier22}{c3x}
+        {age}-year old member diagnosed with {diagnosis}; claim  submitted by {provider} for {service} {dose} (DOS: {dos}). {summary} {addOnSummary} {pricingSummary} {modifier22}{c3x}
         </span>
     )
 }

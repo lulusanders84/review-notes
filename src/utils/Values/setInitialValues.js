@@ -13,6 +13,7 @@ const blankValues = [
     "iqYear",
     "iqLoc",
     "iqSubset",
+    "mainSummary",
     "paDiagnosis", 
     "paDos",
     "paProvider",
@@ -27,6 +28,7 @@ const blankValues = [
 ];
 
 const emptyArrayValues = [
+    "addOnSummary",
     "code",
     "compCode",
     "pend",
