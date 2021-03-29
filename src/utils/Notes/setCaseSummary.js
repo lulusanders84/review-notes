@@ -7,7 +7,6 @@ import { CapWords } from '../../classes/CapWords'
 export const setCaseSummary = (values) => {
     const { age, dos, summary } = values;
     const addOnSummary = values.addOnSummary.join(" ");
-    console.log(addOnSummary);
     const service = formatValue(values.service);
     const provider = values.provider !== undefined ? formatToName(values.provider.toLowerCase()) : "";
     const diagnosis = formatValue(values.diagnosis);
