@@ -10,7 +10,7 @@ export class ClaimsGoal {
     claimsGoal = isNaN(claimsGoal)
       ? null
       : claimsGoal;
-    return setStorage(claimsGoal, "16");
+    return setStorage(claimsGoal, "2");
   }
   saveClaimsGoalToStorage() {
     saveToStorage("claimsGoal", this.goal);
