@@ -33,6 +33,7 @@ export const styles = theme => ({
     margin: theme.spacing(3, 0, 2),
   },
   notes: {
+    width: "100%",
     marginTop: theme.spacing(2)
   }
 });

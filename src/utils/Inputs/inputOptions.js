@@ -9,7 +9,7 @@ class Options {
     return special === "host" ? ["live", "adjustment"] : ["OCWA", "INSINQ"];
   }
   claimTypeOptions = ["local", "home"];
-  deterOptions = ["approve", "deny"];
+  deterOptions = ["approve", "deny", "send to medical director"];
   lobOptions = ["commercial", "FEP", "GP"];
   planOptions = ["platinum blue", "med supp", "MAPD"];
   specialOptions = ["N/A", "employee", "foreign", "hormel", "host"]

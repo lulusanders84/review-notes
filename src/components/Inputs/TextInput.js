@@ -1,23 +1,23 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
-import {handleInputChange, setProps} from '../../utils/Inputs/';
-import { textInputPropValues } from '../../data/inputPropValues';
+import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import {handleInputChange} from '../../utils/Inputs/';
 import { formatCodesToString } from '../../utils/formatCodes';
 
-function TextInput(props) {
-  const { id, values, shrink } = props;
-  const inputProps = setProps(props, textInputPropValues)
+function TextInput({id, label, multiline, rows, type, placeholder, disabled, helperText, shrink}) {
+  const values = useSelector(state => state.values);
+  const inputProps = {label, multiline, rows, type, placeholder, disabled, helperText};
   const value = id === "code" ? formatCodesToString(values[id]) : values[id];
-
+  const dispatch = useDispatch();
   return (
     <Grid item xs={12}>
       <TextField
         {...inputProps}
         fullWidth={true}
         margin="dense"
-        onChange={e => {handleInputChange(props, e)}}
+        onChange={e => {handleInputChange({id, dispatch}, e)}}
         value={value}
         InputLabelProps={{shrink: shrink}}
       />
@@ -25,10 +25,32 @@ function TextInput(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
+TextInput.propTypes = {
+ 
+  "multiline": PropTypes.bool,
+  "rows": PropTypes.string,
+  "type": PropTypes.string,
+  "id": PropTypes.string.isRequired,
+  "label": PropTypes.string.isRequired,
+  "placeholder": PropTypes.string,
+  "disabled": PropTypes.bool,
+  "helperText": PropTypes.string,
+  "shrink": PropTypes.bool
 
-export default connect(mapStateToProps)(TextInput)
+};
+
+TextInput.defaultProps = {
+
+  "multiline": false,
+  "rows": "1",
+  "type": "text",
+  "placeholder": "",
+  "disabled": false,
+  "helperText": "",
+  "shrink": true
+
+};
+
+export default TextInput
 
 

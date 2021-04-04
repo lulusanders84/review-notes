@@ -2,6 +2,7 @@ import { updateClaimLog, handleInputs } from '../redux/actions';
 import { populateReviewedValues } from '../utils/Values/populateReviewValues';
 import { setElapsedTimeReset } from '../redux/actions';
 import { bindMethods } from '../utils/Classes';
+import { setButtonLabel } from '../utils';
 
 export class AddClaim {
   constructor(values) {
@@ -17,10 +18,17 @@ export class AddClaim {
     dispatch(setElapsedTimeReset(true))
     dispatch(updateClaimLog(newClaim));
     dispatch(handleInputs({ name: "req", value: "" }));
-    setLabel("Added");
-    setTimeout(function () { setLabel("Add Claim to Log"); }, 2000);
+    setButtonLabel({
+      setText: setLabel,
+      setDisabled: this._setDisabled,
+      preClickLabel: "Add Claim to Log",
+      postClickLabel: "Added"
+    })
   }
 
+  _setDisabled = () => {
+    this.disabled = !this.disabled
+  }
   _compileClaim = () => {
     const { req, lob, deter, serviceType } = this._values;
     const peer = deter === "send to medical director"

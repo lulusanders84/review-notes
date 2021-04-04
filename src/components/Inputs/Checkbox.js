@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 
  export function MyCheckBox(props) {
   const [value] = React.useState('female');
-
   return (
     <Grid item xs={12}>
     <FormControl component="fieldset">

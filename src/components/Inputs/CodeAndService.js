@@ -4,8 +4,8 @@ import TextInput from './TextInput';
 import LinkButton from './LinkButton';
 import { Grid } from '@material-ui/core';
 import * as inputUtils from '../../utils/Inputs';
-import { connect } from 'react-redux';
 import { handleInputs } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 const savePair = inputUtils.savePair;
 
@@ -44,20 +44,21 @@ const useStyles = makeStyles(() => ({
     height: "129.6px"
   }
 }));
-function CodeAndService(props) {
+function CodeAndService() {
   const classes = useStyles();
-  const { linked } = props.values;
+  const { linked, code, service } = useSelector(state => state.values);
+  const dispatch = useDispatch();
   const linkColor = linked ? "primary" : "default";
   const linkLineColor = linked ? "#2196F3" : "#757575"
   const linkLineCoverWidth = linked ? (linkLineWidth - 1).toString() + "%" : linkLineWidth.toString() + "%";
   const tooltipTitle = linked ? "Linked: Click to unlink code and service" : "Unlinked: Click to link service to code";
   const helperText = linked ? "Unlink to edit service" : " ";
-  const linkDisabled = props.values.code === null || props.values.code === "" ? true : false;
+  const linkDisabled = code === null || code === "" ? true : false;
   const linkedChanged =(value) => {
-    props.dispatch(handleInputs({name: "linked", value,}));
+    dispatch(handleInputs({name: "linked", value,}));
   }
   const onLinkClick = () => {
-    const {code, service } = props.values;
+
     if(!linked && code && code !== "") {
         savePair("codeServicePairs", [{[code]:service}])
         linkedChanged(true)
@@ -94,8 +95,4 @@ function CodeAndService(props) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
-
-export default connect(mapStateToProps)(CodeAndService)
+export default CodeAndService

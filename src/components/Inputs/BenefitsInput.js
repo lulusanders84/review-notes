@@ -2,11 +2,13 @@ import React from 'react';
 import TextInput from './TextInput';
 import ReactSelectSingle from './ReactSelectSingle';
 import { getStorage } from '../../utils';
+import { useSelector } from 'react-redux';
 
-const BenefitsInput = (props) => {
+const BenefitsInput = () => {
+  const { lob } = useSelector(state => state.values)
   return (
     <div style={{width: "100%"}}>
-    {props.values.lob === "FEP"
+    {lob === "FEP"
       ? <ReactSelectSingle 
         id="fepBenefits" 
         placeholder="" 
