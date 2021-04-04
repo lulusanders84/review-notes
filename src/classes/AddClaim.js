@@ -11,7 +11,7 @@ export class AddClaim {
   };
   handleClick = (e, dispatch, setLabel) => {
     if (this._values.moveToDecision) {
-      populateReviewedValues(this.values, dispatch);
+      populateReviewedValues(this._values, dispatch);
     }
     const newClaim = this._compileClaim();
     dispatch(setElapsedTimeReset(true))

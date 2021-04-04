@@ -5,7 +5,6 @@ import Note from './Note';
 export function Misroute(props) {
   const { values, notes } = props;
   const { code, misrouteRationale } = values;
-  console.log(code)
     return (
     <Note title="Misroute Note" capWordButtons>
       REQ-{values.req}: Misroute
