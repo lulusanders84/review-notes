@@ -13,8 +13,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 export function DeniedInputs(props) {
+  
   const classes = useStyles();
   const {denialId, values} = props;
+  console.log(values.paDeter)
   return (
     <div className={classes.card}>
         <ReactSelectSingle id={denialId} suggestions={suggestions(rejectCodes)} label="Denial Rationale:" /> 

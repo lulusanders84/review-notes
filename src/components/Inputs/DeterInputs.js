@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from './Checkbox';
 import CriteriaInputs from './CriteriaInputs';
 import RadioInput from './RadioInput';
-import {connect} from 'react-redux';
+import { setComposed, withConditionTest } from '../../HOCs';
 import { getOptions } from '../../utils/Inputs/inputOptions';
 import Conditional from './ConditionalInputs/conditionalInputs';
 
@@ -22,7 +22,8 @@ function DeterInputs(props) {
 }
 
 const mapStateToProps = (state) => ({
+  id: "deterInputs",
   values: state.values,
 });
 
-export default connect(mapStateToProps)(DeterInputs)
+export default setComposed(mapStateToProps, withConditionTest, DeterInputs)

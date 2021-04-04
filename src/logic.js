@@ -9,6 +9,7 @@ export const logic = {
       clinicalRationale: values => values.denialId === "paRationale" ? displayClinicalRationale(values) : false,         
       denialType: values => values.denialId !== "paRationale" ? true : false,
       deniedInputs: values => values.deter === "deny" || values.paDeter === "denied" ? true : false,
+      deterInputs: values => values.paDeter !== "sent to medical director" ? true : false,
       doseInput: values => values.drugReview && values.lob === "commercial" ? true : false,
       drugReviewType: values => values.drugReview && values.reviewed === "no" ? true : false,
       exCircum: values => values.deter === "approve" && values.allMet === false ? true : false,      

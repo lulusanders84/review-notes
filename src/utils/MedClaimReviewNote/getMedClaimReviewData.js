@@ -28,7 +28,7 @@ const setService = (values) => {
   return utils.formatToName(values.service.toLowerCase());
 }
 const setDrugRequest = (values) => {
-  return values.serviceType === "drug" 
+  return values.serviceType === "Injectable Drug" 
     ? values.reviewed === "no" 
       ? utils.capWord(values.drugReviewType)
       : "N/A (following prior decision)" 
@@ -68,5 +68,7 @@ const setCriteriaNotMet = (values, data) => {
 const setDeter = (values, data) => {
   const { policyString } = data;
   const denialMessage = utils.setDenialMessage(values);
-  return utils.capWord(values.deter) + utils.setRationale(values, policyString, denialMessage)
+  if(values.paDeter === "sent to medical director") {
+    return "Placing claim on hold pending medical director decision on related claim"
+  } else return utils.capWord(values.deter) + utils.setRationale(values, policyString, denialMessage)
 }

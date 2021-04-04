@@ -12,7 +12,7 @@ export const Dose = (props) => {
   }
 
   return (
-    <Grid container row style={{marginTop: "10px"}}>
+    <Grid container row="true" style={{marginTop: "10px"}}>
       <Grid item xs={6}>
         <TextInput id="dose" placeholder="" label="Dose:" />
       </Grid>

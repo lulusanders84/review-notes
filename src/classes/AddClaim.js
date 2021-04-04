@@ -1,5 +1,5 @@
 import { updateClaimLog, handleInputs } from '../redux/actions';
-import { populateReviewedValues } from '../utils/Values/populateReviewValues';
+import { populateReviewedValues } from '../utils/Values';
 import { setElapsedTimeReset } from '../redux/actions';
 import { bindMethods } from '../utils/Classes';
 

@@ -24,7 +24,7 @@ function ReviewedInputs (props) {
       <Fields.Dos id="paDos" />
       <Fields.Diagnosis id="paDiagnosis" />
       <Fields.Provider id="paProvider" />             
-      <RadioInput id="paDeter" options={["approved", "denied"]} label="Decision:"  />
+      <RadioInput id="paDeter" options={["approved", "denied", "sent to medical director"]} label="Decision:"  />
       <Conditional.DeniedInputs denialId="paRationale" />
       <RadioInput id="paMatch" options={["yes", "no"]} label="Claim matches for diagnosis and provider?:"  />
     </Card>
