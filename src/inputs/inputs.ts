@@ -149,6 +149,13 @@ export const inputs: IInputs = {
 
   "initialSccf": repeatedInputs.sccf("initialSccf", "Initial SCCF:"),
 
+  "misrouteRationale": {
+    component: TextInput,
+    componentType: "propped",
+    logic: true,
+    props: {id:"misrouteRationale", label:"Misroute Rationale"}
+  },
+
   "name": {
     component: TextInput,
     componentType: "propped",

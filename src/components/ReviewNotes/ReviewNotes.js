@@ -6,10 +6,8 @@ import { Divider } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Tabs from '../Tabs';
 import GeneralNotes from '../GeneralNotes/GeneralNotes';
-import Misroute from './NoteTemplates/Misroute';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
-import { handleInputs as handleInputsAction } from '../../redux/actions';
 import { styles } from '../../styles/reviewNotesStyles';
 import InputsContainer from '../InputsContainer';
 import general from '../../noteTemplates/general';
@@ -18,20 +16,14 @@ import DecisionNotes from '../BackFromPeerNotes';
 import MisrouteNotes from '../MisrouteNotes/MisrouteNotes';
 import infoRequest from '../../noteTemplates/infoRequest';
 import { decision } from '../../noteTemplates/decision';
+import { misroute } from '../../noteTemplates/misroute';
 
 function ReviewNotes(props) {
 
   const [noteTypeValue, setNoteTypeValue] = useState(0);
 
-  const handleInputs = (value) => {
-    props.dispatch(handleInputsAction(value))
-  }
-  const { classes, values } = props;
-  const reviewProps = {
-    values,
-    handleInputs, 
-    classes,
-  }
+  const { classes } = props;
+
   const noteTypeSwitch = {
     0: {
         inputs: <InputsContainer noteTemplate={general} />,
@@ -46,7 +38,7 @@ function ReviewNotes(props) {
         notes: <DecisionNotes />
       },
     3: {
-        inputs: <Misroute {...reviewProps} />,
+        inputs: <InputsContainer noteTemplate={misroute} />,
         notes: <MisrouteNotes />
       }
     } 
@@ -56,7 +48,7 @@ function ReviewNotes(props) {
       <CssBaseline />
       <ScrollUpButton />        
       <div className={classes.paper}>       
-        <Tabs value={noteTypeValue} setIndex={setNoteTypeValue} handleInputs={handleInputs} />
+        <Tabs value={noteTypeValue} setIndex={setNoteTypeValue} />
         <form className={classes.form} noValidate>
           <Grid container alignContent="center" justify="center">
             {noteTypeSwitch[noteTypeValue].inputs}

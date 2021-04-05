@@ -5,6 +5,7 @@ import { covidRelated } from './covidRelated';
 import { deter } from './deter'; 
 import { lob } from './lob';
 import { name } from './name';
+import { noteTemplate } from './noteTemplate';
 import { paMatch } from './paMatch'; 
 import { paDiagnosis } from './paDiagnosis'; 
 import { paDeter } from './paDeter'; 
@@ -30,6 +31,7 @@ export const inputSwitch = {
   deter,
   lob,
   name,
+  noteTemplate,
   paDiagnosis,
   paDeter,
   paMatch,

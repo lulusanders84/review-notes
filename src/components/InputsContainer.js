@@ -3,10 +3,10 @@ import Inputs from '../classes/Inputs';
 import inputs from '../inputs/inputs';
 
 
-export default function InputsContainer({noteTemplate}) {
-  
+export default function InputsContainer({noteTemplate, changingInputs}) {
+
   const [inputComponents, setInputComponents] = useState([])
-  
+
   useEffect(() => {
     setInputComponents(new Inputs(noteTemplate, inputs).inputComponents)
   }, [noteTemplate])

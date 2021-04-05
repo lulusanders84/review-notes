@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { useDispatch } from 'react-redux';
+import { handleInputs } from '../redux/actions';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -10,11 +12,26 @@ const useStyles = makeStyles(theme => ({
       },
   }));
 
+const noteTemplateConversion = {
+  0: "general",
+  1: "infoRequest",
+  2: "decision",
+  3: "misroute"
+}
+
 export default function (props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { value } = props;
+  const name = "noteTemplate";
 
+  useEffect(() => {
+    dispatch(handleInputs({name, value: noteTemplateConversion[value] }))
+  }, [dispatch, value])
+  
   function handleChange(event, newValue) {
     props.setIndex(newValue); 
+    dispatch(handleInputs({name, value:noteTemplateConversion[newValue]}))
   }
   const tabs = ["General", "Info Request", "Decision", "Misroute"]
   return (
