@@ -7,3 +7,4 @@ export { saveToStorageIfUndefined } from './saveToStorageIfUndefined';
 export { setStorage } from './setStorage';
 export { setDateTimeOfLastScrape } from './setDateTimeOfLastScrape';
 export { setValueFromStorage } from './setValueFromStorage';
+export { cleanArray } from './cleanArray';
