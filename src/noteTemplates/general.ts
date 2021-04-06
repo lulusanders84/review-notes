@@ -1,4 +1,4 @@
-const general = [
+export const general = [
   "name",
   "claimInfo",
   "pend",
@@ -26,4 +26,3 @@ const general = [
   "exCircum"
 ]
   
-export default general

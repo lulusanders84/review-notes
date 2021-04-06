@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function withConditionTest(WrappedComponent, logic, compProps) {
   function WithConditionTest(props) {
-    const values = useSelector(state => state.values);
+    const values = {...useSelector(state => state.values), ...props.values};
     const logicPassed = typeof logic === "boolean" ? logic : logic(values)
     return (
       <div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import TextInput from '../TextInput';
-import RadioInput from '../RadioInput';
+import TextInput from './TextInput';
+import RadioInput from './RadioInput';
 import { makeStyles } from '@material-ui/core/styles';
-import { setComposed, withConditionTest } from '../../../HOCs';
-import ReactSelectSingle from '../ReactSelectSingle';
+import { setComposed, withConditionTest } from '../../HOCs';
+import ReactSelectSingle from './ReactSelectSingle';
 const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",

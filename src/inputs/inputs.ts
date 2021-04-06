@@ -1,21 +1,41 @@
 import BenefitsInput from '../components/Inputs/BenefitsInput';
 import ClaimInfoInputs from '../components/Inputs/ClaimInfoInputs';
 import CodeAndService from '../components/Inputs/CodeAndService';
-import Conditional from '../components/Inputs/ConditionalInputs/conditionalInputs';
+import DeniedInputs from '../components/Inputs/DeniedInputs';
 import DeterInputs from '../components/Inputs/DeterInputs';
+import Dose from '../components/Inputs/Dose'
 import InfoInputs from '../components/Inputs/InfoInputs';
+import PaDeterInputs from '../components/Inputs/PaDeterInputs';
 import PendInput from '../components/Inputs/PendInput';
 import PolicyInput from '../components/Inputs/PolicyInput';
+import PricingInputs from '../components/Inputs/PricingInputs';
 import RadioInput from '../components/Inputs/RadioInput';
 import { RelatedInfo } from '../components/Inputs/RelatedInfo';
+import ReviewedInputs from '../components/Inputs/ReviewedInputs';
 import ServiceTypeInput from '../components/Inputs/ServiceTypeInput';
 import TextInput from '../components/Inputs/TextInput';
 
 import IInputs from '../interfaces/IInputs';
 import IValues from '../interfaces/IValues'
+import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
 
 
 const repeatedInputs = {
+
+  denied: (denialId: string) => ({
+    component: DeniedInputs,
+    componentType: "propped",
+    logic: (values: IValues): boolean => { 
+      return values.reviewed === "no" 
+        ? values.deter === "deny"
+          ? true
+          : false
+        : values.paDeter === "denied"
+          ? true
+          : false 
+    },
+    props: {denialId}
+  }),
   diagnosis: (id: string) => ({
     component: TextInput,
     componentType: "propped",
@@ -34,6 +54,13 @@ const repeatedInputs = {
     component: TextInput,
     componentType: "propped",
     props: {id, label: "Provider:"},
+    logic: true
+  }),
+
+  req: (id: string) => ({
+    component: TextInput,
+    componentType: "propped",
+    props: {id, label: "REQ-"},
     logic: true
   }),
 
@@ -80,6 +107,13 @@ export const inputs: IInputs = {
     logic: true
   },
 
+  "clinicalRationale": {
+    component: TextInput,
+    componentType: "propped",
+    props: {id:"clinicalRationale", multiline: true, rows:"10", label:"Clinical Rationale"},
+    logic: (values: IValues): boolean => values.denialId === "paRationale" ? displayClinicalRationale(values) : false, 
+  },
+
   "code": {
     component: TextInput,
     componentType: "propped",
@@ -102,7 +136,16 @@ export const inputs: IInputs = {
     componentType: "propped",
     logic: (values: IValues): boolean => values.pend.some(element => element.value === "CZB"),
     props: {id: "covidRelated", options: ["yes", "no"], label:"Treatment is COVID-19 related?" }
-  }, 
+  },
+  
+  "denialType": {
+    component: RadioInput,
+    componentType: "propped",
+    logic: (values: IValues): boolean => values.denialId !== "paRationale" && values.deter === "deny" ? true : false,
+    props: {id: "denialType", options: ["entire claim", "code only"], label:"Deny"},
+  },
+
+  "denied": repeatedInputs.denied("rationale"),
 
   "deter": {
     component: DeterInputs,
@@ -115,7 +158,7 @@ export const inputs: IInputs = {
   "dos": repeatedInputs.dos("dos"),
 
   "dose": {
-    component: Conditional.Dose,
+    component: Dose,
     componentType: "propless",
     logic: (values: IValues): boolean => values.drugReview && values.lob === "commercial" ? true : false,
   },
@@ -163,6 +206,14 @@ export const inputs: IInputs = {
     logic: true
   },
 
+  "paDenied": repeatedInputs.denied("paRationale"),
+
+  "paDeter": {
+    component: PaDeterInputs,
+    componentType: "propless",
+    logic: true
+  },
+
   "paDiagnosis": repeatedInputs.diagnosis("paDiagnosis"),
 
   "paDos": repeatedInputs.dos("paDos"),
@@ -174,6 +225,13 @@ export const inputs: IInputs = {
     props: {id: "paList", options: ["no", "yes"], label:"On PA List?"}
   },
 
+  "paMatch": {
+    component: RadioInput,
+    componentType: "propped",
+    props: {id: "paMatch", label: "Claim matches for diagnosis and provider?:", options: ["yes", "no"]},
+    logic: true
+  },
+
   "paProvider": repeatedInputs.dos("paProvider"),
 
   "par": {
@@ -182,6 +240,15 @@ export const inputs: IInputs = {
     props: {id: "proPar", label: "Par status:", options: ["Par", "Non-Par"]},
     logic: true
   },      
+
+  "paReq": repeatedInputs.req("paReq"),
+
+  "paType": {
+    component: RadioInput,
+    componentType: "propped",
+    props: {id: "paType", label: "Review type:", options: ["PA", "related claim"]},
+    logic: true
+  }, 
 
   "pend": {
     component: PendInput,
@@ -197,7 +264,7 @@ export const inputs: IInputs = {
   },
 
   "pricing": {
-    component: Conditional.PricingInputs,
+    component: PricingInputs,
     componentType: "propless",
     logic: (values: IValues): boolean => values.pend && values.pend.some(pend => pend.value === "P5194")
   },
@@ -224,12 +291,7 @@ export const inputs: IInputs = {
     logic: true
   },
 
-  "req": {
-    component: TextInput,
-    componentType: "propped",
-    props: {id: "req", label: "REQ-"},
-    logic: true
-  },
+  "req": repeatedInputs.req("req"),
 
   "reviewed": {
     component: RadioInput,
@@ -239,7 +301,7 @@ export const inputs: IInputs = {
   },
 
   "reviewedInputs": {
-    component: Conditional.ReviewedInputs,
+    component: ReviewedInputs,
     componentType: "propless",
     logic: (values: IValues): boolean => values.reviewed === "yes" ? true : false
   },

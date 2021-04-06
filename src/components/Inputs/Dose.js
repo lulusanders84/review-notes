@@ -1,9 +1,9 @@
 import React from 'react';
-import TextInput from '../TextInput';
+import TextInput from './TextInput';
 import { Grid } from '@material-ui/core';
-import ReactSelectSingle from '../ReactSelectSingle';
-import { withConditionTest, setComposed } from '../../../HOCs';
-import { createSelectValue, saveToStorage, getStorage } from '../../../utils';
+import ReactSelectSingle from './ReactSelectSingle';
+import { withConditionTest, setComposed } from '../../HOCs';
+import { createSelectValue, saveToStorage, getStorage } from '../../utils';
 
 export const Dose = (props) => {
   const storedOptions = getStorage("doseUnit");

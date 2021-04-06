@@ -4,19 +4,16 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { Grid } from '@material-ui/core/';
 import { Divider } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Tabs from '../Tabs';
-import GeneralNotes from '../GeneralNotes/GeneralNotes';
+import Tabs from './Tabs';
+import GeneralNotes from './GeneralNotes/GeneralNotes';
 import ScrollUpButton from 'react-scroll-up-button';
 import { connect } from 'react-redux';
-import { styles } from '../../styles/reviewNotesStyles';
-import InputsContainer from '../InputsContainer';
-import general from '../../noteTemplates/general';
-import InfoRequestNotes from '../InfoRequestNotes/InfoRequestNotes';
-import DecisionNotes from '../BackFromPeerNotes';
-import MisrouteNotes from '../MisrouteNotes/MisrouteNotes';
-import infoRequest from '../../noteTemplates/infoRequest';
-import { decision } from '../../noteTemplates/decision';
-import { misroute } from '../../noteTemplates/misroute';
+import { styles } from '../styles/reviewNotesStyles';
+import InputsContainer from './InputsContainer';
+import InfoRequestNotes from './InfoRequestNotes/InfoRequestNotes';
+import DecisionNotes from './BackFromPeerNotes';
+import MisrouteNotes from './MisrouteNotes/MisrouteNotes';
+import { decision, general, infoRequest, misroute } from '../noteTemplates';
 
 function ReviewNotes(props) {
 

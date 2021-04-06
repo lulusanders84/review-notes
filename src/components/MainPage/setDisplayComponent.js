@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewNotes from '../ReviewNotes/ReviewNotes';
+import ReviewNotes from '../ReviewNotes';
 import ClaimLog from '../ClaimLog/ClaimLog';
 
 export default function (tabValue) {

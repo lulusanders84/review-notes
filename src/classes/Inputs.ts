@@ -35,7 +35,13 @@ export default class Inputs {
   buildProplessComponent(logic: boolean | Function, component: Function) {
     return new Input({}, logic, component).jsx()
   }
+
   buildProppedComponent( logic: boolean | Function, component: Function, props: ITextInputProps | IRadioInputProps,) {
     return new Input(props, logic, component).jsx()
+  }
+
+  getInput(id: string) {
+    const input = this.inputComponents.find(component => component.id === id)
+    return input !== undefined ? input.component : null
   }
 }

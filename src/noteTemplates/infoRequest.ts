@@ -1,4 +1,4 @@
-const infoRequest = [
+export const infoRequest = [
   "name",
   "claimInfo",
   "sccf",
@@ -13,4 +13,3 @@ const infoRequest = [
   "info",
 ]
   
-export default infoRequest

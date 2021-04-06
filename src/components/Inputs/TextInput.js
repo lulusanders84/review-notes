@@ -11,6 +11,9 @@ function TextInput({id, label, multiline, rows, type, placeholder, disabled, hel
   const inputProps = {label, multiline, rows, type, placeholder, disabled, helperText};
   const value = id === "code" ? formatCodesToString(values[id]) : values[id];
   const dispatch = useDispatch();
+  if(id === "clinicalRationale") {
+    console.log(values)
+  }
   return (
     <Grid item xs={12}>
       <TextField
