@@ -1,13 +1,10 @@
-import { ReactElement } from "react";
-import ITextInputProps from "./ITextInputProps";
-import IRadioInputProps from "./IRadioInputProps"
-import IButtonProps from "./IButtonProps";
-import IDeniedInputsProps from "./IDeniedInputsProps";
 
+import { IProps } from "./IProps";
 
 export default interface IInput {
-  component: Function | object | ReactElement,
-  componentType: string,
-  props?: ITextInputProps | IRadioInputProps | IButtonProps | IDeniedInputsProps,
-  logic: boolean |  Function
+
+  component: Function,
+  logic: boolean |  Function  
+  onCard?: boolean,  
+  props?: IProps
 }

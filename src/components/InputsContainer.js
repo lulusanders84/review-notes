@@ -8,7 +8,7 @@ export default function InputsContainer({noteTemplate, changingInputs}) {
   const [inputComponents, setInputComponents] = useState([])
 
   useEffect(() => {
-    setInputComponents(new Inputs(noteTemplate, inputs).inputComponents)
+    setInputComponents(new Inputs(noteTemplate, inputs).getComponents())
   }, [noteTemplate])
 
   return (

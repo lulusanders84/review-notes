@@ -1,47 +1,50 @@
-
 import { Input } from '../classes/Input';
 import IInputs from '../interfaces/IInputs';
-import IRadioInputProps from '../interfaces/IRadioInputProps';
-import ITextInputProps from '../interfaces/ITextInputProps';
-
+import { IProps } from '../interfaces/IProps';
+import { bindMethods } from '../utils/Classes';
 
 export default class Inputs {
 
-  inputComponents: {component: Function, id: string}[]
-  inputKeys: string[]
-  inputList: IInputs
+  _inputComponents: {component: Function, id: string}[]
+  _inputKeys: string[]
+  _inputList: IInputs
 
   constructor(inputKeys: string[], inputList: IInputs) {
-    this.inputKeys = inputKeys;
-    this.inputList = inputList;
-    this.inputComponents = this.buildInputs()
+    this._inputKeys = inputKeys;
+    this._inputList = inputList;
+    bindMethods(this)
+    this._inputComponents = this.buildInputs()
   }
 
-  componentTypes: {[index: string]: Function} = {
-    "propped": this.buildProppedComponent,
-    "propless": this.buildProplessComponent
+  buildComponent = (
+    logic: boolean | Function, 
+    component: Function, 
+    props: IProps,
+    onCard: boolean | undefined
+  ) => {
+    const compProps: IProps | {} = props === undefined ? {} : props
+    return new Input(compProps, logic, component, onCard).jsx()
+      
   }
 
-  buildInputs() {
-    return this.inputKeys.map(key => {
-      const {component, componentType, props, logic} = this.inputList[key]
+  buildInputs = () => {
+    return this._inputKeys.map(key => {
+      const {component, onCard, props, logic} = this._inputList[key]
       return {
-        component: this.componentTypes[componentType](logic, component, props),
+        component: this.buildComponent(logic, component, props, onCard),
         id: key
       }
     })
   }
 
-  buildProplessComponent(logic: boolean | Function, component: Function) {
-    return new Input({}, logic, component).jsx()
-  }
 
-  buildProppedComponent( logic: boolean | Function, component: Function, props: ITextInputProps | IRadioInputProps,) {
-    return new Input(props, logic, component).jsx()
-  }
 
-  getInput(id: string) {
-    const input = this.inputComponents.find(component => component.id === id)
+  getInput = (id: string) => {
+    const input = this._inputComponents.find(component => component.id === id)
     return input !== undefined ? input.component : null
+  }
+
+  getComponents = () => {
+    return this._inputComponents
   }
 }
