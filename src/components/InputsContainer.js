@@ -3,13 +3,13 @@ import Inputs from '../classes/Inputs';
 import inputs from '../inputs/inputs';
 
 
-export default function InputsContainer({noteTemplate, changingInputs}) {
+export default function InputsContainer({template}) {
 
   const [inputComponents, setInputComponents] = useState([])
 
   useEffect(() => {
-    setInputComponents(new Inputs(noteTemplate, inputs).getComponents())
-  }, [noteTemplate])
+    setInputComponents(new Inputs(template, inputs).getComponents())
+  }, [template])
 
   return (
     <div style={{width: "100%"}}>

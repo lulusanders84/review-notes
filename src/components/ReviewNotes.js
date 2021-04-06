@@ -23,19 +23,19 @@ function ReviewNotes(props) {
 
   const noteTypeSwitch = {
     0: {
-        inputs: <InputsContainer noteTemplate={general} />,
+        inputs: <InputsContainer template={general} />,
         notes: <GeneralNotes /> 
       },
     1: {
-        inputs: <InputsContainer noteTemplate={infoRequest} />,
+        inputs: <InputsContainer template={infoRequest} />,
         notes: <InfoRequestNotes />
       },
     2: {
-      inputs: <InputsContainer noteTemplate={decision} />,
+      inputs: <InputsContainer template={decision} />,
         notes: <DecisionNotes />
       },
     3: {
-        inputs: <InputsContainer noteTemplate={misroute} />,
+        inputs: <InputsContainer template={misroute} />,
         notes: <MisrouteNotes />
       }
     } 

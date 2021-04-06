@@ -1,4 +1,3 @@
-import ClaimInfoInputs from '../components/Inputs/ClaimInfoInputs';
 import CodeAndService from '../components/Inputs/CodeAndService';
 import DeniedInputs from '../components/Inputs/DeniedInputs';
 import DeterInputs from '../components/Inputs/DeterInputs';
@@ -12,12 +11,14 @@ import RadioInput from '../components/Inputs/RadioInput';
 import IntegrationReactSelect from '../components/Inputs/ReactSelectSingle';
 import { RelatedInfo } from '../components/Inputs/RelatedInfo';
 import ServiceTypeInput from '../components/Inputs/ServiceTypeInput';
+import SimpleSelect from '../components/Inputs/SimpleSelect';
 import TextInput from '../components/Inputs/TextInput';
 import InputsContainer from '../components/InputsContainer';
 
 import IInputs from '../interfaces/IInputs';
 import IValues from '../interfaces/IValues'
 import { reviewed } from '../templates/inputTemplates';
+import { claimInfo } from '../templates/inputTemplates/claimInfo';
 import { getStorage } from '../utils';
 import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
 
@@ -95,8 +96,25 @@ export const inputs: IInputs = {
   },
 
   "claimInfo": {
-    component: ClaimInfoInputs,
-    logic: true
+    component: InputsContainer,
+    logic: true,
+    props: {template: claimInfo}
+  },
+
+  "claimSystem": {
+    component: RadioInput,
+    logic: (values: IValues): boolean => values.special !== "host" ? true : false,
+    props: {id: "claimSystem", options: ["OCWA", "INSINQ"], label:"Claim System"}
+  },
+
+  "claimType": {
+    component: RadioInput,
+    logic: (values: IValues): boolean => values.lob === "commercial"
+      ? true
+      : values.lob === "GP" && values.plan === "MAPD"
+        ? true
+        : false,
+    props: {id: "claimType", options: ["local", "home"], label:"Claim Type"},
   },
 
   "clinicalRationale": {
@@ -170,6 +188,12 @@ export const inputs: IInputs = {
     },
   },
 
+  "hostSystem": {
+    component: RadioInput,
+    logic: (values: IValues): boolean => values.special === "host" ? true : false,
+    props: {id: "hostSystem", options: ["live", "adjustment"], label:"Claim System:"}
+  },
+
   "info": {
     component: InfoInputs,
     logic: true
@@ -182,6 +206,12 @@ export const inputs: IInputs = {
   },
 
   "initialSccf": repeatedInputs.sccf("initialSccf", "Initial SCCF:"),
+
+  "lob": {
+    component: RadioInput,
+    logic: true,
+    props: {id:"lob", options: ["commercial", "FEP", "GP"], label:"LOB:"}
+  },
 
   "misrouteRationale": {
     component: TextInput,
@@ -240,6 +270,12 @@ export const inputs: IInputs = {
  
   },
 
+  "plan": {
+    component: RadioInput,
+    logic: (values: IValues): boolean => values.lob === "GP" ? true : false,
+    props: {id:"plan", options: ["platinum blue", "med supp", "MAPD"], label: "Plan"}
+  },
+
   "policy": {
     component: PolicyInput,
     logic: true
@@ -282,7 +318,7 @@ export const inputs: IInputs = {
     component: InputsContainer,
     logic: (values: IValues): boolean => values.reviewed === "yes" ? true : false,
     onCard: true,
-    props: {noteTemplate: reviewed}
+    props: {template: reviewed}
   },
 
   "sccf": repeatedInputs.sccf("sccf", "SCCF:"),
@@ -290,6 +326,15 @@ export const inputs: IInputs = {
   "serviceType": {
     component: ServiceTypeInput,
     logic: true
+  },
+
+  "special": {
+    component: SimpleSelect,
+    logic: (values: IValues): boolean => values.lob === "commercial" ? true : false,
+    props: {
+      id: "special", 
+      options: ["N/A", "employee", "foreign", "hormel", "host", ], 
+      label: "Specialty claim"}
   },
   
   "summary": {
