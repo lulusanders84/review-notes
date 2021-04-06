@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
 import { formatSuggestions } from '../../utils/AutoComplete';
 import { handleInputs } from '../../redux/actions';
@@ -282,8 +282,9 @@ const components = {
   ValueContainer,
 };
 
-function IntegrationReactSelect({dispatch, keepFormat, id, label, notClearable, placeholder, sentence, suggestions, values}) {
-
+function IntegrationReactSelect({keepFormat, id, label, notClearable, placeholder, sentence, suggestions}) {
+  const dispatch = useDispatch();
+  const values = useSelector(state => state.values);
   const name = values[id];
   const initialValue = {value: name, label: name}
   const classes = useStyles();
@@ -379,7 +380,6 @@ function IntegrationReactSelect({dispatch, keepFormat, id, label, notClearable, 
 }
 
 IntegrationReactSelect.propTypes = {
-  dispatch: PropTypes.func.isRequired, 
   keepFormat: PropTypes.bool, 
   id: PropTypes.string.isRequired, 
   label: PropTypes.string.isRequired, 
@@ -387,7 +387,7 @@ IntegrationReactSelect.propTypes = {
   placeholder: PropTypes.string, 
   sentence: PropTypes.bool,
   suggestions: PropTypes.array.isRequired, 
-  values: PropTypes.object.isRequired};
+};
 
 IntegrationReactSelect.defaultProps = {
   keepFormat: false,
@@ -395,8 +395,6 @@ IntegrationReactSelect.defaultProps = {
   placeholder: "",
   sentence: false
 };
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
 
-export default connect(mapStateToProps)(IntegrationReactSelect)
+
+export default IntegrationReactSelect

@@ -1,4 +1,3 @@
-import BenefitsInput from '../components/Inputs/BenefitsInput';
 import ClaimInfoInputs from '../components/Inputs/ClaimInfoInputs';
 import CodeAndService from '../components/Inputs/CodeAndService';
 import DeniedInputs from '../components/Inputs/DeniedInputs';
@@ -10,6 +9,7 @@ import PendInput from '../components/Inputs/PendInput';
 import PolicyInput from '../components/Inputs/PolicyInput';
 import PricingInputs from '../components/Inputs/PricingInputs';
 import RadioInput from '../components/Inputs/RadioInput';
+import IntegrationReactSelect from '../components/Inputs/ReactSelectSingle';
 import { RelatedInfo } from '../components/Inputs/RelatedInfo';
 import ServiceTypeInput from '../components/Inputs/ServiceTypeInput';
 import TextInput from '../components/Inputs/TextInput';
@@ -18,6 +18,7 @@ import InputsContainer from '../components/InputsContainer';
 import IInputs from '../interfaces/IInputs';
 import IValues from '../interfaces/IValues'
 import { reviewed } from '../templates/inputTemplates';
+import { getStorage } from '../utils';
 import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
 
 
@@ -76,8 +77,9 @@ export const inputs: IInputs = {
   },
 
   "benefits": {
-    component: BenefitsInput,
-    logic: true
+    component: TextInput,
+    logic: (values: IValues): boolean => values.lob !== "FEP" ? true : false,
+    props: { id:"benefits", label:"Benefits"}
   },
 
   "c3x": {
@@ -110,7 +112,6 @@ export const inputs: IInputs = {
         ? true
         : false,
     props: {id:"code", label:"Suspended Codes" }
-
   },
 
   "codeAndService": {
@@ -156,6 +157,17 @@ export const inputs: IInputs = {
     component: TextInput,
     props: {id: "exCircum", label:"Extenuating Circumstances"},
     logic: true
+  },
+
+  "fepBenefits": {
+    component: IntegrationReactSelect,
+    logic: (values: IValues): boolean => values.lob === "FEP" ? true : false,
+    props: {
+      id: "fepBenefits", 
+      label: "Benefits", 
+      suggestions: getStorage("fepBenefits", []),
+      sentence: true 
+    },
   },
 
   "info": {

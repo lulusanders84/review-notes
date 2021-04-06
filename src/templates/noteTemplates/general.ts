@@ -15,6 +15,7 @@ export const general = [
   "pricing",
   "policy",
   "benefits",
+  "fepBenefits",
   "diagnosis",
   "provider",
   "par",
