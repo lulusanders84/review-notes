@@ -17,7 +17,7 @@ function DeterInputs(props) {
         {deter === "deny" 
           ? <Denied />
           : deter === "send to medical director"
-          ? <CriteriaInputs   /> 
+          ? <CriteriaInputs  /> 
           : <Checkbox id="allMet" value={allMet}  label="All crtieria met" disabled={disableAllMet} {...props} />
         }  
     </div>

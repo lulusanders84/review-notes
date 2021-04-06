@@ -1,4 +1,5 @@
 import CodeAndService from '../components/Inputs/CodeAndService';
+import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
 import DeniedInputs from '../components/Inputs/DeniedInputs';
 import DeterInputs from '../components/Inputs/DeterInputs';
 import Dose from '../components/Inputs/Dose'
@@ -19,6 +20,7 @@ import IInputs from '../interfaces/IInputs';
 import IValues from '../interfaces/IValues'
 import { reviewed } from '../templates/inputTemplates';
 import { claimInfo } from '../templates/inputTemplates/claimInfo';
+import { criteria } from '../templates/inputTemplates/criteria';
 import { getStorage } from '../utils';
 import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
 
@@ -141,6 +143,24 @@ export const inputs: IInputs = {
     component: RadioInput,
     logic: (values: IValues): boolean => values.pend.some(element => element.value === "CZB"),
     props: {id: "covidRelated", options: ["yes", "no"], label:"Treatment is COVID-19 related?" }
+  },
+
+  "criteriaInputs": {
+    component: InputsContainer,
+    logic: (values: IValues): boolean => values.deter === "deny" ? true : false,
+    props: {template: criteria}
+  },
+
+  "criteriaMet": {
+    component: CriteriaQuill,
+    logic: true,
+    props: {id: "criteriaMet", label:"Criteria Met"}
+  },
+
+  "criteriaNotMet": {
+    component: CriteriaQuill,
+    logic: true,
+    props: {id: "criteriaNotMet", label:"Criteria Not Met"}
   },
   
   "denialType": {
@@ -288,6 +308,15 @@ export const inputs: IInputs = {
 
   "provider": repeatedInputs.dos("provider"),
 
+  "referReason": {
+    component: IntegrationReactSelect,
+    logic: true,
+    props: {
+      id:"referReason", 
+      label: "Reason for Referral",
+      suggestions: ["Medical Necessity", "Benefit", "Cosmetic", "Investigative", "Mandatory Medical Director Review"], 
+    }
+  },
   "relatedInfo": {
     component: RadioInput,
     logic: true,
