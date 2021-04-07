@@ -3,7 +3,7 @@ import Inputs from '../classes/Inputs';
 import inputs from '../inputs/inputs';
 
 
-export default function InputsContainer({template}) {
+export default function InputsContainer({template, denialId}) {
 
   const [inputComponents, setInputComponents] = useState([])
 
@@ -16,7 +16,7 @@ export default function InputsContainer({template}) {
       {
         inputComponents.map(input => {
           const Component = input.component;
-          return <Component key={input.id} />       
+          return <Component key={input.id} values={{denialId}} />       
         })
       }
     </div>

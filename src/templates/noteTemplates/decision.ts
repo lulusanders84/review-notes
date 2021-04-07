@@ -1,5 +1,5 @@
 export const decision = [
-  "deter",
+  "deterInputs",
   "claimInfo",
   "par",
   "req",

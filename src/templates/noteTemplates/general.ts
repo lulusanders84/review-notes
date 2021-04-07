@@ -23,7 +23,7 @@ export const general = [
   "covidRelated",
   "claimHistory",
   "summary",
-  "deter",
+  "deterInputs",
   "exCircum"
 ]
   

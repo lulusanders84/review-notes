@@ -1,7 +1,5 @@
 import CodeAndService from '../components/Inputs/CodeAndService';
 import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
-import DeniedInputs from '../components/Inputs/DeniedInputs';
-import DeterInputs from '../components/Inputs/DeterInputs';
 import Dose from '../components/Inputs/Dose'
 import InfoInputs from '../components/Inputs/InfoInputs';
 import PaDeterInputs from '../components/Inputs/PaDeterInputs';
@@ -21,14 +19,19 @@ import IValues from '../interfaces/IValues'
 import { reviewed } from '../templates/inputTemplates';
 import { claimInfo } from '../templates/inputTemplates/claimInfo';
 import { criteria } from '../templates/inputTemplates/criteria';
+import { denied } from '../templates/inputTemplates/denied';
+import { deter } from '../templates/inputTemplates/deter';
 import { getStorage } from '../utils';
+import { suggestions } from '../utils/AutoComplete';
 import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
-
+import { rejectCodes } from '../data/rejectCodes';
+import Checkbox from '../components/Inputs/Checkbox';
 
 const repeatedInputs = {
 
+
   denied: (denialId: string) => ({
-    component: DeniedInputs,
+    component: InputsContainer,
     logic: (values: IValues): boolean => { 
       return values.reviewed === "no" 
         ? values.deter === "deny"
@@ -38,8 +41,9 @@ const repeatedInputs = {
           ? true
           : false 
     },
-    props: {denialId}
+    props: {template: denied(denialId), denialId}
   }),
+
   diagnosis: (id: string) => ({
     component: TextInput,
     props: {id, label: "Diagnosis:"},
@@ -56,6 +60,14 @@ const repeatedInputs = {
     component: TextInput,
     props: {id, label: "Provider:"},
     logic: true
+  }),
+
+  rationale: (id: string) => ({
+    component: IntegrationReactSelect,
+    logic: (values: IValues): boolean => id === "rationale" 
+      ? values.deter === "deny" ? true : false
+      : values.paDeter === "denied" ? true : false,
+    props: {id, suggestions: suggestions(rejectCodes), label: "Denial Rationale:"} 
   }),
 
   req: (id: string) => ({
@@ -77,6 +89,12 @@ export const inputs: IInputs = {
     component: TextInput,
     props: {id: "age", label: "Age:"},
     logic: true
+  },
+
+  "allMet": {
+    component: Checkbox,
+    logic: (values: IValues): boolean => values.deter === "approve" ? true : false,
+    props: {id: "allMet", label: "All crtieria met", disabled: false}
   },
 
   "benefits": {
@@ -147,7 +165,7 @@ export const inputs: IInputs = {
 
   "criteriaInputs": {
     component: InputsContainer,
-    logic: (values: IValues): boolean => values.deter === "deny" ? true : false,
+    logic: (values: IValues): boolean => values.deter === "send to medical director" ? true : false,
     props: {template: criteria}
   },
 
@@ -172,8 +190,15 @@ export const inputs: IInputs = {
   "denied": repeatedInputs.denied("rationale"),
 
   "deter": {
-    component: DeterInputs,
-    logic: true
+    component: RadioInput,
+    logic: true,
+    props: {id: "deter", options: ["approve", "deny", "send to medical director"], label:"Determination"}
+  },
+
+  "deterInputs": {
+    component: InputsContainer,
+    logic: true,
+    props: {template: deter}
   },
 
   "diagnosis": repeatedInputs.diagnosis("diagnosis"),
@@ -274,7 +299,9 @@ export const inputs: IInputs = {
     component: RadioInput,
     props: {id: "proPar", label: "Par status:", options: ["Par", "Non-Par"]},
     logic: true
-  },      
+  }, 
+  
+  "paRationale" : repeatedInputs.rationale("paRationale"),
 
   "paReq": repeatedInputs.req("paReq"),
 
@@ -308,6 +335,8 @@ export const inputs: IInputs = {
 
   "provider": repeatedInputs.dos("provider"),
 
+  "rationale" : repeatedInputs.rationale("rationale"),
+
   "referReason": {
     component: IntegrationReactSelect,
     logic: true,
@@ -317,6 +346,7 @@ export const inputs: IInputs = {
       suggestions: ["Medical Necessity", "Benefit", "Cosmetic", "Investigative", "Mandatory Medical Director Review"], 
     }
   },
+
   "relatedInfo": {
     component: RadioInput,
     logic: true,
