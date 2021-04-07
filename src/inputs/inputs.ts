@@ -1,7 +1,6 @@
 import CodeAndService from '../components/Inputs/CodeAndService';
 import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
 import Dose from '../components/Inputs/Dose'
-import PaDeterInputs from '../components/Inputs/PaDeterInputs';
 import PendInput from '../components/Inputs/PendInput';
 import PolicyInput from '../components/Inputs/PolicyInput';
 import PricingInputs from '../components/Inputs/PricingInputs';
@@ -22,13 +21,13 @@ import { denied } from '../templates/inputTemplates/denied';
 import { deter } from '../templates/inputTemplates/deter';
 import { getStorage } from '../utils';
 import { suggestions } from '../utils/AutoComplete';
-import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
 import { rejectCodes } from '../data/rejectCodes';
 import Checkbox from '../components/Inputs/Checkbox';
 import Button from '../components/Inputs/Button';
 import { saveInfoToPolicy } from '../utils/Inputs/savePair';
 import { infoInputs } from '../templates/inputTemplates/info';
 import { iq } from '../templates/inputTemplates/iq';
+import { paDeter } from '../templates/inputTemplates/paDeter';
 
 const repeatedInputs = {
 
@@ -143,7 +142,15 @@ export const inputs: IInputs = {
   "clinicalRationale": {
     component: TextInput,
     props: {id:"clinicalRationale", multiline: true, rows:"10", label:"Clinical Rationale"},
-    logic: (values: IValues): boolean => values.denialId === "paRationale" ? displayClinicalRationale(values) : false, 
+    logic: (values: IValues): boolean => {
+      const {paRationale, paType, paDeter} = values
+      const denial: boolean = rejectCodes[paRationale] ? rejectCodes[paRationale].clinicalRationale : false
+      return paType === "related claim"
+        ? paDeter === "denied"
+          ? denial
+          : false
+        : false
+    }
   },
 
   "code": {
@@ -310,8 +317,15 @@ export const inputs: IInputs = {
   "paDenied": repeatedInputs.denied("paRationale"),
 
   "paDeter": {
-    component: PaDeterInputs,
-    logic: true
+    component: RadioInput,
+    logic: true,
+    props: {id:"paDeter", options: ["approved", "denied", "pending decision"], label:"Determination:"}
+  },
+
+  "paDeterInputs": {
+    component: InputsContainer,
+    logic: true,
+    props: {template: paDeter, denialId: "paRationale"}
   },
 
   "paDiagnosis": repeatedInputs.diagnosis("paDiagnosis"),

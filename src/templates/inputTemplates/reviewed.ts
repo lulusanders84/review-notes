@@ -4,6 +4,6 @@ export const reviewed = [
   "paDos",
   "paDiagnosis",
   "paProvider",
-  "paDeter",
+  "paDeterInputs",
   "paMatch"
 ]
