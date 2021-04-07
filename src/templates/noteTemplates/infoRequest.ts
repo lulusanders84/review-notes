@@ -10,6 +10,6 @@ export const infoRequest = [
   "codeAndService",
   "policy",
   "related",
-  "info",
+  "infoInputs",
 ]
   

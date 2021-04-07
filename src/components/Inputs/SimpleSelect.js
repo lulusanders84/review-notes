@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SimpleSelect(props) {
+export function SimpleSelect(props) {
   const classes = useStyles();
   const menuItems = props.options.map((option, index) => {
     return <MenuItem key={index} value={option}>{option}</MenuItem>

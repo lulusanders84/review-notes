@@ -6,23 +6,30 @@ import { setInterqual } from '../../utils/Notes/setPolicyString';
 import { getInfoRequestData } from '../../utils/InfoRequestNote/getInfoRequestData';
 import { getMedClaimReviewData } from '../../utils/MedClaimReviewNote/getMedClaimReviewData';
 
+const formatValuesForNotes = (values) => {
+  let formattedValues = {}
+  Object.keys(values).forEach(value => {
+    formattedValues[value] = values[value] === undefined ? "" : values[value] 
+  })
+  return formattedValues;
+}
 
 export const setClaimNoteData = (values) => (dispatch) => {
-  const data = getClaimNoteData(values);
+  const data = getClaimNoteData(formatValuesForNotes(values));
   Object.keys(data).forEach(key => {
     dispatch(actionGenerator(key, data[key]))
   })
 }
 
 export const setMedClaimReviewData = (values) => (dispatch) => {
-  const data = getMedClaimReviewData(values);
+  const data = getMedClaimReviewData(formatValuesForNotes(values));
   Object.keys(data).forEach(key => {
     dispatch(actionGenerator(key, data[key]))
   })
 
 }
 export const setInfoRequestData = (values) => (dispatch) => {
-  const data = getInfoRequestData(values);
+  const data = getInfoRequestData(formatValuesForNotes(values));
   Object.keys(data).forEach(key => {
     dispatch(actionGenerator(key, data[key]))
   })
@@ -38,7 +45,7 @@ export const setPolicyStringAction = (values) => (dispatch) => {
 
 }
 export const setQueueAction = (values) => (dispatch) => {
-  const queue = getQueue(values);
+  const queue = getQueue(formatValuesForNotes(values));
   dispatch(setQueue(queue))
 }
 
@@ -51,7 +58,7 @@ export const referReasonsAction = (values) => (dispatch) => {
 }
 
 export const fullNamesAction = (values) => (dispatch) => {
-  const fullnames = getFullnames(values);
+  const fullnames = getFullnames(formatValuesForNotes(values));
   dispatch(setFullnames(fullnames));
 }
 

@@ -9,9 +9,12 @@ export default function withCard(WrappedComponent, onCard) {
   function WithCard(props) {
     const classes = useStyles();
     return onCard 
-      ? <Card className={classes.card}>
-         <WrappedComponent {...props} />
-      </Card>
+      ? 
+      <div style={{display: "flex", justifyContent: "flex-end"}}>
+        <Card classes={{root: classes.card}}>
+          <WrappedComponent {...props} />
+        </Card>
+      </div>
       : <WrappedComponent {...props} />
   }
 

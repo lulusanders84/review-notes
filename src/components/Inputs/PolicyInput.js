@@ -8,7 +8,6 @@ import React, {useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { policySuggestions } from '../../utils/AutoComplete';
 import ReactSelect from './ReactSelect';
-import InterQualInput from './InterQualInput';
 import { connect } from 'react-redux';
 
 const styles = theme => ({
@@ -41,7 +40,6 @@ const PolicyInput = (props) => {
   return (
     <div>          
       <ReactSelect id="policy" suggestions={suggestions} label="Medical Policy"  />
-      <InterQualInput visible={props.values.interqual} values={props.values}  />  
     </div>
   );
 }

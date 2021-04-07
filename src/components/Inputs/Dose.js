@@ -19,7 +19,6 @@ export const Dose = (props) => {
       <Grid item xs={6} style={{paddingLeft: "5px"}}>
         <ReactSelectSingle 
           id="doseUnit" 
-          placeholder="" 
           label="Unit:" 
           keepFormat
           suggestions={getStorage("doseUnit", [])} />

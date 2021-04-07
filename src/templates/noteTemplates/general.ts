@@ -14,6 +14,7 @@ export const general = [
   "drugReviewType",
   "pricing",
   "policy",
+  "iqInputs",
   "benefits",
   "fepBenefits",
   "diagnosis",

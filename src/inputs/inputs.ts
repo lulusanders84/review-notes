@@ -1,7 +1,6 @@
 import CodeAndService from '../components/Inputs/CodeAndService';
 import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
 import Dose from '../components/Inputs/Dose'
-import InfoInputs from '../components/Inputs/InfoInputs';
 import PaDeterInputs from '../components/Inputs/PaDeterInputs';
 import PendInput from '../components/Inputs/PendInput';
 import PolicyInput from '../components/Inputs/PolicyInput';
@@ -26,6 +25,10 @@ import { suggestions } from '../utils/AutoComplete';
 import { displayClinicalRationale } from '../utils/Inputs/displayClinicalRationale';
 import { rejectCodes } from '../data/rejectCodes';
 import Checkbox from '../components/Inputs/Checkbox';
+import Button from '../components/Inputs/Button';
+import { saveInfoToPolicy } from '../utils/Inputs/savePair';
+import { infoInputs } from '../templates/inputTemplates/info';
+import { iq } from '../templates/inputTemplates/iq';
 
 const repeatedInputs = {
 
@@ -240,8 +243,15 @@ export const inputs: IInputs = {
   },
 
   "info": {
-    component: InfoInputs,
-    logic: true
+    component: TextInput,
+    logic: true,
+    props: {id:"info", multiline: true, rows:"5", label: "Info To Request"}
+  },
+
+  "infoInputs": {
+    component: InputsContainer,
+    logic: true,
+    props: {template: infoInputs}
   },
 
   "initialReq": {
@@ -251,6 +261,33 @@ export const inputs: IInputs = {
   },
 
   "initialSccf": repeatedInputs.sccf("initialSccf", "Initial SCCF:"),
+
+  "iqInputs": {
+    component: InputsContainer,
+    logic: (values: IValues): boolean => Array.isArray(values.policy)
+      ? values.policy.some(policy => policy["Policy #"] === "InterQual") ? true : false
+      : false,
+    onCard: true,
+    props: {template: iq} 
+  },
+
+  "iqLoc": {
+    component: TextInput,
+    props: {id: "iqLoc", label: "InterQual LOC"},
+    logic: true
+  },
+
+  "iqSubset": {
+    component: TextInput,
+    props: {id: "iqSubset", label: "InterQual Subset"},
+    logic: true
+  },
+
+  "iqYear": {
+    component: TextInput,
+    props: {id: "iqYear", label: "InterQual Year"},
+    logic: true
+  },
 
   "lob": {
     component: RadioInput,
@@ -378,6 +415,12 @@ export const inputs: IInputs = {
     logic: (values: IValues): boolean => values.reviewed === "yes" ? true : false,
     onCard: true,
     props: {template: reviewed}
+  },
+
+  "saveInfo": {
+    component: Button,
+    logic: true,
+    props: {clickHandling: saveInfoToPolicy, preClickLabel: "Save Info to Policy", postClickLabel: "Saved"}
   },
 
   "sccf": repeatedInputs.sccf("sccf", "SCCF:"),
