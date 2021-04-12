@@ -157,7 +157,7 @@ function Option(props) {
       style={{
         fontWeight: props.isSelected ? 500 : 400,
       }}
-      {...props.innerProps}
+      {...props.innerProps }
     >
       {props.children}
     </MenuItem>
@@ -174,22 +174,11 @@ Option.propTypes = {
    */
   innerProps: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    key: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     onMouseMove: PropTypes.func.isRequired,
     onMouseOver: PropTypes.func.isRequired,
     tabIndex: PropTypes.number.isRequired,
   }).isRequired,
-  /**
-   * Inner ref to DOM Node
-   */
-  innerRef: PropTypes.oneOfType([
-    PropTypes.oneOf([null]),
-    PropTypes.func,
-    PropTypes.shape({
-      current: PropTypes.any.isRequired,
-    }),
-  ]).isRequired,
   /**
    * Whether the option is focused.
    */
