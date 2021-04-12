@@ -5,8 +5,11 @@ import { formatToName } from '../../utils/formatting/formatToName'
 export const getMedClaimReviewData = (values) => {
   const data = {
     lob: setLob(values),
+    name: values.name,
+    req: values.req,
     service: setService(values),
     drugRequest: setDrugRequest(values),
+    exCircum: values.exCircum,
     code: setCode(values),
     pend: setPend(values),
     policyString: utils.setPolicyString(values, "med policy"),
