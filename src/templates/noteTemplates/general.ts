@@ -10,7 +10,7 @@ export const general = [
   "codeAndService",
   "serviceType",
   "c3x",
-  "dose",
+  "doseInputs",
   "drugReviewType",
   "pricingInputs",
   "policy",

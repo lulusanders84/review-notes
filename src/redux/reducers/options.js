@@ -14,9 +14,9 @@ const initialState = {
   policyOptions: getPolicyOptions(lob),
   daysOffOptions: daysOfTheWeek.map(day => createSelectValue(day)),
   pendOptions: [],
-  doseOptions: getStorage("doseUnit", []),
+  doseUnitOptions: getStorage("doseUnit", []),
   fepBenefitsOptions: getFepBenefitsOptions(),
-  serviceTypeOptions: serviceTypes.map(type => createSelectValue(type["Service Type"]))
+  serviceTypeOptions: serviceTypes.map(type => createSelectValue(type["Service Type"])),
 }
 const reducer = (state=initialState, action) => {
   switch(action.type) { 

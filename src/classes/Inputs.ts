@@ -10,6 +10,7 @@ export default class Inputs {
   _inputList: IInputs
 
   constructor(inputKeys: string[], inputList: IInputs) {
+    console.log(inputKeys)
     this._inputKeys = inputKeys;
     this._inputList = inputList;
     bindMethods(this)

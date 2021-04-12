@@ -4,7 +4,7 @@ import inputs from '../inputs/inputs';
 
 
 export default function InputsContainer({template, denialId}) {
-
+  console.log(template)
   const [inputComponents, setInputComponents] = useState([])
 
   useEffect(() => {

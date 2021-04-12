@@ -4,6 +4,7 @@ import IDeniedInputsProps from "./IDeniedInputsProps";
 import IInputsContainerProps from "./IInputsContainerProps";
 import IRadioInputProps from "./IRadioInputProps";
 import IReactSelectSingleProps from "./IReactSelectSingleProps";
+import ISideBySideInputsProps from "./ISideBySideInputs";
 import ITextInputProps from "./ITextInputProps";
 
 export type IProps = IButtonProps 
@@ -12,5 +13,6 @@ export type IProps = IButtonProps
 | IInputsContainerProps
 | IRadioInputProps
 | IReactSelectSingleProps
+| ISideBySideInputsProps
 | ITextInputProps
 | undefined

@@ -1,6 +1,5 @@
 import CodeAndService from '../components/Inputs/CodeAndService';
 import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
-import Dose from '../components/Inputs/Dose'
 import RadioInput from '../components/Inputs/RadioInput';
 import IntegrationReactSelect from '../components/Inputs/ReactSelectSingle';
 import SimpleSelect from '../components/Inputs/SimpleSelect';
@@ -26,6 +25,7 @@ import { referReasons } from '../data/referReasons';
 import { networkNames } from '../data/networkNames';
 import CreatableReactSelect from '../components/Inputs/CreatableReactSelect';
 import ReactSelect from '../components/Inputs/ReactSelect';
+import { SideBySideInputs } from '../components/Inputs/SideBySideInputs';
 
 
 
@@ -234,8 +234,21 @@ export const inputs: IInputs = {
   "dos": repeatedInputs.dos("dos"),
 
   "dose": {
-    component: Dose,
+    component: TextInput,
+    logic: true,
+    props: { id: "dose", label: "Dose"}
+  },
+  
+  "doseInputs": {
+    component: SideBySideInputs,
     logic: (values: IValues): boolean => values.drugReview && values.lob === "commercial" ? true : false,
+    props: {components: ["dose", "doseUnit"], gridSizes: [6, 6], styles: [{marginTop: "7px"}, {}]}
+  },
+
+  "doseUnit": {
+    component: IntegrationReactSelect,
+    logic: true,
+    props: {id: "dose", label: "Unit", keepFormat: true}
   },
 
   "drugReviewType": {
