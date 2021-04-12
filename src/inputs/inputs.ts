@@ -1,37 +1,40 @@
+import Button from '../components/Inputs/Button';
+import Checkbox from '../components/Inputs/Checkbox';
 import CodeAndService from '../components/Inputs/CodeAndService';
-import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
-import RadioInput from '../components/Inputs/RadioInput';
+import CreatableReactSelect from '../components/Inputs/CreatableReactSelect';
+import CriteriaQuill from '../components/Inputs/CriteriaQuill';
 import IntegrationReactSelect from '../components/Inputs/ReactSelectSingle';
+import RadioInput from '../components/Inputs/RadioInput';
+import ReactSelect from '../components/Inputs/ReactSelect';
+import SideBySideInputs from '../components/Inputs/SideBySideInputs';
 import SimpleSelect from '../components/Inputs/SimpleSelect';
 import TextInput from '../components/Inputs/TextInput';
+
 import InputsContainer from '../components/InputsContainer';
 
 import IInputs from '../interfaces/IInputs';
 import IValues from '../interfaces/IValues'
-import { reviewed } from '../templates/inputTemplates';
-import { claimInfo } from '../templates/inputTemplates/claimInfo';
-import { criteria } from '../templates/inputTemplates/criteria';
-import { denied } from '../templates/inputTemplates/denied';
-import { deter } from '../templates/inputTemplates/deter';
+
+import { 
+  reviewed,
+  claimInfo,
+  criteria,
+  denied,
+  deter,
+  info,
+  iq, 
+  paDeter,
+  pricing
+} from '../templates/inputTemplates/';
+
 import { rejectCodes } from '../data/rejectCodes';
-import Checkbox from '../components/Inputs/Checkbox';
-import Button from '../components/Inputs/Button';
-import { saveInfoToPolicy } from '../utils/Inputs/savePair';
-import { infoInputs } from '../templates/inputTemplates/info';
-import { iq } from '../templates/inputTemplates/iq';
-import { paDeter } from '../templates/inputTemplates/paDeter';
-import { pricing } from '../templates/inputTemplates/pricing';
 import { referReasons } from '../data/referReasons';
 import { networkNames } from '../data/networkNames';
-import CreatableReactSelect from '../components/Inputs/CreatableReactSelect';
-import ReactSelect from '../components/Inputs/ReactSelect';
-import { SideBySideInputs } from '../components/Inputs/SideBySideInputs';
 
+import { saveInfoToPolicy } from '../utils/Inputs/savePair';
 
 
 const repeatedInputs = {
-
-
   denied: (denialId: string) => ({
     component: InputsContainer,
     logic: (values: IValues): boolean => { 
@@ -288,7 +291,7 @@ export const inputs: IInputs = {
   "infoInputs": {
     component: InputsContainer,
     logic: true,
-    props: {template: infoInputs}
+    props: {template: info}
   },
 
   "initialReq": {

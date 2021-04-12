@@ -12,7 +12,7 @@ import InputsContainer from './InputsContainer';
 import InfoRequestNotes from './InfoRequestNotes/InfoRequestNotes';
 import DecisionNotes from './BackFromPeerNotes';
 import MisrouteNotes from './MisrouteNotes/MisrouteNotes';
-import { decision, general, infoRequest, misroute } from '../templates/noteTemplates';
+import { decision, general, infoRequest, misroute } from '../templates/formTemplates';
 
 function ReviewNotes(props) {
 

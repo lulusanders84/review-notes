@@ -1,4 +1,4 @@
-export const infoInputs = [
+export const info = [
   "info",
   "saveInfo"
 ]
