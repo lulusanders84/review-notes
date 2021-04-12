@@ -242,7 +242,7 @@ export const inputs: IInputs = {
   "doseInputs": {
     component: SideBySideInputs,
     logic: (values: IValues): boolean => values.drugReview && values.lob === "commercial" ? true : false,
-    props: {components: ["dose", "doseUnit"], gridSizes: [6, 6], styles: [{marginTop: "7px"}, {}]}
+    props: {components: ["dose", "doseUnit"], gridSizes: [6, 6], styles: [{marginTop: "7px"}, {paddingLeft: "5px"}]}
   },
 
   "doseUnit": {
