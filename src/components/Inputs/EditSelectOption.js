@@ -47,7 +47,6 @@ function EditSelectOption(props) {
             label={props.label}
             placeholder={props.placeholder}
             fullWidth={true}
-            margin="dense"
             value={props.values[props.id]}
             InputLabelProps={{shrink: props.shrink}}
             onChange={handleChange}

@@ -1,10 +1,16 @@
+import { makeStyles } from '@material-ui/core';
 import React, { useState, useEffect } from 'react'
 import Inputs from '../classes/Inputs';
 import inputs from '../inputs/inputs';
 
+const useStyles = makeStyles(() => ({
+  root: {
+    marginTop: "10px"
+  }
+}))
 
 export default function InputsContainer({template, denialId}) {
-  console.log(template)
+  const classes = useStyles()
   const [inputComponents, setInputComponents] = useState([])
 
   useEffect(() => {
@@ -16,7 +22,11 @@ export default function InputsContainer({template, denialId}) {
       {
         inputComponents.map(input => {
           const Component = input.component;
-          return <Component key={input.id} values={{denialId}} />       
+          return (
+            <div className={classes.root}>
+              <Component key={input.id} values={{denialId}} />  
+            </div> 
+          )       
         })
       }
     </div>
