@@ -1,21 +1,21 @@
 
 import { daysOfTheWeek } from "../../data/daysOfTheWeek";
-import { referReasons } from "../../data/referReasons";
 import { serviceTypes } from "../../data/serviceTypes";
 import { getStorage } from "../../utils";
 import { createSelectValue } from "../../utils/createSelectValue";
-import { getNetworkOptions, getPolicyOptions} from "../../utils/Options";
+import { getPolicyOptions} from "../../utils/Options";
+import { getFepBenefitsOptions } from "../../utils/Options/getFepBenefitsOptions";
 
 const lob = getStorage("lob", "commercial")
+
+console.log(getFepBenefitsOptions())
 
 const initialState = {
   policyOptions: getPolicyOptions(lob),
   daysOffOptions: daysOfTheWeek.map(day => createSelectValue(day)),
   pendOptions: [],
-  networkOptions: getNetworkOptions(),
   doseOptions: getStorage("doseUnit", []),
-  fepBenefitOptions: getStorage("fepBenefits", []),
-  referReasonOptions: referReasons.map(reason => createSelectValue(reason)),
+  fepBenefitsOptions: getFepBenefitsOptions(),
   serviceTypeOptions: serviceTypes.map(type => createSelectValue(type["Service Type"]))
 }
 const reducer = (state=initialState, action) => {

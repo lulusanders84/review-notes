@@ -7,15 +7,10 @@ import { Grid, makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
 import { handleInputs } from '../../redux/actions';
+import {styles} from '../../styles/editSelectOptionStyles';
 
-const useStyles = makeStyles((theme) => ({
-  checkButton: {
-    color: "#4caf50"
-  },
-  divider: {
-    height: theme.spacing(2),
-  }
-}))
+const useStyles = makeStyles((theme) => styles(theme));
+
 function EditSelectOption(props) {
   const classes = useStyles();
   const [saved, setSaved] = React.useState(false);
@@ -26,6 +21,7 @@ function EditSelectOption(props) {
     setSaved(true);
     props.setEdit(false);
     const options = props.options;
+    console.log(options)
     const optionIndex = options.findIndex(option => {
       return option.value === value;
     })

@@ -23,6 +23,7 @@ const blankValues = [
     "paReq",  
     "provider",
     "rationale",
+    "referReason",
     "req",
     "sccf",   
     "service",

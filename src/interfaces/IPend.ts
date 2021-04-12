@@ -1,5 +1,5 @@
-export interface IPend {
-  label: string,
-  value: string,
+import { ISelectOption } from "./ISelectOption";
+
+export interface IPend extends ISelectOption {
   count: number
 }

@@ -1,31 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import CreatableSelect from 'react-select/creatable';
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import NoSsr from '@material-ui/core/NoSsr';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
+import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import EditSelectOption from './EditSelectOption';
-import { Grid } from '@material-ui/core';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { Tooltip } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelectValue, saveToStorage } from '../../utils';
-import { handleInputs } from '../../redux/actions';
-import { formatValue } from '../../utils/formatting/formatValue';
+import { handleInputs, setOptions } from '../../redux/actions';
+import { saveNewOptions } from '../../redux/actions/options';
+import { createOption } from '../../utils/Options/createOption';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
     flexGrow: 1,
+    minWidth: 290,
+  },
+  dense: {
+    marginTop: 14,
   },
   input: {
+    
     display: 'flex',
     padding: 0,
     height: 'auto',
   },
   valueContainer: {
-    maxWidth: 460,
     display: 'flex',
     flexWrap: 'wrap',
     flex: 1,
@@ -55,7 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 10,
     marginTop: theme.spacing(1),
     left: 0,
     right: 0,
@@ -63,6 +68,9 @@ const useStyles = makeStyles(theme => ({
   divider: {
     height: theme.spacing(2),
   },
+  tooltip: {
+    fontSize: "13px"
+  }
 }));
 
 function NoOptionsMessage(props) {
@@ -157,7 +165,7 @@ function Option(props) {
       style={{
         fontWeight: props.isSelected ? 500 : 400,
       }}
-      {...props.innerProps }
+      {...props.innerProps}
     >
       {props.children}
     </MenuItem>
@@ -179,6 +187,16 @@ Option.propTypes = {
     onMouseOver: PropTypes.func.isRequired,
     tabIndex: PropTypes.number.isRequired,
   }).isRequired,
+  /**
+   * Inner ref to DOM Node
+   */
+  innerRef: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.func,
+    PropTypes.shape({
+      current: PropTypes.any.isRequired,
+    }),
+  ]),
   /**
    * Whether the option is focused.
    */
@@ -210,34 +228,48 @@ Placeholder.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function SingleValue(props) {
+function ValueContainer(props) {
+    return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
+  }
+  
+  ValueContainer.propTypes = {
+    /**
+     * The children to be rendered.
+     */
+    children: PropTypes.node,
+    selectProps: PropTypes.object.isRequired,
+  };
+
+function MultiValue(props) {
+  const classes = useStyles();
+  const label = <a href={props.data.href} target="blank">{props.data.value}</a>;
+  const title = props.data['Full Policy'] ? props.data['Full Policy'] : "";
   return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-      {props.children}
-    </Typography>
+    <Tooltip
+      title={title}
+      classes={{tooltip: classes.tooltip}}
+    >
+      <Chip
+        tabIndex={-1}
+        label={label}
+        className={clsx(props.selectProps.classes.chip, {
+          [props.selectProps.classes.chipFocused]: props.isFocused,
+        })}
+        onDelete={props.removeProps.onClick}
+        deleteIcon={<CancelIcon {...props.removeProps} />}
+      />
+    </Tooltip>
   );
 }
 
-SingleValue.propTypes = {
-  /**
-   * The children to be rendered.
-   */
+MultiValue.propTypes = {
   children: PropTypes.node,
-  /**
-   * Props passed to the wrapping element for the group.
-   */
-  selectProps: PropTypes.object.isRequired,
-};
-
-function ValueContainer(props) {
-  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
-}
-
-ValueContainer.propTypes = {
-  /**
-   * The children to be rendered.
-   */
-  children: PropTypes.node,
+  isFocused: PropTypes.bool.isRequired,
+  removeProps: PropTypes.shape({
+    onClick: PropTypes.func.isRequired,
+    onMouseDown: PropTypes.func.isRequired,
+    onTouchEnd: PropTypes.func.isRequired,
+  }).isRequired,
   selectProps: PropTypes.object.isRequired,
 };
 
@@ -264,57 +296,38 @@ Menu.propTypes = {
 const components = {
   Control,
   Menu,
+  MultiValue,
   NoOptionsMessage,
   Option,
   Placeholder,
-  SingleValue,
   ValueContainer,
 };
 
-function IntegrationReactSelect({keepFormat, id, label, notClearable, placeholder, sentence}) {
+function ReactSelect({id, label}) {
   const dispatch = useDispatch();
-  const optionsLocation = `${id}Options`;
   const values = useSelector(state => state.values);
-  const name = values[id];
-  const initialValue = {value: name, label: name}
+  const { lob } = values;
   const classes = useStyles();
   const theme = useTheme();
-  const [single, setSingle] = React.useState(initialValue);
-  const [options, setOptions] = React.useState(useSelector(state => state.options[optionsLocation]));
-  const [edit, setEdit] = React.useState(false);
-  const [isClearable, setIsClearable] = React.useState(true);
-  
-  useEffect(() => {
-    setSingle({value: name, label: name})
-  }, [name])
-  
-  useEffect(() => {
-    const value = notClearable 
-      ? false
-      : true;
-      setIsClearable(value);
-  }, [notClearable])
+  const options = useSelector(state => state.options[`${id}Options`]);
+  React.useEffect(() => {
+    dispatch(setOptions({lob, id}))
+  }, [dispatch, lob, id])
 
-  function handleEditClick() {
-    setEdit(true);
-  }
-  
-  function handleChangeSingle(value) {
+  function handleChangeMulti(value) {
+    const newValue = {name: id, value,}
+    dispatch(handleInputs(newValue, dispatch));
+
     if(value) {
-      if(value.__isNew__) {
-        const formattedName = formatValue(value.value, sentence, keepFormat)
-        const newOption = createSelectValue(formattedName, keepFormat)
-        console.log(newOption)
-        const newOptions = options ? [newOption, ...options] : [newOption];
-        setOptions(newOptions)
-        saveToStorage(id, newOptions);
-      }   
-    }
-    const newValue = value ? value.value : null;
-    dispatch(handleInputs({name: id, value: newValue}))
-    setSingle(value);   
+      value.forEach(value => {
+        if(value.__isNew__) { 
+          let addValue = createOption(id, value.value)
+          const newOptions = [...options, addValue]
+          dispatch(saveNewOptions({options: newOptions, lob, id}))
+        }
+      })
+    }     
   }
-
   const selectStyles = {
     input: base => ({
       ...base,
@@ -324,65 +337,31 @@ function IntegrationReactSelect({keepFormat, id, label, notClearable, placeholde
       },
     }),
   };
-
   return (
-    <Grid item xs={12}>
-      {edit 
-        ? <EditSelectOption 
-            id={id} 
-            values={values} 
-            label={label} 
-            setEdit={setEdit}
-            options={options}
-            labelFormat={keepFormat}
-            setNewValue={setSingle} />
-        : <Grid container justify="space-between" alignItems="flex-end"> 
-            <Grid item xs={notClearable ? 12 : 10}>
-              <CreatableSelect
-                isClearable={isClearable}
-                classes={classes}
-                styles={selectStyles}
-                inputId={`react-select-single-${id}`}
-                TextFieldProps={{
-                  label: label,
-                  InputLabelProps: {
-                    htmlFor: 'react-select-single',
-                    shrink: true,
-                  },
-                }}
-                placeholder={placeholder}
-                options={options}
-                components={components}
-                value={single}
-                onChange={handleChangeSingle}
-              />
-            </Grid>
-            {notClearable
-            ? null
-            : <Grid item>
-              <Button onClick={handleEditClick}>Edit</Button>
-            </Grid>}
-          </Grid>
-      }     
-    </Grid>
+    <div className={classes.root}>
+      <NoSsr>
+        <CreatableSelect
+          classes={classes}
+          styles={selectStyles}
+          inputId={`react-select-multiple-${id}`}
+          TextFieldProps={{
+            label: label,
+            InputLabelProps: {
+              htmlFor: 'react-select-multiple',
+              shrink: true,
+            },
+            margin: "dense"
+          }}
+          options={options}
+          components={components}
+          value={values[id]}
+          onChange={handleChangeMulti}
+          isMulti
+
+        />
+      </NoSsr>
+    </div>
   );
 }
 
-IntegrationReactSelect.propTypes = {
-  keepFormat: PropTypes.bool, 
-  id: PropTypes.string.isRequired, 
-  label: PropTypes.string.isRequired, 
-  notClearable: PropTypes.bool, 
-  placeholder: PropTypes.string, 
-  sentence: PropTypes.bool,
-};
-
-IntegrationReactSelect.defaultProps = {
-  keepFormat: false,
-  notClearable: false,
-  placeholder: "",
-  sentence: false
-};
-
-
-export default IntegrationReactSelect
+export default ReactSelect

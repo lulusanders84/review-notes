@@ -21,8 +21,13 @@ import { saveInfoToPolicy } from '../utils/Inputs/savePair';
 import { infoInputs } from '../templates/inputTemplates/info';
 import { iq } from '../templates/inputTemplates/iq';
 import { paDeter } from '../templates/inputTemplates/paDeter';
-import ReactSelect from '../components/Inputs/ReactSelect';
 import { pricing } from '../templates/inputTemplates/pricing';
+import { referReasons } from '../data/referReasons';
+import { networkNames } from '../data/networkNames';
+import CreatableReactSelect from '../components/Inputs/CreatableReactSelect';
+import ReactSelect from '../components/Inputs/ReactSelect';
+
+
 
 const repeatedInputs = {
 
@@ -340,9 +345,9 @@ export const inputs: IInputs = {
   },
 
   "network" : {
-    component: IntegrationReactSelect,
+    component: SimpleSelect,
     logic: (values: IValues): boolean => values.pricing === "PPPWeb" && values.lob === "GP" ? true : false,
-    props: {id: "network", label:"Network"}
+    props: {id: "network", label:"Network", options: networkNames}
   },
 
   "noPricingRationale": {    
@@ -407,7 +412,7 @@ export const inputs: IInputs = {
   }, 
 
   "pend": {
-    component: ReactSelect,
+    component: CreatableReactSelect,
     logic: true,
     props: {id: "pend", label: "Suspension"}
   },
@@ -441,11 +446,12 @@ export const inputs: IInputs = {
   "rationale" : repeatedInputs.rationale("rationale"),
 
   "referReason": {
-    component: IntegrationReactSelect,
+    component: SimpleSelect,
     logic: true,
     props: {
       id:"referReason", 
       label: "Reason for Referral",
+      options: referReasons
     }
   },
 
