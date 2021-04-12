@@ -1,8 +1,10 @@
 import medicarePolicies from "../../data/medicarePolicies";
 import { getAllPolicies } from "../ReviewNotes/setPolicy";
 import { getStorage } from "../getStorage";
+import {buildPolicy} from "./buildPolicy";
 
-export function policySuggestions(lob) {
+
+export function getPolicyOptions(lob) {
     const policies = lob === "commercial" 
         ? getStorage("bcbsmnPolicies", [])
         : lob === "FEP" 
@@ -21,11 +23,4 @@ export function policySuggestions(lob) {
     });
 }
 
-export function buildPolicy(policy) {
-    if(policy) {
-        const number = policy["Policy #"];
-        const name = policy["Full Policy"];
-        return {value: number, label: `${number}: ${name}`}   
-    } else return null;
-    
-}
+

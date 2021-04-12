@@ -10,7 +10,7 @@ const networkNames = [
 
 const networkOptions = networkNames.map(name => { return createSelectValue(name) });
 
-export const setNetworkSuggestions = () => {
+export const getNetworkOptions = () => {
   const options = getStorage("network", networkOptions);
   saveToStorage("network", options);
   return options;

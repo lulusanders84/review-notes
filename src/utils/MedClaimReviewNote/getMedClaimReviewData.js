@@ -1,5 +1,6 @@
 import * as utils from '../../utils/Notes';
 import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
+import { formatToName } from '../../utils/formatting/formatToName'
 
 export const getMedClaimReviewData = (values) => {
   const data = {
@@ -25,7 +26,7 @@ const setLob = (values) => {
   return utils.capWord(values.lob);
 }
 const setService = (values) => {
-  return utils.formatToName(values.service.toLowerCase());
+  return formatToName(values.service.toLowerCase());
 }
 const setDrugRequest = (values) => {
   return values.serviceType === "drug" 

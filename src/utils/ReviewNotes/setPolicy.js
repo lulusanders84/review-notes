@@ -103,6 +103,7 @@ export const getPolicies = (policyNames) => {
         const policy = fullPolicies.find(policy => {
           return policy["Policy #"] === policyName.value;
         })
+
         policy.value = policyName.value;
         policy.label = policyName.label;
         return policy;   

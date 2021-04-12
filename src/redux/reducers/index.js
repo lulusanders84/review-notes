@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import valuesReducer from './values';
 import claimsReducer from './claims';
-import suggestionsReducer from './suggestions';
+import optionsReducer from '././options';
 import notesReducer from './notes';
 
 const rootReducer = combineReducers({
   values: valuesReducer,
   claims: claimsReducer,
-  suggestions: suggestionsReducer,
+  options: optionsReducer,
   notes: notesReducer,
 });
 

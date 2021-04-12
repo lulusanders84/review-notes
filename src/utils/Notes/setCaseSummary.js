@@ -1,7 +1,7 @@
 import React from 'react';
-import { formatToName } from "./formatToName"; 
+import { formatToName } from "../formatting/formatToName"; 
 import { setPricingNote } from "./setPricingNote";
-// import { formatToSentence } from './formatToSentence';
+// import { formatToSentence } from '../formatting/formatToSentence';
 import { CapWords } from '../../classes/CapWords'
 
 export const setCaseSummary = (values) => {

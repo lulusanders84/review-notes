@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CreatableSelect from 'react-select/creatable';
@@ -11,8 +11,11 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Tooltip } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { handleInputs } from '../../redux/actions';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { handleInputs, setOptions } from '../../redux/actions';
+import { saveNewOptions } from '../../redux/actions/options';
+import { createSelectValue } from '../../utils/createSelectValue';
+import { createOption } from '../../utils/Options/createOption';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -301,20 +304,27 @@ const components = {
   ValueContainer,
 };
 
-function ReactSelect(props) {
+function ReactSelect({id, label}) {
+  const dispatch = useDispatch();
+  const values = useSelector(state => state.values);
+  const { lob } = values;
   const classes = useStyles();
   const theme = useTheme();
-  const [options, setOptions] = React.useState(props.suggestions)
+  const options = useSelector(state => state.options[`${id}Options`]);
   React.useEffect(() => {
-    setOptions(props.suggestions)
-  }, [props.suggestions])
+    dispatch(setOptions({lob, id}))
+  }, [dispatch, lob])
+
   function handleChangeMulti(value) {
-    const newValue = {name: props.id, value,}
-    props.dispatch(handleInputs(newValue, props.dispatch));
+    const newValue = {name: id, value,}
+    dispatch(handleInputs(newValue, dispatch));
+
     if(value) {
       value.forEach(value => {
         if(value.__isNew__) { 
-          setOptions([...options, value])
+          let addValue = createOption(id, value.value)
+          const newOptions = [...options, addValue]
+          dispatch(saveNewOptions({options: newOptions, lob, id}))
         }
       })
     }     
@@ -334,9 +344,9 @@ function ReactSelect(props) {
         <CreatableSelect
           classes={classes}
           styles={selectStyles}
-          inputId={`react-select-multiple-${props.id}`}
+          inputId={`react-select-multiple-${id}`}
           TextFieldProps={{
-            label: props.label,
+            label: label,
             InputLabelProps: {
               htmlFor: 'react-select-multiple',
               shrink: true,
@@ -345,7 +355,7 @@ function ReactSelect(props) {
           }}
           options={options}
           components={components}
-          value={props.values[props.id]}
+          value={values[id]}
           onChange={handleChangeMulti}
           isMulti
 
@@ -355,8 +365,4 @@ function ReactSelect(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
-
-export default connect(mapStateToProps)(ReactSelect)
+export default ReactSelect

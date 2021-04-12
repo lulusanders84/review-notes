@@ -1,5 +1,5 @@
-import {capWord } from './capitalizeWord';
-import {prepositions} from './prepositions';
+import {capWord } from '../Notes/';
+import {prepositions} from '../Notes/prepositions';
 import { CapWords } from '../../classes/CapWords'
 
 const capWords = new CapWords();

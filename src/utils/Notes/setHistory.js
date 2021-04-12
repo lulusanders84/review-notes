@@ -1,6 +1,5 @@
 
-import { formatToName } from "./formatToName";
-
+import {formatToName} from "../formatting/formatToName"
 export const setHistory = (values, type) => {
     const reviewed = values.reviewed;
     const noPA = "PA not found";

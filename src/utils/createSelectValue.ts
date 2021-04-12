@@ -1,4 +1,4 @@
-import { formatToName } from "./Notes";
+import { formatToName } from "./formatting/formatToName";
 
 export function createSelectValue(value: string, keepFormat: boolean) {
 

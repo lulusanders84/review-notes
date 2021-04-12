@@ -1,4 +1,4 @@
-import { savePends } from "../../ReviewNotes/savingPends"
+import { savePends } from "../../Options/pendOptions/savePends";
 import { setCovidSummary } from "../setCovidSummary";
 
 export const pend = (value, values) => {
