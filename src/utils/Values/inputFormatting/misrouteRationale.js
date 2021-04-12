@@ -1,4 +1,4 @@
-import { formatToSentence } from "../../Notes/formatToSentence";
+import { formatToSentence } from "../../formatting/formatToSentence";
 
 export const misrouteRationale = (value) => {
   value.value = formatToSentence(value.value);

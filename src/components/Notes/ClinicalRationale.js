@@ -3,7 +3,7 @@ import { withVisibility, setComposed } from '../../HOCs';
 import Note from './Note';
 import NoteContainer from './NoteContainer';
 import DenialLetter from './DenialLetter';
-import { formatValues } from '../../utils/Notes';
+import { cleanValuesObj } from '../../utils/formatting/cleanValuesObj';
 
 export function ClinicalRationale(props) {
     return (
@@ -17,7 +17,7 @@ export function ClinicalRationale(props) {
 }
 
 const mapStateToProps = (state) => ({
-    values: formatValues(state.values),
+    values: cleanValuesObj(state.values),
     notes: state.notes,
     id: "clinRat"
   });

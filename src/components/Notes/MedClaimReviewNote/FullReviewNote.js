@@ -3,7 +3,7 @@ import MedDirectorNote from './MedDirectorNote';
 import { connect } from 'react-redux';
 import { setMedClaimReviewData } from '../../../redux/actions/notes';
 import Note from '../Note';
-import { formatCriteria } from '../../../utils/Notes/formatCriteria';
+import { formatCriteria } from '../../../utils/formatting/formatCriteria';
 import 'react-quill/dist/quill.snow.css';
 
 

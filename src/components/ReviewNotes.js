@@ -7,7 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Tabs from './Tabs';
 import GeneralNotes from './GeneralNotes/GeneralNotes';
 import ScrollUpButton from 'react-scroll-up-button';
-import { connect } from 'react-redux';
 import { styles } from '../styles/reviewNotesStyles';
 import InputsContainer from './InputsContainer';
 import InfoRequestNotes from './InfoRequestNotes/InfoRequestNotes';
@@ -60,9 +59,4 @@ function ReviewNotes(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-  options: state.suggestions.options
-});
-
-export default connect(mapStateToProps)(withStyles(styles)(ReviewNotes))
+export default withStyles(styles)(ReviewNotes)

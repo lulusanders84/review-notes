@@ -12,7 +12,7 @@ export const general = [
   "c3x",
   "dose",
   "drugReviewType",
-  "pricing",
+  "pricingInputs",
   "policy",
   "iqInputs",
   "benefits",

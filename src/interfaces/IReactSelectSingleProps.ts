@@ -5,5 +5,4 @@ export default interface IReactSelectSingleProps {
   notClearable?: boolean, 
   placeholder?: string, 
   sentence?: boolean,
-  suggestions: any[], 
 }

@@ -4,6 +4,7 @@ import { setBulkValues } from "./setBulkValues";
 const blankValues = [
     "age",
     "clinicalRationale",
+    "compCode",
     "diagnosis",
     "dos",
     "dose",
@@ -31,7 +32,6 @@ const blankValues = [
 const emptyArrayValues = [
     "addOnSummary",
     "code",
-    "compCode",
     "pend",
     "policy",
 ];

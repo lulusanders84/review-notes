@@ -11,8 +11,8 @@ import EditSelectOption from './EditSelectOption';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelectValue, saveToStorage } from '../../utils';
-import { formatSuggestions } from '../../utils/AutoComplete';
 import { handleInputs } from '../../redux/actions';
+import { formatValue } from '../../utils/formatting/formatValue';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -282,15 +282,16 @@ const components = {
   ValueContainer,
 };
 
-function IntegrationReactSelect({keepFormat, id, label, notClearable, placeholder, sentence, suggestions}) {
+function IntegrationReactSelect({keepFormat, id, label, notClearable, placeholder, sentence}) {
   const dispatch = useDispatch();
+  const optionsLocation = `${id}Options`;
   const values = useSelector(state => state.values);
   const name = values[id];
   const initialValue = {value: name, label: name}
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(initialValue);
-  const [options, setOptions] = React.useState(formatSuggestions(suggestions, sentence, keepFormat));
+  const [options, setOptions] = React.useState(useSelector(state => state.options[optionsLocation]));
   const [edit, setEdit] = React.useState(false);
   const [isClearable, setIsClearable] = React.useState(true);
   
@@ -312,10 +313,8 @@ function IntegrationReactSelect({keepFormat, id, label, notClearable, placeholde
   function handleChangeSingle(value) {
     if(value) {
       if(value.__isNew__) {
-        const formattedName = formatSuggestions(value.value, sentence, keepFormat)
-        console.log(formattedName)
+        const formattedName = formatValue(value.name, sentence, keepFormat)
         const newOption = createSelectValue(formattedName, keepFormat)
-        console.log(newOption)
         const newOptions = options ? [newOption, ...options] : [newOption];
         setOptions(newOptions)
         saveToStorage(id, newOptions);
@@ -386,7 +385,6 @@ IntegrationReactSelect.propTypes = {
   notClearable: PropTypes.bool, 
   placeholder: PropTypes.string, 
   sentence: PropTypes.bool,
-  suggestions: PropTypes.array.isRequired, 
 };
 
 IntegrationReactSelect.defaultProps = {

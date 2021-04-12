@@ -1,13 +1,8 @@
 import CodeAndService from '../components/Inputs/CodeAndService';
 import { CriteriaQuill } from '../components/Inputs/CriteriaQuill';
 import Dose from '../components/Inputs/Dose'
-import PendInput from '../components/Inputs/PendInput';
-import PolicyInput from '../components/Inputs/PolicyInput';
-import PricingInputs from '../components/Inputs/PricingInputs';
 import RadioInput from '../components/Inputs/RadioInput';
 import IntegrationReactSelect from '../components/Inputs/ReactSelectSingle';
-import { RelatedInfo } from '../components/Inputs/RelatedInfo';
-import ServiceTypeInput from '../components/Inputs/ServiceTypeInput';
 import SimpleSelect from '../components/Inputs/SimpleSelect';
 import TextInput from '../components/Inputs/TextInput';
 import InputsContainer from '../components/InputsContainer';
@@ -19,8 +14,6 @@ import { claimInfo } from '../templates/inputTemplates/claimInfo';
 import { criteria } from '../templates/inputTemplates/criteria';
 import { denied } from '../templates/inputTemplates/denied';
 import { deter } from '../templates/inputTemplates/deter';
-import { getStorage } from '../utils';
-import { suggestions } from '../utils/AutoComplete';
 import { rejectCodes } from '../data/rejectCodes';
 import Checkbox from '../components/Inputs/Checkbox';
 import Button from '../components/Inputs/Button';
@@ -28,6 +21,8 @@ import { saveInfoToPolicy } from '../utils/Inputs/savePair';
 import { infoInputs } from '../templates/inputTemplates/info';
 import { iq } from '../templates/inputTemplates/iq';
 import { paDeter } from '../templates/inputTemplates/paDeter';
+import ReactSelect from '../components/Inputs/ReactSelect';
+import { pricing } from '../templates/inputTemplates/pricing';
 
 const repeatedInputs = {
 
@@ -65,11 +60,11 @@ const repeatedInputs = {
   }),
 
   rationale: (id: string) => ({
-    component: IntegrationReactSelect,
+    component: SimpleSelect,
     logic: (values: IValues): boolean => id === "rationale" 
       ? values.deter === "deny" ? true : false
       : values.paDeter === "denied" ? true : false,
-    props: {id, suggestions: suggestions(rejectCodes), label: "Denial Rationale:"} 
+    props: {id, options: Object.keys(rejectCodes), label: "Denial Rationale:"} 
   }),
 
   req: (id: string) => ({
@@ -97,6 +92,15 @@ export const inputs: IInputs = {
     component: Checkbox,
     logic: (values: IValues): boolean => values.deter === "approve" ? true : false,
     props: {id: "allMet", label: "All crtieria met", disabled: false}
+  },
+
+  "allowable": {    
+    component: TextInput,
+    logic: (values: IValues): boolean => 
+      values.pricing === "PPPWeb" || values.pricing === "DPW"
+        ? true
+        : false,
+    props: {id:"allowable", label:"Allowed Amount" }
   },
 
   "benefits": {
@@ -165,6 +169,15 @@ export const inputs: IInputs = {
   "codeAndService": {
     component: CodeAndService,
     logic: true
+  },
+
+  "compCode": {    
+    component: TextInput,
+    logic: (values: IValues): boolean => 
+      values.pricing === "PPPWeb"
+        ? true
+        : false,
+    props: {id:"compCode", label:"Comparable Code" }
   },
 
   "covidRelated": {
@@ -238,7 +251,6 @@ export const inputs: IInputs = {
     props: {
       id: "fepBenefits", 
       label: "Benefits", 
-      suggestions: getStorage("fepBenefits", []),
       sentence: true 
     },
   },
@@ -264,10 +276,14 @@ export const inputs: IInputs = {
   "initialReq": {
     component: TextInput,
     props: {id: "initialReq", label: "Initial REQ-"},
-    logic: true
+    logic: (values: IValues): boolean => values.relatedInfo === "related",
   },
 
-  "initialSccf": repeatedInputs.sccf("initialSccf", "Initial SCCF:"),
+  "initialSccf": {
+    component: TextInput,
+    logic: (values: IValues): boolean => values.claimType === "home" && values.relatedInfo === "related" ? true : false,
+    props: {id: "initialSccf", label: "Initial SCCF"},
+  },
 
   "iqInputs": {
     component: InputsContainer,
@@ -308,10 +324,38 @@ export const inputs: IInputs = {
     props: {id:"misrouteRationale", label:"Misroute Rationale"}
   },
 
+  "msr": {    
+    component: RadioInput,
+    logic: (values: IValues): boolean => 
+      values.pricing === "PPPWeb"
+        ? true
+        : false,
+    props: {id:"msr", label:"Comparable Code", options:["Eligible", "Ineligible"] }
+  },
+
   "name": {
     component: TextInput,
     props: {id: "name", label: "Name:"},
     logic: true
+  },
+
+  "network" : {
+    component: IntegrationReactSelect,
+    logic: (values: IValues): boolean => values.pricing === "PPPWeb" && values.lob === "GP" ? true : false,
+    props: {id: "network", label:"Network"}
+  },
+
+  "noPricingRationale": {    
+    component: RadioInput,
+    logic: (values: IValues): boolean => 
+      values.pricing !== "DPW" && values.pricing !== "PPPWeb"
+        ? true
+        : false,
+    props: {
+      id:"noPricingRationale", 
+      label: "Reason pricing is not required",
+      options: ["Home claim", "POC provider", "Facility claim", "DME", "Lab", "Unclassified code with pricing in PPPWeb"]
+    }
   },
 
   "paDenied": repeatedInputs.denied("paRationale"),
@@ -363,9 +407,9 @@ export const inputs: IInputs = {
   }, 
 
   "pend": {
-    component: PendInput,
-    logic: (values: IValues): boolean => values.deter === "approve" ? true : false,
- 
+    component: ReactSelect,
+    logic: true,
+    props: {id: "pend", label: "Suspension"}
   },
 
   "plan": {
@@ -375,13 +419,21 @@ export const inputs: IInputs = {
   },
 
   "policy": {
-    component: PolicyInput,
-    logic: true
+    component: ReactSelect,
+    logic: true,
+    props: {id: "policy", label:"Medical Policy" }
   },
 
   "pricing": {
-    component: PricingInputs,
-    logic: (values: IValues): boolean => values.pend && values.pend.some(pend => pend.value === "P5194")
+    component: RadioInput,
+    logic: true,
+    props: {id:"pricing", options: ["Not required", "PPPWeb", "DPW"], label:"Pricing"}
+  },
+
+  "pricingInputs": {
+    component: InputsContainer,
+    logic: (values: IValues): boolean => values.pend && values.pend.some(pend => pend.value === "P5194"),
+    props: {template: pricing}
   },
 
   "provider": repeatedInputs.dos("provider"),
@@ -394,7 +446,6 @@ export const inputs: IInputs = {
     props: {
       id:"referReason", 
       label: "Reason for Referral",
-      suggestions: ["Medical Necessity", "Benefit", "Cosmetic", "Investigative", "Mandatory Medical Director Review"], 
     }
   },
 
@@ -402,12 +453,6 @@ export const inputs: IInputs = {
     component: RadioInput,
     logic: true,
     props: {id: "relatedInfo", label:"Request Type:", options: ["new", "related"]}
-  },
-
-  "relatedInfoInputs": {
-    component: RelatedInfo,
-    
-    logic: (values: IValues): boolean => values["relatedInfo"] === "related",
   },
 
   "related": {
@@ -440,8 +485,9 @@ export const inputs: IInputs = {
   "sccf": repeatedInputs.sccf("sccf", "SCCF:"),
 
   "serviceType": {
-    component: ServiceTypeInput,
-    logic: true
+    component: IntegrationReactSelect,
+    logic: true,
+    props: {notClearable: true, id: "serviceType", label: "Service Type"}
   },
 
   "special": {

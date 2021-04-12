@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CreatableSelect from 'react-select/creatable';
@@ -11,10 +11,9 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Tooltip } from '@material-ui/core';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleInputs, setOptions } from '../../redux/actions';
 import { saveNewOptions } from '../../redux/actions/options';
-import { createSelectValue } from '../../utils/createSelectValue';
 import { createOption } from '../../utils/Options/createOption';
 
 const useStyles = makeStyles(theme => ({
@@ -313,7 +312,7 @@ function ReactSelect({id, label}) {
   const options = useSelector(state => state.options[`${id}Options`]);
   React.useEffect(() => {
     dispatch(setOptions({lob, id}))
-  }, [dispatch, lob])
+  }, [dispatch, lob, id])
 
   function handleChangeMulti(value) {
     const newValue = {name: id, value,}
