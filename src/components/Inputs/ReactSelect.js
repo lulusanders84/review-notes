@@ -8,7 +8,8 @@ import Chip from '../Chip';
 
 
 export default function ReactSelect({id, label}) {
-  const {lob} = useSelector(state => state.values)
+  const values = useSelector(state => state.values);
+  const {lob} = values;
   const dispatch = useDispatch();
   const options = useSelector(state => state.options[`${id}Options`]);
   React.useEffect(() => {
@@ -26,7 +27,7 @@ export default function ReactSelect({id, label}) {
       id={id}
       options={options}
       autoHighlight
-      
+      value={values[id]}
       getOptionLabel={(option) => option.value}
       renderOption={(option) => (
         <React.Fragment>

@@ -457,7 +457,7 @@ export const inputs: IInputs = {
     props: {template: pricing}
   },
 
-  "provider": repeatedInputs.dos("provider"),
+  "provider": repeatedInputs.provider("provider"),
 
   "rationale" : repeatedInputs.rationale("rationale"),
 
@@ -523,7 +523,7 @@ export const inputs: IInputs = {
   
   "summary": {
     component: TextInput,
-    props: {id:"summary", multiline: true, rows:"5", label:"Additional Clinical information"},
+    props: {id:"summary", multiline: true, rows:"10", label:"Additional Clinical information"},
     logic: true
   }
 }

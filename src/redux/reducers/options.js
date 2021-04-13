@@ -8,8 +8,6 @@ import { getFepBenefitsOptions } from "../../utils/Options/getFepBenefitsOptions
 
 const lob = getStorage("lob", "commercial")
 
-console.log(getFepBenefitsOptions())
-
 const initialState = {
   policyOptions: getPolicyOptions(lob),
   daysOffOptions: daysOfTheWeek.map(day => createSelectValue(day)),

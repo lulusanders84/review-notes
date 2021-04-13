@@ -8,13 +8,14 @@ export const getMedClaimReviewData = (values) => {
     name: values.name,
     req: values.req,
     service: setService(values),
+    decisionReqInfo: setDecisionReqInfo(values),
     drugRequest: setDrugRequest(values),
     exCircum: values.exCircum,
     code: setCode(values),
     pend: setPend(values),
     policyString: utils.setPolicyString(values, "med policy"),
     pa: setPa(values),
-    claimHistory: setClaimHistory(values),
+    claimHistory: values.claimHistory,
     benefits: setBenefits(values),
     summary: setSummary(values),
   }
@@ -39,10 +40,16 @@ const setDrugRequest = (values) => {
     : "N/A";
 }
 const setPa = (values) => {
-  return utils.setHistory(values, "PA");
+  const pa = utils.setHistory(values, "PA")
+  return values.reviewed === "yes"
+    ? values.paType === "PA"
+      ? "Y"
+      : "N"
+    : pa;
 }
-const setClaimHistory = (values) => {
-  return utils.setHistory(values, "related claim");
+
+const setDecisionReqInfo = (values) => {
+  return utils.setHistory(values, values.paType)
 }
 const setBenefits = (values) => {
   return values.lob === "FEP" 

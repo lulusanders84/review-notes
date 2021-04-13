@@ -36,6 +36,12 @@ export const notes: {[index: string]: INote} = {
     title: "Criteria Not Met: "
   },
 
+  "decisionReqInfo": {
+    component: NoteLine,
+    id: "decisionReqInfo",
+    title: "Request # utilized to apply decision: "
+  },
+
   "deter": {
     component: NoteLine,
     id: "deter",
