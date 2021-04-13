@@ -8,7 +8,6 @@ export const visibilityTest: IVisibilityProperties = {
   "medPol": (values: IValues): boolean => values.policy.length !== 0, 
   "routing": (values: IValues): boolean => values.claimSystem !== "OCWA",
   "letterNote": (values: IValues): boolean => values.claimType === "local" || values.lob === "fep",
-  "denialLetter": (): boolean => true,
   "faxAndDate": (values: IValues): boolean => values.serviceType === "Information Request",
   "info": (values: IValues): boolean => values.serviceType === "Information Request"
 

@@ -21,7 +21,13 @@ export const getClaimNoteData = (values) => {
   data.rejectCode = setRejectCode(values, data);  
   data.instructions = setInstructions(values, data);
   data.remainder = setRemainder(values, data);
+  data.claimNote = setClaimNote(values, data);
   return data;
+}
+
+const setClaimNote = (values, data) => {
+  const { ocwaNote, instructions, modifier22, remainder } = data;
+  return `REQ-${values.req}: ${ocwaNote} ${instructions} ${modifier22} ${remainder}`
 }
 
 const setCZB = (values) => {

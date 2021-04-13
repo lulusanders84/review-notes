@@ -1,16 +1,22 @@
 import React from 'react';
-import {ClaimNote} from '../Notes';
 import Routing from '../Notes/Routing';
 import InfoRequest from './InfoRequest';
 import LetterNote from './LetterNote';
 import { handleInputs } from '../../redux/actions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { NoteContainer } from '../Notes/NoteContainer';
+import { noteContainers } from '../../notes/noteContainers';
+
 
 export const InfoRequestNotes = (props) => {
-  const { dispatch, values } = props;
+  const { claimNote } = noteContainers;
+  const values = useSelector(state => state.values);
+  const dispatch = useDispatch();
   const letterNoteVisible = values.claimType === "local" || values.lob === "fep" ? true : false
+  
   React.useEffect(() => {
     dispatch(handleInputs({name: "deter", value: "deny"}))
+    dispatch(handleInputs({name: "serviceType", value: "Information Request"}))
     dispatch(handleInputs({name: "rationale", value: "Information Request"}))
     dispatch(handleInputs({name: "denialType", value: "entire claim"}))
   }, [dispatch])
@@ -18,13 +24,11 @@ export const InfoRequestNotes = (props) => {
   return (
     <div>
       <InfoRequest /> 
-      <ClaimNote info={true} faxAndDate={true} />
+      <NoteContainer {...claimNote} />
       <LetterNote visible={letterNoteVisible} />
       <Routing /> 
     </div>  
   )  
 }
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
-export default connect(mapStateToProps)(InfoRequestNotes)
+
+export default InfoRequestNotes

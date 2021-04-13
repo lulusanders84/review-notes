@@ -5,6 +5,7 @@ import { getFullnames, getQueue } from '../../utils/Notes';
 import { setInterqual } from '../../utils/Notes/setPolicyString';
 import { getInfoRequestData } from '../../utils/InfoRequestNote/getInfoRequestData';
 import { getMedClaimReviewData } from '../../utils/MedClaimReviewNote/getMedClaimReviewData';
+import { getClinicalRationaleData } from '../../utils/Notes/getClinicalRationaleData';
 
 const formatValuesForNotes = (values) => {
   let formattedValues = {}
@@ -16,6 +17,13 @@ const formatValuesForNotes = (values) => {
 
 export const setClaimNoteData = (values) => (dispatch) => {
   const data = getClaimNoteData(formatValuesForNotes(values));
+  Object.keys(data).forEach(key => {
+    dispatch(actionGenerator(key, data[key]))
+  })
+}
+
+export const setClinicalRationaleData = values => dispatch => {
+  const data = getClinicalRationaleData(formatValuesForNotes(values));
   Object.keys(data).forEach(key => {
     dispatch(actionGenerator(key, data[key]))
   })

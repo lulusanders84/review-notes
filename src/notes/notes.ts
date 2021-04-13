@@ -7,6 +7,8 @@ import { fullReview } from "../templates/noteTemplates/fullReview";
 import { followDecision } from "../templates/noteTemplates/followDecision";
 import IValues from "../interfaces/IValues";
 import { INotes } from "../interfaces/INotes";
+import Info from "../components/Notes/Info";
+import FaxAndDate from "../components/Notes/FaxAndDate";
 
 export const notes: INotes = {
   "benefits": {
@@ -25,6 +27,18 @@ export const notes: INotes = {
     component: NoteLine,
     id: "claimHistory",
     title: "Claim history: "
+  },
+
+  "claimNote": {
+    component: NoteLine,
+    id: "claimNote",
+    title: ""
+  },
+
+  "clinicalRationale": {
+    component: NoteLine,
+    id: "clinicalRationale",
+    title: "Clinical Rationale"
   },
 
   "criteriaMet": {
@@ -63,6 +77,14 @@ export const notes: INotes = {
     component: NoteLine,
     id: "exCircum",
     title: "Extenuating Circumstances: "
+  },
+
+  "faxAndDate": {
+    component: FaxAndDate
+  },
+
+  "info": {
+    component: Info
   },
 
   "letterNote": {
