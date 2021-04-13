@@ -1,9 +1,14 @@
 import CriteriaNote from "../components/CriteriaNote";
-import MedDirectorNote from "../components/Notes/MedClaimReviewNote/MedDirectorNote"
+import MedDirectorNote from "../components/Notes/MedDirectorNote"
 import NoteLine from "../components/NoteLine";
-import { INote } from "../interfaces/INote";
+import NoteContainer from "../components/Notes/NoteContainer";
+import { setMedClaimReviewData } from "../redux/actions/notes";
+import { fullReview } from "../templates/noteTemplates/fullReview";
+import { followDecision } from "../templates/noteTemplates/followDecision";
+import IValues from "../interfaces/IValues";
+import { INotes } from "../interfaces/INotes";
 
-export const notes: {[index: string]: INote} = {
+export const notes: INotes = {
   "benefits": {
     component: NoteLine,
     id: "benefits",
@@ -60,10 +65,23 @@ export const notes: {[index: string]: INote} = {
     title: "Extenuating Circumstances: "
   },
 
+  "letterNote": {
+    component: NoteContainer,
+
+  },
+
   "lob": {
     component: NoteLine,
     id: "lob",
     title: "LOB: "
+  },
+
+  "medClaimReviewNote": {
+    component: NoteContainer,
+    setNoteData: setMedClaimReviewData,
+    template: (values: IValues): string[] => values.reviewed === "no" ? fullReview : followDecision,
+    title: "Medical Claim Review Note",
+    withCapWordButtons: true 
   },
 
   "medDirectorNote": {
