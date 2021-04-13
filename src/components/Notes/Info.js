@@ -1,21 +1,21 @@
 import React from 'react';
 import { saveFormatting } from '../../utils/Notes/saveFormatting';
-import { connect } from 'react-redux'
-import NoteContainer from './NoteContainer';
+import { setComposed, withVisibility } from '../../HOCs';
+
 
 export function Info(props) {
-    const { dos, info } = props.values;
-    const infoContent = saveFormatting(info);
-    return (
-        <NoteContainer visible={props.visible}>
-            <div>
-                Info Requested: For {dos}:{infoContent} 
-            </div>
-        </NoteContainer>
-    )
+  const { dos, info } = props.values;
+  const infoContent = saveFormatting(info);
+  return (
+    <div>
+      Info Requested: For {dos}:{infoContent} 
+    </div>
+  )
 }
+
 const mapStateToProps = (state) => ({
+    id: "info",
     values: state.values,
   });
   
-  export default connect(mapStateToProps)(Info)
+  export default setComposed(mapStateToProps, withVisibility, Info)

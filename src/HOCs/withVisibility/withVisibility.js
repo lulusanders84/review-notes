@@ -1,14 +1,21 @@
 import React from 'react';
-import { handleSetVisible } from './handleSetVisible';
+import { visibilityTest } from './visibilityTest';
 
 export const withVisibility = (WrappedComponent) => {
   
   return class extends React.Component {
     render() {
       const { id, values } = this.props;
-      const visible = handleSetVisible(id, values);      
+      const visible = visibilityTest[id](values);      
       return(
-        <WrappedComponent visible={visible} {...this.props} />
+        <div>
+        {visible 
+          ? <WrappedComponent {...this.props} />
+          : null
+        }          
+        </div>
+
+        
       )
     }
   }

@@ -1,27 +1,25 @@
 import React from 'react';
-import * as utils from '../../utils'
-import NoteContainer from './NoteContainer';
-import { connect } from 'react-redux';
+import * as utils from '../../utils'  
+import { setComposed, withVisibility } from '../../HOCs';
 
 export function FaxAndDate(props) {
   const { claimType, sccf } = props.values;
   return (
-    <NoteContainer visible={props.visible}>
+    <div>
       {claimType === 'home'
-        ? <div>
-            SCCF: {sccf}
-          </div>
+        ? `SCCF: ${sccf}`
         : <div>
             Return Fax: 651-662-1235
             <br />Return Due Date: {utils.getTwoWeeksFromNow()}
           </div>
       }
-    </NoteContainer>
+    </div>
   )   
 }
 
 const mapStateToProps = (state) => ({
+  id: "faxAndDate",
   values: state.values,
 });
 
-export default connect(mapStateToProps)(FaxAndDate)
+export default setComposed(mapStateToProps, withVisibility, FaxAndDate)

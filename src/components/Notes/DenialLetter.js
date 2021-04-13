@@ -1,22 +1,20 @@
 import { Divider } from '@material-ui/core';
 import React from 'react';
-import { connect } from 'react-redux'
-import NoteContainer from './NoteContainer';
+import { setComposed, withVisibility } from '../../HOCs';
 
 export function DenialLetter(props) {
-    return (
-        <NoteContainer visible={props.visible}>
-            <div>
-                <br />
-                <Divider />
-                <br />
-                What is Not Covered or General Exclusions
-            </div>
-        </NoteContainer>
-    )
+  return (
+    <div>
+      <br />
+      <Divider />
+      <br />
+      What is Not Covered or General Exclusions
+    </div>
+  )
 }
 const mapStateToProps = (state) => ({
     values: state.values,
+    id: "denialLetter"
   });
   
-  export default connect(mapStateToProps)(DenialLetter)
+  export default setComposed(mapStateToProps, withVisibility, DenialLetter)
