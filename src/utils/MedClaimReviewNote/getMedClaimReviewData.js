@@ -2,7 +2,7 @@ import * as utils from '../../utils/Notes';
 import { setCode, setPend } from '../InfoRequestNote/getInfoRequestData';
 import { formatToName } from '../../utils/formatting/formatToName'
 
-export const getMedClaimReviewData = (values) => {
+export const getMedClaimReviewData = (values, queue) => {
   const data = {
     lob: setLob(values),
     name: values.name,
@@ -18,6 +18,9 @@ export const getMedClaimReviewData = (values) => {
     claimHistory: values.claimHistory,
     benefits: setBenefits(values),
     summary: setSummary(values),
+    denialLetter: "What is Not Covered or General Exclusions",
+    clinicalRationale: values.clinicalRationale,
+    routing: setRouting(values, queue)
   }
   data.criteriaMet = setCriteriaMet(values, data);
   data.criteriaNotMet = setCriteriaNotMet(values, data);
@@ -26,6 +29,10 @@ export const getMedClaimReviewData = (values) => {
   return data;
 }
 
+const setRouting = (values, queue) => {
+  return `Routing to queue ${queue}
+  ${values.lob === "FEP" ? "Routing to examiner": ""}`
+}
 const setLob = (values) => {
   return utils.capWord(values.lob);
 }

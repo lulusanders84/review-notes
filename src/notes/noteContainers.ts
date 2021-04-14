@@ -1,10 +1,20 @@
 import { INoteContainer } from "../interfaces/INoteContainer";
 import IValues from "../interfaces/IValues";
-import { setClaimNoteData, setClinicalRationaleData, setMedClaimReviewData } from "../redux/actions/notes";
-import { claimNote } from "../templates/noteTemplates/claimNote";
-import { clinicalRationale } from "../templates/noteTemplates/clinicalRationale";
-import { followDecision } from "../templates/noteTemplates/followDecision";
-import { fullReview } from "../templates/noteTemplates/fullReview";
+import { setClaimNoteData, setMedClaimReviewData, setMisrouteData } from "../redux/actions/notes";
+import { noteTemplates } from "../templates/noteTemplates";
+
+const { 
+  claimNote, 
+  clinicalRationale, 
+  denialLetter, 
+  followDecision, 
+  fullReview,
+  infoRequestNote,
+  letterNote,
+  medPolicy,
+  misroute
+} = noteTemplates;
+
 
 export const noteContainers: {[index: string]: INoteContainer} = {
   
@@ -17,10 +27,30 @@ export const noteContainers: {[index: string]: INoteContainer} = {
   },
 
   "clinicalRationale": {
-    id: "claimNote",
-    setNoteData: setClinicalRationaleData,
+    id: "clinicalRationale",
     template: clinicalRationale,
     title: "Clinical Rationale",
+    withCapWordButtons: false 
+  },
+
+  "denialLetter": {
+    id: "denialLetter",
+    template: denialLetter,
+    title: "Section in Benefits",
+    withCapWordButtons: false 
+  },
+
+  "infoRequestNote": {
+    id: "infoRequestNote",
+    template: infoRequestNote,
+    title: "Info Request Note",
+    withCapWordButtons: true  
+  },
+
+  "letterNote": {
+    id: "letterNote",
+    template: letterNote,
+    title: "Note for Letter",
     withCapWordButtons: false 
   },
 
@@ -30,5 +60,36 @@ export const noteContainers: {[index: string]: INoteContainer} = {
     template: (values: IValues): string[] => values.reviewed === "no" ? fullReview : followDecision,
     title: "Medical Claim Review Note",
     withCapWordButtons: true 
-  }
+  },
+
+  "medPolicyNote": {
+    id: "medPolicyNote",
+    template: medPolicy,
+    title: "Medical Policy",
+    withCapWordButtons: false 
+  },
+
+  "misrouteClaimNote": {
+    id: "misrouteClaimNote",
+    setNoteData: setMisrouteData,
+    template: ["misrouteClaimNote"],
+    title: "Claim Note",
+    withCapWordButtons: false 
+  },  
+
+  "misrouteNote": {
+    id: "misrouteNote",
+    setNoteData: setMisrouteData,
+    template: misroute,
+    title: "Misroute Note",
+    withCapWordButtons: true 
+  },
+
+  "routingNote": {
+    id: "routingNote",
+    setNoteData: setMedClaimReviewData,
+    template: ["routing"],
+    title: "Routing",
+    withCapWordButtons: false 
+  },
 }

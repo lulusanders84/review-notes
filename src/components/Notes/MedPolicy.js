@@ -2,32 +2,25 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../styles/noteStyles';
 import { fullNamesAction } from '../../redux/actions/notes';
-import { withVisibility, setComposed } from '../../HOCs';
-import Note from './Note';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => (styles));
 
-export function MedPolicy(props) {
-  const { fullnames, dispatch, values } = props;
+export function MedPolicy() {
+  const values = useSelector(state => state.values)
+  const fullnames = useSelector(state => state.notes.fullnames)
+  const dispatch = useDispatch();
   const classes = useStyles();
+  
   React.useEffect(() => {
     dispatch(fullNamesAction(values))
   }, [dispatch, values] );
 
   return (
-      <Note title="Medical Policy">
         <ul className={classes.list}>
           {fullnames}
-        </ul>
-      </Note>        
+        </ul>        
   )    
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-  fullnames: state.notes.fullnames,
-  id: "medPol"
-});
-
-const composed = setComposed(mapStateToProps, withVisibility, MedPolicy);
-export default composed;
+export default MedPolicy

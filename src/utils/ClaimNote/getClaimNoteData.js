@@ -4,6 +4,7 @@ import {rejectCodes} from '../../data/rejectCodes';
 import { setDenialMessage } from '../Notes';
 import { getTwoWeeksFromNow } from '../../utils';
 import { formatCodesToString } from '../formatCodes';
+import { setOcwaNote } from './setOcwaNote';
 
 export const getClaimNoteData = (values) => {
   const data =  {
@@ -15,7 +16,10 @@ export const getClaimNoteData = (values) => {
     modifier22: setModifier22(values),
     CZB: setCZB(values),
     denialMessage: setDenialMessage(values),
-    claimNoteAddendum: setClaimAddendum(values)
+    claimNoteAddendum: setClaimAddendum(values),
+    sccf: values.sccf,
+    fax: "651-662-1235",
+    date: getTwoWeeksFromNow()
     
   }
   data.rejectCode = setRejectCode(values, data);  
@@ -66,9 +70,6 @@ const setPend = (values) => {
 }
 const setPricing = (values) => {
   return utils.setPricingNote(values, "claim note");
-}
-const setOcwaNote = (values) => {
-  return values.claimSystem === "OCWA" ? "Remove E1057/E1058 from claim.": "";
 }
 const setInstructions = (values, data) => {
   const { pend, pricing, denialType, rejectCode, denialMessage, CZB } = data;

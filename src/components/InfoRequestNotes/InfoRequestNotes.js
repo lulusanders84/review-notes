@@ -1,18 +1,13 @@
 import React from 'react';
-import Routing from '../Notes/Routing';
-import InfoRequest from './InfoRequest';
-import LetterNote from './LetterNote';
 import { handleInputs } from '../../redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NoteContainer } from '../Notes/NoteContainer';
 import { noteContainers } from '../../notes/noteContainers';
 
 
-export const InfoRequestNotes = (props) => {
-  const { claimNote } = noteContainers;
-  const values = useSelector(state => state.values);
+export const InfoRequestNotes = () => {
+  const { claimNote, letterNote, infoRequestNote, routingNote } = noteContainers;
   const dispatch = useDispatch();
-  const letterNoteVisible = values.claimType === "local" || values.lob === "fep" ? true : false
   
   React.useEffect(() => {
     dispatch(handleInputs({name: "deter", value: "deny"}))
@@ -23,10 +18,10 @@ export const InfoRequestNotes = (props) => {
   
   return (
     <div>
-      <InfoRequest /> 
+      <NoteContainer {...infoRequestNote} /> 
       <NoteContainer {...claimNote} />
-      <LetterNote visible={letterNoteVisible} />
-      <Routing /> 
+      <NoteContainer {...letterNote} />
+      <NoteContainer {...routingNote} /> 
     </div>  
   )  
 }

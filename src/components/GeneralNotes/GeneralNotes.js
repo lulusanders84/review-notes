@@ -1,20 +1,26 @@
 import React from 'react';
-import Routing from '../Notes/Routing';
-import MedPolicy from '../Notes/MedPolicy';
 import { noteContainers } from '../../notes/noteContainers'
 import NoteContainer from '../Notes/NoteContainer';
 
 
-
 export const GeneralNotes = () => {
-  const { medClaimReviewNote, claimNote, clinicalRationale } = noteContainers
+  const { 
+    medClaimReviewNote, 
+    claimNote, 
+    clinicalRationale, 
+    denialLetter,
+    medPolicyNote,
+    routingNote 
+  } = noteContainers
+
   return (
     <div>
       <NoteContainer {...medClaimReviewNote} />
-      <MedPolicy />   
+      <NoteContainer {...medPolicyNote} />   
       <NoteContainer {...claimNote} />
-      <Routing /> 
-      <NoteContainer {...clinicalRationale} />     
+      <NoteContainer {...routingNote} />
+      <NoteContainer {...clinicalRationale} />   
+      <NoteContainer {...denialLetter} />  
     </div> 
   )  
 }

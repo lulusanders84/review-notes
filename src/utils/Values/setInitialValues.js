@@ -15,6 +15,7 @@ const blankValues = [
     "iqLoc",
     "iqSubset",
     "mainSummary",
+    "misrouteRationale",
     "noteTemplate",
     "paDiagnosis", 
     "paDos",

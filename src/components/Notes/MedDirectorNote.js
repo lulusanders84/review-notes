@@ -2,18 +2,23 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../../styles/noteStyles';
 import { referReasonsAction } from '../../redux/actions/notes';
-import { withVisibility, setComposed } from '../../HOCs';
+import { withVisibility } from '../../HOCs';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => (styles));
 
-const MedDirectorNote = (props) => {
-  const { dispatch, values } = props;
+const MedDirectorNote = () => {
+  const values = useSelector(state => state.values);
+  const notes = useSelector(state => state.notes);
+  const { referReasons } = notes;
+  const dispatch = useDispatch();
   const classes = useStyles();
+
   React.useEffect(() => {
     dispatch(referReasonsAction(values))
   }, [dispatch, values]);
-  const { referReasons } = props.notes;
-   return (
+  
+  return (
     <div>
       <br />
       <br />Primary Reason for Referral: (place X before the appropriate reason)
@@ -26,11 +31,4 @@ const MedDirectorNote = (props) => {
    )
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-  notes: state.notes,
-  id: "medDir"
-});
-
-const composed = setComposed(mapStateToProps, withVisibility, MedDirectorNote);
-export default composed;
+export default withVisibility(MedDirectorNote);

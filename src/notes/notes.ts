@@ -1,14 +1,8 @@
 import CriteriaNote from "../components/CriteriaNote";
 import MedDirectorNote from "../components/Notes/MedDirectorNote"
 import NoteLine from "../components/NoteLine";
-import NoteContainer from "../components/Notes/NoteContainer";
-import { setMedClaimReviewData } from "../redux/actions/notes";
-import { fullReview } from "../templates/noteTemplates/fullReview";
-import { followDecision } from "../templates/noteTemplates/followDecision";
-import IValues from "../interfaces/IValues";
 import { INotes } from "../interfaces/INotes";
-import Info from "../components/Notes/Info";
-import FaxAndDate from "../components/Notes/FaxAndDate";
+import { MedPolicy } from "../components/Notes/MedPolicy";
 
 export const notes: INotes = {
   "benefits": {
@@ -38,7 +32,7 @@ export const notes: INotes = {
   "clinicalRationale": {
     component: NoteLine,
     id: "clinicalRationale",
-    title: "Clinical Rationale"
+    title: ""
   },
 
   "criteriaMet": {
@@ -55,10 +49,22 @@ export const notes: INotes = {
     title: "Criteria Not Met: "
   },
 
+  "date": {
+    component: NoteLine,
+    id: "date",
+    title: "Return Due Date: "
+  },
+
   "decisionReqInfo": {
     component: NoteLine,
     id: "decisionReqInfo",
     title: "Request # utilized to apply decision: "
+  },
+
+  "denialLetter": {
+    component: NoteLine,
+    id: "denialLetter",
+    title: ""
   },
 
   "deter": {
@@ -79,17 +85,28 @@ export const notes: INotes = {
     title: "Extenuating Circumstances: "
   },
 
-  "faxAndDate": {
-    component: FaxAndDate
+  "fax": {
+    component: NoteLine,
+    id: "fax",
+    title: "Return Fax: "
   },
 
   "info": {
-    component: Info
+    component: NoteLine,
+    id: "info",
+    title: "Info Requested: "
+  },
+  
+  "infoRequestReq": {
+    component: NoteLine,
+    id: "infoRequestReq",
+    title: ""
   },
 
-  "letterNote": {
-    component: NoteContainer,
-
+  "initialSccf": {
+    component: NoteLine,
+    id: "initialSccf",
+    title: "Original info request sent on SCCF: "
   },
 
   "lob": {
@@ -98,16 +115,27 @@ export const notes: INotes = {
     title: "LOB: "
   },
 
-  "medClaimReviewNote": {
-    component: NoteContainer,
-    setNoteData: setMedClaimReviewData,
-    template: (values: IValues): string[] => values.reviewed === "no" ? fullReview : followDecision,
-    title: "Medical Claim Review Note",
-    withCapWordButtons: true 
+  "medDirectorNote": {
+    id: "medDir",
+    component: MedDirectorNote,
   },
 
-  "medDirectorNote": {
-    component: MedDirectorNote,
+  "medPolicy": {
+    component: MedPolicy,
+    id: "medPolicy",
+    title: "Medical Policy"
+  },
+
+  "misrouteClaimNote": {
+    component: NoteLine,
+    id: "misrouteClaimNote",
+    title: ""
+  },
+
+  "misrouteRationale": {
+    component: NoteLine,
+    id: "misrouteRationale",
+    title: "Rationale: "
   },
 
   "name": {
@@ -116,13 +144,19 @@ export const notes: INotes = {
     title: "Clinician name/Extension: "
   },
 
-   "pa": {
+  "pa": {
     component: NoteLine,
     id: "pa",
     title: "PA on file: "
   },
 
-   "pend": {
+  "paResearch": {
+    component: NoteLine,
+    id: "paResearch",
+    title: "PA research: "
+  },
+
+  "pend": {
     component: NoteLine,
     id: "pend",
     title: "Suspension: "
@@ -132,12 +166,36 @@ export const notes: INotes = {
     component: NoteLine,
     id: "policyString",
     title: "Medical Policy/Criteria:"
-  },  
+  }, 
+  
+  "related": {
+    component: NoteLine,
+    id: "related",
+    title: "Related UM requests: "
+  },
 
   "req": {
     component: NoteLine,
     id: "req",
     title: "REQ-"
+  },
+
+  "route": {
+    component: NoteLine,
+    id: "route",
+    title: "Route: "
+  },
+
+  "routing": {
+    component: NoteLine,
+    id: "routing",
+    title: ""
+  },
+
+  "sccf": {
+    component: NoteLine,
+    id: "sccf",
+    title: "SCCF:"
   },
 
    "service": {

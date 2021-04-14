@@ -11,7 +11,7 @@ export default function withVisibility(WrappedComponent) {
     const visible = visibilityTest[id] !== undefined 
       ? visibilityTest[id](values) 
       : true 
-        
+    
     return(
       <div>
       {visible 

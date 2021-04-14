@@ -5,7 +5,7 @@ import { getFullnames, getQueue } from '../../utils/Notes';
 import { setInterqual } from '../../utils/Notes/setPolicyString';
 import { getInfoRequestData } from '../../utils/InfoRequestNote/getInfoRequestData';
 import { getMedClaimReviewData } from '../../utils/MedClaimReviewNote/getMedClaimReviewData';
-import { getClinicalRationaleData } from '../../utils/Notes/getClinicalRationaleData';
+import { getMisrouteData } from '../../utils/Notes/getMisrouteData';
 
 const formatValuesForNotes = (values) => {
   let formattedValues = {}
@@ -22,27 +22,26 @@ export const setClaimNoteData = (values) => (dispatch) => {
   })
 }
 
-export const setClinicalRationaleData = values => dispatch => {
-  const data = getClinicalRationaleData(formatValuesForNotes(values));
+export const setMedClaimReviewData = (values) => (dispatch, getState) => {
+  const data = getMedClaimReviewData(formatValuesForNotes(values, getState().notes.queue));
   Object.keys(data).forEach(key => {
     dispatch(actionGenerator(key, data[key]))
   })
-}
-
-export const setMedClaimReviewData = (values) => (dispatch) => {
-  const data = getMedClaimReviewData(formatValuesForNotes(values));
-  Object.keys(data).forEach(key => {
-    dispatch(actionGenerator(key, data[key]))
-  })
-
 }
 export const setInfoRequestData = (values) => (dispatch) => {
   const data = getInfoRequestData(formatValuesForNotes(values));
   Object.keys(data).forEach(key => {
     dispatch(actionGenerator(key, data[key]))
   })
-
 }
+
+export const setMisrouteData = (values) => (dispatch) => {
+  const data = getMisrouteData(formatValuesForNotes(values));
+  Object.keys(data).forEach(key => {
+    dispatch(actionGenerator(key, data[key]))
+  })
+}
+
 export const setPolicyStringAction = (values) => (dispatch) => {
   const policyString = values.policy.length > 0 
     ? values.policy.some( policy => {return policy["Policy #"] === "InterQual"})

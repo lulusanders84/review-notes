@@ -1,15 +1,14 @@
 import React from 'react';
 import NoteContainer from './Notes/NoteContainer';
-import Routing from './Notes/Routing';
 import { noteContainers } from '../notes/noteContainers';
 
 
 export default function() {
-  const { claimNote } = noteContainers;
+  const { claimNote, routingNote } = noteContainers;
   return (
     <div>
       <NoteContainer {...claimNote} />    
-      <Routing />        
+      <NoteContainer {...routingNote} />         
     </div> 
   )  
 }

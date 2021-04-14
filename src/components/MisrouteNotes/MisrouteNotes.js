@@ -1,14 +1,15 @@
 import React from 'react';
-import MisrouteClaimNote from '../Notes/MisrouteClaimNote';
-import Routing from '../Notes/Routing';
-import Misroute from '../Notes/Misroute';
+import NoteContainer from '../Notes/NoteContainer';
+import { noteContainers } from '../../notes/noteContainers';
+
+const { misrouteNote, misrouteClaimNote, routingNote } = noteContainers;
 
 export const MisrouteNotes = () => {
   return (
     <div>
-      <Misroute />
-      <MisrouteClaimNote />    
-      <Routing />        
+      <NoteContainer {...misrouteNote} />
+      <NoteContainer {...misrouteClaimNote} />    
+      <NoteContainer {...routingNote} />        
     </div>
     
   )  

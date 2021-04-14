@@ -7,12 +7,13 @@ import { withVisibility } from '../../HOCs';
 
 export function NoteContainer({setNoteData, template, title, withCapWordButtons}) {
   const values = useSelector(state => state.values);
-  console.log(useSelector(state => state.notes));
   const dispatch = useDispatch()
   template = Array.isArray(template) ? template : template(values)
   
   React.useEffect(() => {
-    dispatch(setNoteData(values))
+    if(setNoteData) {
+      dispatch(setNoteData(values))
+    }
   }, [dispatch, setNoteData, values])
 
   return (
