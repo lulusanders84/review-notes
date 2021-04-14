@@ -5,13 +5,10 @@ import { Grid } from '@material-ui/core/';
 import { Divider } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Tabs from './Tabs';
-import GeneralNotes from './GeneralNotes/GeneralNotes';
+import NoteFrame from './Notes/NoteFrame';
 import ScrollUpButton from 'react-scroll-up-button';
 import { styles } from '../styles/reviewNotesStyles';
 import InputsContainer from './InputsContainer';
-import InfoRequestNotes from './InfoRequestNotes/InfoRequestNotes';
-import DecisionNotes from './BackFromPeerNotes';
-import MisrouteNotes from './MisrouteNotes/MisrouteNotes';
 import { decision, general, infoRequest, misroute } from '../templates/formTemplates';
 
 function ReviewNotes(props) {
@@ -23,19 +20,19 @@ function ReviewNotes(props) {
   const noteTypeSwitch = {
     0: {
         inputs: <InputsContainer template={general} />,
-        notes: <GeneralNotes /> 
+        notes: <NoteFrame id="general" /> 
       },
     1: {
         inputs: <InputsContainer template={infoRequest} />,
-        notes: <InfoRequestNotes />
+        notes: <NoteFrame id="infoRequest" />
       },
     2: {
       inputs: <InputsContainer template={decision} />,
-        notes: <DecisionNotes />
+        notes: <NoteFrame id="decision" />
       },
     3: {
         inputs: <InputsContainer template={misroute} />,
-        notes: <MisrouteNotes />
+        notes: <NoteFrame id="misroute" />
       }
     } 
   

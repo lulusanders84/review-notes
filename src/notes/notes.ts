@@ -1,8 +1,8 @@
 import CriteriaNote from "../components/CriteriaNote";
 import MedDirectorNote from "../components/Notes/MedDirectorNote"
-import NoteLine from "../components/NoteLine";
+import NoteLine from "../components/Notes/NoteLine";
 import { INotes } from "../interfaces/INotes";
-import { MedPolicy } from "../components/Notes/MedPolicy";
+import MedPolicy from "../components/Notes/MedPolicy";
 
 export const notes: INotes = {
   "benefits": {
