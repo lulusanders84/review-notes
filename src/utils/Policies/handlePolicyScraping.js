@@ -1,6 +1,6 @@
 import { getStorage } from '../';
 import { refreshPolicies } from './refreshPolicies';
-export const handlePolicyScraping = (setUpdating) => {
+export const handlePolicyScraping = (setUpdating, versions) => {
   const nextScrape = getStorage("nextScrape", NaN);
   const fepPolicies = getStorage("fepPolicies");
   const bcbsmnPolicies = getStorage("bcbsmnPolicies");
@@ -8,8 +8,9 @@ export const handlePolicyScraping = (setUpdating) => {
     || nextScrape < Date.now()
     || fepPolicies === undefined
     || bcbsmnPolicies === undefined) {
+
     setUpdating(true);
-    refreshPolicies(setUpdating, "fep");
-    refreshPolicies(setUpdating, "commercial");
+    refreshPolicies({setUpdating, lob: "fep", ...versions.fep});
+    refreshPolicies({setUpdating, lob: "commercial", ...versions.commercial});
   }
 };

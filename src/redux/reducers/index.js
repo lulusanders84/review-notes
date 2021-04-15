@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
-import valuesReducer from './values';
-import claimsReducer from './claims';
-import optionsReducer from '././options';
-import notesReducer from './notes';
+import reducer from './reducer'
+import values from './values';
+import claims from './claims';
+import options from '././options';
+import notes from './notes';
 
 const rootReducer = combineReducers({
-  values: valuesReducer,
-  claims: claimsReducer,
-  options: optionsReducer,
-  notes: notesReducer,
+  reducer,
+  values,
+  claims,
+  options,
+  notes,
 });
 
 export default rootReducer;

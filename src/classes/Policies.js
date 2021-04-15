@@ -7,14 +7,11 @@ import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
 import { fepPolicies } from "../data/fepPolicies";
 import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
 
-const fepVersion = "January 2021";
-const bcbsmnVersion = "2/22/2021";
 
 export class Policies {
-  constructor(lob) {
+  constructor(lob, newVersion, currentVersion) {
     this.lob = lob;
-    const version = lob === "fep" ? fepVersion : bcbsmnVersion
-    updatePolicyVersion(lob, version)
+    updatePolicyVersion(lob, newVersion, currentVersion)
     const policies = lob === "fep"
       ? getStorage("fepPolicies") === undefined
         ? fepPolicies
