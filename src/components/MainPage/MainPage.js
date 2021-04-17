@@ -1,7 +1,7 @@
 import React from 'react';
 import ReviewNotes from '../ReviewNotes';
 import ReviewNotesTitle from '../Title/ReviewNotesTitle';
-// import References from '../References/References';
+
 
 function MainPage(props) {
   return (     

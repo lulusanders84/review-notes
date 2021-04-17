@@ -6,10 +6,12 @@ import setUpdatingText from './setUpdatingText';
 import setDisplayComponent from './setDisplayComponent';
 import Checkbox from '../Inputs/Checkbox';
 import StatsBar from '../StatsBar/StatsBar';
+import { useSelector } from 'react-redux';
 
 function MainPageDev(props) {
   const [tabValue, setTabValue] = React.useState(0);
-  const { date, time } = setDateTimeOfLastScrape();
+  const { lastScrape } = useSelector(state => state.reducer)
+  const { date, time } = setDateTimeOfLastScrape(lastScrape);
   
     return (
     <div className={props.paper}>

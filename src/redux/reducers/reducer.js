@@ -7,7 +7,13 @@ const initialState = {
   commercialCurrentVersion: getStorage("commercialPolicyVersion", ""),
   commercialNewVersion: "2/22/21",
   fepCurrentVersion: getStorage("fepPolicyVersion", ""),
-  fepNewVersion: "January 2021"
+  fepNewVersion: "January 2021",
+
+  lastScrape: getStorage("lastScrape", null),
+
+  storedFepPolicies: getStorage("fepPolicies")
+
+
 }
 
 const reducer = (state=initialState, action) => {

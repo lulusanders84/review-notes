@@ -1,10 +1,12 @@
-import { allCapWords } from '../data/allCapWords';
-import { getStorage } from '../utils/getStorage';
+// import { allCapWords } from '../data/allCapWords';
+// import { getStorage } from '../utils/getStorage';
 import { saveToStorage } from '../utils/saveToStorage';
+
+
 export class CapWords {
   constructor() {
     this.words = [];
-    this.retrieveStoredWords();
+    // this.retrieveStoredWords();
     this.newWords = [];
     this.wordSource = "";
   }
@@ -22,13 +24,13 @@ export class CapWords {
   _deleteWord(word) {
     this.words = this.words.filter(item => { return item !== word.toUpperCase().trim() })
   }
-  retrieveStoredWords() {
-    const storedWords = getStorage("capWords", null);
-    this.wordSource = storedWords ? "stored" : "file";
-    this.words = storedWords
-      ? storedWords
-      : allCapWords;
-  }
+  // retrieveStoredWords() {
+  //   const storedWords = getStorage("capWords", null);
+  //   this.wordSource = storedWords ? "stored" : "file";
+  //   this.words = storedWords
+  //     ? storedWords
+  //     : allCapWords;
+  // }
   mergeAndStoreCapWords(allCapWords) {
     switch (this.wordSource) {
       case "stored":
