@@ -1,6 +1,6 @@
 import { handleService } from '../outputLogic/handleServiceType';
-import { handlePolicyViaCode } from '../outputLogic/handlePolicyViaCode';
 import { getValueFromPair, formatMultiServices } from '../../Inputs';
+import { policies } from '../../../Policies/policies';
 
 export const code = (value, values) => {
   const codes = value.value;
@@ -22,7 +22,7 @@ export const code = (value, values) => {
     }
   return {
     linked,
-    policy: handlePolicyViaCode(value, values),
+    policy: policies.getPoliciesByCodes(codes, values.lob) || values.policy,
     service,
     serviceType: handleService(value) 
   }

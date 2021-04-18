@@ -31,7 +31,7 @@ import { rejectCodes } from '../data/rejectCodes';
 import { referReasons } from '../data/referReasons';
 import { networkNames } from '../data/networkNames';
 
-import { saveInfoToPolicy } from '../utils/Inputs/savePair';
+import { policies } from '../Policies/policies';
 
 
 const repeatedInputs = {
@@ -309,7 +309,7 @@ export const inputs: IInputs = {
   "iqInputs": {
     component: InputsContainer,
     logic: (values: IValues): boolean => Array.isArray(values.policy)
-      ? values.policy.some(policy => policy["Policy #"] === "InterQual") ? true : false
+      ? values.policy.some(policy => policy.number === "InterQual") ? true : false
       : false,
     onCard: true,
     props: {template: iq} 
@@ -501,7 +501,7 @@ export const inputs: IInputs = {
   "saveInfo": {
     component: Button,
     logic: true,
-    props: {clickHandling: saveInfoToPolicy, preClickLabel: "Save Info to Policy", postClickLabel: "Saved"}
+    props: {clickHandling: policies.saveInfoToPolicy, preClickLabel: "Save Info to Policy", postClickLabel: "Saved"}
   },
 
   "sccf": repeatedInputs.sccf("sccf", "SCCF:"),

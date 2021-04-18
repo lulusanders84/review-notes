@@ -1,15 +1,14 @@
-import { getPolicyOptions } from '../../utils/Options/getPolicyOptions';
 import { getPendOptions } from '../../utils/Options/getPendOptions';
 import { saveToStorage } from '../../utils';
 import { setStorageLocation } from '../../utils/setStorageLocation';
-
+import { policies } from "../../Policies/policies";
 const optionsObj = {
   pend: getPendOptions,
-  policy: getPolicyOptions
+  policy: policies.getPolicyOptions
 }
 
 export const setOptions = ({lob, id}) => async (dispatch) => {
-  const options = await optionsObj[id](lob)
+  let options = await optionsObj[id](lob)
   const key = `${id}Options`
   dispatch(_setOptions(options, key))
 }

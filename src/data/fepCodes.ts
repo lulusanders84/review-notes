@@ -1,4 +1,7 @@
-export const fepCodes = [
+import { formatData} from "../utils/Data/formatData";
+
+export const fepCodes: {[index: string]: string} = formatData(
+  [
   {   "number": "1.01.05",   "codes": "20979, E0760" },
   {   "number": "1.01.09",   "codes": "A4595, A4630, E0720, E0730, E0731" },
   {   "number": "1.01.15",   "codes": "A7025, A7026, E0481, E0483, E0484, S8185" },
@@ -803,4 +806,5 @@ export const fepCodes = [
   {   "number": "9.03.20",   "codes": "67036, 67277, C9770" },
   {   "number": "9.03.21",   "codes": "0191T, 0253T, 0376T, 0449T, 0450T, 0474T, 66179, 66180, 66183, 66184, 66185, C1783, L8612" },
   {   "number": "9.03.29",   "codes": "0207T, 0330T, 0507T, 0563T" }
- ]
+  ]
+, "codes")

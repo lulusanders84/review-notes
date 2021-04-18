@@ -1,7 +1,7 @@
 export const setPolicyString = (values, field) => {
   return values.policy.length > 0 
     ? values.policy.map(policy => {
-      const number = policy["Policy #"];
+      const { number } = policy
       const policyType = setPolicyType(number);
       const name = number === "InterQual"
         ? setInterqual(values, field)

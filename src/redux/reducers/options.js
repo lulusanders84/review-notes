@@ -3,13 +3,11 @@ import { daysOfTheWeek } from "../../data/daysOfTheWeek";
 import { serviceTypes } from "../../data/serviceTypes";
 import { getStorage } from "../../utils";
 import { createSelectValue } from "../../utils/createSelectValue";
-import { getPolicyOptions} from "../../utils/Options";
 import { getFepBenefitsOptions } from "../../utils/Options/getFepBenefitsOptions";
 
-const lob = getStorage("lob", "commercial")
 
 const initialState = {
-  policyOptions: getPolicyOptions(lob),
+  policyOptions: [],
   daysOffOptions: daysOfTheWeek.map(day => createSelectValue(day)),
   pendOptions: [],
   doseUnitOptions: getStorage("doseUnit", []),

@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 export const getBcbsmnPolicyHrefAndEffectiveDate = async (policy) => {
   const returnPolicy = policy;
-  const policyNo = policy["Policy #"];
+  const policyNo = policy.number;
   const url = "https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/search.html?q=" +
     policyNo + 
     "&sort-by-field=version&sort-by-order=desc&number=" +

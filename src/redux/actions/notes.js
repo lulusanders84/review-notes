@@ -44,9 +44,9 @@ export const setMisrouteData = (values) => (dispatch) => {
 
 export const setPolicyStringAction = (values) => (dispatch) => {
   const policyString = values.policy.length > 0 
-    ? values.policy.some( policy => {return policy["Policy #"] === "InterQual"})
+    ? values.policy.some( policy => {return policy.number === "InterQual"})
       ? setInterqual(values, "med policy")
-      : values.policy.map(policy => {return policy["Policy #"]}).join(" / ") 
+      : values.policy.map(policy => {return policy.number}).join(" / ") 
     : "N/A";
   dispatch(setPolicyString(policyString));
 

@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function BaseChip({data, onDelete, id}) {
-  console.log(data)
   const {label, title, isTooltipped} = chipProps[id]
   const classes = useStyles();
   const Chip = withTooltip(MuiChip, title(data), classes.tooltip, isTooltipped)

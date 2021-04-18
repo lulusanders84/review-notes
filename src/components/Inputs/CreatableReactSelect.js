@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { Tooltip } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleInputs, setOptions } from '../../redux/actions';
 import { saveNewOptions } from '../../redux/actions/options';
@@ -241,14 +240,8 @@ function ValueContainer(props) {
   };
 
 function MultiValue(props) {
-  const classes = useStyles();
-  const label = <a href={props.data.href} target="blank">{props.data.value}</a>;
-  const title = props.data['Full Policy'] ? props.data['Full Policy'] : "";
+  const {label} = props.data;
   return (
-    <Tooltip
-      title={title}
-      classes={{tooltip: classes.tooltip}}
-    >
       <Chip
         tabIndex={-1}
         label={label}
@@ -258,7 +251,6 @@ function MultiValue(props) {
         onDelete={props.removeProps.onClick}
         deleteIcon={<CancelIcon {...props.removeProps} />}
       />
-    </Tooltip>
   );
 }
 

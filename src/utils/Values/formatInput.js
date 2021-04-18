@@ -1,7 +1,6 @@
 import { 
   benefits, 
   misrouteRationale, 
-  policy,
   code,
   pend } from "./inputFormatting";
 
@@ -11,7 +10,6 @@ const formatSwitch = {
   "fepBenefits": benefits,
   misrouteRationale,
   pend,
-  policy,
 }
 
 export const formatInput = (value) => {

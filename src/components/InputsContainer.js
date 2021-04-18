@@ -23,8 +23,8 @@ export default function InputsContainer({template, denialId}) {
         inputComponents.map(input => {
           const Component = input.component;
           return (
-            <div className={classes.root}>
-              <Component key={input.id} values={{denialId}} />  
+            <div className={classes.root} key={input.id}>
+              <Component values={{denialId}} />  
             </div> 
           )       
         })

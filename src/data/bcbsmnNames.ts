@@ -1,4 +1,9 @@
-export const bcbsmnNames = [
+import { formatData } from "../utils/Data/formatData";
+
+
+export const bcbsmnNames: {[index: string]: string}  = formatData(
+  [
+  {   "number": "Interqual", "name": "Interqual" },
   {   "number": "II-161",   "name": "Abatacept (Orencia®)" },
   {   "number": "IV-130",   "name": "Ablation of Peripheral Nerves to Treat Pain" },
   {   "number": "IV-165",   "name": "Absorbable Nasal Implant for Treatment of Nasal Valve Collapase" },
@@ -192,7 +197,6 @@ export const bcbsmnNames = [
   {   "number": "II-177",   "name": "Nerve Fiber Density Measurement" },
   {   "number": "IV-147",   "name": "Nerve Graft with Prostatectomy" },
   {   "number": "X-29",   "name": "Neurofeedback" },
-  {   "number": "N/A",   "name": "Non-FDA approved (NFDA)" },
   {   "number": "II-33",   "name": "Nonpharmacologic Treatment of Acne" },
   {   "number": "II-08",   "name": "Nonpharmacologic Treatment of Rosacea" },
   {   "number": "II-171",   "name": "Nusinersen (Spinraza™)" },
@@ -326,4 +330,5 @@ export const bcbsmnNames = [
   {   "number": "II-134",   "name": "Wireless Gastric Motility Monitoring " },
   {   "number": "II-85",   "name": "Wound Healing: Electrostimulation and Electromagnetic Therapy" },
   {   "number": "II-88",   "name": "Wound Healing: Non-Contact Utrasound Treatment" }
- ]
+  ]
+, "name")

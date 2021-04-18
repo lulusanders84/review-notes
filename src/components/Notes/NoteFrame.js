@@ -25,7 +25,7 @@ export const NoteFrame = ({id}) => {
       {
         noteFrameTemplate.map(containerId => {
           const containerTemplate = noteContainers[containerId];
-          return <NoteContainer {...containerTemplate} />
+          return <NoteContainer {...containerTemplate} key={containerId} />
         })
       }  
     </div> 

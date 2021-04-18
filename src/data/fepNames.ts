@@ -1,4 +1,7 @@
-export const fepNames = [
+import { formatData } from "../utils/Data/formatData";
+
+export const fepNames: {[index: string]: string} = formatData(
+  [
   {   "number": "1.01.05",   "name": "Low Intensity Pulsed Ultrasound Fracture Healing Device" },
   {   "number": "1.01.09",   "name": "Transcutaneous Electrical Nerve Stimulation" },
   {   "number": "1.01.15",   "name": "Oscillatory Devices for the Treatment of Cystic Fibrosis and Other Respiratory Conditions" },
@@ -803,4 +806,5 @@ export const fepNames = [
   {   "number": "9.03.20",   "name": "Intraocular Radiation Therapy for Age-Related Macular Degeneration " },
   {   "number": "9.03.21",   "name": "Aqueous Shunts and Stents for Glaucoma" },
   {   "number": "9.03.29",   "name": "Eyelid Thermal Pulsation for the Treatment of Dry Eye Syndrome" }
- ]
+  ]
+, "name")

@@ -4,8 +4,7 @@ import { setInterqual } from './setPolicyString';
 export const getFullnames = (values) => {
   const interqual = setInterqual(values, "med policy");
   return values.policy.map((policy, index) => {
-    const number = policy["Policy #"];
-    const name = policy["Full Policy"];
+    const {number, name} = policy
     const isNotNumber = isNaN(number.charAt(0))
     let policyOrigin = isNotNumber 
     ? "Blue Cross Blue Shield of Minnesota Medical Policy" 
