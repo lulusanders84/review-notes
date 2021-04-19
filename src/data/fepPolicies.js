@@ -12,7 +12,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Transcutaneous Electrical Nerve Stimulation",
     "CPT Code (s)": "No CPT",
-    "HCPCS Code (s)": "A4595, A4630, E0720, E0730, E0731"
+    "HCPCS Code (s)": "A4595, A4630, E0720, E0730, E0731, K1018, K1019"
   },
   {
     "Policy #": "1.01.15",
@@ -110,7 +110,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Microprocessor-Controlled Prostheses for the Lower Limb ",
     "CPT Code (s)": "No CPT",
-    "HCPCS Code (s)": "L5856, L5857, L5858, L5973"
+    "HCPCS Code (s)": "K1014, L5856, L5857, L5858, L5973"
   },
   {
     "Policy #": "2.01.04",
@@ -277,14 +277,14 @@ export const fepPolicies = [
     "Policy #": "2.02.08",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Ambulatory Event Monitors and Mobile Cardiac Outpatient Telemetry",
-    "CPT Code (s)": "33285, 33286, 93228, 93229, 93241, 93242, 93243, 93244, 93245, 93246, 93247, 93248, 93268, 93270, 93271, 93272, 93299, 0295T, 0296T, 0297T, 0298T, 0497T, 0498T, G2066",
-    "HCPCS Code (s)": "E0616, C1764"
+    "CPT Code (s)": "33285, 33286, 93228, 93229, 93241, 93242, 93243, 93244, 93245, 93246, 93247, 93248, 93268, 93270, 93271, 93272, 93299, 0497T, 0498T, 0650T",
+    "HCPCS Code (s)": "E0616, C176, G2066"
   },
   {
     "Policy #": "2.02.10",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Biventricular Pacemakers (Cardiac Resynchronization Therapy) for Treamtent of Heart Failure ",
-    "CPT Code (s)": "33202, 33203, 33207, 33217, 33220, 33222, 33223, 33226, 33228, 33228, 33229, 33230, 33231, 33230, 33231, 33232, 33233, 33238, 33241, 33243, 33243, 33244, 33249, 33263, 33264 0515T-0522T",
+    "CPT Code (s)": "33202, 33203, 33207, 33217, 33220, 33222, 33223, 33226, 33228, 33228, 33229, 33230, 33231, 33230, 33231, 33232, 33233, 33238, 33241, 33243, 33243, 33244, 33249, 33263, 33264, 0515T, 0516T, 0517T, 0518T, 0519T, 0520T, 0521T, 0522T",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -360,8 +360,8 @@ export const fepPolicies = [
   {
     "Policy #": "2.04.14",
     "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Cerebrospinal Fluid and Urinary Biomarkers of Alzheimer Disease",
-    "CPT Code (s)": "81099, 83520, 86849",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Evaluation of Biomarkers for Alzheimer Disease",
+    "CPT Code (s)": "81099, 83520, 86849, 0206U, 0207U",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -512,13 +512,6 @@ export const fepPolicies = [
     "HCPCS Code (s)": "No HCPCS"
   },
   {
-    "Policy #": "2.04.70",
-    "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Genetic Testing for Lipoprotein(a) Variant(s) as a Decision Aid for Aspirin Treatment ",
-    "CPT Code (s)": "81479",
-    "HCPCS Code (s)": "No HCPCS"
-  },
-  {
     "Policy #": "2.04.74",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "DNA-Based Testing for Adolescent Idiopathic Scoliosis ",
@@ -550,7 +543,7 @@ export const fepPolicies = [
     "Policy #": "2.04.78",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Molecular Markers in Fine Needle Aspirates of the Thyroid",
-    "CPT Code (s)": "81345, 81445, 81545, 81546, 0018U, 0026U, 0204U, 0208U",
+    "CPT Code (s)": "81345, 81445, 81546, 0018U, 0026U, 0204U, 0208U, 0245U",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -662,7 +655,7 @@ export const fepPolicies = [
     "Policy #": "2.04.99",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Genetic Testing for Hereditary Pancreatitis",
-    "CPT Code (s)": "81222, 81223, 81401, 81404, 81405, 81479",
+    "CPT Code (s)": "81220, 81221, 81222, 81223, 81401, 81404, 81405, 81479",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -676,7 +669,7 @@ export const fepPolicies = [
     "Policy #": "2.04.101",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Genetic Testing for Li-Fraumeni Syndrome",
-    "CPT Code (s)": "81351, 81352, 81353, 81404, 81405, 81479, 0102U",
+    "CPT Code (s)": "81351, 81352, 81353, 81479, 0102U",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -753,7 +746,7 @@ export const fepPolicies = [
     "Policy #": "2.04.115",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Comprehensive Genomic Profiling for Selecting Targeted Cancer Therapies",
-    "CPT Code (s)": "81445, 81450, 81455, 88342, 88381, 0013U, 0014U, 0019U, 0022U, 0036U, 0037U, 0048U, 0056U, 0101U, 0102U, 0103U, 0111U, 0174U, 0211U, 0239U, 0006M, 0016M, 81479 or 81599",
+    "CPT Code (s)": "81445, 81450, 81455, 88342, 88381, 0013U, 0014U, 0019U, 0022U, 0036U, 0037U, 0048U, 0056U, 0101U, 0102U, 0103U, 0111U, 0174U, 0211U, 0239U, 0242U, 0244U, 0006M, 0016M, 81479 or 81599",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -824,13 +817,6 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Genetic Testing for Marfan Syndrome, Thoracic Aortic Aneurysms and Dissections, and Related Disorders",
     "CPT Code (s)": "81401, 81405, 81408, 81410, 81411, 81479",
-    "HCPCS Code (s)": "No HCPCS"
-  },
-  {
-    "Policy #": "2.04.130",
-    "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Molecular Testing for Chronic Heart Failure and Heart Transplant",
-    "CPT Code (s)": "83006, 0055U",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -918,10 +904,10 @@ export const fepPolicies = [
     "HCPCS Code (s)": "No HCPCS"
   },
   {
-    "Policy #": "4.01.11",
+    "Policy #": "2.04.151",
     "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Occlusion of Uterine Arteries Using Transcatheter Embolization",
-    "CPT Code (s)": "37243, 37244, 36245, 36246, 36247",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Biomarker Testing (Including Liquid Biopsy) for Targeted Treatment and Immunotherapy in Breast Cancer",
+    "CPT Code (s)": "0037U, 0048U, 0155U, 0177U, 0211U, 0239U, 81191, 81192, 81193, 81194, 81301, 81309, 81445, 81455, 88360, 88361, 81479",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -1149,6 +1135,27 @@ export const fepPolicies = [
     "HCPCS Code (s)": "J0691"
   },
   {
+    "Policy #": "5.01.56",
+    "Brand Drug Name": "Baraclude tablets",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Baraclude (entecavir) tablets",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
+  },
+  {
+    "Policy #": "5.01.57",
+    "Brand Drug Name": "Hepsera",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Hepsera (adefovir)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
+  },
+  {
+    "Policy #": "5.01.58",
+    "Brand Drug Name": "Cabenuva",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Cabenuva (cabotegravir/rilpivirine)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J3490"
+  },
+  {
     "Policy #": "5.03.03",
     "Brand Drug Name": "Hepatitis C Infergen Monotherapy",
     "Full Policy Description (or Generic Name (s) of Drug)": "Infergen (interferon alfacon-1)",
@@ -1188,7 +1195,7 @@ export const fepPolicies = [
     "Brand Drug Name": "IVIG (intravenous immunoglobulin)",
     "Full Policy Description (or Generic Name (s) of Drug)": "Asceniv, Bivigam, Flebogamma, Gammagard, Gammagard S/D, Gammaked, Gammaplex, Gamunex-C, Octagam, Privigen, Panzyga,",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "C9072, C9399, J1459, J1556, J1557, J1561, J1566, J1568, J1569, J1572"
+    "HCPCS Code (s)": "C9072, J1459, J1554, J1556, J1557, J1561, J1566, J1568, J1569, J1572, J1599"
   },
   {
     "Policy #": "5.20.04",
@@ -1223,7 +1230,7 @@ export const fepPolicies = [
     "Brand Drug Name": "SCIG Immune Globulin (subcutaneous immunoglobulin)",
     "Full Policy Description (or Generic Name (s) of Drug)": "SCIG Immune Globulin – Cutaquig, Cuvitru, Hizentra, Hyqvia, Xembify",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "C9399, J1555, J1558, J1559, J1575"
+    "HCPCS Code (s)": "J1555, J1558, J1559, J1575, J1599"
   },
   {
     "Policy #": "5.20.10",
@@ -1808,8 +1815,8 @@ export const fepPolicies = [
   },
   {
     "Policy #": "5.21.82",
-    "Brand Drug Name": "Tarceva",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Tarceva (erlotinib)",
+    "Brand Drug Name": "Erlotinib",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Erlotinib",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J9999"
   },
@@ -1899,10 +1906,10 @@ export const fepPolicies = [
   },
   {
     "Policy #": "5.21.96",
-    "Brand Drug Name": "Rituxan ",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Rituxan Hycela (rituximab and hyaluronidase human)",
+    "Brand Drug Name": "Rituxan Hycela",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Rituxan Hycela (rituximab and hyaluronidase human); Riabni (rituximab-arrx) ",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "J9311"
+    "HCPCS Code (s)": "J9311, J9999"
   },
   {
     "Policy #": "5.21.97",
@@ -2196,7 +2203,7 @@ export const fepPolicies = [
     "Brand Drug Name": "Enhertu",
     "Full Policy Description (or Generic Name (s) of Drug)": "Enhertu (fam-trastuzumab deruxtecan-nxki)",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "J9999"
+    "HCPCS Code (s)": "J9358"
   },
   {
     "Policy #": "5.21.139",
@@ -2315,21 +2322,42 @@ export const fepPolicies = [
     "Brand Drug Name": "Tecartus",
     "Full Policy Description (or Generic Name (s) of Drug)": "Tecartus (brexucabtagene autoleucel)",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "C9073"
+    "HCPCS Code (s)": "Q2053, C9073"
   },
   {
     "Policy #": "5.21.156",
     "Brand Drug Name": "Monjuvi",
     "Full Policy Description (or Generic Name (s) of Drug)": "Monjuvi (tafasitamab-cxix)",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "C9070"
+    "HCPCS Code (s)": "C9070, J9349"
   },
   {
     "Policy #": "5.21.157",
     "Brand Drug Name": "Blenrep",
     "Full Policy Description (or Generic Name (s) of Drug)": "Blenrep (belantamab mafodotin-blmf)",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "C9069"
+    "HCPCS Code (s)": "C9069, J9037"
+  },
+  {
+    "Policy #": "5.21.158",
+    "Brand Drug Name": "Faslodex",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Faslodex (fulvestrant)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J9395 "
+  },
+  {
+    "Policy #": "5.21.159",
+    "Brand Drug Name": "Temodar",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Temodar (temozolomide) capsules",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8700"
+  },
+  {
+    "Policy #": "5.21.160",
+    "Brand Drug Name": "Xeloda",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Xeloda (capecitabine)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8520, J8521"
   },
   {
     "Policy #": "5.21.161",
@@ -2351,6 +2379,48 @@ export const fepPolicies = [
     "Full Policy Description (or Generic Name (s) of Drug)": "Lysodren (mitotane)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J8999"
+  },
+  {
+    "Policy #": "5.21.164",
+    "Brand Drug Name": "Danyelza",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Danyelza (naxitamab-gqgk)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J9999"
+  },
+  {
+    "Policy #": "5.21.166",
+    "Brand Drug Name": "Orgovyx",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Orgovyx (relugolix)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8999"
+  },
+  {
+    "Policy #": "5.21.167",
+    "Brand Drug Name": "Tepmetko",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Tepmetko (tepotinib)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J9999"
+  },
+  {
+    "Policy #": "5.21.168",
+    "Brand Drug Name": "Ukoniq",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Ukoniq (umbralisib)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J9999"
+  },
+  {
+    "Policy #": "5.21.169",
+    "Brand Drug Name": "Breyanzi",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Breyanzi (lisocabtagene maraleucel)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "C9399"
+  },
+  {
+    "Policy #": "5.21.170",
+    "Brand Drug Name": "Cosela",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Cosela (trilaciclib)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J9999"
   },
   {
     "Policy #": "5.30.01",
@@ -2780,6 +2850,13 @@ export const fepPolicies = [
     "HCPCS Code (s)": "J3241"
   },
   {
+    "Policy #": "5.30.65",
+    "Brand Drug Name": "Bynfezia",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Bynfezia (octreotide acetate) pen",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J3490"
+  },
+  {
     "Policy #": "5.30.66",
     "Brand Drug Name": "Isturisa",
     "Full Policy Description (or Generic Name (s) of Drug)": "Isturisa (osilodrostat)",
@@ -2789,14 +2866,42 @@ export const fepPolicies = [
   {
     "Policy #": "5.30.67",
     "Brand Drug Name": "Leuprolide Acetate",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Eligard, Fensolvi*, Lupron Depot (leuprolide acetate)",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Eligard, Fensolvi, Lupron Depot (leuprolide acetate)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J1950, J9217"
+  },
+  {
+    "Policy #": "5.30.68",
+    "Brand Drug Name": "Oriahnn",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Oriahnn (elagolix, estradiol, and norethindrone acetate)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
   },
   {
     "Policy #": "5.30.71",
     "Brand Drug Name": "Demser",
     "Full Policy Description (or Generic Name (s) of Drug)": "Demser (metyrosine)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
+  },
+  {
+    "Policy #": "5.30.72",
+    "Brand Drug Name": "Reclast",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Reclast (zoledronic acid)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J3489"
+  },
+  {
+    "Policy #": "5.30.73",
+    "Brand Drug Name": "Sandostatin",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Sandostatin (octreotide)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J2353, J2354"
+  },
+  {
+    "Policy #": "5.30.74",
+    "Brand Drug Name": "Trijardy XR",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Trijardy XR (empagliflozin, linagliptin, & metformin)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J8499"
   },
@@ -2983,6 +3088,13 @@ export const fepPolicies = [
     "HCPCS Code (s)": "J8499"
   },
   {
+    "Policy #": "5.40.28",
+    "Brand Drug Name": "Tikosyn",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Tikosyn (dofetilide)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
+  },
+  {
     "Policy #": "5.45.01",
     "Brand Drug Name": "Pulmozyme ",
     "Full Policy Description (or Generic Name (s) of Drug)": "Pulmozyme (dornase alfa)",
@@ -3057,7 +3169,7 @@ export const fepPolicies = [
     "Brand Drug Name": "Sinus Implants",
     "Full Policy Description (or Generic Name (s) of Drug)": "Propel, Sinuva (mometasone furoate)",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "J7401, C9122"
+    "HCPCS Code (s)": "J7401, J7402, C9122"
   },
   {
     "Policy #": "5.45.12",
@@ -3065,6 +3177,20 @@ export const fepPolicies = [
     "Full Policy Description (or Generic Name (s) of Drug)": "Trikafta (elexacaftor/tezacaftor/ivacaftor)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J8499"
+  },
+  {
+    "Policy #": "5.45.13",
+    "Brand Drug Name": "Xhance",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Xhance (fluticasone propionate) nasal spray",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J3490"
+  },
+  {
+    "Policy #": "5.45.14",
+    "Brand Drug Name": "Bronchitol",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Bronchitol (mannitol) for oral inhalation",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J3490"
   },
   {
     "Policy #": "5.50.01",
@@ -3215,8 +3341,8 @@ export const fepPolicies = [
   },
   {
     "Policy #": "5.60.01",
-    "Brand Drug Name": "Tecfidera Vumerity",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Tecfidera (dimethyl fumarate), Vumerity (diroximel fumarate)",
+    "Brand Drug Name": "Tecfidera Bafiertam Vumerity",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Tecfidera (dimethyl fumarate), Vumerity (diroximel fumarate), Bafiertam (monomethyl fumarate)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J8499"
   },
@@ -3250,8 +3376,8 @@ export const fepPolicies = [
   },
   {
     "Policy #": "5.60.06",
-    "Brand Drug Name": "Belsomra",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Belsomra (suvorexant)",
+    "Brand Drug Name": "Orexin Antagonists",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Belsomra (suvorexant), Dayvigo (lemborexant)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J8499"
   },
@@ -3841,7 +3967,7 @@ export const fepPolicies = [
     "Brand Drug Name": "Migraine CGRP Antagonists ",
     "Full Policy Description (or Generic Name (s) of Drug)": "Aimovig (erenumab-aooe) injection, Ajovy* (fremanezumab-vfrm) injection, Emgality (galcanezumab-gnim)",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "J3490, J3590, J3031, C9040"
+    "HCPCS Code (s)": "J3490, J3590, J3031"
   },
   {
     "Policy #": "5.70.69",
@@ -3912,6 +4038,13 @@ export const fepPolicies = [
     "Full Policy Description (or Generic Name (s) of Drug)": "Vyepti (eptinezumab-jjmr)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J3032"
+  },
+  {
+    "Policy #": "5.70.83",
+    "Brand Drug Name": "Olinvyk",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Olinvyk (oliceridine) injection",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J3490"
   },
   {
     "Policy #": "5.75.01",
@@ -4205,7 +4338,7 @@ export const fepPolicies = [
     "Brand Drug Name": "Neupogen Granix Nivestym Zarxio",
     "Full Policy Description (or Generic Name (s) of Drug)": "Neupogen (filgrastim), Granix (tbo-filgrastim), Nivestym (filgrastim-aafi), Zarxio (filgrastim-sndz) ",
     "CPT Code (s)": "",
-    "HCPCS Code (s)": "J1442, J1447, Q5110"
+    "HCPCS Code (s)": "J1442, J1447, Q5101, Q5110"
   },
   {
     "Policy #": "5.85.11",
@@ -4390,6 +4523,13 @@ export const fepPolicies = [
     "HCPCS Code (s)": "J2562"
   },
   {
+    "Policy #": "5.85.40",
+    "Brand Drug Name": "Orladeyo",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Orladeyo (berotralstat)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
+  },
+  {
     "Policy #": "5.90.01",
     "Brand Drug Name": "Mirvaso",
     "Full Policy Description (or Generic Name (s) of Drug)": "Mirvaso (brimonidine)",
@@ -4399,7 +4539,7 @@ export const fepPolicies = [
   {
     "Policy #": "5.90.02",
     "Brand Drug Name": "Tazarotene",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Tazorac (tazarotene), Fabior (tazarotene), tazarotene powder",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Tazorac (tazarotene), Arazlo (tazarotene), Fabior (tazarotene), tazarotene powder",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J3490"
   },
@@ -4665,7 +4805,7 @@ export const fepPolicies = [
   {
     "Policy #": "5.90.40",
     "Brand Drug Name": "Topical Antifungals and Antibiotics",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Amzeeq 4% foam (minocycline),Bactroban 2% cream (mupirocin), Bactroban 2% nasal ointment (mupirocin), Bactroban 2% ointment (mupirocin), Ciclodan 0.77% cream, Loprox 0.77% cream (ciclopirox), Ciclodan nail lacquer 8% topical solution, Penlac nail lacquer 8% Topical Solution (ciclopirox), Cleocin T 1% solution (clindamycin), Clindamax 1% gel, Cleocin T 1% gel, Glindagel 1% gel (clindamycin), Clindamax 1% lotion, Cleocin T 1% lotion (clindamycin), Clotrimazole 1% cream, Corticosporin cream (neomycin 3.5mg/1g, polymyxin B 10,000IU/1g, hydrocortisone 0.5%), Corticosporin ointment (neomycin 3.5mg/1g, polymyxin B 5,000IU/1g, bacitracin 400IU/1g, hydrocortisone 1%) Econazole 1% cream, Emgel 2% gel (erythromycin), Erythromycin 2% solution, Evoclin 1% foam (clindamycin),Gentamicin 0.1% cream, Ketoconazole 2% shampoo, Ketodan 2% foam, Extina 2% foam (ketoconazole), Loprox 0.77% gel (ciclopirox), Loprox 0.77% suspension (ciclopirox), Lotrisone 1%/0.05% cream (clotrimazole, betamethasone), Lotrisone 1%/0.05% lotion (clotrimazole, betamethasone), Metrocream 0.75% cream, Rosadan 0.75% cream (metronidazole), Neo-Synalar 0.5%/0.025% cream (neomycin, fluocinolone), Naftin 1% gel, cream (naftifine), Naftin 2% gel, cream (naftifine), Nizoral 2% cream (ketoconazole), Nydamax 0.75% gel, Rosadan 0.75% gel (metronidazole), Nystatin 100,000 unit/g cream, Nystatin 100,000 unit/g ointment, Nystatin-Triamcinolone 100,000 unit/g-0.1% cream, Nystatin-Triamcinolone 100,000 unit/g-0.1% ointment, Sodium sulfacetamide 10% liquid, Vusion ointment (miconazole 0.25%-zinc oxide 15%-white petrolatum 81.35",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Aczone 5 & 7.5% gel (dapsone), Amzeeq 4% foam (minocycline),Bactroban 2% cream (mupirocin), Bactroban 2% nasal ointment (mupirocin), Bactroban 2% ointment (mupirocin), Ciclodan 0.77% cream, Loprox 0.77% cream (ciclopirox), Ciclodan nail lacquer 8% topical solution, Penlac nail lacquer 8% Topical Solution (ciclopirox), Cleocin T 1% solution (clindamycin), Clindamax 1% gel, Cleocin T 1% gel, Glindagel 1% gel (clindamycin), Clindamax 1% lotion, Cleocin T 1% lotion (clindamycin), Clotrimazole 1% cream, Corticosporin cream (neomycin 3.5mg/1g, polymyxin B 10,000IU/1g, hydrocortisone 0.5%), Corticosporin ointment (neomycin 3.5mg/1g, polymyxin B 5,000IU/1g, bacitracin 400IU/1g, hydrocortisone 1%) Econazole 1% cream, Emgel 2% gel (erythromycin), Erythromycin 2% solution, Evoclin 1% foam (clindamycin),Gentamicin 0.1% cream, Ketoconazole 2% shampoo, Ketodan 2% foam, Extina 2% foam (ketoconazole), Loprox 0.77% gel (ciclopirox), Loprox 0.77% suspension (ciclopirox), Lotrisone 1%/0.05% cream (clotrimazole, betamethasone), Lotrisone 1%/0.05% lotion (clotrimazole, betamethasone), Metrocream 0.75% cream, Rosadan 0.75% cream (metronidazole), Neo-Synalar 0.5%/0.025% cream (neomycin, fluocinolone), Naftin 1% gel, cream (naftifine), Naftin 2% gel, cream (naftifine), Nizoral 2% cream (ketoconazole), Nydamax 0.75% gel, Rosadan 0.75% gel (metronidazole), Nystatin 100,000 unit/g cream, Nystatin 100,000 unit/g ointment, Nystatin-Triamcinolone 100,000 unit/g-0.1% cream, Nystatin-Triamcinolone 100,000 unit/g-0.1% ointment, Sodium sulfacetamide 10% liquid, Vusion ointment (miconazole 0.25%-zinc oxide 15%-white petrolatum 81.35; Ovace* (sodium sulfacetamide) 10% cream",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J3490"
   },
@@ -4763,7 +4903,7 @@ export const fepPolicies = [
   {
     "Policy #": "5.99.15",
     "Brand Drug Name": "CGM Supplies",
-    "Full Policy Description (or Generic Name (s) of Drug)": "CGM Supplies",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Dexcom G5 sensors, Dexcom G6 sensors, Freestyle Libre 10 day sensors, Freestyle Libre 14 day sensors, Freestyle Libre 2 sensors, Dexcom G5, transmitters, Dexcom G6 transmitters",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "A4226, A9276, K0553"
   },
@@ -4780,6 +4920,13 @@ export const fepPolicies = [
     "Full Policy Description (or Generic Name (s) of Drug)": "Uplizna (inebilizumab-cdon)",
     "CPT Code (s)": "",
     "HCPCS Code (s)": "J1823"
+  },
+  {
+    "Policy #": "5.99.20",
+    "Brand Drug Name": "Zokinvy",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Zokinvy (lonafarnib)",
+    "CPT Code (s)": "",
+    "HCPCS Code (s)": "J8499"
   },
   {
     "Policy #": "6.01.01",
@@ -4835,7 +4982,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Oncologic Applications of PET Scanning",
     "CPT Code (s)": "78811, 78812, 78813, 78814, 78815, 78816, 78608, 78609",
-    "HCPCS Code (s)": "A9515, A9526, A9552, A9580, A9587, A9588, A9591, A9597, A9598, C9060, C9067, G0219, G0235, G0252"
+    "HCPCS Code (s)": "A9515, A9526, A9552, A9580, A9587, A9588, A9591, A9597, A9598, C9067, G0219, G0235, G0252"
   },
   {
     "Policy #": "6.01.29",
@@ -4863,7 +5010,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Percutaneous Balloon Kyphoplasty and Mechanical Verebral Augmentation",
     "CPT Code (s)": "22513, 22514, 22515, ",
-    "HCPCS Code (s)": "No HCPCS"
+    "HCPCS Code (s)": "C1062"
   },
   {
     "Policy #": "6.01.40",
@@ -4887,18 +5034,18 @@ export const fepPolicies = [
     "HCPCS Code (s)": "No HCPCS"
   },
   {
+    "Policy #": "6.01.49",
+    "Brand Drug Name": "",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Computed Tomography Perfusion Imaging of the Brain",
+    "CPT Code (s)": "0042T",
+    "HCPCS Code (s)": "No HCPCS"
+  },
+  {
     "Policy #": "6.01.51",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Interim Positron Emission Tomography Scanning in Oncology to Detect Early Response During Treatment",
     "CPT Code (s)": "78811, 78812, 78813, 78814, 78815, 78816",
-    "HCPCS Code (s)": "G0235"
-  },
-  {
-    "Policy #": "6.01.52",
-    "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Positron Emission Mammography ",
-    "CPT Code (s)": "78999, 78811",
-    "HCPCS Code (s)": "No HCPCS"
+    "HCPCS Code (s)": "C9068, A9592, G0235"
   },
   {
     "Policy #": "6.01.54",
@@ -4995,14 +5142,14 @@ export const fepPolicies = [
     "Policy #": "7.01.48",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Autologous Chondrocyte Implantation for Focal Articular Cartilage Lesions ",
-    "CPT Code (s)": "27412, 29870, 29871, 29873,  29874, 29875, 29876, 29877",
+    "CPT Code (s)": "27412, 29870, 29871, 29873,  29874, 29875, 29876, 29877, 29879,  29880, 29881, 29882, 29883, 29884, 29885, 29886, 29887",
     "HCPCS Code (s)": "J7330, S2112"
   },
   {
     "Policy #": "7.01.58",
     "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Intraoperative Neurophysiologic Monitoring",
-    "CPT Code (s)": "92585, 95829, 95867, 95868, 95907-95913, 95940, 95941, 95925, 95926, 95927, 95928, 95929, 95938, 95930, 95939, 95955",
+    "Full Policy Description (or Generic Name (s) of Drug)": "Intra-Operative Neurophysiologic Monitoring",
+    "CPT Code (s)": "95829, 95865, 95867, 95868, 95907, 95908, 95909, 95910, 95911, 95912, 95913, 95940, 95941, 95925, 95926, 95927, 95928, 95929, 95938, 95930, 95939, 95955",
     "HCPCS Code (s)": "G0453"
   },
   {
@@ -5121,7 +5268,7 @@ export const fepPolicies = [
     "Policy #": "7.01.105",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Balloon Ostial Dilation for Treatment of Chronic and Recurrent Acute Rhinosinusitis",
-    "CPT Code (s)": "31253, 31256, 31257, 31259, 31267, 31276, 31287, 31288,  31295, 31296, 31297, 31298, 31299",
+    "CPT Code (s)": "31256, 31276, 31287, 31295, 31296, 31297, 31298, 31299",
     "HCPCS Code (s)": "C1726"
   },
   {
@@ -5317,7 +5464,7 @@ export const fepPolicies = [
     "Policy #": "7.01.153",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Adipose-Derived Stem Cells in Autologous Fat Grafting to the Breast",
-    "CPT Code (s)": "15769, 15771, 15772, 19366, 19380, 19499",
+    "CPT Code (s)": "15769, 15771, 15772, 19380, 19499",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -5325,7 +5472,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Balloon Dilation of the Eustachian Tube",
     "CPT Code (s)": "69705, 69706",
-    "HCPCS Code (s)": "C9745"
+    "HCPCS Code (s)": "No HCPCS"
   },
   {
     "Policy #": "7.01.160",
@@ -5346,7 +5493,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Absorbable Nasal Implant for Treatment of Nasal Valve Collapse",
     "CPT Code (s)": "30468",
-    "HCPCS Code (s)": "No HCPCS                      C9749, C1889"
+    "HCPCS Code (s)": "No HCPCS                    "
   },
   {
     "Policy #": "7.01.164",
@@ -5521,7 +5668,7 @@ export const fepPolicies = [
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Baroreflex Stimulation Devices",
     "CPT Code (s)": "0266T, 0267T, 0268T, 0269T, 0270T, 0271T, 0272T, 0273T",
-    "HCPCS Code (s)": "No HCPCS"
+    "HCPCS Code (s)": "C1825"
   },
   {
     "Policy #": "8.01.59",
@@ -5534,7 +5681,7 @@ export const fepPolicies = [
     "Policy #": "8.01.61",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Focal Treatments for Prostate Cancer",
-    "CPT Code (s)": "0582T, 55880, 55899",
+    "CPT Code (s)": "0582T, 55880",
     "HCPCS Code (s)": "No HCPCS"
   },
   {
@@ -5611,15 +5758,8 @@ export const fepPolicies = [
     "Policy #": "9.03.20",
     "Brand Drug Name": "",
     "Full Policy Description (or Generic Name (s) of Drug)": "Intraocular Radiation Therapy for Age-Related Macular Degeneration ",
-    "CPT Code (s)": "67036, 67277",
+    "CPT Code (s)": "67036, 67299",
     "HCPCS Code (s)": "C9770"
-  },
-  {
-    "Policy #": "9.03.21",
-    "Brand Drug Name": "",
-    "Full Policy Description (or Generic Name (s) of Drug)": "Aqueous Shunts and Stents for Glaucoma",
-    "CPT Code (s)": "0191T, 0253T, 0376T, 0449T, 0450T, 0474T, 66179, 66180, 66183, 66184, 66185",
-    "HCPCS Code (s)": "C1783, L8612"
   },
   {
     "Policy #": "9.03.29",

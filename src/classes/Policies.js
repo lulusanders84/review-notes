@@ -8,11 +8,12 @@ import { fepPolicies } from "../data/fepPolicies";
 import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
 import { checkHref } from "../utils/Policies/checkHref";
 
-const fepVersion = "January 2021";
-const bcbsmnVersion = "2/22/2021";
+const fepVersion = "April 2021";
+const bcbsmnVersion = "4/5/2021";
 
 export class Policies {
   constructor(lob) {
+    console.log("policies")
     this.lob = lob;
     const version = lob === "fep" ? fepVersion : bcbsmnVersion
     updatePolicyVersion(lob, version)

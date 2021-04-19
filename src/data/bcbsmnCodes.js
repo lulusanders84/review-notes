@@ -1,4 +1,52 @@
 export const bcbsmnCodes = {
+   "0245U": [
+      {
+         "Policy #": "VI-50",
+         "Full Policy": "Molecular Marker Evaluation of Thyroid Nodules"
+      } 
+   ],
+   "0244U": [
+      {
+         "Policy #": "VI-49",
+         "Full Policy": "Expanded Molecular Panel Testing of Tumor Tissue or Circulating DNA (Liquid Biopsy) for Solid Tumors"
+      } 
+   ],
+   "0242U": [
+      {
+         "Policy #": "VI-49",
+         "Full Policy": "Expanded Molecular Panel Testing of Tumor Tissue or Circulating DNA (Liquid Biopsy) for Solid Tumors"
+      } 
+   ],
+   "K1020": [
+      {
+         "Policy #": "IV-131",
+         "Full Policy": "Vagus Nerve Stimulation"
+      } 
+   ],
+   "J7402": [
+      {
+         "Policy #": "IV-140",
+         "Full Policy": "Steroid-Eluting Devices for Maintaining Sinus Ostial Patency"
+      } 
+   ],
+   "S1091": [
+      {
+         "Policy #": "IV-140",
+         "Full Policy": "Steroid-Eluting Devices for Maintaining Sinus Ostial Patency"
+      } 
+   ],
+   "J1427": [
+      {
+         "Policy #": "II-246",
+         "Full Policy": "Viltolarsen"
+      } 
+   ],
+   "30420": [
+      {
+         "Policy #": "IV-73",
+         "Full Policy": "Rhinoplasty"
+      } 
+   ],
    "11102": [
       {
          "Policy #": "II-177",
@@ -764,7 +812,7 @@ export const bcbsmnCodes = {
    "20527": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase for Fibroproliferative Disorders"
       }
    ],
    "20550": [
@@ -1454,7 +1502,7 @@ export const bcbsmnCodes = {
    "26341": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase for Fibroproliferative Disorders"
       }
    ],
    "26989": [
@@ -3670,13 +3718,13 @@ export const bcbsmnCodes = {
    "54200": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase for Fibroproliferative Disorders"
       }
    ],
    "54235": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase for Fibroproliferative Disorders"
       }
    ],
    "54400": [
@@ -9356,7 +9404,7 @@ export const bcbsmnCodes = {
    "J0775": [
       {
          "Policy #": "II-145",
-         "Full Policy": "Injectable Clostridial Collagenase (Xiaflex®) for Fibroproliferative Disorders "
+         "Full Policy": "Injectable Clostridial Collagenase for Fibroproliferative Disorders"
       }
    ],
    "S8130": [
@@ -9468,12 +9516,6 @@ export const bcbsmnCodes = {
       }
    ],
    "J7332": [
-      {
-         "Policy #": "II-29",
-         "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
-      }
-   ],
-   "J7333": [
       {
          "Policy #": "II-29",
          "Full Policy": "Intra-Articular Hyaluronan Injections for Osteroarthritis"
@@ -9978,25 +10020,25 @@ export const bcbsmnCodes = {
    "0071T": [
       {
          "Policy #": "IV-119",
-         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation"
+         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation and MRI-Guided High-Intensity Directional Ultrasound Ablation"
       }
    ],
    "0072T": [
       {
          "Policy #": "IV-119",
-         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation"
+         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation and MRI-Guided High-Intensity Directional Ultrasound Ablation"
       }
    ],
    "0398T": [
       {
          "Policy #": "IV-119",
-         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation"
+         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation and MRI-Guided High-Intensity Directional Ultrasound Ablation"
       }
    ],
    "C9734": [
       {
          "Policy #": "IV-119",
-         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation"
+         "Full Policy": "MRI-Guided High-Intensity Focused Ultrasound Ablation and MRI-Guided High-Intensity Directional Ultrasound Ablation"
       }
    ],
    "L6026": [
@@ -11199,18 +11241,6 @@ export const bcbsmnCodes = {
          "Full Policy": "Step Therapy Bypass Supplement "
       }
    ],
-   "C9122": [
-      {
-         "Policy #": "IV-140",
-         "Full Policy": "Steroid-Eluting Devices for Maintaining Sinus Ostial Patency"
-      }
-   ],
-   "J7401": [
-      {
-         "Policy #": "IV-140",
-         "Full Policy": "Steroid-Eluting Devices for Maintaining Sinus Ostial Patency"
-      }
-   ],
    "S0189": [
       {
          "Policy #": "II-159",
@@ -11539,12 +11569,6 @@ export const bcbsmnCodes = {
       {
          "Policy #": "II-219",
          "Full Policy": "Vestronidase Alfa (Mepsevii)"
-      }
-   ],
-   "C9071": [
-      {
-         "Policy #": "II-246",
-         "Full Policy": "Vitolarsen (Viltepso)"
       }
    ],
    "J3398": [
