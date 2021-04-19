@@ -1,34 +1,34 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Grid from '@material-ui/core/Grid';
-import { handleInputChange } from '../../utils/Inputs';
-import { connect } from 'react-redux';
+import MuiCheckbox from '@material-ui/core/Checkbox';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleInputs } from '../../redux/actions';
 
- export function MyCheckBox(props) {
-  const [value] = React.useState('female');
+
+export default function Checkbox({id, label, disabled}) {
+  const values = useSelector(state => state.values)
+  const dispatch = useDispatch()
+  const handleChange = (event) => {
+    dispatch(handleInputs({name: id, value: event.target.checked }, dispatch))
+  };
 
   return (
-    <Grid item xs={12}>
-    <FormControl component="fieldset">
-      <FormGroup aria-label="position" name="position" value={value} onChange={e => {handleInputChange(props, e)}} row>
-        <FormControlLabel
-          value="end"
-          control={<Checkbox color="primary" onChange={e => {handleInputChange(props, e)}} checked={props.value} />}
-          label={props.label}
-          labelPlacement="end"
-          disabled={props.disabled}
-        />
-      </FormGroup>
-    </FormControl>
-    </Grid>
+    <FormGroup row>
+      <FormControlLabel
+        control={
+          <MuiCheckbox
+            checked={values[id]}
+            onChange={handleChange}
+            name={id}
+            color="primary"
+          />
+        }
+        label={label}
+        disabled={disabled}
+      />
+
+    </FormGroup>
   );
 }
 
-const mapStateToProps = (state) => ({
-  values: state.values,
-});
-
-export default connect(mapStateToProps)(MyCheckBox)

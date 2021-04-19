@@ -7,7 +7,6 @@ import { getOptions } from '../../utils/Inputs/inputOptions';
 import Conditional from './ConditionalInputs/conditionalInputs';
 
 function DeterInputs(props) {
-
   return (
     <div>
       <RadioInput id="deter" options={getOptions("deterOptions", null, props.addOptions)} label="Determination" />
@@ -15,7 +14,7 @@ function DeterInputs(props) {
           ? <Conditional.DeniedInputs denialId="rationale"  />
           : props.values.deter === "send to medical director"
           ? <CriteriaInputs   /> 
-          : <Checkbox id="allMet" value={props.values.allMet}  label="All crtieria met" disabled={props.values.disableAllMet} {...props} />
+          : <Checkbox id="allMet" label="All crtieria met" disabled={props.values.disableAllMet} />
         }  
     </div>
   )

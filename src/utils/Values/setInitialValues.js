@@ -69,6 +69,7 @@ export const initialValues = {
     claimType: "local",
     denialType: "entire claim",
     deter: "approve",
+    disableAllMet: true,
     doseUnit: "mg",    
     drugReviewType: "new",
     exCircum: "No specific medical policy applies, service appears medically necessary.",
