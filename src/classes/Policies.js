@@ -6,6 +6,7 @@ import { getBcbsmnPolicyHrefAndEffectiveDate } from "../utils/Policies/getBcbsmn
 import { fetchFepPolicies } from "../utils/Policies/fetchFepPolicies";
 import { fepPolicies } from "../data/fepPolicies";
 import { updatePolicyVersion } from "../utils/Policies/updatePolicyVersion";
+import { checkHref } from "../utils/Policies/checkHref";
 
 const fepVersion = "January 2021";
 const bcbsmnVersion = "2/22/2021";
@@ -77,8 +78,9 @@ export class Policies {
   addBcbsHrefAndEffectiveDate = async () => {
     const policies = this.policyArr.map(async policy => {
       const data = await getBcbsmnPolicyHrefAndEffectiveDate(policy);
-      const { href, effective } = data;
-      policy.href = href;
+      const { effective } = data;
+      const newHref = await checkHref(data)
+      policy.href = newHref;
       policy.effective = effective;
       return policy;
     })

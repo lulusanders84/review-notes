@@ -14,7 +14,8 @@ export const getBcbsmnPolicyHrefAndEffectiveDate = async (policy) => {
     const table = $(html).next();
     let type;
     try { 
-      type = $(table).find("td")[0].innerHTML.trim();  
+      type = $(table).find("td")[0].innerHTML.trim();
+      type = type.replace(" ", "_")
     }
     catch {
       returnPolicy.href = null;
@@ -29,6 +30,9 @@ export const getBcbsmnPolicyHrefAndEffectiveDate = async (policy) => {
 
     returnPolicy.effective = $(rows).next()[0].innerHTML.trim();
     returnPolicy.href=`https://securecms.bluecrossmnonline.com/content/medpolicy/en/minnesota/core/all/policies/${type}/${policyNo}/${policyNo}-${version}.html`;
+    returnPolicy.type = type;
+    returnPolicy.version = version;
+    returnPolicy.policyNo = policyNo;
   });
   return returnPolicy;
 }
