@@ -1,4 +1,4 @@
-# save extra line
+# save extra line space
 image: nikolaik/python-nodejs
 
 stages:
