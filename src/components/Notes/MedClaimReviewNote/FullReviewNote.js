@@ -5,8 +5,6 @@ import { setMedClaimReviewData } from '../../../redux/actions/notes';
 import Note from '../Note';
 import { formatCriteria } from '../../../utils/Notes/formatCriteria';
 import 'react-quill/dist/quill.snow.css';
-import { NoteAdd } from '@material-ui/icons';
-
 
 
 export function FullReviewNote(props) {

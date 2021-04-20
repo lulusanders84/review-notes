@@ -1,4 +1,4 @@
-import { bulletPointTabs, getBulletPointTabs } from "./bulletPointTabs"
+import { getBulletPointTabs } from "./bulletPointTabs"
 
 export const handleBullets = (item) => {
 const split = item.split("")
