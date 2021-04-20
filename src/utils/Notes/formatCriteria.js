@@ -21,8 +21,7 @@ export const formatCriteria = (input) => {
           item = item.split("<p>")
           item[0] = "<br>";
           item = item.join("");   
-        }   
-        throw 'myException';   
+        }     
       }
       catch {
         
